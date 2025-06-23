@@ -15,5 +15,6 @@
 </div>
 
 <script src="{{asset('assets/Js/custom-Js.js')}}"></script>
+@include('layouts.footer')
 </body>
 </html>

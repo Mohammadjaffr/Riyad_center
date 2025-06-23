@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/hello.blade.php" afterDir="false" />
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="إضافة صفحة الLogin">
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pages/add_invoice.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pages/add_invoice_module.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +172,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "test",
-    "last_opened_file_path": "D:/github/Riyad_center/resources/views",
+    "last_opened_file_path": "D:/github/Riyad_center/resources/views/user",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -181,10 +183,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\Riyad_center\resources\views\user" />
+      <recent name="D:\github\Riyad_center\resources\views\layouts" />
       <recent name="D:\github\Riyad_center\resources\views" />
       <recent name="D:\laravel\Riyad_center\resources\views\layouts" />
       <recent name="D:\laravel\Riyad_center\resources\views" />
-      <recent name="D:\laravel\Riyad_center\resources\scss" />
     </key>
   </component>
   <component name="RunManager">
@@ -221,9 +224,22 @@
       <workItem from="1750054199122" duration="1005000" />
       <workItem from="1750269850427" duration="14814000" />
     </task>
+    <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
+      <option name="closed" value="true" />
+      <created>1750667069852</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1750667069852</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="إضافة صفحة الLogin" />
+    <option name="LAST_COMMIT_MESSAGE" value="إضافة صفحة الLogin" />
   </component>
 </project>
