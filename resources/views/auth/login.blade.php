@@ -9,28 +9,35 @@
                 <h2 class="mb-4">تسجيل الدخول</h2>
                 <img src="{{asset('assets/images/login.png')}}" alt="Register Illustration" class="img-fluid login-illustration">
             </div>
-            <!-- Right Panel (Registration Form) -->
             <div class="col-md-6 p-5 d-flex flex-column justify-content-center">
 
                 <div class="text-center mb-5 bg-white">
                     <img src="{{asset('assets/images/logo.png')}} " alt="Company Logo" class="img-fluid company-logo mb-3">
                 </div>
-                <form method="post" {{ route('login') }}>
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <div class="mb-3">
-                        <label for="name" class="form-label text-dark-blue">اسم المستخدم</label>
-                        <input type="text" class="form-control rounded-pill border-dark-blue" id="name" name="name" required>
+                    <div class="mb-3" dir="rtl">
+                        <label for="name" class="form-label text-dark-blue text-end">{{ __('اسم المستخدم') }}</label>
+                        <input type="text"  class="form-control @error('name') is-invalid @enderror rounded-pill border-dark-blue" id="name" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
+                        @error('name')
+                        <span class="invalid-feedback text-end" role="alert">
+                         <strong>{{ $message }}</strong> </span>
+                        @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label text-dark-blue">كلمة السر</label>
-                        <input type="password" class="form-control rounded-pill border-dark-blue" id="password" name="password" required>
+
+                    <div class="mb-3" dir="rtl">
+                        <label for="password" class="form-label text-dark-blue">{{ __('كلمة المرور') }}</label>
+                        <input id="password" type="password" class="form-control  @error('password') is-invalid @enderror rounded-pill border-dark-blue"  name="password"  autocomplete="current-password">
+                        @error('password')
+                        <span class="invalid-feedback text-end" role="alert">
+                         <strong>{{ $message }}</strong></span>
+                        @enderror
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-dark-blue rounded-pill py-2" name="lo">تسجيل الدخول</button>
+                        <button type="submit" class="btn btn-dark-blue rounded-pill py-2">تسجيل الدخول</button>
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 

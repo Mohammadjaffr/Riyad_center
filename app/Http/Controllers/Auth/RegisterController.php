@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -50,8 +51,12 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'numeric',],
+            'department_id' => ['required', 'numeric', 'max:255'],
+            'status' => ['required', 'string', 'max:255'],
+            'role' => ['required', 'string', 'max:255'],
+            'salary' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:3', 'confirmed'],
         ]);
     }
 
@@ -63,9 +68,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Employee::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'status' => $data['status'],
+            'role' => $data['role'],
+            'salary' => $data['salary'],
+            'department_id' => $data['department_id'],
             'password' => Hash::make($data['password']),
         ]);
     }

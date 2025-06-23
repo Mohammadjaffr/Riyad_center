@@ -1,5 +1,5 @@
 <!doctype html >
-<html dir="rtl" lang="en">
+<html dir="rtl" lang="ar">
 @extends('layouts.head')
 
 <body>

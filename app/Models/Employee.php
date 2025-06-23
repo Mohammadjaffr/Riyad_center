@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-class Employee extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Employee extends  Authenticatable
 {
     protected $fillable = ['name', 'phone', 'password', 'status', 'role', 'salary', 'department_id'];
 

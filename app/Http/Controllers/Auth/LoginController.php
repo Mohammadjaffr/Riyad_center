@@ -5,60 +5,90 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * إلى أين يُعاد التوجيه بعد تسجيل الدخول
      *
      * @var string
      */
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * إنشاء نسخة من الكنترولر وتفعيل ميدلوير الضيف فقط
      */
-    protected function guard()
-    {
-        return Auth::guard('web');
-    }
-    public function login(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'password' => 'required',
-        ]);
-    }
-    protected function credentials(\Illuminate\Http\Request $request)
-    {
-        return [
-            $this->username() => $request->input('login'),
-            'password' => $request->input('password'),
-        ];
-    }
-    public function showLoginForm()
-    {
-        return view('auth.login');
-    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-//        $this->middleware('auth')->only('logout');
     }
-    
+
+    /**
+     * عرض نموذج تسجيل الدخول
+     */
+    public function showLoginForm()
+    {
+        return view('auth.login'); // يمكنك تغييره إلى 'auth-form' لو أردت
+    }
+
+    /**
+     * تحديد الحقل الذي سيُستخدم لتسجيل الدخول (email أو name أو username)
+     */
+    public function username()
+    {
+        $login = request()->input('name');
+
+        // تحديد نوع الحقل: إذا كان أرقام = phone، غير ذلك = name
+        if (is_numeric($login)) {
+            $field = 'phone';
+        } else {
+            $field = 'name';
+        }
+
+        // دمج الحقل المحدد مع الطلب ليسمح للمصادقة بالعمل
+        request()->merge([$field => $login]);
+
+        return $field;
+    }
+
+
+    /**
+     * تحديد بيانات الاعتماد المطلوبة للمصادقة
+     */
+    protected function credentials(Request $request)
+    {
+        return [
+            $this->username() => $request->input('name'),
+            'password' => $request->input('password'),
+        ];
+    }
+
+    /**
+     * التحقق من صحة الطلب مع رسائل عربية مخصصة
+     */
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|exists:employees,name',
+            'password' => 'required|string',
+        ], [
+            'name.required' => 'حقل اسم المستخدم مطلوب',
+            'name.string' => 'يجب أن يكون اسم المستخدم نصًا',
+            'name.exists' => 'اسم المستخدم غير مسجل في النظام',
+            'password.required' => 'حقل كلمة المرور مطلوب',
+            'password.string' => 'يجب أن تكون كلمة المرور نصًا',
+        ]);
+    }
+
+    /**
+     * ما يحدث بعد تسجيل الدخول بنجاح
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect()->intended($this->redirectPath())
+            ->with('success', 'تم تسجيل دخولك بنجاح!');
+    }
 }
