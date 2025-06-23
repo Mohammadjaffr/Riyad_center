@@ -7,7 +7,7 @@
             <div class="col-md-6 p-5 d-flex flex-column justify-content-center">
 
                 <div class="text-center mb-5 bg-white">
-                    <img src="assets/images/logo.png" alt="Company Logo" class="img-fluid company-logo mb-3">
+                    <img src="{{asset('assets/images/logo.png')}}" alt="Company Logo" class="img-fluid company-logo mb-3">
                 </div>
                 <form method="post">
                     <div class="mb-3">
@@ -26,7 +26,7 @@
             <!-- Left Panel (Image Section) -->
             <div class="col-md-6 d-flex flex-column justify-content-center align-items-center p-4 bg-dark-blue text-white">
                 <h2 class="mb-4">تسجيل الدخول</h2>
-                <img src="assets/images/login.png" alt="Register Illustration" class="img-fluid login-illustration">
+                <img src="{{asset('assets/images/login.png')}}" alt="Register Illustration" class="img-fluid login-illustration">
             </div>
 
 
