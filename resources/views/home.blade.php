@@ -22,5 +22,5 @@
 {{--</div>--}}
 
 
-    <div class="alert alert-success">welcome to my project</div>
+    <div class="alert alert-success text-center">welcome to my project</div>
 @endsection
