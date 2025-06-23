@@ -69,8 +69,9 @@ body {
 }
 
 .btn-dark-blue:hover {
-    background-color: #132E47;
+    background-color: #132e54;
     border-color: #132E47;
+    color: white;
 }
 
 .btn-outline-dark-blue {

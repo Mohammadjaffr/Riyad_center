@@ -18,14 +18,14 @@
                 <form method="post">
                     <div class="mb-3">
                         <label for="regUsername" class="form-label text-dark-blue">اسم المستخدم</label>
-                        <input type="text" class="form-control rounded-pill border-dark-blue" id="regUsername" name="regUsername" required>
+                        <input type="text" class="form-control rounded-pill border-dark-blue" id="username" name="username" required>
                     </div>
                     <div class="mb-3">
                         <label for="regPassword" class="form-label text-dark-blue">كلمة السر</label>
-                        <input type="password" class="form-control rounded-pill border-dark-blue" id="regPassword" name="regPassword" required>
+                        <input type="password" class="form-control rounded-pill border-dark-blue" id="password" name="password" required>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-dark-blue rounded-pill py-2" name="lo">تسجيل الدخول</button>
+                        <button type="submit" class="btn btn-dark-blue rounded-pill py-2" name="login" id="login" >تسجيل الدخول</button>
                     </div>
                 </form>
             </div>
