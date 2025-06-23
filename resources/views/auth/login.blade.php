@@ -1,73 +1,38 @@
 @extends('layouts.master')
 @section('title' ,'تسجيل الدخول')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light-beige">
+        <div class="login-card row bg-white rounded-5 shadow-lg overflow-hidden">
+            <!-- Right Panel (Registration Form) -->
+            <div class="col-md-6 p-5 d-flex flex-column justify-content-center">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+                <div class="text-center mb-5 bg-white">
+                    <img src="assets/images/logo.png" alt="Company Logo" class="img-fluid company-logo mb-3">
                 </div>
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="regUsername" class="form-label text-dark-blue">اسم المستخدم</label>
+                        <input type="text" class="form-control rounded-pill border-dark-blue" id="regUsername" name="regUsername" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="regPassword" class="form-label text-dark-blue">كلمة السر</label>
+                        <input type="password" class="form-control rounded-pill border-dark-blue" id="regPassword" name="regPassword" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-dark-blue rounded-pill py-2" name="lo">تسجيل الدخول</button>
+                    </div>
+                </form>
             </div>
+            <!-- Left Panel (Image Section) -->
+            <div class="col-md-6 d-flex flex-column justify-content-center align-items-center p-4 bg-dark-blue text-white">
+                <h2 class="mb-4">تسجيل الدخول</h2>
+                <img src="assets/images/login.png" alt="Register Illustration" class="img-fluid login-illustration">
+            </div>
+
+
         </div>
     </div>
-</div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 @endsection
