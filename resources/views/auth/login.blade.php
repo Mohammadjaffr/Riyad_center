@@ -1,13 +1,19 @@
-@extends('layouts.master')
+@extends('layouts.head')
 @section('title' ,'تسجيل الدخول')
-@section('content')
+
     <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light-beige">
         <div class="login-card row bg-white rounded-5 shadow-lg overflow-hidden">
+
+            <!-- Left Panel (Image Section) -->
+            <div class="col-md-6 d-flex flex-column justify-content-center align-items-center p-4 bg-dark-blue text-white">
+                <h2 class="mb-4">تسجيل الدخول</h2>
+                <img src="{{asset('assets/images/login.png')}}" alt="Register Illustration" class="img-fluid login-illustration">
+            </div>
             <!-- Right Panel (Registration Form) -->
             <div class="col-md-6 p-5 d-flex flex-column justify-content-center">
 
                 <div class="text-center mb-5 bg-white">
-                    <img src="{{asset('assets/images/logo.png')}}" alt="Company Logo" class="img-fluid company-logo mb-3">
+                    <img src="{{asset('assets/images/logo.png')}} " alt="Company Logo" class="img-fluid company-logo mb-3">
                 </div>
                 <form method="post">
                     <div class="mb-3">
@@ -23,16 +29,10 @@
                     </div>
                 </form>
             </div>
-            <!-- Left Panel (Image Section) -->
-            <div class="col-md-6 d-flex flex-column justify-content-center align-items-center p-4 bg-dark-blue text-white">
-                <h2 class="mb-4">تسجيل الدخول</h2>
-                <img src="{{asset('assets/images/login.png')}}" alt="Register Illustration" class="img-fluid login-illustration">
-            </div>
-
 
         </div>
     </div>
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-@endsection
+

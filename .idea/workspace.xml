@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="" />
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="إضافة صفحة الLogin">
+      <change afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/account.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/logo2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/head.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +44,7 @@
     &quot;accountId&quot;: &quot;fe52067e-5e3f-43b9-b3bb-3c7e5be188b6&quot;
   }
 }</component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:/php-8.4.7/php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/psr/clock" />
@@ -161,25 +171,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/github/Riyad_center/resources/views&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "test",
+    "last_opened_file_path": "D:/github/Riyad_center/public/assets/css",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\Riyad_center\public\assets\css" />
+      <recent name="D:\github\Riyad_center\resources\views\user" />
+      <recent name="D:\github\Riyad_center\resources\views\layouts" />
       <recent name="D:\github\Riyad_center\resources\views" />
       <recent name="D:\laravel\Riyad_center\resources\views\layouts" />
-      <recent name="D:\laravel\Riyad_center\resources\views" />
-      <recent name="D:\laravel\Riyad_center\resources\scss" />
     </key>
   </component>
   <component name="RunManager">
@@ -216,9 +227,22 @@
       <workItem from="1750054199122" duration="1005000" />
       <workItem from="1750269850427" duration="14814000" />
     </task>
+    <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
+      <option name="closed" value="true" />
+      <created>1750667069852</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1750667069852</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="إضافة صفحة الLogin" />
+    <option name="LAST_COMMIT_MESSAGE" value="إضافة صفحة الLogin" />
   </component>
 </project>
