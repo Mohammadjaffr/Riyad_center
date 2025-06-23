@@ -6,16 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2025_06_22_130715_create_inventory_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2025_06_22_130715_create_inventory_logs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2025_06_22_130735_create_employee_salaries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2025_06_22_130735_create_employee_salaries_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2025_06_22_130800_create_employee_advance_payments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2025_06_22_130800_create_employee_advance_payments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2025_06_22_130817_create_invoices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2025_06_22_130817_create_invoices_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2025_06_22_130922_create_payments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2025_06_22_130922_create_payments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +218,7 @@
       <workItem from="1749841242760" duration="3099000" />
       <workItem from="1750008582240" duration="2607000" />
       <workItem from="1750054199122" duration="1005000" />
-      <workItem from="1750269850427" duration="9348000" />
+      <workItem from="1750269850427" duration="12965000" />
     </task>
     <servers />
   </component>

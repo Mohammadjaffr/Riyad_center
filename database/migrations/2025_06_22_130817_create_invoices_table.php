@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('payment_type');
             $table->text('notes')->nullable();
             $table->date('invoice_date');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 

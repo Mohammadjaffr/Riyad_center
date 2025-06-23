@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('payment_date');
             $table->text('notes')->nullable();
             $table->foreignId('created_by')->constrained('employees');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 

@@ -3,7 +3,7 @@
 @extends('layouts.head')
 <body>
 {{--@include('layouts.navbar')--}}
-@yield('contact')
+@yield('content')
 
 {{--@extends('layouts.footer')--}}
 

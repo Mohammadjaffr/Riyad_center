@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('amount', 10, 2);
             $table->date('pay_date');
             $table->text('notes')->nullable();
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->text('description')->nullable();
             $table->foreignId('created_by')->constrained('employees');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 
