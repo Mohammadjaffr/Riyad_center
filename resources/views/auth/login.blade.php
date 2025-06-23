@@ -13,6 +13,10 @@
 
                 <div class="text-center mb-5 bg-white">
                     <img src="{{asset('assets/images/logo.png')}} " alt="Company Logo" class="img-fluid company-logo mb-3">
+                    <div class="desc">
+                        HELMY AL-HAIDARI FOR GENERAL TRADE<br>
+                        لبيع جميع الأنشطة التجارية - خياطة و تفصيل الأزياء الرسمية
+                    </div>
                 </div>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
