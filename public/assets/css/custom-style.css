@@ -91,14 +91,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .social-button {
     transition: box-shadow 0.3s, border-color 0.3s;
-    height: 45px; 
+    height: 45px;
     width: 45px;
-    background-color: #BDD6F4; 
+    background-color: #BDD6F4;
 }
 
 .social-button:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    background-color: #A4C8E1; 
+    background-color: #A4C8E1;
     transform: scale(1.1);
 }
 
@@ -106,14 +106,14 @@ input[type="number"]::-webkit-outer-spin-button {
     transition: background-color 0.3s, transform 0.3s;
 }
 .add-ads-button:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .custom-position {
-    position:static; 
+    position:static;
 }
-  
-  
+
+
 @media (min-width: 576px) {
     .custom-position {
       position: absolute;
@@ -125,11 +125,11 @@ input[type="number"]::-webkit-outer-spin-button {
     overflow-y:scroll;
     max-height: 400px;
     direction: ltr;
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-    padding: 10px; 
-    background-color: #f9f9f9; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .comment-card {
