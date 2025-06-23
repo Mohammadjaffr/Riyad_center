@@ -15,14 +15,15 @@
                 <div class="text-center mb-5 bg-white">
                     <img src="{{asset('assets/images/logo.png')}} " alt="Company Logo" class="img-fluid company-logo mb-3">
                 </div>
-                <form method="post">
+                <form method="post" {{ route('login') }}>
+                    @csrf
                     <div class="mb-3">
-                        <label for="regUsername" class="form-label text-dark-blue">اسم المستخدم</label>
-                        <input type="text" class="form-control rounded-pill border-dark-blue" id="regUsername" name="regUsername" required>
+                        <label for="name" class="form-label text-dark-blue">اسم المستخدم</label>
+                        <input type="text" class="form-control rounded-pill border-dark-blue" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="regPassword" class="form-label text-dark-blue">كلمة السر</label>
-                        <input type="password" class="form-control rounded-pill border-dark-blue" id="regPassword" name="regPassword" required>
+                        <label for="password" class="form-label text-dark-blue">كلمة السر</label>
+                        <input type="password" class="form-control rounded-pill border-dark-blue" id="password" name="password" required>
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-dark-blue rounded-pill py-2" name="lo">تسجيل الدخول</button>

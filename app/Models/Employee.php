@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    protected $fillable = [
-        'name', 'phone', 'password', 'status', 'role', 'salary', 'department_id'
-    ];
+    protected $fillable = ['name', 'phone', 'password', 'status', 'role', 'salary', 'department_id'];
 
     public function department() { return $this->belongsTo(Department::class); }
     public function purchases() { return $this->hasMany(Purchase::class, 'created_by'); }

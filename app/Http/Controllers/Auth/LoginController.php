@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -32,9 +33,32 @@ class LoginController extends Controller
      *
      * @return void
      */
+    protected function guard()
+    {
+        return Auth::guard('web');
+    }
+    public function login(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+        ]);
+    }
+    protected function credentials(\Illuminate\Http\Request $request)
+    {
+        return [
+            $this->username() => $request->input('login'),
+            'password' => $request->input('password'),
+        ];
+    }
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('auth')->only('logout');
+//        $this->middleware('auth')->only('logout');
     }
+    
 }
