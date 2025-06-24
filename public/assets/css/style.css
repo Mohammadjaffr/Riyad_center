@@ -380,11 +380,7 @@ body {
 
 /*-------------------------------------------------------invoice----------------------------------------------------------*/
 .invoice-container {
-
-    /* background: #fff; */
-    border-radius: 18px;
-    margin: 32px auto auto 20px;
-    /*margin-left: 15px;*/
+    margin: 32px 20% auto auto   ;
     padding: 24px 16px;
     max-width: 900px;
 }
@@ -392,7 +388,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
+    background-color: white;
+    height: 60px;
+
 
 }
 .invoice-header h4 {
@@ -402,130 +401,14 @@ body {
 .btn-new-invoice {
     background: #1A3E5D;
     color: #fff;
-    border-radius: 16px;
+    border-radius: 10px;
     font-weight: bold;
     padding: 8px 24px;
     border: none;
 }
-.invoice-info {
-    background: #f6f7fa;;
-    border-radius: 16px;
-    padding: 18px 12px;
-    margin-bottom: 18px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-.invoice-info .logo {
-    flex: 1 1 100%;
-    text-align: center;
-    margin-bottom: 10px;
-}
-.invoice-info .logo img {
-    max-width: 70px;
-}
-.invoice-info .info-row {
-    flex: 1 1 45%;
-    margin-bottom: 6px;
-    font-weight: bold;
-    color: #1A3E5D;
-}
-.invoice-info .info-row span {
-    color: #000;
-    font-weight: normal;
-}
-.invoice-table input,
-.invoice-table select {
-    border: 2px solid #1A3E5D;
-    border-radius: 8px;
-    text-align: center;
-    min-width: 60px;
-}
-.invoice-table th, .invoice-table td {
-    vertical-align: middle;
-    text-align: center;
-    padding: 6px 4px;
-}
-.btn-delete-row {
-    background: #e74c3c;
-    color: #fff;
-    border-radius: 8px;
-    border: none;
-    font-size: 1.5rem;
-    padding: 2px 12px;
-}
-.btn-add-item {
-    background: #1A3E5D;
-    color: #fff;
-    border-radius: 8px;
-    font-weight: bold;
-    padding: 8px 32px;
-    border: none;
-    margin: 16px 0;
-}
-.summary-box {
-    background: #f6f7ea;
-    border-radius: 16px;
-    padding: 18px 12px;
-    margin-bottom: 18px;
-}
-.summary-box .row > div {
-    font-weight: bold;
-    color: #1A3E5D;
-    font-size: 1.1rem;
-}
-.summary-box input {
-    border: 2px solid #1A3E5D;
-    border-radius: 8px;
-    text-align: center;
-}
-.summary-box .total {
-    font-size: 1.3rem;
-    color: #000;
-    font-weight: bold;
-}
-.action-buttons .btn {
-    border-radius: 8px;
-    font-weight: bold;
-    min-width: 90px;
-    margin-left: 8px;
-    margin-right: 8px;
-}
-.btn-cancel {
-    background: #e74c3c;
-    color: #fff;
-    border: none;
-}
-.btn-save, .btn-print, .btn-view {
-    background: #1A3E5D;
-    color: #fff;
-    border: none;
-}
-.btn-view, .btn-print {
-    background: #fff;
-    color: #1A3E5D;
-    border: 2px solid #1A3E5D;
-}
-@media (max-width: 767.98px) {
+@media (max-width: 990.98px) {
     .invoice-container {
-        padding: 8px 2px;
-    }
-    .invoice-header {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .invoice-info {
-        flex-direction: column;
-        gap: 6px;
-    }
-    .summary-box .row > div {
-        font-size: 1rem;
-    }
-    .action-buttons .btn {
-        min-width: 70px;
-        margin: 4px 2px;
-        font-size: 0.95rem;
+        margin-right: auto !important;
     }
 }
 .invoice-info-box {
@@ -557,11 +440,14 @@ body {
     border: 1.5px solid #e0e0e0;
 }
 .summary-input {
-    border: 1.5px solid #1A3E5D;
+    border: 2px solid #1A3E5D;
     border-radius: 8px;
     text-align: center;
     min-width: 80px;
+    width: 500px;
     font-weight: bold;
+    height: 40px;
+    margin-left: 9px;
 }
 .btn-outline-danger {
     color: #e74c3c;
@@ -603,11 +489,11 @@ body {
 .table-input {
     border: 2px solid #1A3E5D;
     border-radius: 8px;
-    min-width: 60px;
-    max-width: 110px;
+    min-width: 70px;
+    max-width: 90px;
     text-align: center;
     font-weight: bold;
-    font-size: 1rem;
+    /*font-size: 1rem;*/
     padding: 2px 6px;
     background: #fff;
 }
