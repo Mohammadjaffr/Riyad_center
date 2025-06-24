@@ -396,10 +396,10 @@ body {
 }
 .invoice-header h4 {
     font-weight: bold;
-    color: #1A3E5D;
+    color: var(--dark-blue);
 }
 .btn-new-invoice {
-    background: #1A3E5D;
+    background: var(--dark-blue);
     color: #fff;
     border-radius: 10px;
     font-weight: bold;
@@ -417,7 +417,7 @@ body {
     margin-bottom: 18px;
 }
 .invoice-info-box .fw-bold {
-    color: #1A3E5D;
+    color: var(--dark-blue);
     font-size: 1.05rem;
 }
 .invoice-info-box .fw-normal {
@@ -440,7 +440,7 @@ body {
     border: 1.5px solid #e0e0e0;
 }
 .summary-input {
-    border: 2px solid #1A3E5D;
+    border: 2px solid var(--dark-blue);
     border-radius: 8px;
     text-align: center;
     min-width: 80px;
@@ -462,6 +462,7 @@ body {
 .btn-primary {
     font-weight: bold;
     border-radius: 8px;
+    background-color: var(--dark-blue) !important;
 }
 @media (max-width: 767.98px) {
     .summary-box-custom {
@@ -482,12 +483,12 @@ body {
     vertical-align: middle;
     text-align: center;
     font-weight: bold;
-    color: #1A3E5D;
+    color: var(--dark-blue);
     background: #fff;
     border-bottom: none;
 }
 .table-input {
-    border: 2px solid #1A3E5D;
+    border: 2px solid var(--dark-blue);
     border-radius: 8px;
     min-width: 70px;
     max-width: 90px;
@@ -523,5 +524,70 @@ body {
     .custom-invoice-table th, .custom-invoice-table td {
         font-size: 0.95rem;
         padding: 2px 2px;
+    }
+}
+
+/*-------------------------------------------------------products search window----------------------------------------------------------*/
+
+.main-content {
+    background: #fff;
+    border-radius: 16px;
+    margin: 32px auto;
+    padding: 32px 24px;
+    max-width: 1100px;
+    min-height: 80vh;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.logo-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+.logo-search img {
+    max-width: 80px;
+}
+.logo-search .desc {
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+    margin-top: 8px;
+}
+.search-table thead th {
+    background: #f6f7fa;
+    font-weight: 600;
+}
+.btn-filter {
+    background: #f6f7fa;
+    border: none;
+    color: var(--dark-blue);
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px 24px;
+}
+.search-bar {
+    background: #f6f7fa;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 100%;
+}
+.stock-green {
+    color: #1bb76e;
+    font-weight: bold;
+}
+.stock-red {
+    color: #e74c3c;
+    font-weight: bold;
+}
+@media (max-width: 767.98px) {
+    .main-content {
+        padding: 12px 4px;
+    }
+    .logo-search {
+        margin-bottom: 16px;
+    }
+    .search-bar {
+        margin-top: 8px;
     }
 }
