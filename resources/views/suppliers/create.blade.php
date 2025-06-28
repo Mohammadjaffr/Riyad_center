@@ -1,17 +1,18 @@
 @extends('layouts.master')
-@section('title' ,'الصفحة الرئيسية')
+@section('title' ,'إضافة مورد')
 @section('content')
-    <div class="container">
-        <h2>إضافة موظف جديد</h2>
 
-        <form action="{{ route('suppliers.store') }}" method="POST">
-            @csrf
+    <div class="container py-4">
+        <div class="bg-white rounded-4 p-4 shadow-sm">
+            <h2 class="text-center mb-4" style="color: var(--dark-blue);">إضافة مورد جديد</h2>
+            <form method="POST" action="{{ route('suppliers.store') }}" enctype="multipart/form-data">
+                @csrf
+                @include('suppliers.form', ['supplier' => null])
 
-            @include('suppliers.form', ['supplier' => null])
 
-            <button type="submit" class="btn btn-success">حفظ</button>
-            <a href="{{ route('suppliers.index') }}" class="btn btn-secondary">رجوع</a>
-        </form>
+            </form>
+
+        </div>
     </div>
 
 

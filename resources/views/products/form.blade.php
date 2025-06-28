@@ -7,9 +7,9 @@
             </div>
             <div class="col-12">
                 <label class="form-label fw-bold">الوصف</label>
-{{--                <textarea name="description" class="summary-input flex-grow-1 w-100 w-md-auto" >{{ old('description', $product->description ?? '') }}</textarea>--}}
+                <textarea name="description" class="summary-textarea flex-grow-1 w-100 w-md-auto"  >{{ old('description', $product->description ?? '') }}</textarea>
 
-                <input type="text" name="description" class="summary-input flex-grow-1 w-100 w-md-auto"   style="text-align: right" placeholder="الوصف" required>
+{{--                <input type="text" name="description" class="summary-textarea flex-grow-1 w-100 w-md-auto"   style="text-align: right" placeholder="الوصف" required>--}}
             </div>
             <div class="col-12">
                 <label class="form-label fw-bold">صورة المنتج</label>

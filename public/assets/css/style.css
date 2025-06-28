@@ -297,6 +297,11 @@ body {
     right: 0;
     z-index: 1040;
     transition: width 0.3s;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+}
+.sidebar-custom::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .logo-container img {
@@ -454,6 +459,16 @@ body {
     width: 500px;
     font-weight: bold;
     height: 40px;
+    margin-left: 9px;
+}
+.summary-textarea{
+    border: 2px solid var(--dark-blue);
+    border-radius: 8px !important;
+    text-align: center;
+    min-width: 80px;
+    width: 500px;
+    font-weight: bold;
+
     margin-left: 9px;
 }
 .btn-outline-danger {

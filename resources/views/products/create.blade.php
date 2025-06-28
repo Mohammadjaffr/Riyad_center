@@ -6,7 +6,7 @@
             <h2 class="text-center mb-4" style="color: var(--dark-blue);">إضافة منتج</h2>
             <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
                 @csrf
-                @include('products.form', ['products' => null])
+                @include('products.form', ['product' => null])
 
 
             </form>
