@@ -32,8 +32,8 @@
                     المنتجات
                 </a>
                 <div class="  rounded-2 mt-2 text-center" id="productsDropdownMenu" style="display: none; width: 12rem !important;">
-                    <a class="dropdown-item-custom" href="#">إضافة منتج </a>
-                    <a class="dropdown-item-custom" href="#">عرض المنتجات</a>
+                    <a class="dropdown-item-custom" href="{{route('products.create')}}">إضافة منتج </a>
+                    <a class="dropdown-item-custom" href="{{route('products.index')}}">عرض المنتجات</a>
                 </div>
             </li>
 
