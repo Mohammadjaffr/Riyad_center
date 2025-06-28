@@ -37,7 +37,17 @@ class ProductController extends Controller
             'cost_price' => 'required|numeric|min:0',
             'sell_price' => 'required|numeric|min:0',
             'department_id' => 'required|exists:departments,id',
+            'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+    
+        if ($request->hasFile('product_image')) {
+            $imageName = time() . '.' . $request->product_image->extension();
+            $request->product_image->move(public_path('uploads/products'), $imageName);
+            $validated['product_image'] = 'uploads/products/' . $imageName;
+        } else {
+            $validated['product_image'] = null; // أو ضع صورة افتراضية إذا أردت
+        }
+    
         Product::create($validated);
         return redirect()->back()->with('success', 'تمت إضافة المنتج بنجاح');
     }

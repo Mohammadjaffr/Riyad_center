@@ -449,7 +449,7 @@ body {
 }
 .summary-input {
     border: 2px solid var(--dark-blue);
-    border-radius: 8px;
+    border-radius: 8px !important;
     text-align: center;
     min-width: 80px;
     width: 500px;
