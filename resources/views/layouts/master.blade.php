@@ -1,12 +1,20 @@
 <!doctype html >
-<html dir="rtl" lang="en">
+<html dir="rtl" lang="ar">
 @extends('layouts.head')
-<body>
-{{--@include('layouts.navbar')--}}
-@yield('contact')
 
-{{--@extends('layouts.footer')--}}
+<body>
+@include('layouts.navbar')
+
+
+<div class="main-content">
+    @include('layouts.sidebar')
+    <div class="content">
+        @yield('content')
+    </div>
+
+</div>
 
 <script src="{{asset('assets/Js/custom-Js.js')}}"></script>
+@include('layouts.footer')
 </body>
 </html>
