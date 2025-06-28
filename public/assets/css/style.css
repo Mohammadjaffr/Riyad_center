@@ -406,6 +406,14 @@ body {
     padding: 8px 24px;
     border: none;
 }
+.btn-new-invoice:hover {
+    background: #132e60;
+    color: #fff;
+    /* border-radius: 10px;
+    font-weight: bold;
+    padding: 8px 24px;
+    border: none; */
+}
 @media (max-width: 990.98px) {
     .invoice-container {
         margin-right: auto !important;
