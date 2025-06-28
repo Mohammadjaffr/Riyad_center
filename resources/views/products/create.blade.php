@@ -19,7 +19,7 @@
                             </div>
                             <div class="col-12">
                                 <label class="form-label fw-bold">صورة المنتج</label>
-                                <input type="file" name="product_image" class="form-control summary-input flex-grow-1 w-100 w-md-auto" accept="image/*">
+                                <input type="file" name="product_image" class="form-control summary-input flex-grow-1 w-100 w-md-auto" accept="image/*" onchange="previewProductImage(event)">
                             </div>
                             <div class="col-6">
                                 <label class="form-label fw-bold">رقم الموديل</label>
@@ -53,11 +53,24 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-4 text-center order-1 order-md-0 mb-3 mb-md-0">
-                        <img src="{{ asset('assets/images/Add files-rafiki.png') }}" alt="Product Illustration" class="img-fluid" style="max-width: 220px;">
+                        <img id="product-preview" src="{{ asset('assets/images/Add files-rafiki.png') }}" alt="Product Illustration" class="img-fluid " style="max-width: 220px;">
                     </div>
 
                 </div>
             </form>
         </div>
     </div>
+    <script>
+    function previewProductImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('product-preview');
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    </script>
 @endsection

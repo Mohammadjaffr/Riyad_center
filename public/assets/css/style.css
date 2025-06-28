@@ -486,13 +486,22 @@ body {
         margin-bottom: 4px;
     }
 }
-.custom-invoice-table th, .custom-invoice-table td {
+ .custom-invoice-table td {
     padding: 4px 4px;
     vertical-align: middle;
     text-align: center;
     font-weight: bold;
     color: var(--dark-blue);
     background: #fff;
+    border-bottom: none;
+}
+.custom-invoice-table th{
+    padding: 4px 4px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--dark-blue);
+    color: #fff;
     border-bottom: none;
 }
 .table-input {
