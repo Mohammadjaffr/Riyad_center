@@ -24,8 +24,26 @@ function toggleDropdown(event) {
 }
 function deptDropdown(event) {
     event.preventDefault();
-    var dept_menu = document.getElementById('deptDropdownMenu');
-    dept_menu.style.display = (dept_menu.style.display === 'block') ? 'none' : 'block';
+    var menu = document.getElementById('deptDropdownMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+}
+function empDropdown(event) {
+    event.preventDefault();
+    var menu = document.getElementById('empDropdownMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+}
+function reportDropdown(event) {
+    event.preventDefault();
+    var menu = document.getElementById('reportDropdownMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+}
+function productsDropdown(event) {
+    event.preventDefault();
+    var menu = document.getElementById('productsDropdownMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 
 }
 function toggleAccountDropdown(event) {

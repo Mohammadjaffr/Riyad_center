@@ -16,6 +16,7 @@
             flex-direction: column;
             min-height: 100vh;
             padding-top: 100px;
+            padding-right: 15rem;
 
         }
         /*.main-content {*/
@@ -30,6 +31,12 @@
         /*    flex: 1;*/
         /*    padding: 20px;*/
         /*}*/
+        @media (max-width: 991.98px) {
+            body {
+                padding-right: 0;
+            }
+
+        }
     </style>
 
 </head>
