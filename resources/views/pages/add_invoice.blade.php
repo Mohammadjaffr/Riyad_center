@@ -9,6 +9,7 @@
                 <button class="btn btn-new-invoice mb-2 mb-md-0"><span> فاتورة جديدة </span></button>
             </div>
             <form action="{{ route('invoices.store') }}" method="POST">
+                @csrf
                 <!-- Invoice Info -->
                 <div class="invoice-info-box rounded-4 p-3 mb-4">
                     <div class="row align-items-center ">

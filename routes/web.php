@@ -20,12 +20,16 @@ Route::get('/', function () {
 Route::get('/invoice', function () {
     return view('pages.add_invoice');
 });
+Route::get('/product', function () {
+    return view('pages.products.add_product');
+});
 Route::get('/products/search', function () {
     return view('pages.add_invoice_module');
 });
 
 
 
+Route::get('/invoices/{invoice}/print', [InvoiceController::class, 'print'])->name('invoices.print');
 
 Auth::routes();
 Route::resource('employees', EmployeeController::class);
