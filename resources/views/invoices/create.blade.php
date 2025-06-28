@@ -316,7 +316,9 @@
                         <div class="col-12">
                             <div class="d-flex align-items-center flex-column flex-md-row">
                                 <span class="fw-bold ms-2 mb-2 mb-md-0">الملاحظات</span>
-                                <input type="text" name="note" class=" summary-input flex-grow-1 w-100 w-md-auto">
+                                <textarea name="note" class=" summary-textarea flex-grow-1 w-100 w-md-auto">
+
+                                </textarea>
                             </div>
                         </div>
                     </div>

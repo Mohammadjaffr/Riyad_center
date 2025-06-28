@@ -43,7 +43,7 @@
                 </a>
                 <div class=" rounded-2 mt-2 text-center" id="invoicesDropdownMenu" style="display: none; width: 12rem !important;">
 
-                    <a class="dropdown-item-custom" href="{{url('/invoice')}}">إضافة فاتورة</a>
+                    <a class="dropdown-item-custom" href="{{route('invoices.create')}}">إضافة فاتورة</a>
                     <a class="dropdown-item-custom" href="#">عرض الفواتير</a>
 {{--                    <a class="dropdown-item-custom" href="#">قائمة الفواتير</a>--}}
                     <a class="dropdown-item-custom" href="{{url('/invoices')}}">قائمة الفواتير</a>
