@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="add and show invoice">
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit product/form + create and add employees/ careat + index +form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employees/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employees/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/employees/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -231,7 +225,7 @@
       <workItem from="1750678228727" duration="6038000" />
       <workItem from="1750704441471" duration="11957000" />
       <workItem from="1750748118223" duration="29663000" />
-      <workItem from="1751060630835" duration="24206000" />
+      <workItem from="1751060630835" duration="24885000" />
     </task>
     <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
       <option name="closed" value="true" />
@@ -345,7 +339,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751119941876</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="edit product/form + create and add employees/ careat + index +form">
+      <option name="closed" value="true" />
+      <created>1751131701502</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1751131701502</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +376,8 @@
     <MESSAGE value="التعديلات الأخيرة" />
     <MESSAGE value="edit products/index" />
     <MESSAGE value="add and show invoice" />
-    <option name="LAST_COMMIT_MESSAGE" value="add and show invoice" />
+    <MESSAGE value="edit product/form + create and add employees/ careat + index +form" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit product/form + create and add employees/ careat + index +form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
