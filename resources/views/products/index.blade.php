@@ -29,7 +29,7 @@
                     <tr>
                         <th>id</th>
                         <th>اسم المنتج</th>
-                        <th>دورة المنتج</th>
+{{--                        <th>صورة المنتج</th>--}}
                         <th>رقم الموديل</th>
                         <th>الوصف</th>
                         <th>كمية المخزون</th>
@@ -44,7 +44,7 @@
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td>{{ $product->name }}</td>
-                            <td>{{ $product->created_at ? $product->created_at->format('m/d/y') : '' }}</td>
+{{--                            <td>{{ $product->created_at ? $product->created_at->format('m/d/y') : '' }}</td>--}}
                             <td>{{ $product->model_num }}</td>
                             <td>{{ Str::limit($product->description, 15) }}</td>
                             <td>{{ $product->quantity }}</td>
