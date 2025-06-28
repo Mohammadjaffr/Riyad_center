@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit employees/index">
-      <change afterPath="$PROJECT_DIR$/resources/views/purchases/form.blade.php" afterDir="false" />
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="add create+form+index of suppliers + purchases">
+      <change afterPath="$PROJECT_DIR$/resources/views/employee_salaries/form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/sales/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/purchases/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchases/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/purchases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchases/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee_salaries/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_salaries/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee_salaries/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_salaries/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sales/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sales/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +172,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "test",
-    "last_opened_file_path": "D:/github/Riyad_center/resources/views/purchases",
+    "last_opened_file_path": "D:/github/Riyad_center/resources/views/employee_salaries",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -188,11 +183,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\Riyad_center\resources\views\employee_salaries" />
+      <recent name="D:\github\Riyad_center\resources\views\sales" />
       <recent name="D:\github\Riyad_center\resources\views\purchases" />
       <recent name="D:\github\Riyad_center\public\assets\images" />
       <recent name="D:\github\Riyad_center\public\assets\css" />
-      <recent name="D:\github\Riyad_center\resources\views\user" />
-      <recent name="D:\github\Riyad_center\resources\views\layouts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\github\Riyad_center\resources\views\pages\products" />
@@ -235,7 +230,7 @@
       <workItem from="1750678228727" duration="6038000" />
       <workItem from="1750704441471" duration="11957000" />
       <workItem from="1750748118223" duration="29663000" />
-      <workItem from="1751060630835" duration="28581000" />
+      <workItem from="1751060630835" duration="30701000" />
     </task>
     <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
       <option name="closed" value="true" />
@@ -365,7 +360,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751132259208</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add create+form+index of suppliers + purchases">
+      <option name="closed" value="true" />
+      <created>1751136115086</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1751136115086</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,7 +399,8 @@
     <MESSAGE value="add and show invoice" />
     <MESSAGE value="edit product/form + create and add employees/ careat + index +form" />
     <MESSAGE value="edit employees/index" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit employees/index" />
+    <MESSAGE value="add create+form+index of suppliers + purchases" />
+    <option name="LAST_COMMIT_MESSAGE" value="add create+form+index of suppliers + purchases" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -410,6 +414,11 @@
           <url>file://$PROJECT_DIR$/resources/views/invoices/create.blade.php</url>
           <line>2</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/sales/index.blade.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
