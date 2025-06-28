@@ -4,28 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="add create+form+index of salaries + sales">
-      <change afterPath="$PROJECT_DIR$/resources/views/employee_advance_payments/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/inventory_logs/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/payments/form.blade.php" afterDir="false" />
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="تصميم جميع الواجهات عدا واجهة اضافة فاتورة">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee_advance_payments/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_advance_payments/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee_advance_payments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_advance_payments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employees/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employees/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employees/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/payments/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payments/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/payments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +225,7 @@
       <workItem from="1750678228727" duration="6038000" />
       <workItem from="1750704441471" duration="11957000" />
       <workItem from="1750748118223" duration="29663000" />
-      <workItem from="1751060630835" duration="35979000" />
+      <workItem from="1751060630835" duration="39022000" />
     </task>
     <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
       <option name="closed" value="true" />
@@ -389,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751138309819</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="تصميم جميع الواجهات عدا واجهة اضافة فاتورة">
+      <option name="closed" value="true" />
+      <created>1751143627869</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1751143627869</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,7 +412,8 @@
     <MESSAGE value="edit employees/index" />
     <MESSAGE value="add create+form+index of suppliers + purchases" />
     <MESSAGE value="add create+form+index of salaries + sales" />
-    <option name="LAST_COMMIT_MESSAGE" value="add create+form+index of salaries + sales" />
+    <MESSAGE value="تصميم جميع الواجهات عدا واجهة اضافة فاتورة" />
+    <option name="LAST_COMMIT_MESSAGE" value="تصميم جميع الواجهات عدا واجهة اضافة فاتورة" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -431,11 +422,6 @@
           <url>file://$PROJECT_DIR$/resources/views/layouts/navbar.blade.php</url>
           <line>60</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/invoices/create.blade.php</url>
-          <line>2</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/sales/index.blade.php</url>

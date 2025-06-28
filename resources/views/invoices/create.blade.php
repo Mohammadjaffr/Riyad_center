@@ -248,7 +248,7 @@
                             <th>سعر الصرف</th>
                             <th>سعر الوحدة</th>
                             <th>الإجمالي</th>
-                            <th>إجراء</th>
+                            <th><i class="fa fa-trash"></i></th>
                         </tr>
                         </thead>
                         <tbody>
