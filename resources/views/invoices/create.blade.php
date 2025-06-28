@@ -208,7 +208,7 @@
                         </div>
 
                         <div class="row g-2 mb-2">
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">اسم الموظف:</label>
                                 <select name="employee_id" class="summary-input flex-grow-1 w-100 w-md-auto" style="text-align: right">
                                     @foreach($employees as $emp)
@@ -216,7 +216,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">القسم</label>
                                 <select name="department_id" class="summary-input flex-grow-1 w-100 w-md-auto "   style="text-align: right">
                                     @foreach($departments as $department)
@@ -225,14 +225,30 @@
                                 </select>
 
                             </div>
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">رقم الفاتورة:</label>
                                 <input  type="text"  name="invoice_num" class="form-control summary-input flex-grow-1 w-100 w-md-auto bg-white" style="text-align: right" placeholder="رقم الفاتورة"  value="{{ old('invoice_num', $invoice_num) }}" readonly required>
                             </div>
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-4">
+                                <label class="form-label fw-bold">اسم العميل:</label>
+                                <input type="text" name="customer_name" class="summary-input flex-grow-1 w-100 w-md-auto " required>
+
+                            </div>
+                            <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">التاريخ:</label>
                                 <input type="date"  name="invoice_date" class="form-control summary-input flex-grow-1 w-100 w-md-auto bg-white" style="text-align: right" value="{{ date('Y-m-d') }}">
                             </div>
+                            <div class="col-12 col-md-4">
+
+                                    <label class="form-label fw-bold">طريقة الدفع:</label>
+                                    <select name="payment_type"class="summary-input flex-grow-1 w-100 w-md-auto "   style="text-align: right">
+                                        <option value="نقدي">نقدي</option>
+                                        <option value="آجل">آجل</option>
+                                        <option value="تحويل">تحويل</option>
+                                    </select>
+
+
+
                         </div>
 
 
@@ -242,7 +258,7 @@
                     <table class="table table-bordered align-middle text-center custom-invoice-table mb-0 table-striped" id="items-table">
                         <thead class="table-secondary">
                         <tr>
-                            <th>اسم العميل</th>
+
                             <th>المنتج</th>
                             <th>الكمية</th>
                             <th>سعر الصرف</th>
@@ -253,7 +269,6 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input type="text" name="customer_name" class="summary-input flex-grow-1 w-100 w-md-auto "required></td>
                             <td>
                                 <select name="product_id[]" class="summary-input flex-grow-1 w-100 w-md-auto "   style="text-align: right">
 
@@ -300,16 +315,7 @@
 
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 mb-2 mb-md-0">
-                            <div class="d-flex align-items-center justify-content-end ">
-                                <span class="fw-bold ms-2">طريقة الدفع</span>
-                                {{--                                <input type="text" class=" table-input ms-2" style="max-width:100px;">--}}
-                                <select name="payment_type" class="table-input ms-2">
-                                    <option value="نقدي">نقدي</option>
-                                    <option value="آجل">آجل</option>
-                                    <option value="تحويل">تحويل</option>
-                                </select>
-                            </div>
+
                         </div>
                     </div>
                     <div class="row mb-3">
