@@ -7,7 +7,7 @@
     <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="add products">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,6 +185,10 @@
       <recent name="D:\github\Riyad_center\resources\views\layouts" />
       <recent name="D:\github\Riyad_center\resources\views" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\github\Riyad_center\resources\views\pages\products" />
+      <recent name="D:\github\Riyad_center\resources\views\pages" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
@@ -222,7 +226,7 @@
       <workItem from="1750678228727" duration="6038000" />
       <workItem from="1750704441471" duration="11957000" />
       <workItem from="1750748118223" duration="29663000" />
-      <workItem from="1751060630835" duration="4000000" />
+      <workItem from="1751060630835" duration="7170000" />
     </task>
     <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
       <option name="closed" value="true" />
@@ -296,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751094404359</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add products">
+      <option name="closed" value="true" />
+      <created>1751095125597</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1751095125597</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
