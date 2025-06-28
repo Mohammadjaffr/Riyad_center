@@ -2,64 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\EmployeeSalary;
 use Illuminate\Http\Request;
 
 class EmployeeSalaryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $salaries = EmployeeSalary::with('employee')->latest()->get();
+        return view('employee_salaries.index', compact('salaries'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $employees = Employee::all();
+        return view('employee_salaries.create', compact('employees'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'employee_id' => 'required|exists:employees,id',
+            'amount' => 'required|numeric|min:0',
+            'pay_date' => 'required|date',
+            'notes' => 'nullable|string',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(EmployeeSalary $employeeSalary)
-    {
-        //
-    }
+        EmployeeSalary::create([
+            'employee_id' => $request->employee_id,
+            'amount' => $request->amount,
+            'pay_date' => $request->pay_date,
+            'notes' => $request->notes,
+            'created_at' => now(),
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(EmployeeSalary $employeeSalary)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, EmployeeSalary $employeeSalary)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(EmployeeSalary $employeeSalary)
-    {
-        //
+        return redirect()->route('employee-salaries.index')->with('success', 'تم تسجيل الراتب بنجاح');
     }
 }

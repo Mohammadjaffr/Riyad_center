@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title' ,'إضافة فاتورة')
 @section('content')
-    <body style="background: #f6f7fa">
+    <div class="container" style="background: #f6f7fa">
     <div class="invoice-container px-2 px-md-4">
         <!-- Header -->
         <div class="invoice-header px-2 rounded-4 mb-3">
@@ -121,5 +121,5 @@
             </div>
         </div>
     </div>
-    </body>
+    </div>
 @endsection

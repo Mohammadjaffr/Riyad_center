@@ -12,7 +12,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+        return view('departments.index', compact('departments'));
     }
 
     /**
@@ -20,7 +21,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('departments.create');
+
     }
 
     /**
@@ -28,7 +30,13 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:departments,name',
+        ]);
+
+        Department::create($request->only('name'));
+
+        return redirect()->route('departments.index')->with('success', 'تم إضافة القسم بنجاح');
     }
 
     /**
@@ -44,7 +52,8 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        return view('departments.edit', compact('department'));
+
     }
 
     /**
@@ -52,7 +61,13 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:departments,name,' . $department->id,
+        ]);
+
+        $department->update($request->only('name'));
+
+        return redirect()->route('departments.index')->with('success', 'تم تعديل القسم');
     }
 
     /**
@@ -60,6 +75,7 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $department->delete();
+        return redirect()->route('departments.index')->with('success', 'تم حذف القسم');
     }
 }

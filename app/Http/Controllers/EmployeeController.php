@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Department;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -12,7 +14,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::with('department')->get();
+        return view('employees.index', compact('employees'));
     }
 
     /**
@@ -20,7 +23,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $departments = Department::all();
+        return view('employees.create', compact('departments'));
     }
 
     /**
@@ -28,7 +32,20 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'phone' => 'required|unique:employees',
+            'password' => 'required',
+            'status' => 'required',
+            'role' => 'required',
+            'salary' => 'required|numeric',
+            'department_id' => 'required|exists:departments,id',
+        ]);
+
+        $data['password'] = bcrypt($data['password']);
+
+        Employee::create($data);
+        return redirect()->route('employees.index')->with('success', 'تمت إضافة الموظف بنجاح');
     }
 
     /**
@@ -44,7 +61,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        $departments = Department::all();
+        return view('employees.edit', compact('employee', 'departments'));
     }
 
     /**
@@ -52,7 +70,23 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'phone' => 'required|unique:employees,phone,' . $employee->id,
+            'status' => 'required',
+            'role' => 'required',
+            'salary' => 'required|numeric',
+            'department_id' => 'required|exists:departments,id',
+        ]);
+
+        if ($request->has('password')) {
+            $data['password'] = Hash::make($request->password);
+        }else {
+            unset($data['password']);
+        }
+
+        $employee->update($data);
+        return redirect()->route('employees.index')->with('success', 'تم تعديل الموظف');
     }
 
     /**
@@ -60,6 +94,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->route('employees.index')->with('success', 'تم حذف الموظف');
     }
 }

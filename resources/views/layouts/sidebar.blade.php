@@ -44,7 +44,12 @@
                 <div class=" rounded-2 mt-2 text-center" id="invoicesDropdownMenu" style="display: none; width: 12rem !important;">
 
                     <a class="dropdown-item-custom" href="{{url('/invoice')}}">إضافة فاتورة</a>
+<<<<<<< Updated upstream
                     <a class="dropdown-item-custom" href="#">عرض الفواتير</a>
+=======
+{{--                    <a class="dropdown-item-custom" href="#">قائمة الفواتير</a>--}}
+                    <a class="dropdown-item-custom" href="{{url('/invoices')}}">قائمة الفواتير</a>
+>>>>>>> Stashed changes
                 </div>
 
             </li>
@@ -66,6 +71,7 @@
                 <a class="nav-link sidebar-link-custom" href="#">المبيعات</a>
             </li>
             <li class="nav-item">
+<<<<<<< Updated upstream
                 <a class="nav-link sidebar-link-custom" href="#">المخزون</a>
             </li>
             <li class="nav-item position-relative">
@@ -80,6 +86,33 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link sidebar-link-custom" href="#">الموردون</a>
+=======
+                <a class="nav-link sidebar-link-custom" href="{{url('/employees')}}">الموظفين</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link-custom" href="{{url('/products')}}">المنتجات</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link-custom" href="{{url('/suppliers')}}">الموردين</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link-custom" href="{{url('/purchases')}}">المشتريات</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link-custom" href="{{url('/sales')}}">المبيعات</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link-custom" href="{{url('/employee-salaries')}}">رواتب الموظفين</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link-custom" href="{{url('/inventory-logs')}}">المخزون</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link-custom" href="{{url('/employee-advance-payments')}}">السلف</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link-custom" href="{{url('/payments')}}">الدفعات</a>
+>>>>>>> Stashed changes
             </li>
 
         </ul>
