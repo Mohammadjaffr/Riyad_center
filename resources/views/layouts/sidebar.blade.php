@@ -56,8 +56,8 @@
                 </a>
                 <div class=" rounded-2 mt-2 text-center" id="empDropdownMenu" style="display: none; width: 12rem !important;">
 
-                    <a class="dropdown-item-custom" href="#">إضافة موظف</a>
-                    <a class="dropdown-item-custom" href="#">عرض الموظفين</a>
+                    <a class="dropdown-item-custom" href="{{route('employees.create')}}">إضافة موظف</a>
+                    <a class="dropdown-item-custom" href="{{route('employees.index')}}">عرض الموظفين</a>
                 </div>
 
             </li>
