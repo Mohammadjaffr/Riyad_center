@@ -1,41 +1,17 @@
 @extends('layouts.master')
-@section('title' ,'الصفحة الرئيسية')
+@section('title' ,'تعديل يدوي للمخزون')
 @section('content')
-    <div class="container">
-        <h2>تعديل يدوي للمخزون</h2>
+    <div class="container py-4">
+        <div class="bg-white rounded-4 p-4 shadow-sm">
+            <h2 class="text-center mb-4" style="color: var(--dark-blue);">تعديل يدوي للمخزون</h2>
 
-        <form method="POST" action="{{ route('inventory-logs.store') }}">
-            @csrf
+            <form action="{{ route('inventory-logs.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @include('inventory_logs.form', ['inventory-log' => null])
 
-            <div class="mb-3">
-                <label>المنتج</label>
-                <select name="product_id" class="form-control" required>
-                    @foreach($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->name }}</option>
-                    @endforeach
-                </select>
-            </div>
 
-            <div class="mb-3">
-                <label>نوع التغير</label>
-                <select name="change_type" class="form-control" required>
-                    <option value="شراء">شراء</option>
-                    <option value="بيع">بيع</option>
-                    <option value="تعديل يدوي">تعديل يدوي</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label>الكمية</label>
-                <input type="number" name="quantity" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-                <label>الوصف (اختياري)</label>
-                <textarea name="description" class="form-control"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-success">حفظ</button>
-        </form>
+                <button type="submit" class="btn btn-primary">حفظ </button>
+            </form>
+        </div>
     </div>
 @endsection

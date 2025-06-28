@@ -8,8 +8,6 @@
             <div class="col-12">
                 <label class="form-label fw-bold">الوصف</label>
                 <textarea name="description" class="summary-textarea flex-grow-1 w-100 w-md-auto"  >{{ old('description', $product->description ?? '') }}</textarea>
-
-{{--                <input type="text" name="description" class="summary-textarea flex-grow-1 w-100 w-md-auto"   style="text-align: right" placeholder="الوصف" required>--}}
             </div>
             <div class="col-12">
                 <label class="form-label fw-bold">صورة المنتج</label>
@@ -41,9 +39,6 @@
                 </select>
             </div>
 
-            <div class="col-12 text-center mt-3">
-                <button type="submit" class="btn btn-new-invoice w-50 ">اضافة</button>
-            </div>
         </div>
     </div>
     <div class="col-12 col-md-4 text-center order-1 order-md-0 mb-3 mb-md-0">

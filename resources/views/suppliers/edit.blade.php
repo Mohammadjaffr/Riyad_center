@@ -1,8 +1,8 @@
 @extends('layouts.master')
-@section('title' ,'الصفحة الرئيسية')
+@section('title' ,'تعديل بيانات المورد')
 @section('content')
     <div class="container">
-        <h2>تعديل بيانات الموظف</h2>
+        <h2>تعديل بيانات المورد</h2>
 
         <form action="{{ route('suppliers.update', $supplier->id) }}" method="POST">
             @csrf
@@ -10,8 +10,9 @@
 
             @include('suppliers.form', ['supplier' => $supplier])
 
-            <button type="submit" class="btn btn-primary">تحديث</button>
-            <a href="{{ route('suppliers.index') }}" class="btn btn-secondary">رجوع</a>
+            <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-new-invoice w-50 ">تعديل</button>
+            </div>
         </form>
     </div>
 

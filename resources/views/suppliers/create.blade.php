@@ -8,6 +8,9 @@
             <form method="POST" action="{{ route('suppliers.store') }}" enctype="multipart/form-data">
                 @csrf
                 @include('suppliers.form', ['supplier' => null])
+                <div class="col-12 text-center mt-3">
+                    <button type="submit" class="btn btn-new-invoice w-50 ">اضافة</button>
+                </div>
 
 
             </form>

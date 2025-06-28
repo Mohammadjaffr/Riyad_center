@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title' ,'الصفحة الرئيسية')
+@section('title' ,'تعديل بيانات الموظف')
 @section('content')
     <div class="container">
         <h2>تعديل بيانات الموظف</h2>
@@ -9,9 +9,12 @@
             @method('PUT')
 
             @include('employees.form', ['employee' => $employee])
+            <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-new-invoice w-50 ">تعديل</button>
+            </div>
 
-            <button type="submit" class="btn btn-primary">تحديث</button>
-            <a href="{{ route('employees.index') }}" class="btn btn-secondary">رجوع</a>
+{{--            <button type="submit" class="btn btn-primary">تحديث</button>--}}
+{{--            <a href="{{ route('employees.index') }}" class="btn btn-secondary">رجوع</a>--}}
         </form>
     </div>
 

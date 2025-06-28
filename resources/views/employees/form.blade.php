@@ -84,9 +84,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-12 text-center mt-3">
-                <button type="submit" class="btn btn-new-invoice w-50 ">اضافة</button>
-            </div>
+
         </div>
     </div>
     <div class="col-12 col-md-4 text-center order-1 order-md-0 mb-3 mb-md-0">

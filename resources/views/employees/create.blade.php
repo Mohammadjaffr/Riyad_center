@@ -11,6 +11,9 @@
             @csrf
 
             @include('employees.form', ['employee' => null])
+            <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-new-invoice w-50 ">اضافة</button>
+            </div>
 
 {{--            <button type="submit" class="btn btn-success">حفظ</button>--}}
 {{--            <a href="{{ route('employees.index') }}" class="btn btn-secondary">رجوع</a>--}}
