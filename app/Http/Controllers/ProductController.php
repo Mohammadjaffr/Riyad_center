@@ -20,7 +20,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $departments = \App\Models\Department::all();
+        return view('pages.add_product', compact('departments'));
     }
 
     /**
@@ -28,7 +29,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'model_num' => 'required|string|max:255',
+            'quantity' => 'required|integer|min:0',
+            'cost_price' => 'required|numeric|min:0',
+            'sell_price' => 'required|numeric|min:0',
+            'department_id' => 'required|exists:departments,id',
+        ]);
+        Product::create($validated);
+        return redirect()->back()->with('success', 'تمت إضافة المنتج بنجاح');
     }
 
     /**
