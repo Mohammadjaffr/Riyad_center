@@ -50,14 +50,14 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            // 'customer_name' => 'required|string',
             'department_id' => 'required|exists:departments,id',
-            'invoice_num' => 'required|integer|unique:invoices,invoice_num',
+            'invoice_num' => 'required|string|unique:invoices,invoice_num',
             'employee_id' => 'required|exists:employees,id',
             'invoice_date' => 'required|date',
             'payment_type' => 'required|string',
             'discount_amount' => 'nullable|numeric|min:0',
             'paid_amount' => 'nullable|numeric|min:0',
-
             'product_id.*' => 'required|exists:products,id',
             'quantity.*' => 'required|integer|min:1',
             'unit_price.*' => 'required|numeric|min:0',

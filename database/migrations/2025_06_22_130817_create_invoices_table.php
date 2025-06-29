@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('customer_name')->nullable();
             $table->foreignId('department_id')->constrained('departments');
-            $table->integer('invoice_num');
+            $table->string('invoice_num');
             $table->decimal('discount_amount', 10, 2)->default(0);
             $table->foreignId('employee_id')->constrained('employees');
             $table->decimal('total_amount', 10, 2);

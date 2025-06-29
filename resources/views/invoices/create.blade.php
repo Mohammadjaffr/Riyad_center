@@ -61,7 +61,7 @@
 {{--                <tr>--}}
 {{--                    <th>المنتج</th>--}}
 {{--                    <th>الكمية</th>--}}
-{{--                    <th>سعر الوحدة</th>--}}
+{{--                    <th>سعر الوحدة</th>
 {{--                    <th>الإجمالي</th>--}}
 {{--                    <th>إجراء</th>--}}
 {{--                </tr>--}}
@@ -194,6 +194,31 @@
             </div>
             <form action="{{ route('invoices.store') }}" method="POST">
                 @csrf
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <h5>أخطاء في التحقق من صحة البيانات:</h5>
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        <h5>خطأ:</h5>
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <!-- Invoice Info -->
                 <div class="invoice-info-box rounded-4 p-3 mb-4">
                     <div class="row align-items-center ">
@@ -210,7 +235,7 @@
                         <div class="row g-2 mb-2">
                             <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">اسم الموظف:</label>
-                                <select name="employee_id" class="summary-input flex-grow-1 w-100 w-md-auto" style="text-align: right">
+                                <select name="employee_id" class="summary-input flex-grow-1 w-100 w-md-auto" style="text-align: right" required>
                                     @foreach($employees as $emp)
                                         <option value="{{ $emp->id }}">{{ $emp->name }}</option>
                                     @endforeach
@@ -218,7 +243,7 @@
                             </div>
                             <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">القسم</label>
-                                <select name="department_id" class="summary-input flex-grow-1 w-100 w-md-auto "   style="text-align: right">
+                                <select name="department_id" class="summary-input flex-grow-1 w-100 w-md-auto "   style="text-align: right" required>
                                     @foreach($departments as $department)
                                         <option value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
@@ -227,7 +252,7 @@
                             </div>
                             <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">رقم الفاتورة:</label>
-                                <input  type="text"  name="invoice_num" class="form-control summary-input flex-grow-1 w-100 w-md-auto bg-white" style="text-align: right" placeholder="رقم الفاتورة"  value="{{ old('invoice_num', $invoice_num) }}" readonly required>
+                                <input  type="number"  name="invoice_num" class="form-control summary-input flex-grow-1 w-100 w-md-auto bg-white" style="text-align: right" placeholder="رقم الفاتورة"  value="{{ old('invoice_num', $invoice_num) }}" readonly required>
                             </div>
                             <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">اسم العميل:</label>
@@ -236,12 +261,12 @@
                             </div>
                             <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">التاريخ:</label>
-                                <input type="date"  name="invoice_date" class="form-control summary-input flex-grow-1 w-100 w-md-auto bg-white" style="text-align: right" value="{{ date('Y-m-d') }}">
+                                <input type="date"  name="invoice_date" class="form-control summary-input flex-grow-1 w-100 w-md-auto bg-white" style="text-align: right" value="{{ date('Y-m-d') }}" required>
                             </div>
                             <div class="col-12 col-md-4">
 
                                     <label class="form-label fw-bold">طريقة الدفع:</label>
-                                    <select name="payment_type"class="summary-input flex-grow-1 w-100 w-md-auto "   style="text-align: right">
+                                    <select name="payment_type" class="summary-input flex-grow-1 w-100 w-md-auto "   style="text-align: right">
                                         <option value="نقدي">نقدي</option>
                                         <option value="آجل">آجل</option>
                                         <option value="تحويل">تحويل</option>
@@ -261,8 +286,8 @@
 
                             <th>المنتج</th>
                             <th>الكمية</th>
-                            <th>سعر الصرف</th>
                             <th>سعر الوحدة</th>
+                            <th>سعر الصرف</th>
                             <th>الإجمالي</th>
                             <th><i class="fa fa-trash"></i></th>
                         </tr>
@@ -270,17 +295,17 @@
                         <tbody>
                         <tr>
                             <td>
-                                <select name="product_id[]" class="summary-input flex-grow-1 w-100 w-md-auto "   style="text-align: right">
-
+                                <select name="product_id[]" class="summary-input flex-grow-1 w-100 w-md-auto product-select"   style="text-align: right" required>
+                                    <option selected> اختر منتج</option>
                                     @foreach($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        <option value="{{ $product->id }}" data-price="{{ $product->sell_price }}">{{ $product->name }}</option>
                                     @endforeach
                                 </select>
                             </td>
-                            <td><input type="number" name="quantity[]" class="summary-input flex-grow-1 w-100 w-md-auto  quantity" min="1" value="1"></td>
-                            <td><input type="number" step="0.01" name="unit_price[]" class="summary-input flex-grow-1 w-100 w-md-auto  unit_price"></td>
-                            <td><input type="number" step="0.01" name="exchange_rate" id="exchange_rate" class="summary-input flex-grow-1 w-100 w-md-auto exchange_rate"></td>
-                            <td><input type="text" class="summary-input flex-grow-1 w-100 w-md-auto  total_price" readonly></td>
+                            <td><input type="number" name="quantity[]" class="summary-input flex-grow-1 w-100 w-md-auto  quantity" min="1" value="1" required></td>
+                            <td><input type="number" step="0.01" name="unit_price[]" id="unit_price" class="summary-input flex-grow-1 w-100 w-md-auto  unit_price" required readonly></td>
+                            <td><input type="number" step="0.01" name="exchange_rate" id="exchange_rate" class="summary-input flex-grow-1 w-100 w-md-auto exchange_rate" value="1"></td>
+                            <td><input type="text" id="total_price" class="summary-input flex-grow-1 w-100 w-md-auto  total_price" readonly></td>
                             <td><button type="button" class="btn btn-danger btn-sm remove-item"><i class="fa fa-trash"></i></button></td>
                         </tr>
                         </tbody>
@@ -322,7 +347,7 @@
                         <div class="col-12">
                             <div class="d-flex align-items-center flex-column flex-md-row">
                                 <span class="fw-bold ms-2 mb-2 mb-md-0">الملاحظات</span>
-                                <textarea name="note" class=" summary-textarea flex-grow-1 w-100 w-md-auto">
+                                <textarea name="notes" class=" summary-textarea flex-grow-1 w-100 w-md-auto">
 
                                 </textarea>
                             </div>
@@ -331,7 +356,7 @@
                     <div class="row">
                         <div class="col-12 text-start">
                             <div class="d-flex flex-column flex-md-row gap-2 justify-content-start">
-                                <button type="submit" class="btn btn-new-invoice ms-2" >حفظ</button>
+                                <button type="submit" class="btn btn-new-invoice" >حفظ</button>
                                 <button type="button" class="btn btn-new-invoice" onclick="previewInvoice()" data-bs-toggle="modal" data-bs-target="#invoicePreviewModal">
                                     معاينة الفاتورة
                                 </button>
@@ -345,35 +370,102 @@
         </div>
         <!-- Modal للمعاينة -->
         <div class="modal fade" id="invoicePreviewModal" tabindex="-1" aria-labelledby="invoicePreviewLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl"> <!-- modal-xl لتكبير العرض -->
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="invoicePreviewLabel">معاينة الفاتورة</h5>
+                    <div class="modal-header bg-dark-blue text-white" >
+                        <h5 class="modal-title fw-bold" id="invoicePreviewLabel">
+                            <i class="fa fa-eye me-2"></i>
+                            معاينة الفاتورة
+                        </h5>
+
+                        <button type="button" class="btn-close btn-close-white ms-5" data-bs-dismiss="modal" aria-label="Close"></button>
+
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body p-4">
                         <div id="invoicePreview">
-                            <p><strong>اسم العميل:</strong> <span id="preview_customer_name"></span></p>
-                            <p><strong>القسم:</strong> <span id="preview_department"></span></p>
-                            <p><strong>الموظف:</strong> <span id="preview_employee"></span></p>
-                            <p><strong>تاريخ الفاتورة:</strong> <span id="preview_invoice_date"></span></p>
+                            <!-- معلومات الفاتورة الأساسية -->
+                            <div class="invoice-info-box rounded-4 p-4 mb-4">
+                                <div class="row">
+                                    <div class="col-12 text-center mb-3">
+                                        <img src="{{asset('assets/images/logo.png')}}" alt="Logo" style="max-width: 80px;">
+                                        <h4 class="text-dark-blue mt-2 mb-0">فاتورة</h4>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <span class="fw-bold text-dark-blue me-3" style="min-width: 100px;">اسم العميل:</span>
+                                            <span id="preview_customer_name" class="fw-normal border-bottom border-2 border-dark-blue px-2 py-1 flex-grow-1"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <span class="fw-bold text-dark-blue me-3" style="min-width: 100px;">القسم:</span>
+                                            <span id="preview_department" class="fw-normal border-bottom border-2 border-dark-blue px-2 py-1 flex-grow-1"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <span class="fw-bold text-dark-blue me-3" style="min-width: 100px;">الموظف:</span>
+                                            <span id="preview_employee" class="fw-normal border-bottom border-2 border-dark-blue px-2 py-1 flex-grow-1"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <span class="fw-bold text-dark-blue me-3" style="min-width: 100px;">تاريخ الفاتورة:</span>
+                                            <span id="preview_invoice_date" class="fw-normal border-bottom border-2 border-dark-blue px-2 py-1 flex-grow-1"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                            <table class="table table-bordered mt-3">
-                                <thead>
-                                <tr>
-                                    <th>المنتج</th>
-                                    <th>الكمية</th>
-                                    <th>السعر</th>
-                                    <th>الإجمالي</th>
-                                </tr>
-                                </thead>
-                                <tbody id="preview_items">
-                                </tbody>
-                            </table>
+                            <!-- جدول المنتجات -->
+                            <div class="table-responsive mb-4">
+                                <table class="table table-bordered align-middle text-center custom-invoice-table table-striped">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <th class="fw-bold">المنتج</th>
+                                            <th class="fw-bold">الكمية</th>
+                                            <th class="fw-bold">سعر الوحدة</th>
+                                            <th class="fw-bold">الإجمالي</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="preview_items">
+                                    </tbody>
+                                </table>
+                            </div>
 
-                            <p><strong>الخصم:</strong> <span id="preview_discount"></span> ريال</p>
-                            <p><strong>المدفوع:</strong> <span id="preview_paid"></span> ريال</p>
-                            <p><strong>المتبقي:</strong> <span id="preview_rest"></span> ريال</p>
+                            <!-- ملخص المبالغ -->
+                            <div class="summary-box-custom rounded-4 p-4">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="d-flex  align-items-center">
+                                            <span class="fw-bold text-dark-blue ms-1">الخصم:</span>
+                                            <span id="preview_discount" class="fw-bold ms-1">0.00</span>
+                                            <span class="text-muted">ريال</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="d-flex  align-items-center">
+                                            <span class="fw-bold text-dark-blue ms-1">المدفوع:</span>
+                                            <span id="preview_paid" class="fw-bold  ms-1">0.00</span>
+                                            <span class="text-muted">ريال</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="d-flex  align-items-center">
+                                            <span class="fw-bold text-dark-blue ms-1">المتبقي:</span>
+                                            <span id="preview_rest" class="fw-bold  ms-1">0.00</span>
+                                            <span class="text-muted">ريال</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                        <button type="button" class="btn btn-new-invoice" onclick="window.print()">
+                            <i class="fa fa-print me-2"></i>
+                            طباعة
+                        </button>
                     </div>
                 </div>
             </div>
@@ -425,10 +517,22 @@
             const firstRow = tableBody.querySelector('tr');
             const newRow = firstRow.cloneNode(true);
 
+            // تفريغ جميع الحقول في الصف الجديد
             newRow.querySelectorAll('input').forEach(input => {
                 input.value = '';
                 if (input.classList.contains('quantity')) input.value = 1;
             });
+
+            // إعادة تعيين اختيار المنتج في الصف الجديد
+            const productSelect = newRow.querySelector('.product-select');
+            if (productSelect) {
+                productSelect.selectedIndex = 0;
+                // تفريغ سعر الوحدة
+                const unitPriceInput = newRow.querySelector('.unit_price');
+                if (unitPriceInput) {
+                    unitPriceInput.value = '';
+                }
+            }
 
             tableBody.appendChild(newRow);
             calculateInvoiceTotal();
@@ -440,7 +544,8 @@
             if (
                 e.target.classList.contains('quantity') ||
                 e.target.classList.contains('unit_price') ||
-                e.target.name === 'discount_amount'
+                e.target.name === 'discount_amount' ||
+                e.target.name === 'exchange_rate'
             ) {
                 calculateInvoiceTotal();
             }
@@ -453,6 +558,24 @@
                 row.remove();
                 calculateInvoiceTotal();
                 updateRemoveButtonsVisibility();
+            }
+        });
+
+        // إضافة مستمع الأحداث لاختيار المنتج
+        document.addEventListener('change', function (e) {
+            if (e.target.classList.contains('product-select')) {
+                const row = e.target.closest('tr');
+                const selectedOption = e.target.options[e.target.selectedIndex];
+                const unitPriceInput = row.querySelector('.unit_price');
+
+                if (selectedOption && selectedOption.value) {
+                    const price = selectedOption.getAttribute('data-price') || 0;
+                    unitPriceInput.value = price;
+                } else {
+                    unitPriceInput.value = '';
+                }
+
+                calculateInvoiceTotal();
             }
         });
 
@@ -564,3 +687,48 @@
 
 
 @endsection
+
+<style>
+    /* تنسيق Modal المعاينة */
+    #invoicePreviewModal .modal-content {
+        border-radius: 15px;
+        border: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    #invoicePreviewModal .modal-header {
+        border-radius: 15px 15px 0 0;
+        border-bottom: 2px solid rgba(255,255,255,0.1);
+    }
+
+    #invoicePreviewModal .modal-footer {
+        border-radius: 0 0 15px 15px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #invoicePreviewModal .table th {
+        background-color: var(--dark-blue) !important;
+        color: white;
+        border-color: var(--dark-blue);
+    }
+
+    #invoicePreviewModal .table td {
+        vertical-align: middle;
+    }
+
+    #invoicePreviewModal .summary-box-custom {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border: 2px solid var(--dark-blue);
+    }
+
+    @media print {
+        #invoicePreviewModal .modal-header,
+        #invoicePreviewModal .modal-footer {
+            display: none !important;
+        }
+
+        #invoicePreviewModal .modal-body {
+            padding: 0 !important;
+        }
+    }
+</style>

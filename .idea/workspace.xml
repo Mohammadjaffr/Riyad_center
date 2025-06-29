@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="تعديل التكست اريا">
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="تعديل اضافة فاتورة">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2025_06_22_130817_create_invoices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2025_06_22_130817_create_invoices_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,20 +163,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "test",
-    "last_opened_file_path": "D:/github/Riyad_center/resources/views/inventory_logs",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/github/Riyad_center/resources/views/inventory_logs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\github\Riyad_center\resources\views\inventory_logs" />
@@ -224,7 +226,8 @@
       <workItem from="1750678228727" duration="6038000" />
       <workItem from="1750704441471" duration="11957000" />
       <workItem from="1750748118223" duration="29663000" />
-      <workItem from="1751060630835" duration="40408000" />
+      <workItem from="1751060630835" duration="40929000" />
+      <workItem from="1751184116432" duration="5254000" />
     </task>
     <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
       <option name="closed" value="true" />
@@ -394,7 +397,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751147025346</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="تعديل اضافة فاتورة">
+      <option name="closed" value="true" />
+      <created>1751148026840</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1751148026840</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +440,8 @@
     <MESSAGE value="add create+form+index of salaries + sales" />
     <MESSAGE value="تصميم جميع الواجهات عدا واجهة اضافة فاتورة" />
     <MESSAGE value="تعديل التكست اريا" />
-    <option name="LAST_COMMIT_MESSAGE" value="تعديل التكست اريا" />
+    <MESSAGE value="تعديل اضافة فاتورة" />
+    <option name="LAST_COMMIT_MESSAGE" value="تعديل اضافة فاتورة" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
