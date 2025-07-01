@@ -17,11 +17,23 @@
             <div class="row g-2 align-items-center mb-3">
 
 
-                <div class="col-12 col-md-4">
-                    <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">
-                </div>
-                <div class="col-12 col-md-7"></div>
-                <div class="col-12 col-md-1 text-center mb-2 mb-md-0">
+                <form method="GET" action="{{ route('employees.index') }}" class="col-4">
+                    <div class="row g-2 align-items-center mb-3">
+
+                            <input
+                                type="text"
+                                name="search"
+                                class="form-control summary-input flex-grow-1 w-100 w-md-auto"
+                                placeholder="البحث ..."
+                                style="text-align: right;"
+                                value="{{ request('search') }}"
+                                autocomplete="off"
+                            >
+
+                    </div>
+                </form>
+                <div class="col-2 col-md-7"></div>
+                <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
                     <button class="summary-input flex-grow-1 w-100 w-md-auto" style="border-radius: 10px;">
                         <i class="fa fa-filter"></i>
 

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use App\Models\Employee;
+use App\Models\InventoryLog;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\Payment;
 use App\Models\Product;
+use App\Models\Product_variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -50,7 +52,6 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // 'customer_name' => 'required|string',
             'department_id' => 'required|exists:departments,id',
             'invoice_num' => 'required|string|unique:invoices,invoice_num',
             'employee_id' => 'required|exists:employees,id',
@@ -58,16 +59,26 @@ class InvoiceController extends Controller
             'payment_type' => 'required|string',
             'discount_amount' => 'nullable|numeric|min:0',
             'paid_amount' => 'nullable|numeric|min:0',
-            'product_id.*' => 'required|exists:products,id',
+            'variant_id.*' => 'required|exists:product_variants,id',
             'quantity.*' => 'required|integer|min:1',
             'unit_price.*' => 'required|numeric|min:0',
         ]);
 
-        DB::beginTransaction();
-
         try {
-            $total = 0;
+            // التحقق من الكميات المتوفرة لكل متغير
+            foreach ($request->variant_id as $index => $variant_id) {
+                $variant = Product_variant::findOrFail($variant_id);
+                $qty = $request->quantity[$index];
 
+                if ($variant->quantity < $qty) {
+                    return back()->withErrors([
+                        "variant_id.{$index}" => "الكمية غير كافية للمنتج: {$variant->name}"
+                    ])->withInput();
+                }
+            }
+
+            // حساب المجموع الكلي
+            $total = 0;
             foreach ($request->quantity as $index => $qty) {
                 $total += $qty * $request->unit_price[$index];
             }
@@ -76,6 +87,7 @@ class InvoiceController extends Controller
             $paid = $request->paid_amount ?? 0;
             $rest = ($total - $discount) - $paid;
 
+            // إنشاء الفاتورة
             $invoice = Invoice::create([
                 'customer_name' => $request->customer_name,
                 'department_id' => $request->department_id,
@@ -90,21 +102,36 @@ class InvoiceController extends Controller
                 'invoice_date' => $request->invoice_date,
             ]);
 
-            foreach ($request->product_id as $index => $product_id) {
+            // حفظ العناصر مع تحديث الكميات وتسجيل حركة المخزون
+            foreach ($request->variant_id as $index => $variant_id) {
+                $qty = $request->quantity[$index];
+                $unit_price = $request->unit_price[$index];
+                $variant = Product_variant::findOrFail($variant_id);
+
                 InvoiceItem::create([
                     'invoice_id' => $invoice->id,
-                    'product_id' => $product_id,
-                    'quantity' => $request->quantity[$index],
-                    'unit_price' => $request->unit_price[$index],
-                    'total_price' => $request->quantity[$index] * $request->unit_price[$index],
+                    'product_variant_id' => $variant_id,
+                    'quantity' => $qty,
+                    'unit_price' => $unit_price,
+                    'total_price' => $qty * $unit_price,
+                ]);
+
+                // خصم الكمية من المتغير
+                $variant->decrement('quantity', $qty);
+
+                // تسجيل حركة المخزون
+                InventoryLog::create([
+                    'product_variant_id' => $variant_id,
+                    'change_type' => 'بيع',
+                    'quantity' => -$qty,
+                    'description' => 'بيع عبر فاتورة #' . $invoice->invoice_num,
+                    'created_by' => auth()->id(),
+                    'created_at' => now(),
                 ]);
             }
 
-            DB::commit();
-
             return redirect()->route('invoices.index')->with('success', 'تم إنشاء الفاتورة بنجاح');
         } catch (\Exception $e) {
-            DB::rollback();
             return back()->with('error', 'حدث خطأ أثناء إنشاء الفاتورة: ' . $e->getMessage());
         }
     }
@@ -127,7 +154,7 @@ class InvoiceController extends Controller
         $departments = Department::all();
         $products = Product::all();
         $employees = Employee::all();
-        $invoice->load('items'); // تحميل العناصر المرتبطة بالفاتورة
+        $invoice->load('items');
 
         return view('invoices.edit', compact('invoice', 'departments', 'products', 'employees'));
     }
@@ -150,7 +177,6 @@ class InvoiceController extends Controller
             'unit_price.*' => 'required|numeric|min:0',
         ]);
 
-        DB::beginTransaction();
         try {
             $total = 0;
             foreach ($request->quantity as $index => $qty) {
@@ -174,10 +200,9 @@ class InvoiceController extends Controller
                 'invoice_date' => $request->invoice_date,
             ]);
 
-            // حذف العناصر القديمة
+
             $invoice->items()->delete();
 
-            // إضافة العناصر الجديدة
             foreach ($request->product_id as $index => $product_id) {
                 InvoiceItem::create([
                     'invoice_id' => $invoice->id,
@@ -188,10 +213,8 @@ class InvoiceController extends Controller
                 ]);
             }
 
-            DB::commit();
             return redirect()->route('invoices.index')->with('success', 'تم تحديث الفاتورة بنجاح');
         } catch (\Exception $e) {
-            DB::rollback();
             return back()->with('error', 'حدث خطأ أثناء التحديث: ' . $e->getMessage());
         }
     }
@@ -203,10 +226,7 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         try {
-            // حذف العناصر التابعة
             $invoice->items()->delete();
-
-            // حذف الفاتورة
             $invoice->delete();
 
             return redirect()->route('invoices.index')->with('success', 'تم حذف الفاتورة بنجاح');

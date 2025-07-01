@@ -21,11 +21,13 @@
                 <div class="  rounded-2 mt-2 text-center" id="deptDropdownMenu" style="display: none; width: 12rem !important;">
 
                     <a class="dropdown-item-custom" href="#">الملابس</a>
-                    <a class="dropdown-item-custom" href="#">الأحذية</a>
-{{--                    <a class="dropdown-item-custom" href="#">إضافة قسم</a>--}}
+                    <a class="dropdown-item-custom" href="{{route('stock-adjustments.create')}}">اضافة جرد</a>
+                    <a class="dropdown-item-custom" href="{{route('stock-adjustments.index')}}">الجرد</a>
+                    <a class="dropdown-item-custom" href="{{route('departments.index')}}">إضافة قسم</a>
                 </div>
 
             </li>
+
 
             <li class="nav-item position-relative">
                 <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="productsDropdown" role="button" onclick="productsDropdown(event)" aria-expanded="false">
@@ -34,8 +36,15 @@
                 <div class="  rounded-2 mt-2 text-center" id="productsDropdownMenu" style="display: none; width: 12rem !important;">
                     <a class="dropdown-item-custom" href="{{route('products.create')}}">إضافة منتج </a>
                     <a class="dropdown-item-custom" href="{{route('products.index')}}">عرض المنتجات</a>
+                    <a class="dropdown-item-custom" href="{{route('sales-returns.create')}}">إضافة راجع البيع </a>
+                    <a class="dropdown-item-custom" href="{{route('sales-returns.index')}}">عرض راجع البيع</a>
+
+                    <a class="dropdown-item-custom" href="{{route('purchase-returns.create')}}">إضافة راجع الشراء </a>
+                    <a class="dropdown-item-custom" href="{{route('purchase-returns.index')}}">عرض راجع الشراء</a>
+                    <a class="dropdown-item-custom" href="{{route('inventory-reports.index')}}">عرض التقارير</a>
                 </div>
             </li>
+
 
             <li class="nav-item position-relative">
                 <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="invoicesDropdown" role="button" onclick="toggleDropdown(event)" aria-expanded="false">
@@ -58,6 +67,21 @@
 
                     <a class="dropdown-item-custom" href="{{route('employees.create')}}">إضافة موظف</a>
                     <a class="dropdown-item-custom" href="{{route('employees.index')}}">عرض الموظفين</a>
+                </div>
+
+            </li>
+            <li class="nav-item position-relative">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">
+                    سجل المخزون
+                </a>
+                <div class=" rounded-2 mt-2 text-center" id="reportDropdownMenu" style="display: none; width: 12rem !important;">
+
+                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'current']) }}"> الجرد الحالي</a>
+                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}"> الجرد الشهري</a>
+                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}"> الجرد السنوي</a>
+{{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'current') }}">جرد حالي PDF</a>--}}
+{{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'monthly') }}">جرد شهري PDF</a>--}}
+{{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'yearly') }}">جرد سنوي PDF</a>--}}
                 </div>
 
             </li>

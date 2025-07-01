@@ -12,11 +12,19 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees = Employee::with('department')->get();
+        $search = $request->input('search');
+
+        $employees = Employee::with('department')
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->get();
+
         return view('employees.index', compact('employees'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,14 +40,40 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->validate([
-            'name' => 'required',
-            'phone' => 'required|unique:employees',
-            'password' => 'required',
-            'status' => 'required',
-            'role' => 'required',
-            'salary' => 'required|numeric',
+            'name' => 'required|string|max:255',
+            'phone' => 'required|unique:employees,phone',
+            'password' => 'required|string|min:6',
+            'status' => 'required|in:active,inactive',
+            'role' => 'required|string|max:50',
+            'salary' => 'required|numeric|min:0',
             'department_id' => 'required|exists:departments,id',
+        ], [
+            'name.required' => 'حقل الاسم مطلوب',
+            'name.string' => 'يجب أن يكون الاسم نصًا',
+            'name.max' => 'الاسم لا يجب أن يتجاوز 255 حرفًا',
+
+            'phone.required' => 'حقل الهاتف مطلوب',
+            'phone.unique' => 'رقم الهاتف مستخدم بالفعل',
+
+            'password.required' => 'حقل كلمة المرور مطلوب',
+            'password.string' => 'يجب أن تكون كلمة المرور نصًا',
+            'password.min' => 'كلمة المرور يجب أن تكون على الأقل 6 حروف',
+
+            'status.required' => 'حقل الحالة مطلوب',
+            'status.in' => 'الحالة المختارة غير صحيحة',
+
+            'role.required' => 'حقل الدور مطلوب',
+            'role.string' => 'يجب أن يكون الدور نصًا',
+            'role.max' => 'الدور لا يجب أن يتجاوز 50 حرفًا',
+
+            'salary.required' => 'حقل الراتب مطلوب',
+            'salary.numeric' => 'يجب أن يكون الراتب رقمًا',
+            'salary.min' => 'الراتب لا يمكن أن يكون أقل من صفر',
+
+            'department_id.required' => 'يجب اختيار القسم',
+            'department_id.exists' => 'القسم المحدد غير موجود',
         ]);
 
         $data['password'] = bcrypt($data['password']);

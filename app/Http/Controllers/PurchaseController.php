@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InventoryLog;
 use App\Models\Product;
 use App\Models\Purchase;
 use App\Models\PurchaseItem;
@@ -41,33 +42,73 @@ class PurchaseController extends Controller
             'product_id.*' => 'required|exists:products,id',
             'quantity.*' => 'required|integer|min:1',
             'unit_price.*' => 'required|numeric|min:0',
+        ], [
+            'supplier_id.required' => 'حقل المورد مطلوب.',
+            'supplier_id.exists' => 'المورد المختار غير موجود.',
+            'purchase_date.required' => 'حقل تاريخ الشراء مطلوب.',
+            'purchase_date.date' => 'يجب أن يكون تاريخ الشراء تاريخًا صالحًا.',
+            'product_id.*.required' => 'حقل المنتج مطلوب لكل عنصر.',
+            'product_id.*.exists' => 'المنتج المختار غير موجود.',
+            'quantity.*.required' => 'حقل الكمية مطلوب لكل عنصر.',
+            'quantity.*.integer' => 'يجب أن تكون الكمية رقمًا صحيحًا.',
+            'quantity.*.min' => 'يجب أن تكون الكمية على الأقل 1.',
+            'unit_price.*.required' => 'حقل سعر الوحدة مطلوب لكل عنصر.',
+            'unit_price.*.numeric' => 'يجب أن يكون سعر الوحدة رقمًا.',
+            'unit_price.*.min' => 'يجب أن يكون سعر الوحدة 0 أو أكثر.',
         ]);
 
-        $total_amount = 0;
 
-        foreach ($request->quantity as $index => $qty) {
-            $total_amount += $qty * $request->unit_price[$index];
-        }
+        try {
+            $total_amount = 0;
 
-        $purchase = Purchase::create([
-            'supplier_id' => $request->supplier_id,
-            'created_by' => auth()->user()->id,
-            'total_amount' => $total_amount,
-            'purchase_date' => $request->purchase_date,
-            'notes' => $request->notes,
-        ]);
+            foreach ($request->quantity as $index => $qty) {
+                $total_amount += $qty * $request->unit_price[$index];
+            }
 
-        foreach ($request->product_id as $index => $product_id) {
-            PurchaseItem::create([
-                'purchase_id' => $purchase->id,
-                'product_id' => $product_id,
-                'quantity' => $request->quantity[$index],
-                'unit_price' => $request->unit_price[$index],
-                'total_price' => $request->quantity[$index] * $request->unit_price[$index],
+            $purchase = Purchase::create([
+                'supplier_id' => $request->supplier_id,
+                'created_by' => auth()->id(),
+                'total_amount' => $total_amount,
+                'purchase_date' => $request->purchase_date,
+                'notes' => $request->notes,
             ]);
-        }
 
-        return redirect()->route('purchases.index')->with('success', 'تمت إضافة عملية الشراء');
+            foreach ($request->product_id as $index => $product_id) {
+                $qty = $request->quantity[$index];
+                $price = $request->unit_price[$index];
+
+                PurchaseItem::create([
+                    'purchase_id' => $purchase->id,
+                    'product_id' => $product_id,
+                    'quantity' => $qty,
+                    'unit_price' => $price,
+                    'total_price' => $qty * $price,
+                ]);
+
+                $product = Product::findOrFail($product_id);
+                $product->increment('quantity', $qty);
+
+                InventoryLog::create([
+                    'product_id' => $product_id,
+                    'change_type' => 'شراء',
+                    'quantity' => $qty,
+                    'description' => 'إضافة مخزون من عملية شراء #' . $purchase->id,
+                    'created_by' => auth()->id(),
+                    'created_at' => now(),
+                ]);
+            }
+
+
+            return redirect()->route('purchases.index')->with('success', 'تمت إضافة عملية الشراء وتحديث المخزون');
+        } catch (\Exception $e) {
+
+            return back()->with('error', 'حدث خطأ أثناء الشراء: ' . $e->getMessage());
+        }
+    }
+
+    public function show(Purchase $purchase)
+    {
+        return view('purchases.show', compact('purchase'));
     }
 
 

@@ -27,7 +27,20 @@ class EmployeeSalaryController extends Controller
             'amount' => 'required|numeric|min:0',
             'pay_date' => 'required|date',
             'notes' => 'nullable|string',
+        ], [
+            'employee_id.required' => 'حقل اسم الموظف مطلوب.',
+            'employee_id.exists' => 'الموظف المختار غير موجود.',
+
+            'amount.required' => 'حقل المبلغ مطلوب.',
+            'amount.numeric' => 'يجب أن يكون المبلغ رقماً.',
+            'amount.min' => 'الحد الأدنى للمبلغ هو 0.',
+
+            'pay_date.required' => 'حقل تاريخ الدفع مطلوب.',
+            'pay_date.date' => 'يجب أن يكون تاريخ الدفع تاريخاً صحيحاً.',
+
+            'notes.string' => 'الملاحظات يجب أن تكون نصاً.',
         ]);
+
 
         EmployeeSalary::create([
             'employee_id' => $request->employee_id,

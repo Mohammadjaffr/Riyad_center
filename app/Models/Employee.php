@@ -2,11 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Mehradsadeghi\FilterQueryString\FilterQueryString;
+
 class Employee extends  Authenticatable
 {
+    use HasFactory,FilterQueryString;
+
+
     protected $fillable = ['name', 'phone', 'password', 'status', 'role', 'salary', 'department_id'];
+
+
+    protected $filters = ['sort'];
 
     public function department() { return $this->belongsTo(Department::class); }
     public function purchases() { return $this->hasMany(Purchase::class, 'created_by'); }

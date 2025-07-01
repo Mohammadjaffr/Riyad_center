@@ -56,7 +56,7 @@
                         <td>{{ $purchase->notes ?? '-' }}</td>
                         <td>{{ $purchase->employee->name ?? '-' }}</td>
                         <td>
-                            <a href="#" class="btn btn-sm ms-3 "><i class="fa fa-eye"></i></a>
+                            <a href="{{ route('purchases.show', $purchase->id) }}" class="btn btn-sm ms-3 "><i class="fa fa-eye"></i></a>
                             <form action="#" method="POST" class="d-inline" onsubmit="return confirm('هل أنت متأكد من الحذف؟')">
                                 @csrf
                                 @method('DELETE')

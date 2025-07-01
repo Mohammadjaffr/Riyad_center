@@ -41,7 +41,27 @@ class SaleController extends Controller
             'product_id.*' => 'required|exists:products,id',
             'quantity.*' => 'required|integer|min:1',
             'unit_price.*' => 'required|numeric|min:0',
+        ], [
+            'customer_name.string' => 'اسم العميل يجب أن يكون نصاً.',
+
+            'department_id.required' => 'حقل القسم مطلوب.',
+            'department_id.exists' => 'القسم المختار غير موجود.',
+
+            'sale_date.required' => 'حقل تاريخ البيع مطلوب.',
+            'sale_date.date' => 'يجب أن يكون تاريخ البيع تاريخاً صحيحاً.',
+
+            'product_id.*.required' => 'حقل المنتج مطلوب لكل عنصر.',
+            'product_id.*.exists' => 'أحد المنتجات المختارة غير موجود.',
+
+            'quantity.*.required' => 'حقل الكمية مطلوب لكل عنصر.',
+            'quantity.*.integer' => 'يجب أن تكون الكمية رقماً صحيحاً.',
+            'quantity.*.min' => 'الحد الأدنى للكمية هو 1.',
+
+            'unit_price.*.required' => 'حقل سعر الوحدة مطلوب لكل عنصر.',
+            'unit_price.*.numeric' => 'يجب أن يكون سعر الوحدة رقماً.',
+            'unit_price.*.min' => 'الحد الأدنى لسعر الوحدة هو 0.',
         ]);
+
 
         $total_amount = 0;
 
@@ -51,7 +71,7 @@ class SaleController extends Controller
 
         $sale = Sale::create([
             'customer_name' => $request->customer_name,
-            'created_by' => auth()->user()->id ?? 1, // مؤقتاً ID = 1 لو ما في تسجيل دخول
+            'created_by' => auth()->user()->id,
             'total_amount' => $total_amount,
             'notes' => $request->notes,
             'department_id' => $request->department_id,

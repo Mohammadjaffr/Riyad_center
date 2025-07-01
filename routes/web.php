@@ -5,17 +5,21 @@ use App\Http\Controllers\EmployeeAdvancePaymentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeSalaryController;
 use App\Http\Controllers\InventoryLogController;
+use App\Http\Controllers\InventoryReportController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PurchaseReturnController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SalesReturnController;
+use App\Http\Controllers\StockAdjustmentController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 Route::get('/invoice', function () {
     return view('pages.add_invoice');
@@ -43,5 +47,12 @@ Route::resource('inventory-logs', InventoryLogController::class)->only(['index',
 Route::resource('employee-advance-payments', EmployeeAdvancePaymentController::class);
 Route::resource('invoices', InvoiceController::class);
 Route::resource('payments', PaymentController::class);
+Route::resource('stock-adjustments', StockAdjustmentController::class)->only(['index', 'create', 'store']);
+Route::resource('sales-returns', SalesReturnController::class)->only(['index', 'create', 'store']);
+Route::resource('purchase-returns', PurchaseReturnController::class)->only(['index', 'create', 'store']);
+Route::get('/inventory-reports', [InventoryReportController::class, 'index'])->name('inventory-reports.index');
+Route::get('/inventory-logs/report/{type}', [InventoryLogController::class, 'report'])->name('inventory-logs.report');
+Route::get('/inventory-logs/pdf/{type}', [InventoryLogController::class, 'exportPdf'])->name('inventory-logs.pdf');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('model_num');
             $table->string('product_image');
             $table->text('description');
-            $table->integer('quantity');
-            $table->decimal('cost_price', 10, 2);
-            $table->decimal('sell_price', 10, 2);
             $table->foreignId('department_id')->constrained('departments');
             $table->timestamps();
         });

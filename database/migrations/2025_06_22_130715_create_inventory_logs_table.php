@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('inventory_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('product_variant_id')->constrained('product_variants');
             $table->string('change_type');
             $table->integer('quantity');
             $table->text('description')->nullable();
