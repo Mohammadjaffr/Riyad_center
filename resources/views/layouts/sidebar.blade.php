@@ -14,26 +14,27 @@
             <li class="nav-item">
                 <a class="nav-link sidebar-link-custom" href="{{url('/home')}}">الرئيسية</a>
             </li>
+            {{--الاقسام--}}
             <li class="nav-item position-relative">
                 <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="deptDropdown" role="button" onclick="deptDropdown(event)" aria-expanded="false">
                     الأقسام
                 </a>
-                <div class="  rounded-2 mt-2 text-center" id="deptDropdownMenu" style="display: none; width: 12rem !important;">
+                <div class="  rounded-2 mt-2 " id="deptDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
                     <a class="dropdown-item-custom" href="#">الملابس</a>
-                    <a class="dropdown-item-custom" href="{{route('stock-adjustments.create')}}">اضافة جرد</a>
+                    <a class="dropdown-item-custom" href="{{route('stock-adjustments.create')}}">إضافة جرد</a>
                     <a class="dropdown-item-custom" href="{{route('stock-adjustments.index')}}">الجرد</a>
                     <a class="dropdown-item-custom" href="{{route('departments.index')}}">إضافة قسم</a>
                 </div>
 
             </li>
 
-
+            {{--المنتجات--}}
             <li class="nav-item position-relative">
                 <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="productsDropdown" role="button" onclick="productsDropdown(event)" aria-expanded="false">
                     المنتجات
                 </a>
-                <div class="  rounded-2 mt-2 text-center" id="productsDropdownMenu" style="display: none; width: 12rem !important;">
+                <div class="  rounded-2 mt-2 " id="productsDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
                     <a class="dropdown-item-custom" href="{{route('products.create')}}">إضافة منتج </a>
                     <a class="dropdown-item-custom" href="{{route('products.index')}}">عرض المنتجات</a>
                     <a class="dropdown-item-custom" href="{{route('sales-returns.create')}}">إضافة راجع البيع </a>
@@ -44,38 +45,42 @@
                     <a class="dropdown-item-custom" href="{{route('inventory-reports.index')}}">عرض التقارير</a>
                 </div>
             </li>
-
-
+            {{--الفواتير--}}
             <li class="nav-item position-relative">
                 <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="invoicesDropdown" role="button" onclick="toggleDropdown(event)" aria-expanded="false">
                     الفواتير
                 </a>
-                <div class=" rounded-2 mt-2 text-center" id="invoicesDropdownMenu" style="display: none; width: 12rem !important;">
+                <div class=" rounded-2 mt-2 " id="invoicesDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
                     <a class="dropdown-item-custom" href="{{route('invoices.create')}}">إضافة فاتورة</a>
                     <a class="dropdown-item-custom" href="#">عرض الفواتير</a>
-{{--                    <a class="dropdown-item-custom" href="#">قائمة الفواتير</a>--}}
                     <a class="dropdown-item-custom" href="{{url('/invoices')}}">قائمة الفواتير</a>
                 </div>
 
             </li>
+            {{--الموظفين--}}
             <li class="nav-item position-relative">
                 <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="empDropdown" role="button" onclick="empDropdown(event)" aria-expanded="false">
                     الموظفين
                 </a>
-                <div class=" rounded-2 mt-2 text-center" id="empDropdownMenu" style="display: none; width: 12rem !important;">
+                <div class=" rounded-2 mt-2 " id="empDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
                     <a class="dropdown-item-custom" href="{{route('employees.create')}}">إضافة موظف</a>
                     <a class="dropdown-item-custom" href="{{route('employees.index')}}">عرض الموظفين</a>
+                    <a class="dropdown-item-custom" href="{{url('/employee-salaries')}}">رواتب الموظفين</a>
+                    <a class="dropdown-item-custom" href="{{url('/employee-advance-payments')}}">السلف</a>
+                    <a class="dropdown-item-custom" href="{{url('/payments')}}">الدفعات</a>
                 </div>
 
             </li>
+            {{--سجل المخزون--}}
             <li class="nav-item position-relative">
                 <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">
                     سجل المخزون
                 </a>
-                <div class=" rounded-2 mt-2 text-center" id="reportDropdownMenu" style="display: none; width: 12rem !important;">
+                <div class=" rounded-2 mt-2" id="reportDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
+                    <a class="dropdown-item-custom" href="{{url('/inventory-logs')}}"> المخزون </a>
                     <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'current']) }}"> الجرد الحالي</a>
                     <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}"> الجرد الشهري</a>
                     <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}"> الجرد السنوي</a>
@@ -84,6 +89,21 @@
 {{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'yearly') }}">جرد سنوي PDF</a>--}}
                 </div>
 
+            </li>
+            {{--إدارة المشتريات --}}
+            <li class="nav-item position-relative">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="purchasesDropdown" role="button" onclick="purchasesDropdown(event)" aria-expanded="false">
+                    إدارة المشتريات
+                </a>
+                <div class=" rounded-2 mt-2" id="purchasesDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
+
+                    <a class="dropdown-item-custom" href="{{url('/suppliers')}}">الموردين </a>
+                    <a class="dropdown-item-custom" href="{{url('/purchases')}}">المشتريات </a>
+                </div>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link-custom" href="{{url('/sales')}}">المبيعات</a>
             </li>
 {{--            <li class="nav-item position-relative">--}}
 {{--                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">--}}
@@ -95,27 +115,26 @@
 {{--                </div>--}}
 
 {{--            </li>--}}
-            <li class="nav-item">
-                <a class="nav-link sidebar-link-custom" href="{{url('/suppliers')}}">الموردين</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link sidebar-link-custom" href="{{url('/purchases')}}">المشتريات</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link sidebar-link-custom" href="{{url('/sales')}}">المبيعات</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link sidebar-link-custom" href="{{url('/employee-salaries')}}">رواتب الموظفين</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link sidebar-link-custom" href="{{url('/inventory-logs')}}">المخزون</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link sidebar-link-custom" href="{{url('/employee-advance-payments')}}">السلف</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link sidebar-link-custom" href="{{url('/payments')}}">الدفعات</a>
-            </li>
+
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link sidebar-link-custom" href="{{url('/suppliers')}}">الموردين</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link sidebar-link-custom" href="{{url('/purchases')}}">المشتريات</a>--}}
+{{--            </li>--}}
+
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link sidebar-link-custom" href="{{url('/employee-salaries')}}">رواتب الموظفين</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link sidebar-link-custom" href="{{url('/inventory-logs')}}">المخزون</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link sidebar-link-custom" href="{{url('/employee-advance-payments')}}">السلف</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link sidebar-link-custom" href="{{url('/payments')}}">الدفعات</a>--}}
+{{--            </li>--}}
 
         </ul>
     </nav>

@@ -33,6 +33,11 @@ function empDropdown(event) {
     var menu = document.getElementById('empDropdownMenu');
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 
+}function purchasesDropdown(event) {
+    event.preventDefault();
+    var menu = document.getElementById('purchasesDropdownMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
 }
 function reportDropdown(event) {
     event.preventDefault();

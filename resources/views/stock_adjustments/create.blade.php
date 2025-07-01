@@ -15,7 +15,7 @@
             @csrf
             @include('stock_adjustments.form', ['stock-adjustment' => null])
             <div class="col-12 text-center mt-3">
-            <button type="submit" class="btn btn-primary"> تنفيذ التعديل</button>
+            <button type="submit" class="btn btn-blue"> تنفيذ التعديل</button>
             </div>
         </form>
         </div>

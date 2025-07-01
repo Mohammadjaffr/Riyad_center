@@ -22,7 +22,32 @@ body {
 .text-dark-blue {
     color: var(--dark-blue) !important;
 }
+.btn-outline-blue {
+    border: var(--dark-blue) 2px solid;
+    color: var(--dark-blue);
+    border-radius: 10px;
+    font-weight: bold;
 
+}.btn-outline-blue:hover {
+     border: var(--dark-blue) 2px solid;
+     background: var(--dark-blue);
+     color: #fff;
+     border-radius: 10px;
+     font-weight: bold;
+
+}
+.btn-blue {
+    background: var(--dark-blue);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+}
+.btn-blue:hover {
+    background: #132e60;
+    color: #fff;
+
+}
 /*-------------------------------------------------------login----------------------------------------------------------*/
 .login-card {
     max-width: 900px;
@@ -398,6 +423,7 @@ body {
     font-weight: bold;
     color: var(--dark-blue);
 }
+
 .btn-new-invoice {
     background: var(--dark-blue);
     color: #fff;

@@ -25,7 +25,7 @@
             </div>
 
             {{-- القسم --}}
-            <div class="col-12">
+            <div class="col-6">
                 <label class="form-label fw-bold">القسم</label>
                 <select name="department_id"
                         class="summary-input flex-grow-1 w-100 w-md-auto {{ $errors->has('department_id') ? 'is-invalid' : '' }}"
@@ -42,17 +42,6 @@
                 <span class="invalid-feedback text-end d-block" role="alert"><strong>{{ $message }}</strong></span>
                 @enderror
             </div>
-
-            {{-- الوصف --}}
-            <div class="col-12">
-                <label class="form-label fw-bold">الوصف</label>
-                <textarea name="description"
-                          class="summary-textarea flex-grow-1 w-100 w-md-auto {{ $errors->has('description') ? 'is-invalid' : '' }}">{{ old('description', $product->description ?? '') }}</textarea>
-                @error('description')
-                <span class="invalid-feedback text-end d-block" role="alert"><strong>{{ $message }}</strong></span>
-                @enderror
-            </div>
-
             {{-- رقم الموديل --}}
             <div class="col-6">
                 <label class="form-label fw-bold">رقم الموديل</label>
@@ -64,6 +53,18 @@
                 <span class="invalid-feedback text-end d-block" role="alert"><strong>{{ $message }}</strong></span>
                 @enderror
             </div>
+            {{-- الوصف --}}
+            <div class="col-12">
+                <label class="form-label fw-bold">الوصف</label>
+                <textarea name="description"
+                          style="text-align: right;"
+                          class="summary-textarea flex-grow-1 w-100 w-md-auto {{ $errors->has('description') ? 'is-invalid' : '' }}">{{ old('description', $product->description ?? '') }}</textarea>
+                @error('description')
+                <span class="invalid-feedback text-end d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+
+
 
             {{-- صورة المنتج --}}
             <div class="col-12">
@@ -78,8 +79,8 @@
 
             {{-- المتغيرات (مقاس، لون، سعر بيع، تكلفة) --}}
 
-            <div class="col-12">
-                <h5>المقاسات والألوان والأسعار</h5>
+            <div class="col-12 ">
+                <h5 class="mt-2 text-dark-blue">المقاسات والألوان والأسعار</h5>
 
                 <div id="variants-container">
                     @php
@@ -88,10 +89,10 @@
 
                     @if(count($oldVariants) > 0)
                         @foreach($oldVariants as $index => $variant)
-                            <div class="variant-item mb-3 p-3 border rounded" data-index="{{ $index }}">
+                            <div class="variant-item mb-3 p-3 border rounded" data-index="{{ $index }}" >
                                 <div class="row g-3 align-items-center">
-                                    <div class="col-3">
-                                        <select name="variants[{{ $index }}][size]" class="form-control" required>
+                                    <div class="col-2">
+                                        <select name="variants[{{ $index }}][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
                                             <option value="" disabled {{ empty($variant['size']) ? 'selected' : '' }}>اختر المقاس</option>
                                             <option value="XS" {{ (isset($variant['size']) && $variant['size'] == 'XS') ? 'selected' : '' }}>XS</option>
                                             <option value="S" {{ (isset($variant['size']) && $variant['size'] == 'S') ? 'selected' : '' }}>S</option>
@@ -101,20 +102,20 @@
                                             <option value="XXL" {{ (isset($variant['size']) && $variant['size'] == 'XXL') ? 'selected' : '' }}>XXL</option>
                                         </select>
                                     </div>
-                                    <div class="col-3">
-                                        <input type="text" name="variants[{{ $index }}][color]" class="form-control" placeholder="اللون" value="{{ $variant['color'] ?? '' }}" required>
+                                    <div class="col-2">
+                                        <input type="text" name="variants[{{ $index }}][color]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="اللون" value="{{ $variant['color'] ?? '' }}" required>
                                     </div>
                                     <div class="col-2">
-                                        <input type="number" name="variants[{{ $index }}][quantity]" class="form-control" placeholder="كمية المخزون" min="0" value="{{ $variant['quantity'] ?? 0 }}" required>
+                                        <input type="number" name="variants[{{ $index }}][quantity]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="كمية المخزون" min="0" value="{{ $variant['quantity'] ?? 0 }}" required>
                                     </div>
                                     <div class="col-2">
-                                        <input type="number" step="0.01" name="variants[{{ $index }}][sell_price]" class="form-control" placeholder="سعر البيع" value="{{ $variant['sell_price'] ?? '' }}" required>
+                                        <input type="number" step="0.01" name="variants[{{ $index }}][sell_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر البيع" value="{{ $variant['sell_price'] ?? '' }}" required>
                                     </div>
                                     <div class="col-2">
-                                        <input type="number" step="0.01" name="variants[{{ $index }}][cost_price]" class="form-control" placeholder="سعر التكلفة" value="{{ $variant['cost_price'] ?? '' }}" required>
+                                        <input type="number" step="0.01" name="variants[{{ $index }}][cost_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر التكلفة" value="{{ $variant['cost_price'] ?? '' }}" required>
                                     </div>
-                                    <div class="col-12 text-end mt-2">
-                                        <button type="button" class="btn btn-danger btn-sm remove-variant-btn">حذف</button>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-danger btn-sm remove-variant-btn"><i class="fa fa-trash"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -123,8 +124,8 @@
                         {{-- أول متغير افتراضي --}}
                         <div class="variant-item mb-3 p-3 border rounded" data-index="0">
                             <div class="row g-3 align-items-center">
-                                <div class="col-3">
-                                    <select name="variants[0][size]" class="summary-input flex-grow-1 w-100 w-md-auto" required>
+                                <div class="col-2">
+                                    <select name="variants[0][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
                                         <option value="" disabled selected>اختر المقاس</option>
                                         <option value="XS">XS</option>
                                         <option value="S">S</option>
@@ -134,7 +135,7 @@
                                         <option value="XXL">XXL</option>
                                     </select>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <input type="text" name="variants[0][color]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="اللون" required>
                                 </div>
                                 <div class="col-2">
@@ -146,15 +147,15 @@
                                 <div class="col-2">
                                     <input type="number" step="0.01" name="variants[0][cost_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر التكلفة" required>
                                 </div>
-                                <div class="col-12 text-end mt-2">
-                                    <button type="button" class="btn btn-danger btn-sm remove-variant-btn">حذف</button>
+                                <div class="col-2 ">
+                                    <button type="button" class="btn btn-danger btn-sm remove-variant-btn"><i class="fa fa-trash"></i> </button>
                                 </div>
                             </div>
                         </div>
                     @endif
                 </div>
 
-                <button type="button" id="add-variant-btn" class="btn btn-outline-primary btn-sm mt-2">إضافة متغير جديد</button>
+                <button type="button" id="add-variant-btn" class="btn btn-outline-blue btn-sm mt-2">إضافة متغير جديد</button>
             </div>
 
         </div>
@@ -176,8 +177,8 @@
         const html = `
 <div class="variant-item mb-3 p-3 border rounded" data-index="${variantIndex}">
     <div class="row g-3 align-items-center">
-        <div class="col-3">
-            <select name="variants[${variantIndex}][size]" class="summary-input flex-grow-1 w-100 w-md-auto" required>
+        <div class="col-2">
+            <select name="variants[${variantIndex}][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
                 <option value="" disabled selected>اختر المقاس</option>
                 <option value="XS">XS</option>
                 <option value="S">S</option>
@@ -187,7 +188,7 @@
                 <option value="XXL">XXL</option>
             </select>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <input type="text" name="variants[${variantIndex}][color]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="اللون" required>
         </div>
         <div class="col-2">
@@ -199,8 +200,8 @@
         <div class="col-2">
             <input type="number" step="0.01" name="variants[${variantIndex}][cost_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر التكلفة" required>
         </div>
-        <div class="col-12 text-end mt-2">
-            <button type="button" class="btn btn-danger btn-sm remove-variant-btn">حذف</button>
+        <div class="col-2">
+            <button type="button" class="btn btn-danger btn-sm remove-variant-btn"><i class="fa fa-trash"></i></button>
         </div>
     </div>
 </div>`;

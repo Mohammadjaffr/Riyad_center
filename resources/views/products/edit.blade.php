@@ -23,7 +23,7 @@
                 @include('products.form', ['product' => $product])
 
                 <div class="col-12 text-center mt-3">
-                    <button type="submit" class="btn btn-primary w-50">تحديث</button>
+                    <button type="submit" class="btn btn-blue  "> تحديث المنتج</button>
                 </div>
             </form>
         </div>

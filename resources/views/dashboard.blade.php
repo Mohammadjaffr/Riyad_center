@@ -17,7 +17,7 @@
         <div class="col-12 col-md-6 col-lg-3">
             <div class="card invoice-card text-center custom-shadow h-100">
                 <div class="card-body p-3">
-                    <div class="fw-bold text-white" style="background: #FFCF55; border-radius: 0.5rem; font-size: 1.1rem;">البائعين</div>
+                    <div class="fw-bold text-white rounded-3 py-1 mb-2" style="background: #FFCF55; border-radius: 0.5rem; font-size: 1.1rem;">البائعين</div>
                     <div class="fs-2 fw-bold">100</div>
                     <div class="mt-2">
                         <i class="fa fa-user-tie fa-lg" style="color: #FFCF55;"></i>

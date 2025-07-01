@@ -5,7 +5,7 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);">المنتجات</h2>
-            <a href="{{ route('products.create') }}" class="btn btn-new-invoice mb-2 mb-md-0">
+            <a href="{{ route('products.create') }}" class="btn btn-blue mb-2 mb-md-0">
                 <i class="fa fa-plus"></i> اضافة منتج جديد
             </a>
         </div>
@@ -26,7 +26,7 @@
                 <div class="col-2 col-md-7"></div>
                 <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
                     <!-- زر لفتح المودال -->
-                    <button type="button" class="btn btn-new-invoice" data-bs-toggle="modal" data-bs-target="#filterModal">
+                    <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
                         <i class="fa fa-filter"></i> فلترة
                     </button>
                 </div>
@@ -114,21 +114,21 @@
 
     <!-- فلترة -->
     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content rounded-4">
+        <div class="modal-dialog modal-dialog-centered modal-lg ">
+            <div class="modal-content rounded-4 bg-white">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="filterModalLabel">فلترة المنتجات</h5>
+                    <h5 class="modal-title text-dark-blue" id="filterModalLabel">فلترة المنتجات</h5>
                 </div>
                 <form method="GET" action="{{ route('products.index') }}">
-                    <div class="modal-body">
-                        <div class="row g-3">
+                    <div class="modal-body ">
+                        <div class="row g-3 text-dark-blue">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">بحث بالاسم أو رقم الموديل</label>
                                 <input
                                     type="text"
                                     id="search"
                                     name="search"
-                                    class="form-control"
+                                    class="summary-input flex-grow-1 w-100 w-md-auto"
                                     value="{{ request('search') }}"
                                     placeholder="مثال: تيشيرت، 123abc"
                                     autocomplete="off"
@@ -137,8 +137,8 @@
 
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">الترتيب</label>
-                                <select name="sort" class="form-select">
-                                    <option value="">اختر</option>
+                                <select name="sort" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue">
+                                    <option value="" disabled selected>اختر</option>
                                     <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>تصاعدي</option>
                                     <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>تنازلي</option>
                                 </select>
@@ -147,8 +147,8 @@
                     </div>
 
                     <div class="modal-footer justify-content-between">
-                        <a href="{{ route('products.index') }}" class="btn btn-outline-secondary">إعادة تعيين</a>
-                        <button type="submit" class="btn btn-new-invoice">
+                        <a href="{{ route('products.index') }}" class="btn btn-outline-blue">إعادة تعيين</a>
+                        <button type="submit" class="btn btn-blue">
                             <i class="fa fa-search"></i> تطبيق الفلتر
                         </button>
                     </div>

@@ -16,7 +16,7 @@
                 <div class="col-12 col-md-7"></div>
                 <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
                     <!-- زر لفتح المودال -->
-                    <button type="button" class="btn btn-new-invoice" >
+                    <button type="button" class="btn btn-blue" >
                         <i class="fa fa-filter"></i> فلترة
                     </button>
                 </div>
