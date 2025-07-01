@@ -584,7 +584,7 @@ body {
     font-size: 1rem;
 }
 
-/* صورة المدير */
+
 .manager-avatar-wrapper {
     position: relative;
     display: inline-block;
@@ -614,7 +614,7 @@ body {
     color: #fff;
 }
 
-/* بطاقات العناوين */
+
 .card-title-dark {
     color: var(--dark-blue);
     font-weight: bold;
@@ -627,7 +627,89 @@ body {
     color: #A4C8E1 !important;
 }
 
-/* خلفية الرسم البياني */
 .dashboard-chart-bg {
     background: #fafbfc;
+}
+
+
+.user-dropdown-toggle {
+    border: 2px solid var(--dark-blue);
+    border-radius: 1rem;
+    background: #fff;
+    color: var(--dark-blue);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 4px 18px 4px 18px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.user-dropdown-toggle:focus, .user-dropdown-toggle:hover {
+    border-color: #1877f2;
+    box-shadow: 0 4px 16px rgba(24,119,242,0.10);
+    color: #fff !important;
+    background: #fff !important;
+}
+.user-dropdown-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.user-dropdown-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-blue);
+}
+
+
+.user-dropdown-menu {
+    min-width: 260px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(24,41,79,0.13);
+    padding: 0 0 8px 0;
+    border: none;
+    margin-top: 10px;
+}
+.user-account-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(24,41,79,0.10);
+}
+.user-dropdown-menu-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(24,41,79,0.10);
+}
+.user-dropdown-menu .dropdown-item {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--dark-blue);
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+    padding: 8px 0;
+}
+.user-dropdown-menu .dropdown-item i {
+    font-size: 1.1em;
+    margin-left: 6px;
+}
+.user-dropdown-menu .dropdown-item:hover, .user-dropdown-menu .dropdown-item:focus {
+    background: #f3f7fa;
+    color: #1877f2;
+}
+.user-dropdown-menu .dropdown-item.text-danger {
+    color: #e74c3c !important;
+}
+.user-dropdown-menu .dropdown-item.text-danger:hover {
+    background: #fbeaea;
+    color: #c0392b !important;
+}
+.user-dropdown-menu .dropdown-divider {
+    margin: 0.3rem 0;
 }

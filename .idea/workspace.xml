@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="تم تعديل اضافة الفاتورة و تنسيق المودل">
-      <change afterPath="$PROJECT_DIR$/public/assets/images/user.png" afterDir="false" />
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="تصميم الداش بورد">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -238,7 +236,7 @@
       <workItem from="1750748118223" duration="29663000" />
       <workItem from="1751060630835" duration="40929000" />
       <workItem from="1751184116432" duration="6874000" />
-      <workItem from="1751370452765" duration="8443000" />
+      <workItem from="1751370452765" duration="10679000" />
     </task>
     <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
       <option name="closed" value="true" />
@@ -424,7 +422,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751194400329</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="تصميم الداش بورد">
+      <option name="closed" value="true" />
+      <created>1751390754298</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1751390754298</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +467,8 @@
     <MESSAGE value="تعديل التكست اريا" />
     <MESSAGE value="تعديل اضافة فاتورة" />
     <MESSAGE value="تم تعديل اضافة الفاتورة و تنسيق المودل" />
-    <option name="LAST_COMMIT_MESSAGE" value="تم تعديل اضافة الفاتورة و تنسيق المودل" />
+    <MESSAGE value="تصميم الداش بورد" />
+    <option name="LAST_COMMIT_MESSAGE" value="تصميم الداش بورد" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

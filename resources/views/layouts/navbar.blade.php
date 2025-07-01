@@ -1,12 +1,14 @@
 @extends('layouts.head')
 
 
-<nav class="main-navbar navbar navbar-expand-lg bg-dark-blue py-2">
+<nav class="main-navbar navbar navbar-expand-lg bg-dark-blue py-2" >
     <div class="container-fluid">
         <!-- شعار المحل يظهر فقط عندما يكون العرض 991px أو أكثر -->
+         <div>
         <div class="logo-991 me-3" style="display: none;">
             <img src="{{asset('assets/images/logo2.png')}}" alt="Logo" style="max-width: 60px;">
         </div>
+    </div>
         <!-- صندوق البحث على اليمين -->
 {{--        <form class="d-flex align-items-center search-form position-relative" role="search" style="min-width: 220px;">--}}
 {{--            <input class="form-control rounded-pill border-0 pe-5" type="search" placeholder="بحث" aria-label="بحث" style="padding-right: 2.2rem;">--}}
@@ -59,24 +61,36 @@
 {{--            </div>--}}
 {{--        </div>--}}
         <div>
-                <ul class="navbar-nav mx-5" >
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">
-                            حسابي
-                        </a>
-                        <ul class="dropdown-menu bg-white border-0">
-                            <li><a class="dropdown-item text-blue text-end" href="#">حسابي الشخصي</a></li>
-                            <li><a class="dropdown-item text-blue text-end" href="#">تغيير كلمة المرور</a></li>
-                            <li>
-                                <form action="{{ route('logout') }}" method="POST" class="dropdown-item text-white" >
-                                    @csrf
-                                    <button type="submit" class="dropdown-item text-danger w-100 text-end" style="background: none; border: none;">تسجيل خروج</button>
-                                </form>
-                            </li>
-                        </ul>
+            <div class="dropdown user-dropdown" style="position: static">
+                <button class="btn user-dropdown-toggle d-flex align-items-center gap-2" type="button" id="userDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" >
+
+                    <img src="{{ asset('assets/images/user.png') }}" alt="User" class="user-account-avatar">
+                    <span class="user-dropdown-name">حسابي</span>
+
+                </button>
+                <ul class="dropdown-menu user-dropdown-menu text-center" aria-labelledby="userDropdownMenuButton">
+                    <li class="py-2">
+                        <img src="{{ asset('assets/images/user.png') }}" alt="User" class="user-dropdown-menu-avatar mb-2">
+                        <div class="fw-bold">admin</div>
+                        <div class="text-muted small">admin@hotmail.com</div>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center justify-content-start gap-2 me-5" href="#"><i class="fa fa-user"></i> الملف الشخصي</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center justify-content-start gap-2 me-5" href="#"><i class="fa fa-cog"></i> الإعدادات</a>
+                    </li>
+                    <li><hr class="dropdown-divider "></li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST" >
+                            @csrf
+                            <button type="submit" class="dropdown-item d-flex align-items-center justify-content-start gap-2 me-5 text-danger"><i class="fa fa-sign-out-alt"></i> تسجيل خروج</button>
+                        </form>
                     </li>
                 </ul>
-                </div>
+            </div>
+        </div>
     </div>
 </nav>
 
