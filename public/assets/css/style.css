@@ -403,7 +403,7 @@ body {
     color: #fff;
     border-radius: 10px;
     font-weight: bold;
-    padding: 8px 24px;
+    /*padding: 8px 24px;*/
     border: none;
 }
 .btn-new-invoice:hover {
