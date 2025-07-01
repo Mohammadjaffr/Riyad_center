@@ -383,11 +383,7 @@ body {
 }
 
 /*-------------------------------------------------------invoice----------------------------------------------------------*/
-/*.invoice-container {*/
-/*    margin: 32px 20% auto auto   ;*/
-/*    padding: 24px 16px;*/
-/*    max-width: 900px;*/
-/*}*/
+
 .invoice-header {
     display: flex;
     justify-content: space-between;
@@ -413,10 +409,7 @@ body {
 .btn-new-invoice:hover {
     background: #132e60;
     color: #fff;
-    /* border-radius: 10px;
-    font-weight: bold;
-    padding: 8px 24px;
-    border: none; */
+
 }
 @media (max-width: 990.98px) {
     .invoice-container {
@@ -558,67 +551,83 @@ body {
     }
 }
 
-/*-------------------------------------------------------products search window----------------------------------------------------------*/
+/*-------------------------------------------------------dashboard----------------------------------------------------------*/
+.dashboard-filters {
+    border-radius: 2px;
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding-right: 0;
+    padding-left: 0;
+    margin-bottom: 16px;
+}
+.dashboard-filters li {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.dashboard-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 6px;
+}
+.dashboard-dot-clients { background: var(--dark-blue); }
+.dashboard-dot-sellers { background: #FFCF55; }
+.dashboard-dot-invoices { background: #A4C8E1; }
+.dashboard-dot-invoices-received { background: #1877f2; }
+.dashboard-filter-label {
+    font-weight: 600;
+    font-size: 1rem;
+}
 
-/*.main-content {*/
-/*    background: #fff;*/
-/*    border-radius: 16px;*/
-/*    margin: 32px auto;*/
-/*    padding: 32px 24px;*/
-/*    max-width: 1100px;*/
-/*    min-height: 80vh;*/
-/*    box-shadow: 0 2px 8px rgba(0,0,0,0.04);*/
-/*}*/
-/*.logo-search {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    margin-bottom: 32px;*/
-/*}*/
-/*.logo-search img {*/
-/*    max-width: 80px;*/
-/*}*/
-/*.logo-search .desc {*/
-/*    font-size: 12px;*/
-/*    color: #888;*/
-/*    text-align: center;*/
-/*    margin-top: 8px;*/
-/*}*/
-/*.search-table thead th {*/
-/*    background: #f6f7fa;*/
-/*    font-weight: 600;*/
-/*}*/
-/*.btn-filter {*/
-/*    background: #f6f7fa;*/
-/*    border: none;*/
-/*    color: var(--dark-blue);*/
-/*    font-weight: bold;*/
-/*    border-radius: 8px;*/
-/*    padding: 8px 24px;*/
-/*}*/
-/*.search-bar {*/
-/*    background: #f6f7fa;*/
-/*    border: none;*/
-/*    border-radius: 8px;*/
-/*    padding: 8px 16px;*/
-/*    width: 100%;*/
-/*}*/
-/*.stock-green {*/
-/*    color: #1bb76e;*/
-/*    font-weight: bold;*/
-/*}*/
-/*.stock-red {*/
-/*    color: #e74c3c;*/
-/*    font-weight: bold;*/
-/*}*/
-/*@media (max-width: 767.98px) {*/
-/*    .main-content {*/
-/*        padding: 12px 4px;*/
-/*    }*/
-/*    .logo-search {*/
-/*        margin-bottom: 16px;*/
-/*    }*/
-/*    .search-bar {*/
-/*        margin-top: 8px;*/
-/*    }*/
-/*}*/
+/* صورة المدير */
+.manager-avatar-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.manager-avatar-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--dark-blue);
+}
+.manager-avatar-badge {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark-blue);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+}
+.manager-avatar-badge i {
+    font-size: 13px;
+    color: #fff;
+}
+
+/* بطاقات العناوين */
+.card-title-dark {
+    color: var(--dark-blue);
+    font-weight: bold;
+}
+.card-bg-invoice-out {
+    background-color: #A4C8E1 !important;
+    color: #fff !important;
+}
+.card-icon-invoice-out {
+    color: #A4C8E1 !important;
+}
+
+/* خلفية الرسم البياني */
+.dashboard-chart-bg {
+    background: #fafbfc;
+}

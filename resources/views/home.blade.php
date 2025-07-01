@@ -16,5 +16,6 @@
             100% { opacity: 0; visibility: hidden; }
         }
     </style>
-    <div class="alert alert-success text-center">welcome to my project</div>
+{{--    <div class="alert alert-success text-center">welcome to my project</div>--}}
+    @include('dashboard')
 @endsection
