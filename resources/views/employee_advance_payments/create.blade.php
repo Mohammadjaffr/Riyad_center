@@ -10,7 +10,7 @@
             @include('employee_advance_payments.form', ['employee_advance-payment' => null])
 
 
-            <button type="submit" class="btn btn-primary">حفظ السلفة</button>
+            <button type="submit" class="btn btn-blue">حفظ السلفة</button>
         </form>
     </div>
 </div>

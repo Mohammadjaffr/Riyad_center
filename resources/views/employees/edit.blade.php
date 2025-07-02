@@ -10,7 +10,7 @@
 
             @include('employees.form', ['employee' => $employee])
             <div class="col-12 text-center mt-3">
-                <button type="submit" class="btn btn-new-invoice w-50 ">تعديل</button>
+                <button type="submit" class="btn btn-blue "> تعديل البيانات</button>
             </div>
 
 {{--            <button type="submit" class="btn btn-primary">تحديث</button>--}}

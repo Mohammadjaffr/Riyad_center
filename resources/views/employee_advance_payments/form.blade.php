@@ -16,9 +16,7 @@
     <div class="mb-3">
         <label for="payment_date" class="form-label fw-bold">تاريخ الصرف</label>
         <input type="date" name="payment_date" class="summary-input flex-grow-1 w-100 w-md-auto"   style="text-align: right" value="{{ date('Y-m-d') }}" required>
-    </div>
 
-    <div class="mb-3">
         <label for="reason" class="form-label fw-bold">سبب الصرفية</label>
         <textarea name="reason" class="summary-textarea flex-grow-1 w-100 w-md-auto"   style="text-align: right" required></textarea>
     </div>

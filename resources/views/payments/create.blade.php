@@ -10,7 +10,7 @@
             @include('payments.form', ['payment' => null])
 
 
-            <button type="submit" class="btn btn-primary">حفظ</button>
+            <button type="submit" class="btn btn-primary">حفظ البيانات</button>
         </form>
     </div>
     </div>
