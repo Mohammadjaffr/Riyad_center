@@ -97,7 +97,7 @@
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-link p-0 m-0 text-danger" title="حذف" onclick="return confirm('هل أنت متأكد من الحذف؟');">
+                                    <button type="button" class="btn btn-link p-0 m-0 text-danger" title="حذف" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $product->id }}">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </form>
@@ -156,5 +156,36 @@
             </div>
         </div>
     </div>
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-3">
+                <div class="modal-header bg-danger text-white ">
+                    <h5 class="modal-title" id="deleteModalLabel">تأكيد الحذف</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p>هل أنت متأكد أنك تريد حذف هذا المنتج؟</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <form method="POST" id="delete-form">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">نعم، حذف</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const deleteModal = document.getElementById('deleteModal');
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const id = button.getAttribute('data-id');
+
+            const form = document.getElementById('delete-form');
+            form.action = `/products/${id}`;
+        });
+    </script>
 
 @endsection

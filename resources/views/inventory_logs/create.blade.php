@@ -9,8 +9,11 @@
                 @csrf
                 @include('inventory_logs.form', ['inventory-log' => null])
 
+                <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-primary">حفظ البيانات</button>
+                <a href="{{route('inventory-logs.index')}}" class="btn btn-outline-blue">رجوع</a>
+                </div>
 
-                <button type="submit" class="btn btn-primary">حفظ </button>
             </form>
         </div>
     </div>

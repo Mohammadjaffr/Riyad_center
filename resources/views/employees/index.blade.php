@@ -38,7 +38,7 @@
                     <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
                         <i class="fa fa-filter"></i> فلترة
                     </button>
-                </div
+                </div>
             </div>
             <div class="table-responsive ">
                 <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 900px;">
@@ -68,7 +68,10 @@
                                 <form action="{{ route('employees.destroy', $emp->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-link p-0 m-0 text-danger" onclick="return confirm('هل أنت متأكد؟')"><i class="fa fa-trash"></i></button>
+{{--                                    <button class="btn btn-link p-0 m-0 text-danger" onclick="return confirm('هل أنت متأكد؟')"><i class="fa fa-trash"></i></button>--}}
+                                    <button type="button" class="btn btn-link p-0 m-0 text-danger" title="حذف" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $emp->id }}">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -80,6 +83,37 @@
             </div>
         </div>
     </div>
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-3">
+                <div class="modal-header bg-danger text-white ">
+                    <h5 class="modal-title" id="deleteModalLabel">تأكيد الحذف</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p>هل أنت متأكد أنك تريد حذف هذا الموظف؟</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <form method="POST" id="delete-form">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">نعم، حذف</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const deleteModal = document.getElementById('deleteModal');
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const id = button.getAttribute('data-id');
+
+            const form = document.getElementById('delete-form');
+            form.action = `/employees/${id}`;
+        });
+    </script>
 
 @endsection
 

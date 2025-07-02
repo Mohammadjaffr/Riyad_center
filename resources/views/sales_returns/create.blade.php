@@ -63,6 +63,8 @@
             <div class="col-12 text-center mt-3">
 
             <button type="submit" class="btn btn-blue"> تنفيذ المرتجع</button>
+                <a href="{{route('sales-returns.index')}}" class="btn btn-outline-blue">رجوع</a>
+
             </div>
         </form>
         </div>

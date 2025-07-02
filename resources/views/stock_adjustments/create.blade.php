@@ -14,8 +14,10 @@
         <form method="POST" action="{{ route('stock-adjustments.store') }}">
             @csrf
             @include('stock_adjustments.form', ['stock-adjustment' => null])
-            <div class="col-12 text-center mt-3">
+            <div class="col-12 mt-3">
             <button type="submit" class="btn btn-blue"> تنفيذ التعديل</button>
+                <a href="{{route('stock-adjustments.index')}}" class="btn btn-outline-blue">رجوع</a>
+
             </div>
         </form>
         </div>

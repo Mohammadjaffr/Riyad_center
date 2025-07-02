@@ -739,3 +739,7 @@ body {
 .user-dropdown-menu .dropdown-divider {
     margin: 0.3rem 0;
 }
+.sidebar-link-custom.active, .dropdown-item-custom.active {
+    background-color: var(--dark-blue);
+    color: #fff !important;
+}

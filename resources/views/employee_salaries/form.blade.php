@@ -41,8 +41,8 @@
                     </span>
                 @enderror
             </div>
-
+            <div class="col-12 text-center mt-3">
             <button type="submit" class="btn btn-primary">حفظ</button>
             <a href="{{route('employee-salaries.index')}}"  class="btn btn-outline-blue">رجوع</a>
-
+            </div>
 

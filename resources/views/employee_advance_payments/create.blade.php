@@ -9,8 +9,10 @@
             @csrf
             @include('employee_advance_payments.form', ['employee_advance-payment' => null])
 
-
+            <div class="col-12 text-center mt-3">
             <button type="submit" class="btn btn-blue">حفظ السلفة</button>
+            <a href="{{route('employee-advance-payments.index')}}" class="btn btn-outline-blue">رجوع</a>
+            </div>
         </form>
     </div>
 </div>

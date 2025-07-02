@@ -10,6 +10,8 @@
                 @include('suppliers.form', ['supplier' => null])
                 <div class="col-12 text-center mt-3">
                     <button type="submit" class="btn btn-blue ">حفظ البيانات</button>
+                    <a href="{{route('suppliers.index')}}" class="btn btn-outline-blue">رجوع</a>
+
                 </div>
 
 

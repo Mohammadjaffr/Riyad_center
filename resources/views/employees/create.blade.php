@@ -13,6 +13,8 @@
             @include('employees.form', ['employee' => null])
             <div class="col-12 text-center mt-3">
                 <button type="submit" class="btn btn-blue ">حفظ البيانات</button>
+                <a href="{{route('employees.index')}}" class="btn btn-outline-blue">رجوع</a>
+
             </div>
 
 {{--            <button type="submit" class="btn btn-success">حفظ</button>--}}

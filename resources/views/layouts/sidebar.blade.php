@@ -88,14 +88,14 @@
             <li class="nav-item">
                 <a class="nav-link sidebar-link-custom" href="{{url('/sales')}}">المبيعات</a>
             </li>
-            {{--سجل المخزون--}}
+            {{-- المخزون--}}
             <li class="nav-item position-relative">
                 <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">
-                    سجل المخزون
+                     المخزون
                 </a>
                 <div class=" rounded-2 mt-2" id="reportDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
-                    <a class="dropdown-item-custom" href="{{url('/inventory-logs')}}"> المخزون </a>
+                    <a class="dropdown-item-custom" href="{{url('/inventory-logs')}}">   سجل المخزون</a>
                     <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'current']) }}"> الجرد الحالي</a>
                     <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}"> الجرد الشهري</a>
                     <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}"> الجرد السنوي</a>
@@ -139,5 +139,27 @@
         </ul>
     </nav>
 </aside>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.sidebar-link-custom').forEach(function(link) {
+        link.addEventListener('click', function() {
+            document.querySelectorAll('.sidebar-link-custom').forEach(function(l) {
+                l.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+
+    document.querySelectorAll('.dropdown-item-custom').forEach(function(link) {
+        link.addEventListener('click', function() {
+            document.querySelectorAll('.dropdown-item-custom').forEach(function(l) {
+                l.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+});
+</script>
 
 
