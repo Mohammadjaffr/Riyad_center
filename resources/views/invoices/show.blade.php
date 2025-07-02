@@ -82,7 +82,7 @@
         </div>
 
         {{-- ملخص الحساب --}}
-        <div class="row justify-content-end mt-4">
+        <div class="row justify-content-start mt-4">
             <div class="col-md-5">
                 <table class="table table-hover align-middle text-center table-striped  table-sm">
                     <tr>

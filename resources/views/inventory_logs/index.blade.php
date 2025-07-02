@@ -5,7 +5,7 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);">سجل المخزون</h2>
-            <a href="{{ route('inventory-logs.create') }}" class="btn btn-new-invoice mb-2 mb-md-0">
+            <a href="{{ route('inventory-logs.create') }}" class="btn btn-blue mb-2 mb-md-0">
                 <i class="fa fa-plus"></i> إضافة تعديل يدوي
             </a>
         </div>
@@ -17,10 +17,13 @@
         @endif
 
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
-            <div class="d-flex gap-2 mb-3 flex-wrap">
-                <a href="{{ route('inventory-logs.report', ['type' => 'current']) }}" class="btn btn-outline-primary">📦 الجرد الحالي</a>
-                <a href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}" class="btn btn-outline-secondary">📅 الجرد الشهري</a>
-                <a href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}" class="btn btn-outline-dark">🗓 الجرد السنوي</a>
+
+            <div class="d-flex gap-2 mb-3 flex-wrap ">
+                <div class="col-12 col-md-4 text-end mb-3 mb-md-0"></div>
+
+                <a href="{{ route('inventory-logs.report', ['type' => 'current']) }}" class="btn btn-outline-blue">📦 الجرد الحالي</a>
+                <a href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}" class="btn btn-outline-blue">📅 الجرد الشهري</a>
+                <a href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}" class="btn btn-outline-blue">🗓 الجرد السنوي</a>
             </div>
 
             <div class="row g-2 align-items-center mb-3">
@@ -28,9 +31,10 @@
                     <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">
                 </div>
                 <div class="col-12 col-md-7"></div>
-                <div class="col-12 col-md-1 text-center mb-2 mb-md-0">
-                    <button class="summary-input flex-grow-1 w-100 w-md-auto" style="border-radius: 10px;">
-                        <i class="fa fa-filter"></i>
+                <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
+                    <!-- زر لفتح المودال -->
+                    <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
+                        <i class="fa fa-filter"></i> فلترة
                     </button>
                 </div>
             </div>

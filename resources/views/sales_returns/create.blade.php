@@ -3,7 +3,8 @@
 
 @section('content')
     <div class="container py-4">
-        <h3 class="mb-4">إرجاع منتج من فاتورة</h3>
+        <div class="bg-white rounded-4 p-4 shadow-sm">
+            <h2 class="text-center mb-4" style="color: var(--dark-blue);">إضافة مورد جديدإرجاع منتج من فاتورة</h2>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -14,8 +15,8 @@
 
             <div class="mb-3">
                 <label class="form-label fw-bold">اختر المنتج من الفاتورة</label>
-                <select class="form-select" name="invoice_item_id" required id="invoiceItemSelect">
-                    <option value="">-- اختر منتجًا من فاتورة --</option>
+                <select class="summary-input text-end flex-grow-1 w-100 w-md-auto" name="invoice_item_id" required id="invoiceItemSelect">
+                    <option  disabled selected>اختر منتجًا من فاتورة </option>
                     @foreach($invoices as $invoice)
                         @foreach($invoice->items as $item)
                             @php
@@ -48,7 +49,7 @@
 
             <div class="mb-3">
                 <label class="form-label fw-bold">الكمية المرجعة</label>
-                <input type="number" name="return_quantity" class="form-control" min="1" required id="returnQuantityInput">
+                <input type="number" name="return_quantity" class="summary-input text-end flex-grow-1 w-100 w-md-auto" min="1" required id="returnQuantityInput">
                 <div id="availableQtyHelp" class="form-text text-muted"></div>
                 @error('return_quantity')
                 <div class="text-danger">{{ $message }}</div>
@@ -57,11 +58,14 @@
 
             <div class="mb-3">
                 <label class="form-label fw-bold">سبب الإرجاع (اختياري)</label>
-                <input type="text" name="reason" class="form-control">
+                <input type="text" name="reason" class="summary-input text-end flex-grow-1 w-100 w-md-auto">
             </div>
+            <div class="col-12 text-center mt-3">
 
-            <button type="submit" class="btn btn-primary"><i class="fa fa-undo"></i> تنفيذ المرتجع</button>
+            <button type="submit" class="btn btn-blue"> تنفيذ المرتجع</button>
+            </div>
         </form>
+        </div>
     </div>
 
     <script>
