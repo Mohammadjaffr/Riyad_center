@@ -36,20 +36,20 @@
                         </div>
                         <div class="col-md-3">
                             <label class="form-label fw-bold">التاريخ</label>
-                            <input type="date" name="invoice_date" value="{{ $invoice->invoice_date }}" class="summary-input flex-grow-1 w-100 w-md-auto">
+                            <input type="date" name="invoice_date" value="{{ $invoice->invoice_date }}" class="summary-input flex-grow-1 w-100 w-md-auto" readonly>
                         </div>
                     </div>
                 </div>
 
                 <!-- العناصر -->
-                <table class="table table-bordered" id="items-table">
+                <table class="table table-bordered align-middle text-center custom-invoice-table mb-0 table-striped" id="items-table">
                     <thead class="table-secondary">
                     <tr>
                         <th>المنتج</th>
                         <th>الكمية</th>
                         <th>سعر الوحدة</th>
                         <th>الإجمالي</th>
-                        <th>إجراء</th>
+                        <th><i class="fa fa-trash"></i></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -67,28 +67,30 @@
                             <td><input type="number" name="quantity[]" class="summary-input flex-grow-1 w-100 w-md-auto quantity" value="{{ $item->quantity }}" min="1"></td>
                             <td><input type="number" name="unit_price[]" class="summary-input flex-grow-1 w-100 w-md-auto unit_price" step="0.01" value="{{ $item->unit_price }}"></td>
                             <td><input type="text" class="summary-input flex-grow-1 w-100 w-md-auto total_price" value="{{ $item->total_price }}" readonly></td>
-                            <td><button type="button" class="btn btn-danger btn-sm remove-item">حذف</button></td>
+                            <td><button type="button" class="btn btn-danger btn-sm remove-item"><i class="fa fa-trash"></i></button></td>
+
+{{--                            <td><button type="button" class="btn btn-danger btn-sm remove-item">حذف</button></td>--}}
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
 
 {{--                <button type="button" class="btn btn-secondary mt-2 mb-3" id="add-item">+ إضافة عنصر</button>--}}
-                <button type="button" class="btn btn-new-invoice my-2" id="add-item">إضافة </button>
+                <button type="button" class="btn btn-blue my-2" id="add-item">إضافة </button>
 
                 <!-- الملخص -->
                 <div class="summary-box-custom rounded-4 p-3 mb-4">
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label>الخصم</label>
+                            <label  class="form-label fw-bold">الخصم</label>
                             <input type="number" name="discount_amount" class="summary-input flex-grow-1 w-100 w-md-auto" value="{{ $invoice->discount_amount }}">
                         </div>
                         <div class="col-md-4">
-                            <label>المدفوع</label>
+                            <label  class="form-label fw-bold">المدفوع</label>
                             <input type="number" name="paid_amount" class="summary-input flex-grow-1 w-100 w-md-auto" value="{{ $invoice->paid_amount }}">
                         </div>
                         <div class="col-md-4">
-                            <label>طريقة الدفع</label>
+                            <label  class="form-label fw-bold">طريقة الدفع</label>
                             <select name="payment_type" class="summary-input flex-grow-1 w-100 w-md-auto">
                                 <option value="نقدي" {{ $invoice->payment_type == 'نقدي' ? 'selected' : '' }}>نقدي</option>
                                 <option value="آجل" {{ $invoice->payment_type == 'آجل' ? 'selected' : '' }}>آجل</option>
@@ -98,13 +100,14 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-12">
-                            <label>ملاحظات</label>
-                            <input type="text" name="notes" class="summary-input flex-grow-1 w-100 w-md-auto" value="{{ $invoice->notes }}">
+                            <label  class="form-label fw-bold">ملاحظات</label>
+                            <textarea name="notes" class="summary-textarea flex-grow-1 w-100 w-md-auto">{{ $invoice->notes }}</textarea>
+{{--                            <input type="text" name="notes" class="summary-input flex-grow-1 w-100 w-md-auto" value="{{ $invoice->notes }}">--}}
                         </div>
                     </div>
                     <div class="text-end">
-                        <button type="submit" class="btn btn-new-invoice">تحديث الفاتورة</button>
-                        <a href="{{ route('invoices.index') }}" class="btn btn-outline-secondary">إلغاء</a>
+                        <button type="submit" class="btn btn-blue">تحديث الفاتورة</button>
+                        <a href="{{ route('invoices.index') }}" class="btn btn-outline-danger">إلغاء</a>
                     </div>
                 </div>
             </form>

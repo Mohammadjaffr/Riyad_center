@@ -53,7 +53,7 @@
                 <div class=" rounded-2 mt-2 " id="invoicesDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
                     <a class="dropdown-item-custom" href="{{route('invoices.create')}}">إضافة فاتورة</a>
-                    <a class="dropdown-item-custom" href="#">عرض الفواتير</a>
+{{--                    <a class="dropdown-item-custom" href="#">عرض الفواتير</a>--}}
                     <a class="dropdown-item-custom" href="{{url('/invoices')}}">قائمة الفواتير</a>
                 </div>
 
@@ -73,23 +73,6 @@
                 </div>
 
             </li>
-            {{--سجل المخزون--}}
-            <li class="nav-item position-relative">
-                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">
-                    سجل المخزون
-                </a>
-                <div class=" rounded-2 mt-2" id="reportDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
-
-                    <a class="dropdown-item-custom" href="{{url('/inventory-logs')}}"> المخزون </a>
-                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'current']) }}"> الجرد الحالي</a>
-                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}"> الجرد الشهري</a>
-                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}"> الجرد السنوي</a>
-{{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'current') }}">جرد حالي PDF</a>--}}
-{{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'monthly') }}">جرد شهري PDF</a>--}}
-{{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'yearly') }}">جرد سنوي PDF</a>--}}
-                </div>
-
-            </li>
             {{--إدارة المشتريات --}}
             <li class="nav-item position-relative">
                 <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="purchasesDropdown" role="button" onclick="purchasesDropdown(event)" aria-expanded="false">
@@ -104,6 +87,23 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link sidebar-link-custom" href="{{url('/sales')}}">المبيعات</a>
+            </li>
+            {{--سجل المخزون--}}
+            <li class="nav-item position-relative">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">
+                    سجل المخزون
+                </a>
+                <div class=" rounded-2 mt-2" id="reportDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
+
+                    <a class="dropdown-item-custom" href="{{url('/inventory-logs')}}"> المخزون </a>
+                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'current']) }}"> الجرد الحالي</a>
+                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}"> الجرد الشهري</a>
+                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}"> الجرد السنوي</a>
+                    {{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'current') }}">جرد حالي PDF</a>--}}
+                    {{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'monthly') }}">جرد شهري PDF</a>--}}
+                    {{--                    <a class="dropdown-item-custom" href="{{ route('inventory-logs.pdf', 'yearly') }}">جرد سنوي PDF</a>--}}
+                </div>
+
             </li>
 {{--            <li class="nav-item position-relative">--}}
 {{--                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">--}}

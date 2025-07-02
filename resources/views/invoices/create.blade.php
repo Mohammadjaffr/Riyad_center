@@ -106,7 +106,7 @@
                             <tr class="product-row">
                                 <td>
                                     <select name="variant_id[]" class="summary-input flex-grow-1 w-100 w-md-auto variant-select" style="text-align: right" required>
-                                        <option selected disabled>اختر متغير</option>
+                                        <option  disabled selected>اختر متغير</option>
                                         @foreach($products as $product)
                                             @foreach($product->variants as $variant)
                                                 <option value="{{ $variant->id }}" data-price="{{ $variant->sell_price }}" data-stock="{{ $variant->quantity }}">
@@ -203,13 +203,13 @@
                                             <span id="preview_customer_name" class="fw-normal border-bottom border-2 border-dark-blue px-2 py-1 flex-grow-1"></span>
                                         </div>
                                         <div class="d-flex align-items-center mb-3">
-                                            <span class="fw-bold text-dark-blue me-3" style="min-width: 100px;">القسم:</span>
+                                            <span class="fw-bold text-dark-blue me-3" style="min-width: 100px;">القســـــــــــــم:</span>
                                             <span id="preview_department" class="fw-normal border-bottom border-2 border-dark-blue px-2 py-1 flex-grow-1"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-3">
-                                            <span class="fw-bold text-dark-blue me-3" style="min-width: 100px;">الموظف:</span>
+                                            <span class="fw-bold text-dark-blue me-3" style="min-width: 100px;">الموظـــــــــــف:</span>
                                             <span id="preview_employee" class="fw-normal border-bottom border-2 border-dark-blue px-2 py-1 flex-grow-1"></span>
                                         </div>
                                         <div class="d-flex align-items-center mb-3">

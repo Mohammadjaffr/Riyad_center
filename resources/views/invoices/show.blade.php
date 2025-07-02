@@ -4,31 +4,58 @@
 
 @section('content')
     <div class="container my-4" style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); direction: rtl; font-family: 'Tahoma', sans-serif;">
+        <div class="row align-items-center ">
+        <!-- Right Info -->
+        <div class="col-12 col-md-4 text-end mb-3 mb-md-0 mt-5">
+            <div class="mb-5"></div>
+            <p class="mb-0 form-label fw-bold">الاسم: {{ $invoice->customer_name }}</p>
+            <p class="mb-0 form-label fw-bold">القسم: {{ $invoice->department->name ?? '-' }}</p>
+
+        </div>
+        <!-- Logo Center -->
+        <div class="col-12 col-md-4 text-center mb-3 mb-md-0 align-items-center">
+            <img src="{{asset('assets/images/logo.png')}}" alt="Logo" style="max-width: 100px;">
+{{--            <br class="d-none d-md-block"><br class="d-none d-md-block">--}}
+            <div class="">
+{{--                <h4 class="mb-0 fw-bold">فاتورة مبيعات</h4>--}}
+                <small  class="form-label fw-bold">رقم الفاتورة: {{ $invoice->invoice_num }}</small><br>
+                <small  class="form-label fw-bold">تاريخ الإصدار: {{ $invoice->invoice_date }}</small>
+            </div>
+        </div>
+            <!-- left Info -->
+            <div class="col-12 col-md-4 text-start mb-3 mb-md-0 mt-5">
+                <div class="mb-5"></div>
+                <p class="mb-0 form-label fw-bold">الموظف: {{ $invoice->employee->name ?? '-' }}</p>
+                <p class="mb-0 form-label fw-bold">طريقة الدفع: {{ $invoice->payment_type }}</p>
+
+            </div>
+        </div>
+{{--        --}}
 
         {{-- الشعار + عنوان الفاتورة --}}
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-                <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" style="max-height: 80px;">
-            </div>
-            <div class="text-end">
-                <h4 class="mb-0">فاتورة مبيعات</h4>
-                <small>رقم الفاتورة: {{ $invoice->invoice_num }}</small><br>
-                <small>تاريخ الإصدار: {{ $invoice->invoice_date }}</small>
-            </div>
-        </div>
+{{--        <div class="d-flex justify-content-between align-items-center mb-4">--}}
+{{--            <div>--}}
+{{--                <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" style="max-height: 80px;">--}}
+{{--            </div>--}}
+{{--            <div class="text-end">--}}
+{{--                <h4 class="mb-0 fw-bold">فاتورة مبيعات</h4>--}}
+{{--                <small  class="form-label fw-bold">رقم الفاتورة: {{ $invoice->invoice_num }}</small><br>--}}
+{{--                <small  class="form-label fw-bold">تاريخ الإصدار: {{ $invoice->invoice_date }}</small>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         {{-- بيانات العميل --}}
-        <div class="mb-4">
-            <h6 class="fw-bold">معلومات العميل:</h6>
-            <p class="mb-0">الاسم: {{ $invoice->customer_name }}</p>
-            <p class="mb-0">القسم: {{ $invoice->department->name ?? '-' }}</p>
-            <p class="mb-0">الموظف: {{ $invoice->employee->name ?? '-' }}</p>
-            <p class="mb-0">طريقة الدفع: {{ $invoice->payment_type }}</p>
-        </div>
+{{--        <div class="mb-4">--}}
+{{--            <h6 class="fw-bold">معلومات العميل:</h6>--}}
+{{--            <p class="mb-0 form-label fw-bold">الاسم: {{ $invoice->customer_name }}</p>--}}
+{{--            <p class="mb-0 form-label fw-bold">القسم: {{ $invoice->department->name ?? '-' }}</p>--}}
+{{--            <p class="mb-0 form-label fw-bold">الموظف: {{ $invoice->employee->name ?? '-' }}</p>--}}
+{{--            <p class="mb-0 form-label fw-bold">طريقة الدفع: {{ $invoice->payment_type }}</p>--}}
+{{--        </div>--}}
 
         {{-- تفاصيل العناصر --}}
         <div class="table-responsive">
-            <table class="table table-bordered text-center">
+            <table class="table table-hover align-middle text-center table-striped custom-invoice-table">
                 <thead style="background: #f6f6f6;">
                 <tr>
                     <th>#</th>
@@ -57,7 +84,7 @@
         {{-- ملخص الحساب --}}
         <div class="row justify-content-end mt-4">
             <div class="col-md-5">
-                <table class="table table-sm">
+                <table class="table table-hover align-middle text-center table-striped  table-sm">
                     <tr>
                         <th>الإجمالي</th>
                         <td>{{ number_format($invoice->items->sum('total_price'), 2) }}</td>

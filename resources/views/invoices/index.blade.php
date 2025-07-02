@@ -18,7 +18,7 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);">قائمة الفواتير</h2>
-            <a href="{{ route('invoices.create') }}" class="btn btn-new-invoice mb-2 mb-md-0">
+            <a href="{{ route('invoices.create') }}" class="btn btn-blue mb-2 mb-md-0">
                 <i class="fa fa-plus"></i> اضافة  فاتورة
             </a>
         </div>
@@ -30,10 +30,10 @@
                     <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">
                 </div>
                 <div class="col-12 col-md-7"></div>
-                <div class="col-12 col-md-1 text-center mb-2 mb-md-0">
-                    <button class="summary-input flex-grow-1 w-100 w-md-auto" style="border-radius: 10px;">
-                        <i class="fa fa-filter"></i>
-
+                <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
+                    <!-- زر لفتح المودال -->
+                    <button type="button" class="btn btn-blue" >
+                        <i class="fa fa-filter"></i> فلترة
                     </button>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                             <td>{{ number_format($invoice->rest_amount, 2) }}</td>
                             <td>{{ $invoice->invoice_date }}</td>
                             <td>
-                                <a href="{{ route('invoices.show', $invoice->id) }}" class="text-success me-2 ms-3" title="عرض" >
+                                <a href="{{ route('invoices.show', $invoice->id) }}" class="text-dark-blue me-2 ms-3" title="عرض" >
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 <a href="{{ route('invoices.edit', $invoice->id) }}" class="text-success me-2 ms-3" title="تعديل" >
