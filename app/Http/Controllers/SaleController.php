@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\InventoryLog;
 use App\Models\Product;
 use App\Models\Sale;
 use App\Models\SaleItem;
@@ -77,13 +78,38 @@ class SaleController extends Controller
             'department_id' => $request->department_id,
         ]);
 
-        foreach ($request->product_id as $index => $product_id) {
+        foreach ($request->variant_id as $index => $variant_id) {
+            $qty = $request->quantity[$index];
+            $price = $request->unit_price[$index];
+
+            $variant = Product_variant::findOrFail($variant_id);
+
+            // تحقق من الكمية المتوفرة
+            if ($variant->quantity < $qty) {
+                return back()->with('error', "الكمية المطلوبة للمنتج {$variant->product->name} - {$variant->size} - {$variant->color} غير متوفرة في المخزون.");
+            }
+
+            // خصم الكمية من المخزون
+            $variant->decrement('quantity', $qty);
+
+            // إنشاء العنصر في جدول المبيعات
             SaleItem::create([
                 'sale_id' => $sale->id,
-                'product_id' => $product_id,
-                'quantity' => $request->quantity[$index],
-                'unit_price' => $request->unit_price[$index],
-                'total_price' => $request->quantity[$index] * $request->unit_price[$index],
+                'product_id' => $variant->product_id,
+                'variant_id' => $variant_id,
+                'quantity' => $qty,
+                'unit_price' => $price,
+                'total_price' => $qty * $price,
+            ]);
+
+            // تسجيل حركة في جدول المخزون
+            InventoryLog::create([
+                'product_variant_id' => $variant_id,
+                'change_type' => 'بيع',
+                'quantity' => $qty,
+                'description' => 'عملية بيع - رقم الفاتورة #' . $sale->id,
+                'created_by' => auth()->id(),
+                'created_at' => now(),
             ]);
         }
 

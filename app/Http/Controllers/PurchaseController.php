@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InventoryLog;
 use App\Models\Product;
+use App\Models\Product_variant;
 use App\Models\Purchase;
 use App\Models\PurchaseItem;
 use App\Models\Supplier;
@@ -73,30 +74,35 @@ class PurchaseController extends Controller
                 'notes' => $request->notes,
             ]);
 
-            foreach ($request->product_id as $index => $product_id) {
+            foreach ($request->variant_id as $index => $variant_id) {
                 $qty = $request->quantity[$index];
                 $price = $request->unit_price[$index];
 
+                $variant = Product_variant::findOrFail($variant_id);
+
                 PurchaseItem::create([
                     'purchase_id' => $purchase->id,
-                    'product_id' => $product_id,
+                    'product_id' => $variant->product_id,
+                    'variant_id' => $variant_id,
                     'quantity' => $qty,
                     'unit_price' => $price,
                     'total_price' => $qty * $price,
                 ]);
 
-                $product = Product::findOrFail($product_id);
-                $product->increment('quantity', $qty);
+                // تحديث الكمية في المتغير
+                $variant->increment('quantity', $qty);
 
+                // سجل حركة المخزون
                 InventoryLog::create([
-                    'product_id' => $product_id,
+                    'product_variant_id' => $variant_id,
                     'change_type' => 'شراء',
                     'quantity' => $qty,
-                    'description' => 'إضافة مخزون من عملية شراء #' . $purchase->id,
+                    'description' => 'شراء من المورد #' . $purchase->supplier->name,
                     'created_by' => auth()->id(),
                     'created_at' => now(),
                 ]);
             }
+
 
 
             return redirect()->route('purchases.index')->with('success', 'تمت إضافة عملية الشراء وتحديث المخزون');

@@ -2,13 +2,11 @@
 @section('title' ,'الموردين')
 @section('content')
 
-
-
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);">قائمة الموردين</h2>
             <a href="{{ route('suppliers.create') }}" class="btn btn-blue mb-2 mb-md-0">
-                <i class="fa fa-plus"></i>إضافة مورد جديد
+                <i class="fa fa-plus"></i> إضافة مورد جديد
             </a>
         </div>
 
@@ -18,22 +16,41 @@
             </div>
         @endif
 
+        <!-- Delete Confirmation Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">تأكيد الحذف</h5>
+                    </div>
+                    <div class="modal-body">
+                        هل أنت متأكد من رغبتك في حذف هذا المورد؟ لا يمكن التراجع عن هذه العملية.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                        <form id="deleteForm" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">حذف</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
             <div class="row g-2 align-items-center mb-3">
-
-
                 <div class="col-12 col-md-4">
                     <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">
                 </div>
                 <div class="col-12 col-md-7"></div>
                 <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
-                    <!-- زر لفتح المودال -->
                     <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
                         <i class="fa fa-filter"></i> فلترة
                     </button>
                 </div>
             </div>
-            <div class="table-responsive ">
+            <div class="table-responsive">
                 <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 900px;">
                     <thead class="table-light">
                     <tr>
@@ -52,47 +69,39 @@
                             <td>{{ $supplier->address }}</td>
                             <td>{{ $supplier->department->name ?? '—' }}</td>
                             <td>
-                                <a href="{{ route('suppliers.edit', $supplier->id) }}" class="text-success me-2 ms-3" title="تعديل" >
+                                <a href="{{ route('suppliers.edit', $supplier->id) }}" class="text-success me-2 ms-3" title="تعديل">
                                     <i class="fa fa-pen"></i>
                                 </a>
-                                <form action="{{ route('suppliers.destroy', $supplier->id) }}" method="POST" style="display:inline-block;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-link p-0 m-0 text-danger" onclick="return confirm('هل أنت متأكد؟')"><i class="fa fa-trash"></i></button>
-                                </form>
+                                <button class="btn btn-link p-0 m-0 text-danger delete-btn"
+                                        data-id="{{ $supplier->id }}"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal"
+                                        title="حذف">
+                                    <i class="fa fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     @endforeach
-
-{{--                    @forelse($purchases as $purchase)--}}
-{{--                        <tr>--}}
-{{--                            <td>{{ $loop->iteration }}</td>--}}
-{{--                            <td>{{ $purchase->supplier->name ?? '---' }}</td>--}}
-{{--                            <td>{{ $purchase->purchase_date }}</td>--}}
-{{--                            <td>{{ number_format($purchase->total_amount, 2) }}</td>--}}
-{{--                            <td>{{ $purchase->notes ?? '-' }}</td>--}}
-{{--                            <td>{{ $purchase->employee->name ?? '-' }}</td>--}}
-{{--                            <td>--}}
-{{--                                <a href="#" class="btn btn-sm ms-3 "><i class="fa fa-eye"></i></a>--}}
-{{--                                <form action="#" method="POST" class="d-inline" onsubmit="return confirm('هل أنت متأكد من الحذف؟')">--}}
-{{--                                    @csrf--}}
-{{--                                    @method('DELETE')--}}
-{{--                                    <button class="btn btn-link p-0 m-0 text-danger"><i class="fa fa-trash"></i></button>--}}
-{{--                                </form>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @empty--}}
-{{--                        <tr>--}}
-{{--                            <td colspan="7">لا توجد عمليات شراء حتى الآن</td>--}}
-{{--                        </tr>--}}
-{{--                    @endforelse--}}
-
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-@endsection
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Set up delete modal
+                const deleteButtons = document.querySelectorAll('.delete-btn');
+                const deleteForm = document.getElementById('deleteForm');
 
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const supplierId = this.getAttribute('data-id');
+                        const supplierName = this.closest('tr').querySelector('td:first-child').textContent;
+                        deleteForm.action = `/suppliers/${supplierId}`;
+                        document.getElementById('deleteModalLabel').textContent = `حذف المورد: ${supplierName}`;
+                    });
+                });
+            });
+        </script>
+    @endsection

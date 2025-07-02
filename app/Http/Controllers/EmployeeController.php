@@ -45,15 +45,12 @@ class EmployeeController extends Controller
             'name' => 'required|string|max:255',
             'phone' => 'required|unique:employees,phone',
             'password' => 'required|string|min:6',
-            'status' => 'required|in:active,inactive',
+            'status' => 'required',
             'role' => 'required|string|max:50',
             'salary' => 'required|numeric|min:0',
             'department_id' => 'required|exists:departments,id',
         ], [
             'name.required' => 'حقل الاسم مطلوب',
-            'name.string' => 'يجب أن يكون الاسم نصًا',
-            'name.max' => 'الاسم لا يجب أن يتجاوز 255 حرفًا',
-
             'phone.required' => 'حقل الهاتف مطلوب',
             'phone.unique' => 'رقم الهاتف مستخدم بالفعل',
 
@@ -62,7 +59,7 @@ class EmployeeController extends Controller
             'password.min' => 'كلمة المرور يجب أن تكون على الأقل 6 حروف',
 
             'status.required' => 'حقل الحالة مطلوب',
-            'status.in' => 'الحالة المختارة غير صحيحة',
+//            'status.in' => 'الحالة المختارة غير صحيحة',
 
             'role.required' => 'حقل الدور مطلوب',
             'role.string' => 'يجب أن يكون الدور نصًا',
@@ -76,7 +73,7 @@ class EmployeeController extends Controller
             'department_id.exists' => 'القسم المحدد غير موجود',
         ]);
 
-        $data['password'] = bcrypt($data['password']);
+        $data['password'] = Hash::make($data['password']);
 
         Employee::create($data);
         return redirect()->route('employees.index')->with('success', 'تمت إضافة الموظف بنجاح');

@@ -36,6 +36,7 @@ class SupplierController extends Controller
     public function edit(Supplier $supplier)
     {
         $departments = Department::all();
+//        $supplier = Supplier::all();
         return view('suppliers.edit', compact('supplier', 'departments'));
     }
 

@@ -10,4 +10,9 @@ class SaleItem extends Model
 
     public function sale() { return $this->belongsTo(Sale::class); }
     public function product() { return $this->belongsTo(Product::class); }
+    public function variant()
+    {
+        return $this->belongsTo(Product_variant::class, 'variant_id');
+    }
+
 }
