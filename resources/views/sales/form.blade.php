@@ -74,6 +74,6 @@
 </div>
 
 <button type="submit" class="btn btn-primary">حفظ</button>
-<a href="{{route('sales.index')}}" class="btn btn-outline-secondary">رجوع</a>
+<a href="{{route('sales.index')}}" class="btn btn-outline-blue">رجوع</a>
 
 
