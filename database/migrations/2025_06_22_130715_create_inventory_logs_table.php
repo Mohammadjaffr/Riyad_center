@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('inventory_logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_variant_id')->constrained('product_variants');
+            $table->foreignId('invoice_item_id')->nullable()->constrained('invoice_items')->onDelete('set null');
             $table->string('change_type');
             $table->integer('quantity');
             $table->text('description')->nullable();

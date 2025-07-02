@@ -23,11 +23,15 @@
                 <tbody>
                 @forelse($logs as $log)
                     <tr>
-                        <td>{{ $log->product->name ?? '-' }}</td>
+                        <td>
+                            {{ $log->productVariant->product->name ?? '-' }}
+                            {{ $log->productVariant->size ? ' - ' . $log->productVariant->size : '' }}
+                            {{ $log->productVariant->color ? ' / ' . $log->productVariant->color : '' }}
+                        </td>
                         <td>{{ $log->quantity }}</td>
                         <td>{{ $log->description }}</td>
-                        <td>{{ $log->created_by }}</td>
-                        <td>{{ $log->created_at }}</td>
+                        <td>{{ $log->employee->name ?? '-' }}</td>
+                        <td>{{ $log->created_at->format('Y-m-d H:i') }}</td>
                     </tr>
                 @empty
                     <tr>

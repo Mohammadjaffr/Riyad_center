@@ -5,19 +5,20 @@ use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\Product;
 use App\Models\InventoryLog;
+use App\Models\Product_variant;
 use Illuminate\Http\Request;
 
 class SalesReturnController extends Controller
 {
     public function index()
     {
-        $logs = InventoryLog::where('change_type', 'مرتجع بيع')->latest()->with('product')->paginate(20);
+        $logs = InventoryLog::where('change_type', 'مرتجع بيع')->latest()->with('productVariant.product')->paginate(20);
         return view('sales_returns.index', compact('logs'));
     }
 
     public function create()
     {
-        $invoices = Invoice::with('items.product')->get();
+        $invoices = Invoice::with('items.productVariant.product')->get();
         return view('sales_returns.create', compact('invoices'));
     }
 
@@ -29,24 +30,31 @@ class SalesReturnController extends Controller
             'reason' => 'nullable|string|max:255',
         ]);
 
-        $item = InvoiceItem::findOrFail($request->invoice_item_id);
-        $product = Product::findOrFail($item->product_id);
+        $item = InvoiceItem::with('productVariant')->findOrFail($request->invoice_item_id);
+        $product = $item->productVariant;
 
-        if ($request->return_quantity > $item->quantity) {
-            return back()->withErrors(['return_quantity' => 'لا يمكن إرجاع كمية أكبر من المباعة.']);
+        // حساب كمية المرتجعات السابقة لنفس عنصر الفاتورة
+        $returnedQuantity = InventoryLog::where('change_type', 'مرتجع بيع')
+            ->where('invoice_item_id', $item->id)
+            ->sum('quantity');
+
+        $availableForReturn = $item->quantity - $returnedQuantity;
+
+        if ($request->return_quantity > $availableForReturn || $availableForReturn <= 0) {
+            return back()->withErrors(['return_quantity' => 'لا يمكن إرجاع كمية أكبر من الكمية المتاحة أو لا توجد كمية متاحة للإرجاع.']);
         }
 
-        // زيادة الكمية
+        // زيادة الكمية في المخزون
         $product->increment('quantity', $request->return_quantity);
 
         // تسجيل المرتجع في سجل المخزون
         InventoryLog::create([
-            'product_id' => $product->id,
+            'invoice_item_id' => $item->id,
+            'product_variant_id' => $product->id,
             'change_type' => 'مرتجع بيع',
             'quantity' => $request->return_quantity,
             'description' => $request->reason ?? 'إرجاع منتج من الفاتورة #' . $item->invoice_id,
             'created_by' => auth()->id(),
-            'created_at' => now(),
         ]);
 
         return redirect()->route('sales-returns.index')->with('success', 'تم تسجيل المرتجع بنجاح.');
