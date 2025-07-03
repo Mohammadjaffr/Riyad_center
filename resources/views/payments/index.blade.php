@@ -18,14 +18,24 @@
 
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
             <div class="row g-2 align-items-center mb-3">
+                <form method="GET" action="{{ route('payments.index') }}" class="col-md-6 col-lg-4 mb-3">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            name="search"
+                            class="form-control summary-input"
+                            placeholder="ابحث باسم الموظف أو رقم الفاتورة..."
+                            value="{{ request('search') }}"
+                            style="text-align: right;"
+                        >
+                        <button class="btn btn-blue position-absolute rounded-circle mt-0" style="left:25px;" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
 
-
-                <div class="col-12 col-md-4">
-                    <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">
-                </div>
-                <div class="col-12 col-md-7"></div>
+                <div class="col-2 col-md-7"></div>
                 <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
-                    <!-- زر لفتح المودال -->
                     <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
                         <i class="fa fa-filter"></i> فلترة
                     </button>
@@ -60,6 +70,53 @@
                     @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4 bg-white">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark-blue" id="filterModalLabel">فلترة المدفوعات</h5>
+                </div>
+
+                <form method="GET" action="{{ route('payments.index') }}">
+                    <div class="modal-body">
+                        <div class="row g-3 text-dark-blue">
+                            <!-- حقل البحث -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">بحث باسم الموظف أو رقم الفاتورة</label>
+                                <input
+                                    type="text"
+                                    name="search"
+                                    class="summary-input w-100"
+                                    value="{{ request('search') }}"
+                                    placeholder="مثال: خالد، فاتورة 2023-001"
+                                    autocomplete="off"
+                                />
+                            </div>
+
+                            <!-- الترتيب حسب المبلغ -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">الترتيب حسب المبلغ</label>
+                                <select name="sort" class="summary-input w-100 text-dark-blue">
+                                    <option value="" disabled {{ !request('sort') ? 'selected' : '' }}>اختر</option>
+                                    <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>من الأقل إلى الأعلى</option>
+                                    <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>من الأعلى إلى الأقل</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-between">
+                        <a href="{{ route('payments.index') }}" class="btn btn-outline-blue">
+                            <i class="fa fa-undo"></i> إعادة تعيين
+                        </a>
+                        <button type="submit" class="btn btn-blue">
+                            <i class="fa fa-search"></i> تطبيق الفلتر
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

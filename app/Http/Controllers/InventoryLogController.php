@@ -10,11 +10,35 @@ use Illuminate\Http\Request;
 
 class InventoryLogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $logs = InventoryLog::with('product', 'employee')->latest()->get();
+        $search = $request->input('search');
+        $type = $request->input('type');
+        $sort = $request->input('sort');
+
+        $logs = InventoryLog::with(['productVariant.product', 'employee'])
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->whereHas('productVariant.product', function ($q2) use ($search) {
+                        $q2->where('name', 'like', "%{$search}%");
+                    })->orWhereHas('employee', function ($q2) use ($search) {
+                        $q2->where('name', 'like', "%{$search}%");
+                    });
+                });
+            })
+            ->when($type, function ($query, $type) {
+                $query->where('change_type', $type);
+            })
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('created_at', $sort);
+            }, function ($query) {
+                $query->latest();
+            })
+            ->paginate(10);
+
         return view('inventory_logs.index', compact('logs'));
     }
+
 
     public function create()
     {
@@ -60,7 +84,7 @@ class InventoryLogController extends Controller
             SUM(CASE WHEN change_type = "بيع" THEN quantity ELSE 0 END) +
             SUM(CASE WHEN change_type = "تعديل يدوي" THEN quantity ELSE 0 END) as current_stock')
                 ->groupBy('product_variant_id')
-                ->with('productVariant.product'); // مهم هنا
+                ->with('productVariant.product');
 
             if ($product_variant_id) {
                 $query->having('product_variant_id', '=', $product_variant_id);

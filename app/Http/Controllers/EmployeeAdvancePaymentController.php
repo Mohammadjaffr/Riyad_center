@@ -8,11 +8,28 @@ use Illuminate\Http\Request;
 
 class EmployeeAdvancePaymentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $advances = EmployeeAdvancePayment::with('employee', 'creator')->latest()->get();
+        $search = $request->input('search');
+        $sort = $request->input('sort');
+
+        $advances = EmployeeAdvancePayment::with(['employee', 'creator'])
+            ->when($search, function ($query, $search) {
+                $query->whereHas('employee', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                        ->orWhere('phone', 'like', "%{$search}%");
+                });
+            })
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('amount', $sort);
+            }, function ($query) {
+                $query->latest();
+            })
+            ->paginate(10);
+
         return view('employee_advance_payments.index', compact('advances'));
     }
+
 
     public function create()
     {

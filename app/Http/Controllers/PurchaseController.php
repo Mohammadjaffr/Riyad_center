@@ -15,11 +15,28 @@ class PurchaseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $purchases = Purchase::with('supplier')->latest()->get();
+        $search = $request->input('search');
+        $sort = $request->input('sort');
+
+        $purchases = Purchase::with('supplier')
+            ->when($search, function ($query, $search) {
+                $query->where('invoice_num', 'like', "%{$search}%")
+                    ->orWhereHas('supplier', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    });
+            })
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('invoice_date', $sort);
+            }, function ($query) {
+                $query->latest();
+            })
+            ->paginate(10);
+
         return view('purchases.index', compact('purchases'));
     }
+
 
     /**
      * Show the form for creating a new resource.

@@ -11,12 +11,33 @@ class PaymentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+        $sort = $request->input('sort');
+
+        $payments = Payment::with(['invoice', 'creator'])
+            ->when($search, function ($query, $search) {
+                $query->where('payment_reference', 'like', "%{$search}%")
+                    ->orWhereHas('invoice', function ($q) use ($search) {
+                        $q->where('invoice_num', 'like', "%{$search}%")
+                            ->orWhereHas('employee', function ($q2) use ($search) {
+                                $q2->where('name', 'like', "%{$search}%");
+                            });
+                    });
+            })
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('amount', $sort);
+            }, function ($query) {
+                $query->orderByDesc('payment_date');
+            })
+            ->paginate(10);
+
         $invoices = Invoice::all();
-        $payments = Payment::with(['invoice', 'creator'])->orderBy('payment_date', 'desc')->get();
-        return view('payments.index', compact('payments','invoices'));
+
+        return view('payments.index', compact('payments', 'invoices'));
     }
+
 
     /**
      * Show the form for creating a new resource.

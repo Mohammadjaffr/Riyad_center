@@ -20,12 +20,32 @@ class InvoiceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = Invoice::with(['department', 'employee']);
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('invoice_num', 'like', "%{$search}%")
+                    ->orWhereHas('employee', function ($empQuery) use ($search) {
+                        $empQuery->where('name', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        if ($request->filled('sort') && in_array($request->sort, ['asc', 'desc'])) {
+            $query->orderBy('invoice_date', $request->sort);
+        } else {
+            $query->latest('invoice_date');
+        }
+
+        $invoices = $query->paginate(10);
         $payments = Payment::all();
-        $invoices = Invoice::with(['department', 'employee'])->orderBy('invoice_date', 'desc')->get();
-        return view('invoices.index', compact('invoices','payments'));
+
+        return view('invoices.index', compact('invoices', 'payments'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -236,7 +256,7 @@ class InvoiceController extends Controller
     }
     public function print(Invoice $invoice)
     {
-        $invoice->load(['department', 'employee', 'items.product']);
+        $invoice->load(['department', 'employee', 'items.productVariant.product']);
         $pdf = PDf::loadView('invoices.pdf', compact('invoice'))->setPaper('A4', 'portrait');
 
         return $pdf->stream('invoice-' . $invoice->invoice_num . '.pdf');

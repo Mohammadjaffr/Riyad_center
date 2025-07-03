@@ -24,15 +24,27 @@
         </div>
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
             <div class="row g-2 align-items-center mb-3">
+                <form method="GET" action="{{ route('invoices.index') }}" class="col-md-6 col-lg-4 mb-3">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            name="search"
+                            class="form-control summary-input flex-grow-1 w-100 w-md-auto"
+                            placeholder="ابحث برقم الفاتورة أو اسم الموظف..."
+                            value="{{ request('search') }}"
+                            style="text-align: right;"
+                        >
+                        <button class="btn btn-blue position-absolute rounded-circle mt-0 " style="left:25px;" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
 
 
-                <div class="col-12 col-md-4">
-                    <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">
-                </div>
-                <div class="col-12 col-md-7"></div>
+                <div class="col-2 col-md-7"></div>
                 <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
                     <!-- زر لفتح المودال -->
-                    <button type="button" class="btn btn-blue" >
+                    <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
                         <i class="fa fa-filter"></i> فلترة
                     </button>
                 </div>
@@ -89,6 +101,57 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4 bg-white">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark-blue" id="filterModalLabel">فلترة الفواتير</h5>
+                </div>
+                <form method="GET" action="{{ route('invoices.index') }}">
+                    <div class="modal-body">
+                        <div class="row g-3 text-dark-blue">
+                            <!-- حقل البحث -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">بحث برقم الفاتورة أو اسم الموظف</label>
+                                <input
+                                    type="text"
+                                    id="search"
+                                    name="search"
+                                    class="summary-input flex-grow-1 w-100 w-md-auto"
+                                    value="{{ request('search') }}"
+                                    placeholder="مثال: 10025 أو أحمد علي"
+                                    autocomplete="off"
+                                />
+                            </div>
+
+                            <!-- حقل الترتيب -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">الترتيب حسب التاريخ</label>
+                                <select name="sort" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue">
+                                    <option value="" disabled {{ !request('sort') ? 'selected' : '' }}>اختر</option>
+                                    <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>تصاعدي (الأقدم أولاً)</option>
+                                    <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>تنازلي (الأحدث أولاً)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-between">
+                        <!-- زر إعادة تعيين الفلترة -->
+                        <a href="{{ route('invoices.index') }}" class="btn btn-outline-blue">
+                            <i class="fa fa-undo"></i> إعادة تعيين
+                        </a>
+
+                        <!-- زر تنفيذ الفلترة -->
+                        <button type="submit" class="btn btn-blue">
+                            <i class="fa fa-search"></i> تطبيق الفلتر
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Delete Confirmation Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

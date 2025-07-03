@@ -15,12 +15,19 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $sort = $request->input('sort');
 
         $employees = Employee::with('department')
             ->when($search, function ($query, $search) {
-                $query->where('name', 'like', "%{$search}%");
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('phone', 'like', "%{$search}%");
             })
-            ->get();
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('name', $sort);
+            }, function ($query) {
+                $query->latest(); // default sort by latest
+            })
+            ->paginate(10);
 
         return view('employees.index', compact('employees'));
     }

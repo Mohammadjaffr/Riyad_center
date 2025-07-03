@@ -14,11 +14,28 @@ class SaleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sales = Sale::with('employee', 'department')->latest()->get();
+        $search = $request->input('search');
+        $sort = $request->input('sort');
+
+        $sales = Sale::with(['employee', 'department'])
+            ->when($search, function ($query, $search) {
+                $query->where('invoice_num', 'like', "%{$search}%")
+                    ->orWhereHas('employee', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    });
+            })
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('created_at', $sort);
+            }, function ($query) {
+                $query->latest();
+            })
+            ->paginate(10);
+
         return view('sales.index', compact('sales'));
     }
+
 
     /**
      * Show the form for creating a new resource.

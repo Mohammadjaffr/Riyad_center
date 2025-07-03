@@ -16,12 +16,12 @@
             </li>
             {{--الاقسام--}}
             <li class="nav-item position-relative">
-                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="deptDropdown" role="button" onclick="deptDropdown(event)" aria-expanded="false">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="" id="deptDropdown" role="button" onclick="deptDropdown(event)" aria-expanded="false">
                     الأقسام
                 </a>
                 <div class="  rounded-2 mt-2 " id="deptDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
-                    <a class="dropdown-item-custom" href="#">الملابس</a>
+                    <a class="dropdown-item-custom" href="">الملابس</a>
                     <a class="dropdown-item-custom" href="{{route('stock-adjustments.create')}}">إضافة جرد</a>
                     <a class="dropdown-item-custom" href="{{route('stock-adjustments.index')}}">الجرد</a>
                     <a class="dropdown-item-custom" href="{{route('departments.index')}}">إضافة قسم</a>
@@ -31,7 +31,7 @@
 
             {{--المنتجات--}}
             <li class="nav-item position-relative">
-                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="productsDropdown" role="button" onclick="productsDropdown(event)" aria-expanded="false">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="" id="productsDropdown" role="button" onclick="productsDropdown(event)" aria-expanded="false">
                     المنتجات
                 </a>
                 <div class="  rounded-2 mt-2 " id="productsDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
@@ -47,20 +47,20 @@
             </li>
             {{--الفواتير--}}
             <li class="nav-item position-relative">
-                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="invoicesDropdown" role="button" onclick="toggleDropdown(event)" aria-expanded="false">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="" id="invoicesDropdown" role="button" onclick="toggleDropdown(event)" aria-expanded="false">
                     الفواتير
                 </a>
                 <div class=" rounded-2 mt-2 " id="invoicesDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
                     <a class="dropdown-item-custom" href="{{route('invoices.create')}}">إضافة فاتورة</a>
-{{--                    <a class="dropdown-item-custom" href="#">عرض الفواتير</a>--}}
+{{--                    <a class="dropdown-item-custom" href="">عرض الفواتير</a>--}}
                     <a class="dropdown-item-custom" href="{{url('/invoices')}}">قائمة الفواتير</a>
                 </div>
 
             </li>
             {{--الموظفين--}}
             <li class="nav-item position-relative">
-                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="empDropdown" role="button" onclick="empDropdown(event)" aria-expanded="false">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="" id="empDropdown" role="button" onclick="empDropdown(event)" aria-expanded="false">
                     الموظفين
                 </a>
                 <div class=" rounded-2 mt-2 " id="empDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
@@ -75,7 +75,7 @@
             </li>
             {{--إدارة المشتريات --}}
             <li class="nav-item position-relative">
-                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="purchasesDropdown" role="button" onclick="purchasesDropdown(event)" aria-expanded="false">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="" id="purchasesDropdown" role="button" onclick="purchasesDropdown(event)" aria-expanded="false">
                     إدارة المشتريات
                 </a>
                 <div class=" rounded-2 mt-2" id="purchasesDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
@@ -90,7 +90,7 @@
             </li>
             {{-- المخزون--}}
             <li class="nav-item position-relative">
-                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">
                      المخزون
                 </a>
                 <div class=" rounded-2 mt-2" id="reportDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
@@ -106,12 +106,12 @@
 
             </li>
 {{--            <li class="nav-item position-relative">--}}
-{{--                <a class="nav-link sidebar-link-custom dropdown-toggle" href="#" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">--}}
+{{--                <a class="nav-link sidebar-link-custom dropdown-toggle" href="" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">--}}
 {{--                    التقارير--}}
 {{--                </a>--}}
 {{--                <div class=" rounded-2 mt-2 text-center" id="reportDropdownMenu" style="display: none; width: 12rem !important;">--}}
-{{--                    <a class="dropdown-item-custom" href="#">إنشاء تقرير</a>--}}
-{{--                    <a class="dropdown-item-custom" href="#">عرض التقارير</a>--}}
+{{--                    <a class="dropdown-item-custom" href="">إنشاء تقرير</a>--}}
+{{--                    <a class="dropdown-item-custom" href="">عرض التقارير</a>--}}
 {{--                </div>--}}
 
 {{--            </li>--}}

@@ -15,23 +15,23 @@
 
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
             <div class="row g-2 align-items-center mb-3">
-
-
-                <form method="GET" action="{{ route('employees.index') }}" class="col-4">
-                    <div class="row g-2 align-items-center mb-3">
-
-                            <input
-                                type="text"
-                                name="search"
-                                class="form-control summary-input flex-grow-1 w-100 w-md-auto"
-                                placeholder="البحث ..."
-                                style="text-align: right;"
-                                value="{{ request('search') }}"
-                                autocomplete="off"
-                            >
-
+                <form method="GET" action="{{ route('employees.index') }}" class="col-md-6 col-lg-4 mb-3">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            name="search"
+                            class="form-control summary-input flex-grow-1 w-100 w-md-auto"
+                            placeholder="ابحث برقم الموضف أو اسم الموظف..."
+                            value="{{ request('search') }}"
+                            style="text-align: right;"
+                        >
+                        <button class="btn btn-blue position-absolute rounded-circle mt-0 " style="left:25px;" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </div>
                 </form>
+
+
                 <div class="col-2 col-md-7"></div>
                 <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
                     <!-- زر لفتح المودال -->
@@ -83,6 +83,56 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4 bg-white">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark-blue" id="filterModalLabel">فلترة الموظفين</h5>
+                </div>
+
+                <form method="GET" action="{{ route('employees.index') }}">
+                    <div class="modal-body">
+                        <div class="row g-3 text-dark-blue">
+                            <!-- حقل البحث -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">بحث بالاسم أو رقم الهاتف</label>
+                                <input
+                                    type="text"
+                                    id="search"
+                                    name="search"
+                                    class="summary-input flex-grow-1 w-100 w-md-auto"
+                                    value="{{ request('search') }}"
+                                    placeholder="مثال: أحمد، 775456789"
+                                    autocomplete="off"
+                                />
+                            </div>
+
+                            <!-- الترتيب -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">الترتيب حسب الاسم</label>
+                                <select name="sort" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue">
+                                    <option value="" disabled {{ !request('sort') ? 'selected' : '' }}>اختر</option>
+                                    <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>تصاعدي</option>
+                                    <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>تنازلي</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الأزرار -->
+                    <div class="modal-footer justify-content-between">
+                        <a href="{{ route('employees.index') }}" class="btn btn-outline-blue">
+                            <i class="fa fa-undo"></i> إعادة تعيين
+                        </a>
+                        <button type="submit" class="btn btn-blue">
+                            <i class="fa fa-search"></i> تطبيق الفلتر
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Delete Confirmation Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

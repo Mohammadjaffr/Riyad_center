@@ -8,11 +8,28 @@ use Illuminate\Http\Request;
 
 class EmployeeSalaryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $salaries = EmployeeSalary::with('employee')->latest()->get();
+        $search = $request->input('search');
+        $sort = $request->input('sort');
+
+        $salaries = EmployeeSalary::with('employee')
+            ->when($search, function ($query, $search) {
+                $query->whereHas('employee', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                        ->orWhere('phone', 'like', "%{$search}%");
+                });
+            })
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('salary_amount', $sort);
+            }, function ($query) {
+                $query->latest();
+            })
+            ->paginate(10);
+
         return view('employee_salaries.index', compact('salaries'));
     }
+
 
     public function create()
     {

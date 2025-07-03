@@ -8,11 +8,32 @@ use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $suppliers = Supplier::with('department')->get();
-        return view('suppliers.index', compact('suppliers'));
+        $search = $request->input('search');
+        $sort = $request->input('sort');
+        $department = $request->input('department_id');
+
+        $suppliers = Supplier::with('department')
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('phone', 'like', "%{$search}%");
+            })
+            ->when($department, function ($query, $department) {
+                $query->where('department_id', $department);
+            })
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('name', $sort);
+            }, function ($query) {
+                $query->latest();
+            })
+            ->paginate(10);
+
+        $departments = Department::all(); // لإرسال الأقسام للمودال
+
+        return view('suppliers.index', compact('suppliers', 'departments'));
     }
+
 
     public function create()
     {
