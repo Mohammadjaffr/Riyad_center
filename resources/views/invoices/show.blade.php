@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.head')
 
 @section('title', 'عرض الفاتورة')
 
-@section('content')
+{{--@section('content')--}}
     <div class="container my-4" style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); direction: rtl; font-family: 'Tahoma', sans-serif;">
         <div class="row align-items-center ">
         <!-- Right Info -->
@@ -54,7 +54,7 @@
 {{--        </div>--}}
 
         {{-- تفاصيل العناصر --}}
-        <div class="table-responsive">
+        <div class="table-responsive mt-5">
             <table class="table table-hover align-middle text-center table-striped custom-invoice-table">
                 <thead style="background: #f6f6f6;">
                 <tr>
@@ -83,7 +83,7 @@
 
         {{-- ملخص الحساب --}}
         <div class="row justify-content-start mt-4">
-            <div class="col-md-5">
+            <div class="col-12">
                 <table class="table table-hover align-middle text-center table-striped  table-sm">
                     <tr>
                         <th>الإجمالي</th>
@@ -112,8 +112,10 @@
 
         {{-- زر طباعة --}}
         <div class="text-center mt-4">
-            <a   href="{{ route('invoices.print', $invoice->id) }}"class="btn btn-success">طباعة</a>
+            <a   href="{{ route('invoices.print', $invoice->id) }}" class="btn btn-blue">طباعة الفاتورة</a>
+            <a   href="{{ route('invoices.index') }}" class="btn btn-outline-blue">رجوع </a>
+
         </div>
 
     </div>
-@endsection
+{{--@endsection--}}

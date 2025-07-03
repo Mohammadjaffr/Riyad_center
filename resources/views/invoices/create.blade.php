@@ -244,7 +244,7 @@
                                         <div class="d-flex  align-items-center">
                                             <span class="fw-bold text-dark-blue ms-1">الخصم:</span>
                                             <span id="preview_discount" class="fw-bold ms-1">0.00</span>
-                                            <span class="text-muted">ريال</span>
+                                            <span class="text-muted">%</span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -358,9 +358,19 @@
                 if (!isNaN(val)) total += val;
             });
 
-            document.getElementById('invoice-total').textContent = total.toFixed(2);
-            document.getElementById('total_amount').value = total.toFixed(2);
+        //   تحديث المجموع بالنسبة  للخصم 
+            const discountPercent = parseFloat(document.querySelector('input[name=discount_amount]').value) || 0;
+            const discountValue = total * (discountPercent / 100);
+            const finalTotal = total - discountValue;
+
+            document.getElementById('invoice-total').textContent = finalTotal.toFixed(2);
+            document.getElementById('total_amount').value = finalTotal.toFixed(2);
         }
+
+        // تحديث الإجمالي عند تغيير الخصم
+        document.querySelector('input[name=discount_amount]').addEventListener('input', function() {
+            updateInvoiceTotal();
+        });
 
         // تحديث الإجمالي عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', () => {
@@ -410,5 +420,23 @@
             document.getElementById('preview_paid').textContent = paid.toFixed(2);
             document.getElementById('preview_rest').textContent = rest.toFixed(2);
         }
+
+        // التحقق من الكمية عند إدخالها
+        document.addEventListener('input', function(e) {
+            if (e.target.matches('.quantity')) {
+                const qtyInput = e.target;
+                const tr = qtyInput.closest('tr');
+                const select = tr.querySelector('select.variant-select');
+                const selectedOption = select.options[select.selectedIndex];
+                const maxStock = parseInt(selectedOption.getAttribute('data-stock')) || 0;
+                let qty = parseInt(qtyInput.value) || 1;
+                if (qty > maxStock) {
+                    alert('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
+                    qtyInput.value = maxStock > 0 ? maxStock : 1;
+                    updateRowTotal(tr);
+                    updateInvoiceTotal();
+                }
+            }
+        });
     </script>
 @endsection

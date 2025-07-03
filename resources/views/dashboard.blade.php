@@ -1,11 +1,11 @@
 
 <div class="container-fluid px-2">
     <div class="row g-3 mb-4">
-        <!-- العملاء -->
+        <!-- الموظفين -->
         <div class="col-12 col-md-6 col-lg-3">
             <div class="card invoice-card text-center custom-shadow h-100">
                 <div class="card-body p-3">
-                    <div class="fw-bold text-white bg-dark-blue rounded-3 py-1 mb-2" style="font-size: 1.1rem;">العملاء</div>
+                    <div class="fw-bold text-white bg-dark-blue rounded-3 py-1 mb-2" style="font-size: 1.1rem;">الموظفين</div>
                     <div class="fs-2 fw-bold">10000</div>
                     <div class="mt-2">
                         <i class="fa fa-users fa-lg text-dark-blue"></i>
@@ -13,11 +13,11 @@
                 </div>
             </div>
         </div>
-        <!-- البائعين -->
+        <!-- المبيعات -->
         <div class="col-12 col-md-6 col-lg-3">
             <div class="card invoice-card text-center custom-shadow h-100">
                 <div class="card-body p-3">
-                    <div class="fw-bold text-white rounded-3 py-1 mb-2" style="background: #FFCF55; border-radius: 0.5rem; font-size: 1.1rem;">البائعين</div>
+                    <div class="fw-bold text-white rounded-3 py-1 mb-2" style="background: #FFCF55; border-radius: 0.5rem; font-size: 1.1rem;">المبيعات</div>
                     <div class="fs-2 fw-bold">100</div>
                     <div class="mt-2">
                         <i class="fa fa-user-tie fa-lg" style="color: #FFCF55;"></i>
@@ -25,11 +25,11 @@
                 </div>
             </div>
         </div>
-        <!-- الفواتير الصادرة -->
+        <!-- المخزون  -->
         <div class="col-12 col-md-6 col-lg-3">
             <div class="card invoice-card text-center custom-shadow h-100">
                 <div class="card-body p-3">
-                    <div class="fw-bold text-white rounded-3 py-1 mb-2 card-bg-invoice-out" style="font-size: 1.1rem;">الفواتير الصادرة</div>
+                    <div class="fw-bold text-white rounded-3 py-1 mb-2 card-bg-invoice-out" style="font-size: 1.1rem;">المخزون </div>
                     <div class="fs-2 fw-bold">10000</div>
                     <div class="mt-2">
                         <i class="fa fa-file-invoice fa-lg card-icon-invoice-out"></i>
@@ -37,11 +37,11 @@
                 </div>
             </div>
         </div>
-        <!-- الفواتير المستلمة -->
+        <!-- الربح -->
         <div class="col-12 col-md-6 col-lg-3">
             <div class="card invoice-card text-center custom-shadow h-100">
                 <div class="card-body p-3">
-                    <div class="fw-bold text-white bg-primary rounded-3 py-1 mb-2" style="font-size: 1.1rem; background: #1877f2 !important;">الفواتير المستلمة</div>
+                    <div class="fw-bold text-white bg-primary rounded-3 py-1 mb-2" style="font-size: 1.1rem; background: #1877f2 !important;">الربح</div>
                     <div class="fs-2 fw-bold">10000</div>
                     <div class="mt-2">
                         <i class="fa fa-file-invoice-dollar fa-lg" style="color: #1877f2;"></i>
@@ -78,10 +78,10 @@
                 <div class="d-flex flex-column align-items-center mb-2">
                     <div class="w-100 mb-2">
                         <ul class="dashboard-filters">
-                            <li><span class="dashboard-dot dashboard-dot-clients"></span><span class="dashboard-filter-label">العملاء</span></li>
-                            <li><span class="dashboard-dot dashboard-dot-sellers"></span><span class="dashboard-filter-label">البائعين</span></li>
-                            <li><span class="dashboard-dot dashboard-dot-invoices"></span><span class="dashboard-filter-label">الفواتير الصادرة</span></li>
-                            <li><span class="dashboard-dot dashboard-dot-invoices-received"></span><span class="dashboard-filter-label">الفواتير المستلمة</span></li>
+                            <li><span class="dashboard-dot dashboard-dot-clients"></span><span class="dashboard-filter-label">الموظفين</span></li>
+                            <li><span class="dashboard-dot dashboard-dot-sellers"></span><span class="dashboard-filter-label">المبيعات</span></li>
+                            <li><span class="dashboard-dot dashboard-dot-invoices"></span><span class="dashboard-filter-label"> المخزون</span></li>
+                            <li><span class="dashboard-dot dashboard-dot-invoices-received"></span><span class="dashboard-filter-label"> الربح</span></li>
                         </ul>
                     </div>
                     <div class="w-100">
@@ -100,15 +100,15 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['الفواتير المستلمة', 'الفواتير الصادرة', 'البائعين','العملاء' ],
+            labels: ['الربح', 'المخزون', 'المبيعات','الموظفين' ],
             datasets: [{
                 label: 'عدد',
                 data: [30, 25, 40, 32],
                 backgroundColor: [
-                    '#1877f2',  // الفواتير المستلمة
-                    '#A4C8E1', // الفواتير الصادرة
-                    '#FFCF55', // البائعين
-                    '#11294F', // العملاء
+                    '#1877f2',  // الربح
+                    '#A4C8E1', // المخزون
+                    '#FFCF55', // المبيعات
+                    '#11294F', // الموظفين
 
 
                 ],

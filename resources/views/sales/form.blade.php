@@ -211,4 +211,21 @@
         document.getElementById('preview_paid').textContent = paid.toFixed(2);
         document.getElementById('preview_rest').textContent = rest.toFixed(2);
     }
+
+    document.addEventListener('input', function(e) {
+        if (e.target.matches('.quantity')) {
+            const qtyInput = e.target;
+            const tr = qtyInput.closest('tr');
+            const select = tr.querySelector('select.variant-select');
+            const selectedOption = select.options[select.selectedIndex];
+            const maxStock = parseInt(selectedOption.getAttribute('data-stock')) || 0;
+            let qty = parseInt(qtyInput.value) || 1;
+            if (qty > maxStock) {
+                alert('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
+                qtyInput.value = maxStock > 0 ? maxStock : 1;
+                updateRowTotal(tr);
+                updateInvoiceTotal();
+            }
+        }
+    });
 </script>

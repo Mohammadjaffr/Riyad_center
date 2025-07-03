@@ -26,9 +26,9 @@
                             class="form-control summary-input"
                             placeholder="ابحث برقم الفاتورة أو اسم الموظف..."
                             value="{{ request('search') }}"
-                            style="text-align: right;"
+                            style="text-align: right;height: 43px!important;"
                         >
-                        <button class="btn btn-blue position-absolute rounded-circle mt-0" style="left:25px;" type="submit">
+                        <button class="btn btn-blue position-absolute rounded-circle my-1" style="left:25px;" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>

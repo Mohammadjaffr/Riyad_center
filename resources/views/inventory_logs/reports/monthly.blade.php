@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.head')
 @section('title' ,'الجرد الشهري')
-@section('content')
+{{--@section('content')--}}
 
-    <div class="container py-4">
+    <div class="container py-4" dir="rtl">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);"> تقرير الجرد الشهري - {{ now()->format('Y/m') }}</h2>
 
@@ -40,14 +40,12 @@
                         <input type="date" name="date_to" class="summary-input text-end flex-grow-1 w-100 w-md-auto" value="{{ request('date_to') }}">
                     </div>
 
-                    <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
                         <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
                             <button type="submit" class="btn btn-blue">
                                 <i class="fa fa-filter"></i> فلترة
                             </button>
                         </div>
 
-                    </div>
                 </form>
 
                     <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 900px;">                    <thead class="table-light">
@@ -93,8 +91,8 @@
 
             <h5 class="mb-3 mb-md-0" style="color: var(--dark-blue);"> الملخص المالي</h5>
 
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-5">
+            <div class="row justify-content-center mt-4" dir="rtl">
+                <div class="col-12">
                     <table class="table table-hover align-middle text-center table-striped  table-sm">
                         <tr>
                             <th>مجموع المشتريات</th>
@@ -181,4 +179,4 @@
 {{--    </div>--}}
 
 
-@endsection
+{{--@endsection--}}

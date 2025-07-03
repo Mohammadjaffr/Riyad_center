@@ -22,6 +22,7 @@
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="col-md-3">
                             <label class="form-label fw-bold">القسم</label>
                             <select name="department_id" class="summary-input flex-grow-1 w-100 w-md-auto">
@@ -31,13 +32,18 @@
                             </select>
                         </div>
                         <div class="col-md-3">
+                            <label class="form-label fw-bold">اسم العميل</label>
+                            <input type="text" name="customer_name" class="summary-input flex-grow-1 w-100 w-md-auto" value="{{ $invoice->customer_name }}">
+                        </div>
+                        <!-- <div class="col-md-3">
                             <label class="form-label fw-bold">رقم الفاتورة</label>
                             <input type="text" name="invoice_num" value="{{ $invoice->invoice_num }}" class="summary-input flex-grow-1 w-100 w-md-auto" readonly>
-                        </div>
+                        </div> -->
                         <div class="col-md-3">
                             <label class="form-label fw-bold">التاريخ</label>
                             <input type="date" name="invoice_date" value="{{ $invoice->invoice_date }}" class="summary-input flex-grow-1 w-100 w-md-auto" readonly>
                         </div>
+                        
                     </div>
                 </div>
 
@@ -45,7 +51,7 @@
                 <table class="table table-bordered align-middle text-center custom-invoice-table mb-0 table-striped" id="items-table">
                     <thead class="table-secondary">
                     <tr>
-                        <th>المنتج</th>
+                        <th>المتغير (المقاس - اللون)</th>
                         <th>الكمية</th>
                         <th>سعر الوحدة</th>
                         <th>الإجمالي</th>
@@ -56,11 +62,16 @@
                     @foreach ($invoice->items as $item)
                         <tr>
                             <td>
-                                <select name="product_id[]" class="summary-input flex-grow-1 w-100 w-md-auto">
+                                <select name="variant_id[]" class="summary-input flex-grow-1 w-100 w-md-auto">
                                     @foreach($products as $product)
-                                        <option value="{{ $product->id }}" {{ $item->product_id == $product->id ? 'selected' : '' }}>
-                                            {{ $product->name }}
-                                        </option>
+                                        @foreach($product->variants as $variant)
+                                            <option value="{{ $variant->id }}"
+                                                {{ $item->variant_id == $variant->id ? 'selected' : '' }}
+                                                data-stock="{{ $variant->quantity }}"
+                                                data-price="{{ $variant->sell_price }}">
+                                                {{ $product->name }} - {{ $variant->size }} - {{ $variant->color }}
+                                            </option>
+                                        @endforeach
                                     @endforeach
                                 </select>
                             </td>
@@ -80,9 +91,18 @@
 
                 <!-- الملخص -->
                 <div class="summary-box-custom rounded-4 p-3 mb-4">
+                <div class="row mb-2">
+                            <div class="col-12 text-end">
+                                <span class="fw-bold ms-5" style="font-size:1.2rem;">المجموع</span>
+                                <!-- <span  class="fw-bold d-inline-block ms-3" style="font-size:1.2rem;" id="final_total">0.00</span> -->
+                                <input type="text" id="final_total" class="summary-input flex-grow-1 w-100 w-md-auto" value="" readonly>
+
+                                <input type="hidden" name="total_amount" id="total_amount">
+                            </div>
+                        </div>
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label  class="form-label fw-bold">الخصم</label>
+                            <label  class="form-label fw-bold">الخصم </label>
                             <input type="number" name="discount_amount" class="summary-input flex-grow-1 w-100 w-md-auto" value="{{ $invoice->discount_amount }}">
                         </div>
                         <div class="col-md-4">
@@ -98,6 +118,12 @@
                             </select>
                         </div>
                     </div>
+                    <!-- <div class="row mb-2">
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">المجموع </label>
+                            <input type="text" id="final_total" class="summary-input flex-grow-1 w-100 w-md-auto" value="" readonly>
+                        </div>
+                    </div> -->
                     <div class="row mb-3">
                         <div class="col-12">
                             <label  class="form-label fw-bold">ملاحظات</label>
@@ -124,12 +150,34 @@
         }
 
         function updateAllTotals() {
-            document.querySelectorAll('#items-table tbody tr').forEach(row => calculateRowTotal(row));
+            let total = 0;
+            document.querySelectorAll('#items-table tbody tr').forEach(row => {
+                calculateRowTotal(row);
+                total += parseFloat(row.querySelector('.total_price').value) || 0;
+            });
+            // الخصم كنسبة مئوية
+            const discountPercent = parseFloat(document.querySelector('input[name=discount_amount]').value) || 0;
+            const discountValue = total * (discountPercent / 100);
+            const finalTotal = total - discountValue;
+            document.getElementById('final_total').value = finalTotal.toFixed(2);
         }
 
         document.addEventListener('input', function (e) {
-            if (e.target.classList.contains('quantity') || e.target.classList.contains('unit_price')) {
+            if (e.target.classList.contains('quantity') || e.target.classList.contains('unit_price') || e.target.name === 'discount_amount') {
                 updateAllTotals();
+            }
+            if (e.target.classList.contains('quantity')) {
+                const qtyInput = e.target;
+                const tr = qtyInput.closest('tr');
+                const select = tr.querySelector('select');
+                const selectedOption = select.options[select.selectedIndex];
+                const maxStock = parseInt(selectedOption.getAttribute('data-stock')) || 0;
+                let qty = parseInt(qtyInput.value) || 1;
+                if (qty > maxStock) {
+                    alert('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
+                    qtyInput.value = maxStock > 0 ? maxStock : 1;
+                    updateAllTotals();
+                }
             }
         });
 
@@ -138,12 +186,14 @@
             const newRow = firstRow.cloneNode(true);
             newRow.querySelectorAll('input').forEach(input => input.value = '');
             document.querySelector('#items-table tbody').appendChild(newRow);
+            updateAllTotals();
         });
 
         document.addEventListener('click', function (e) {
             if (e.target.classList.contains('remove-item')) {
                 const row = e.target.closest('tr');
                 row.remove();
+                updateAllTotals();
             }
         });
 
