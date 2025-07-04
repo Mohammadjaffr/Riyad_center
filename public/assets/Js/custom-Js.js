@@ -44,6 +44,11 @@ function reportDropdown(event) {
     var menu = document.getElementById('reportDropdownMenu');
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 
+}function returnDropdown(event) {
+    event.preventDefault();
+    var menu = document.getElementById('returnDropdownMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
 }
 function productsDropdown(event) {
     event.preventDefault();

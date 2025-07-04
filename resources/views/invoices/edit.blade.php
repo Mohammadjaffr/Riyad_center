@@ -143,8 +143,26 @@
             </form>
         </div>
     </div>
+    <!-- Modal for Quantity Error -->
+<div class="modal fade" id="quantityModal" tabindex="-1" aria-labelledby="quantityModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="quantityModalLabel">تنبيه</h5>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button> -->
+      </div>
+      <div class="modal-body" id="quantityModalMessage">
+        <!-- سيتم وضع رسالة الخطأ هنا -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">إغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- JS لحساب الإجماليات -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function calculateRowTotal(row) {
             const qty = parseFloat(row.querySelector('.quantity').value) || 0;
@@ -152,6 +170,11 @@
             const total = qty * price;
             row.querySelector('.total_price').value = total.toFixed(2);
         }
+        function showQuantityModal(message) {
+    document.getElementById('quantityModalMessage').innerText = message;
+    var myModal = new bootstrap.Modal(document.getElementById('quantityModal'));
+    myModal.show();
+}
 
         function updateAllTotals() {
             let total = 0;
@@ -178,7 +201,8 @@
                 const maxStock = parseInt(selectedOption.getAttribute('data-stock')) || 0;
                 let qty = parseInt(qtyInput.value) || 1;
                 if (qty > maxStock) {
-                    alert('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
+                    showQuantityModal('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
+                    // alert('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
                     qtyInput.value = maxStock > 0 ? maxStock : 1;
                     updateAllTotals();
                 }

@@ -37,12 +37,12 @@
                 <div class="  rounded-2 mt-2 " id="productsDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
                     <a class="dropdown-item-custom" href="{{route('products.create')}}">إضافة منتج </a>
                     <a class="dropdown-item-custom" href="{{route('products.index')}}">عرض المنتجات</a>
-                    <a class="dropdown-item-custom" href="{{route('sales-returns.create')}}">إضافة راجع البيع </a>
-                    <a class="dropdown-item-custom" href="{{route('sales-returns.index')}}">عرض راجع البيع</a>
+{{--                    <a class="dropdown-item-custom" href="{{route('sales-returns.create')}}">إضافة راجع البيع </a>--}}
+{{--                    <a class="dropdown-item-custom" href="{{route('sales-returns.index')}}">عرض راجع البيع</a>--}}
 
-                    <a class="dropdown-item-custom" href="{{route('purchase-returns.create')}}">إضافة راجع الشراء </a>
-                    <a class="dropdown-item-custom" href="{{route('purchase-returns.index')}}">عرض راجع الشراء</a>
-                    <a class="dropdown-item-custom" href="{{route('inventory-reports.index')}}">عرض التقارير</a>
+{{--                    <a class="dropdown-item-custom" href="{{route('purchase-returns.create')}}">إضافة راجع الشراء </a>--}}
+{{--                    <a class="dropdown-item-custom" href="{{route('purchase-returns.index')}}">عرض راجع الشراء</a>--}}
+{{--                    <a class="dropdown-item-custom" href="{{route('inventory-reports.index')}}">عرض التقارير</a>--}}
                 </div>
             </li>
             {{--الفواتير--}}
@@ -87,6 +87,20 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link sidebar-link-custom" href="{{url('/sales')}}">المبيعات</a>
+            </li>
+            {{--الراجع--}}
+            <li class="nav-item position-relative">
+                <a class="nav-link sidebar-link-custom dropdown-toggle" href="" id="returnDropdown" role="button" onclick="returnDropdown(event)" aria-expanded="false">
+                    الراجع
+                </a>
+                <div class="  rounded-2 mt-2 " id="returnDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
+                    <a class="dropdown-item-custom" href="{{route('sales-returns.create')}}">إضافة راجع البيع </a>
+                    <a class="dropdown-item-custom" href="{{route('sales-returns.index')}}">عرض راجع البيع</a>
+
+                    <a class="dropdown-item-custom" href="{{route('purchase-returns.create')}}">إضافة راجع الشراء </a>
+                    <a class="dropdown-item-custom" href="{{route('purchase-returns.index')}}">عرض راجع الشراء</a>
+                    <a class="dropdown-item-custom" href="{{route('inventory-reports.index')}}">عرض التقارير</a>
+                </div>
             </li>
             {{-- المخزون--}}
             <li class="nav-item position-relative">
