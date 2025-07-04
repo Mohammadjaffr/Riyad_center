@@ -7,6 +7,7 @@
             {{ session('success') ?? session('error') }}
         </div>
     @endif
+
     <style>
         @keyframes fadeInOut {
             0% { opacity: 0; }

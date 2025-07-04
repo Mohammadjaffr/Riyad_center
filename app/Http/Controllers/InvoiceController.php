@@ -192,7 +192,7 @@ class InvoiceController extends Controller
             'payment_type' => 'required|string',
             'discount_amount' => 'nullable|numeric|min:0',
             'paid_amount' => 'nullable|numeric|min:0',
-            'product_id.*' => 'required|exists:products,id',
+            'variant_id.*' => 'required|exists:product_variants,id',
             'quantity.*' => 'required|integer|min:1',
             'unit_price.*' => 'required|numeric|min:0',
         ]);
@@ -223,10 +223,10 @@ class InvoiceController extends Controller
 
             $invoice->items()->delete();
 
-            foreach ($request->product_id as $index => $product_id) {
+            foreach ($request->variant_id as $index => $variant_id) {
                 InvoiceItem::create([
                     'invoice_id' => $invoice->id,
-                    'product_id' => $product_id,
+                    'product_variant_id' => $variant_id,
                     'quantity' => $request->quantity[$index],
                     'unit_price' => $request->unit_price[$index],
                     'total_price' => $request->quantity[$index] * $request->unit_price[$index],

@@ -131,8 +131,10 @@ class PurchaseController extends Controller
 
     public function show(Purchase $purchase)
     {
-        return view('purchases.show', compact('purchase'));
+        $purchase_items = $purchase->items;
+        return view('purchases.show', compact('purchase', 'purchase_items'));
     }
+
 
 
 

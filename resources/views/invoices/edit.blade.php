@@ -1,6 +1,10 @@
 @extends('layouts.master')
 @section('title', 'تعديل فاتورة')
 @section('content')
+    @if(session('error'))
+        <div class="alert alert-danger text-end">{{ session('error') }}</div>
+    @endif
+
     <div class="container" style="background: #f6f7fa">
         <div class="invoice-container px-2 px-md-4">
             <div class="invoice-header px-2 rounded-4 mb-3">
@@ -43,7 +47,7 @@
                             <label class="form-label fw-bold">التاريخ</label>
                             <input type="date" name="invoice_date" value="{{ $invoice->invoice_date }}" class="summary-input flex-grow-1 w-100 w-md-auto" readonly>
                         </div>
-                        
+
                     </div>
                 </div>
 
