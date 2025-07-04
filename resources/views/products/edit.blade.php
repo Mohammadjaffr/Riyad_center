@@ -10,16 +10,6 @@
                 @csrf
                 @method('PUT')
 
-{{--                @if ($errors->any())--}}
-{{--                    <div class="alert alert-danger text-end">--}}
-{{--                        <ul class="mb-0">--}}
-{{--                            @foreach ($errors->all() as $error)--}}
-{{--                                <li>{{ $error }}</li>--}}
-{{--                            @endforeach--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                @endif--}}
-
                 @include('products.form', ['product' => $product])
 
                 <div class="col-12 text-center mt-3">

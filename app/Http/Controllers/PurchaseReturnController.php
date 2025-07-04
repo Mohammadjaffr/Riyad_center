@@ -17,7 +17,7 @@ class PurchaseReturnController extends Controller
 
     public function create()
     {
-        $purchases = Purchase::with('items.productVariant.product')->get();
+        $purchases = Purchase::with('items.variant.product')->get();
         return view('purchase_returns.create', compact('purchases'));
     }
 

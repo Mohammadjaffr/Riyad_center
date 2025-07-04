@@ -138,11 +138,11 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
-    {
-        $departments = Department::all();
-        return view('products.edit', compact('product', 'departments'));
-    }
+        public function edit(Product $product)
+        {
+            $departments = Department::all();
+            return view('products.edit', compact('product', 'departments'));
+        }
 
 
     /**
@@ -154,9 +154,6 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'model_num' => 'required|string|max:255',
-            'quantity' => 'required|integer|min:0',
-            'cost_price' => 'required|numeric|min:0',
-            'sell_price' => 'required|numeric|min:0',
             'department_id' => 'required|exists:departments,id',
             'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [

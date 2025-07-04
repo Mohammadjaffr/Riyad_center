@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\InventoryLog;
 use App\Models\Product;
+use App\Models\Product_variant;
 use App\Models\Sale;
 use App\Models\SaleItem;
 use Illuminate\Http\Request;

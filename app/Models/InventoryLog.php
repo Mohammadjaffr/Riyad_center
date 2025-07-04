@@ -13,10 +13,7 @@ class InventoryLog extends Model
     {
         return $this->belongsTo(Product::class);
     }
-    public function productVariant()
-    {
-        return $this->belongsTo(Product_variant::class);
-    }
+
 
     public function employee()
     {
@@ -25,6 +22,10 @@ class InventoryLog extends Model
     public function invoiceItem()
     {
         return $this->belongsTo(InvoiceItem::class);
+    }
+    public function productVariant()
+    {
+        return $this->belongsTo(Product_variant::class, 'product_variant_id');
     }
 
 
