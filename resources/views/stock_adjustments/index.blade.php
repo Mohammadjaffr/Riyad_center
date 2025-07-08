@@ -1,6 +1,21 @@
 @extends('layouts.master')
 @section('title', 'سجل تعديلات الجرد')
 @section('content')
+    @if(session('success') || session('error'))
+        <div class="message-center" style="position: fixed;left: 50%;transform: translate(-50%, -50%);z-index: 9999;padding: 20px;border-radius: 8px;text-align: center;animation: fadeInOut 4s forwards;
+        {{ session('success') ? 'background: #4CAF50; color: white;' : 'background: #F44336; color: white;' }}">
+            {{ session('success') ?? session('error') }}
+        </div>
+    @endif
+
+    <style>
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+    </style>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);">سجل تعديلات الجرد</h2>
@@ -50,37 +65,4 @@
             </div>
         </div>
     </div>
-{{--  mohammed's code  --}}
-{{--    <div class="container py-4">--}}
-{{--        <h3 class="mb-4">سجل تعديلات الجرد</h3>--}}
-
-{{--        <div class="table-responsive bg-white rounded-4 shadow p-3">--}}
-{{--            <table class="table table-bordered text-center">--}}
-{{--                <thead>--}}
-{{--                <tr>--}}
-{{--                    <th>المنتج</th>--}}
-{{--                    <th>الكمية المعدّلة</th>--}}
-{{--                    <th>السبب</th>--}}
-{{--                    <th>بواسطة</th>--}}
-{{--                    <th>تاريخ التعديل</th>--}}
-{{--                </tr>--}}
-{{--                </thead>--}}
-{{--                <tbody>--}}
-{{--                @forelse($logs as $log)--}}
-{{--                    <tr>--}}
-{{--                        <td>{{ $log->product->name ?? '-' }}</td>--}}
-{{--                        <td>{{ $log->quantity }}</td>--}}
-{{--                        <td>{{ $log->description }}</td>--}}
-{{--                        <td>{{ $log->created_by }}</td>--}}
-{{--                        <td>{{ $log->created_at }}</td>--}}
-{{--                    </tr>--}}
-{{--                @empty--}}
-{{--                    <tr><td colspan="5">لا توجد بيانات</td></tr>--}}
-{{--                @endforelse--}}
-{{--                </tbody>--}}
-{{--            </table>--}}
-
-{{--           --}}
-{{--        </div>--}}
-{{--    </div>--}}
 @endsection

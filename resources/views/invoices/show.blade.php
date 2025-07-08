@@ -112,7 +112,8 @@
 
         {{-- زر طباعة --}}
         <div class="text-center mt-4">
-            <a   href="{{ route('invoices.print', $invoice->id) }}" class="btn btn-blue">طباعة الفاتورة</a>
+
+            <a href="{{ route('invoices.print', $invoice->id) }}" target="_blank" class="btn btn-blue">طباعة الفاتورة</a>
             <a   href="{{ route('invoices.index') }}" class="btn btn-outline-blue">رجوع </a>
 
         </div>

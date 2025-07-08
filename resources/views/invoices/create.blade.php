@@ -51,21 +51,18 @@
                         <div class="row g-2 mb-2">
                             <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">اسم الموظف:</label>
-                                <select name="employee_id" class="summary-input flex-grow-1 w-100 w-md-auto" style="text-align: right" required>
-                                    @foreach($employees as $emp)
-                                        <option value="{{ $emp->id }}">{{ $emp->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label class="form-label fw-bold">القسم</label>
-                                <select name="department_id" class="summary-input flex-grow-1 w-100 w-md-auto "   style="text-align: right" required>
-                                    @foreach($departments as $department)
-                                        <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="summary-input flex-grow-1 w-100 w-md-auto" value="{{ Auth::guard('employee')->user()->name }}" readonly>
+                                <input type="hidden" name="employee_id" value="{{ Auth::guard('employee')->id() }}">
 
                             </div>
+                                <div class="col-12 col-md-4">
+                                    <label class="form-label fw-bold">القسم</label>
+                                    <select name="department_id" class="summary-input flex-grow-1 w-100 w-md-auto" style="text-align: right" required>
+                                        <option value="{{ Auth::user()->department_id }}" selected>
+                                            {{ Auth::user()->department->name ?? 'القسم غير موجود' }}
+                                        </option>
+                                    </select>
+                                </div>
                             <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">رقم الفاتورة:</label>
                                 <input  type="number"  name="invoice_num" class="form-control summary-input flex-grow-1 w-100 w-md-auto bg-white" style="text-align: right" placeholder="رقم الفاتورة"  value="{{ old('invoice_num', $invoice_num) }}" readonly required>
@@ -375,7 +372,7 @@
                 if (!isNaN(val)) total += val;
             });
 
-        //   تحديث المجموع بالنسبة  للخصم 
+        //   تحديث المجموع بالنسبة  للخصم
             const discountPercent = parseFloat(document.querySelector('input[name=discount_amount]').value) || 0;
             const discountValue = total * (discountPercent / 100);
             const finalTotal = total - discountValue;

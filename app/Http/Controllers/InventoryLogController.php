@@ -7,6 +7,7 @@ use App\Models\InventoryLog;
 use App\Models\Product;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InventoryLogController extends Controller
 {
@@ -15,6 +16,10 @@ class InventoryLogController extends Controller
         $search = $request->input('search');
         $type = $request->input('type');
         $sort = $request->input('sort');
+
+        $user = Auth::guard('employee')->user();
+        $user_type = $user->user_type ?? 'employee';
+        $department_id = $user->department_id;
 
         $logs = InventoryLog::with(['productVariant.product', 'employee'])
             ->when($search, function ($query, $search) {
@@ -29,6 +34,13 @@ class InventoryLogController extends Controller
             ->when($type, function ($query, $type) {
                 $query->where('change_type', $type);
             })
+            ->when(!is_null($department_id), function ($query) use ($department_id) {
+                $query->whereHas('productVariant.product', function ($q) use ($department_id) {
+                    $q->where('department_id', $department_id);
+                });
+            })
+
+
             ->when($sort, function ($query, $sort) {
                 $query->orderBy('created_at', $sort);
             }, function ($query) {
@@ -38,6 +50,7 @@ class InventoryLogController extends Controller
 
         return view('inventory_logs.index', compact('logs'));
     }
+
 
 
     public function create()
@@ -79,12 +92,13 @@ class InventoryLogController extends Controller
         $employees = Employee::all();
 
         if ($type == 'current') {
-            $query = InventoryLog::selectRaw('product_variant_id,
+            $query = InventoryLog::selectRaw('
+            product_variant_id,
             SUM(CASE WHEN change_type = "شراء" THEN quantity ELSE 0 END) -
             SUM(CASE WHEN change_type = "بيع" THEN quantity ELSE 0 END) +
-            SUM(CASE WHEN change_type = "تعديل يدوي" THEN quantity ELSE 0 END) as current_stock')
-                ->groupBy('product_variant_id')
-                ->with('productVariant.product');
+            SUM(CASE WHEN change_type = "تعديل يدوي" THEN quantity ELSE 0 END) as current_stock
+        ')
+                ->groupBy('product_variant_id');
 
             if ($product_variant_id) {
                 $query->having('product_variant_id', '=', $product_variant_id);
@@ -95,7 +109,7 @@ class InventoryLogController extends Controller
             return view('inventory_logs.reports.current', compact('stock', 'products', 'employees', 'type'));
         }
 
-        $query = InventoryLog::with('product', 'employee');
+        $query = InventoryLog::with('productVariant.product', 'employee');
 
         if ($product_variant_id) {
             $query->where('product_variant_id', $product_variant_id);
@@ -113,15 +127,16 @@ class InventoryLogController extends Controller
             $query->whereDate('created_at', '<=', $date_to);
         }
 
-        if ($type == 'monthly') {
-            $query->whereMonth('created_at', now()->month)->whereYear('created_at', now()->year);
-        }
-
-        if ($type == 'yearly') {
-            $query->whereYear('created_at', now()->year);
-        }
-        if ($type == 'daily') {
-            $query->whereDay('created_at', now()->day);
+        switch ($type) {
+            case 'monthly':
+                $query->whereMonth('created_at', now()->month)->whereYear('created_at', now()->year);
+                break;
+            case 'yearly':
+                $query->whereYear('created_at', now()->year);
+                break;
+            case 'daily':
+                $query->whereDay('created_at', now()->day);
+                break;
         }
 
         $logs = $query->latest()->get();

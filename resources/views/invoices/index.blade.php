@@ -19,9 +19,11 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);">قائمة الفواتير</h2>
+            @can('إضافة الفواتير')
             <a href="{{ route('invoices.create') }}" class="btn btn-blue mb-2 mb-md-0">
                 <i class="fa fa-plus"></i> اضافة  فاتورة
             </a>
+            @endcan
         </div>
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
             <div class="row g-2 align-items-center mb-3">
@@ -71,21 +73,25 @@
                         <tr>
                             <td>{{ $invoice->invoice_num }}</td>
                             <td>{{ $invoice->customer_name ?? '-' }}</td>
-                            <td>{{ $invoice->department->name }}</td>
+                            <td>{{ $invoice->department?->name ?? '-' }}</td>
                             <td>{{ $invoice->employee->name }}</td>
                             <td>{{ number_format($invoice->total_amount, 2) }}</td>
                             <td>{{ number_format($invoice->paid_amount, 2) }}</td>
                             <td>{{ number_format($invoice->rest_amount, 2) }}</td>
                             <td>{{ $invoice->invoice_date }}</td>
                             <td>
+                                @can('عرض الفواتير')
                                 <a href="{{ route('invoices.show', $invoice->id) }}" class="text-dark-blue me-2 ms-3" title="عرض" >
                                     <i class="fa fa-eye"></i>
                                 </a>
+                                @endcan
+                                @can('تعديل الفواتير')
                                 <a href="{{ route('invoices.edit', $invoice->id) }}" class="text-success me-2 ms-3" title="تعديل" >
                                     <i class="fa fa-pen"></i>
                                 </a>
+                                    @endcan
 
-
+                                @can('حذف الفواتير')
                                 <form action="{{ route('invoices.destroy', $invoice->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
@@ -94,6 +100,7 @@
                                     </button>
 
                                 </form>
+                                    @endcan
                             </td>
                         </tr>
                     @endforeach

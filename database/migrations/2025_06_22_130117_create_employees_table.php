@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('password');
+            $table->text('roles_name');
             $table->string('status');
-            $table->string('role');
             $table->decimal('salary', 10, 2);
-            $table->foreignId('department_id')->constrained('departments');
+            $table->foreignId('department_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

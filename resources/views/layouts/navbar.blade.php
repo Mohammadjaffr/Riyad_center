@@ -71,8 +71,8 @@
                 <ul class="dropdown-menu user-dropdown-menu text-center" aria-labelledby="userDropdownMenuButton">
                     <li class="py-2">
                         <img src="{{ asset('assets/images/user.png') }}" alt="User" class="user-dropdown-menu-avatar mb-2">
-                        <div class="fw-bold">admin</div>
-                        <div class="text-muted small">admin@hotmail.com</div>
+                        <div class="fw-bold">{{Auth()->user()->name}}</div>
+                        <div class="text-muted small">رقم الجوال :{{Auth()->user()->phone}}</div>
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
@@ -83,7 +83,7 @@
                     </li>
                     <li><hr class="dropdown-divider "></li>
                     <li>
-                        <form action="{{ route('logout') }}" method="POST" >
+                        <form action="{{ route('employee.logout') }}" method="POST" >
                             @csrf
                             <button type="submit" class="dropdown-item d-flex align-items-center justify-content-start gap-2 me-5 text-danger"><i class="fa fa-sign-out-alt"></i> تسجيل خروج</button>
                         </form>

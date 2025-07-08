@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
 {
-    protected $fillable = ['supplier_id', 'created_by', 'total_amount', 'purchase_date', 'notes'];
+    protected $fillable = ['supplier_id', 'created_by', 'total_amount', 'department_id', 'purchase_date', 'notes'];
 
     public function supplier()
     {
@@ -22,4 +22,9 @@ class Purchase extends Model
     {
         return $this->hasMany(PurchaseItem::class);
     }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
 }

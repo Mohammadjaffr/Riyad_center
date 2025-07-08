@@ -3,14 +3,20 @@ namespace App\Http\Controllers;
 
 use App\Models\InventoryLog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InventoryReportController extends Controller
 {
     public function index(Request $request)
     {
-        $logs = InventoryLog::with(['product', 'employee'])
-            ->when($request->type, function ($query, $type) {
-                $query->where('change_type', $type);
+        $user = Auth::guard('employee')->user();
+        $department_id = $user->department_id;
+
+        $logs = InventoryLog::with(['productVariant.product', 'employee'])
+            ->when($department_id, function ($query) use ($department_id) {
+                $query->whereHas('productVariant.product', function ($q) use ($department_id) {
+                    $q->where('department_id', $department_id);
+                });
             })
             ->latest()
             ->paginate(20);

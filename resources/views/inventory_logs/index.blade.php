@@ -1,29 +1,46 @@
 @extends('layouts.master')
 @section('title', 'سجل المخزون')
 @section('content')
+    @if(session('success') || session('error'))
+        <div class="message-center" style="position: fixed;left: 50%;transform: translate(-50%, -50%);z-index: 9999;padding: 20px;border-radius: 8px;text-align: center;animation: fadeInOut 4s forwards;
+        {{ session('success') ? 'background: #4CAF50; color: white;' : 'background: #F44336; color: white;' }}">
+            {{ session('success') ?? session('error') }}
+        </div>
+    @endif
 
+    <style>
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+    </style>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);">سجل المخزون</h2>
+            @can('اضافه مخزون')
             <a href="{{ route('inventory-logs.create') }}" class="btn btn-blue mb-2 mb-md-0">
                 <i class="fa fa-plus"></i> إضافة تعديل يدوي
             </a>
+            @endcan
         </div>
 
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+
 
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
 
             <div class="d-flex gap-2 mb-3 flex-wrap ">
                 <div class="col-12 col-md-4 text-end mb-3 mb-md-0"></div>
-
+                @can('عرض الجرد الحالي')
                 <a href="{{ route('inventory-logs.report', ['type' => 'current']) }}" class="btn btn-outline-blue">📦 الجرد الحالي</a>
+                @endcan
+                @can('عرض الجرد الشهري')
                 <a href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}" class="btn btn-outline-blue">📅 الجرد الشهري</a>
+                @endcan
+                @can('عرض الجرد السنوي')
                 <a href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}" class="btn btn-outline-blue">🗓 الجرد السنوي</a>
+                @endcan
             </div>
 
             <div class="row g-2 align-items-center mb-3">

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('total_amount', 10, 2);
             $table->date('purchase_date');
             $table->text('notes')->nullable();
+            $table->foreignId('department_id')->constrained('departments');
             $table->timestamps();
         });
     }

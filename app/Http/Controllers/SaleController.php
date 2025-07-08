@@ -20,18 +20,18 @@ class SaleController extends Controller
         $search = $request->input('search');
         $sort = $request->input('sort');
 
+        $sort = in_array($sort, ['asc', 'desc']) ? $sort : 'desc';
+
         $sales = Sale::with(['employee', 'department'])
             ->when($search, function ($query, $search) {
-                $query->where('invoice_num', 'like', "%{$search}%")
-                    ->orWhereHas('employee', function ($q) use ($search) {
-                        $q->where('name', 'like', "%{$search}%");
-                    });
+                $query->where(function($q) use ($search) {
+                    $q->where('invoice_num', 'like', "%{$search}%")
+                        ->orWhereHas('employee', function ($q2) use ($search) {
+                            $q2->where('name', 'like', "%{$search}%");
+                        });
+                });
             })
-            ->when($sort, function ($query, $sort) {
-                $query->orderBy('created_at', $sort);
-            }, function ($query) {
-                $query->latest();
-            })
+            ->orderBy('created_at', $sort)
             ->paginate(10);
 
         return view('sales.index', compact('sales'));
@@ -43,10 +43,16 @@ class SaleController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
-        $departments = Department::all();
+        $department_id = session('department_id');
+
+        $products = Product::with('variants')
+            ->where('department_id', $department_id)
+            ->get();
+        $departments = Department::orderBy('name')->get();
+
         return view('sales.create', compact('products', 'departments'));
     }
+
 
     /**
      * Store a newly created resource in storage.

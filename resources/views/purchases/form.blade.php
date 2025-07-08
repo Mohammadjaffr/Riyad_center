@@ -12,6 +12,14 @@
                     </span>
                 @enderror
             </div>
+            <div class="md-3">
+                <label class="form-label fw-bold">القسم</label>
+                <select name="department_id" class="summary-input flex-grow-1 w-100 w-md-auto {{ $errors->has('supplier_id') ? 'is-invalid' : '' }}" style="text-align: right" required>
+                    <option value="{{ Auth::user()->department_id }}" selected>
+                        {{ Auth::user()->department->name ?? 'القسم غير موجود' }}
+                    </option>
+                </select>
+            </div>
 
             <div class="mb-3">
                 <label class="form-label fw-bold">تاريخ الشراء</label>
@@ -26,42 +34,6 @@
             <hr>
             <h5 style="color: var(--dark-blue);">تفاصيل المنتجات</h5>
 
-{{--            <div id="items">--}}
-{{--                <div class="row mb-2">--}}
-{{--                    <div class="col-md-4">--}}
-{{--                        <select name="product_id[]" class="summary-input flex-grow-1 w-100 w-md-auto  {{ $errors->has('product_id[]') ? 'is-invalid' : '' }}"   style="text-align: right">--}}
-{{--                            @foreach($products as $p)--}}
-{{--                                <option value="{{ $p->id }}">{{ $p->name }}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                        @error('product_id[]')--}}
-{{--                        <span class="invalid-feedback text-end d-block" role="alert">--}}
-{{--                        <strong>{{ $message }}</strong>--}}
-{{--                    </span>--}}
-{{--                        @enderror--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-2">--}}
-{{--                        <input type="number" name="quantity[]" class="summary-input flex-grow-1 w-100 w-md-auto  {{ $errors->has('quantity[]') ? 'is-invalid' : '' }}"   style="text-align: right" placeholder="الكمية" >--}}
-{{--                        @error('quantity[]')--}}
-{{--                        <span class="invalid-feedback text-end d-block" role="alert">--}}
-{{--                        <strong>{{ $message }}</strong>--}}
-{{--                    </span>--}}
-{{--                        @enderror--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-2">--}}
-{{--                        <input type="number" step="0.01" name="unit_price[]" class="summary-input flex-grow-1 w-100 w-md-auto  {{ $errors->has('unit_price') ? 'is-invalid' : '' }}"   style="text-align: right" placeholder="السعر" >--}}
-{{--                        @error('unit_price')--}}
-{{--                        <span class="invalid-feedback text-end d-block" role="alert">--}}
-{{--                        <strong>{{ $message }}</strong>--}}
-{{--                    </span>--}}
-{{--                        @enderror--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-2">--}}
-{{--                        <button type="button" onclick="addRow()" class="btn btn-success">+</button>--}}
-{{--                        <button type="button" onclick="deleteRow(this)" class="btn btn-danger">-</button>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
             <table class="table table-bordered align-middle text-center custom-invoice-table mb-0 table-striped" id="items-table">
                 <thead class="table-secondary">
                 <tr>

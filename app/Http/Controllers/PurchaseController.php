@@ -9,6 +9,7 @@ use App\Models\Purchase;
 use App\Models\PurchaseItem;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
@@ -17,10 +18,19 @@ class PurchaseController extends Controller
      */
     public function index(Request $request)
     {
+        $employee = Auth::guard('employee')->user();
+        $user_type = $employee->user_type ?? 'employee';
+
         $search = $request->input('search');
         $sort = $request->input('sort');
 
-        $purchases = Purchase::with('supplier')
+        $purchases = Purchase::with('supplier');
+
+        if ($user_type !== 'admin') {
+            $purchases->where('department_id', $employee->department_id);
+        }
+
+        $purchases = $purchases
             ->when($search, function ($query, $search) {
                 $query->where('invoice_num', 'like', "%{$search}%")
                     ->orWhereHas('supplier', function ($q) use ($search) {
@@ -38,15 +48,29 @@ class PurchaseController extends Controller
     }
 
 
+
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $suppliers = Supplier::all();
-        $products = Product::all();
+        $employee = Auth::guard('employee')->user();
+        $user_type = $employee->user_type ?? 'employee';
+
+        if ($user_type == 'admin') {
+            $suppliers = Supplier::all();
+            $products = Product::with('variants')->get();
+        } else {
+            $departmentId = $employee->department_id;
+            $suppliers = Supplier::where('department_id', $departmentId)->get();
+            $products = Product::where('department_id', $departmentId)->with('variants')->get();
+        }
+
         return view('purchases.create', compact('suppliers', 'products'));
     }
+
+
 
 
     /**
@@ -54,6 +78,10 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
+        $employee = Auth::guard('employee')->user();
+        $user_type = $employee->user_type ?? 'employee';
+
+
         $request->validate([
             'supplier_id' => 'required|exists:suppliers,id',
             'purchase_date' => 'required|date',
@@ -77,6 +105,11 @@ class PurchaseController extends Controller
 
 
         try {
+            if ($user_type == 'admin') {
+                $departmentToUse = $request->department_id ?? null;
+            } else {
+                $departmentToUse = $employee->department_id;
+            }
             $total_amount = 0;
 
             foreach ($request->quantity as $index => $qty) {
@@ -86,6 +119,7 @@ class PurchaseController extends Controller
             $purchase = Purchase::create([
                 'supplier_id' => $request->supplier_id,
                 'created_by' => auth()->id(),
+                'department_id' => $departmentToUse,
                 'total_amount' => $total_amount,
                 'purchase_date' => $request->purchase_date,
                 'notes' => $request->notes,
@@ -106,15 +140,13 @@ class PurchaseController extends Controller
                     'total_price' => $qty * $price,
                 ]);
 
-                // تحديث الكمية في المتغير
                 $variant->increment('quantity', $qty);
 
-                // سجل حركة المخزون
                 InventoryLog::create([
                     'product_variant_id' => $variant_id,
                     'change_type' => 'شراء',
                     'quantity' => $qty,
-                    'description' => 'شراء من المورد #' . $purchase->supplier->name,
+                    'description' => 'شراء من المورد #' . $purchase->supplier->name . ' في قسم ' . ($purchase->department->name ?? ''),
                     'created_by' => auth()->id(),
                     'created_at' => now(),
                 ]);

@@ -11,18 +11,32 @@ use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Product_variant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class InvoiceController extends Controller
 {
+//    function __construct()
+//    {
+////        $this->middleware('permission:عرض المنتجات',['only'=>['index']]);
+//    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
         $query = Invoice::with(['department', 'employee']);
+
+        $user = Auth::guard('employee')->user();
+        $user_type = $user->user_type ?? 'employee';
+        $department_id = $user->department_id;
+
+        if ($user_type !== 'admin' && $department_id !== null) {
+            $query->where('department_id', $department_id);
+        }
 
         if ($request->filled('search')) {
             $search = $request->search;
@@ -46,24 +60,38 @@ class InvoiceController extends Controller
         return view('invoices.index', compact('invoices', 'payments'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $departments = Department::all();
-        $products = Product::all();
-        $employees = Employee::all();
+        $employee = Auth::guard('employee')->user();
+        $user_type = $employee->user_type ?? 'employee';
 
-        $lastInvoice = Invoice::orderBy('id', 'desc')->first();
+        $department_id = session('department_id');
+
+
+        $employees = Employee::where('department_id', $department_id)->get();
+        if ($user_type =='admin'){
+            $products = Product::with('variants')->get();
+            $departments = Department::where('id', null ?? 'admin')->get();
+
+        }else{
+            $products = Product::with('variants')
+                ->where('department_id', $department_id)
+                ->get();
+            $departments = Department::where('id', $department_id)->get();
+        }
+
+
+        $lastInvoice = Invoice::where('department_id', $department_id)
+            ->orderBy('invoice_num', 'desc')
+            ->first();
 
         $nextNumber = $lastInvoice ? intval($lastInvoice->invoice_num) + 1 : 1;
-
         $invoice_num = str_pad($nextNumber, 7, '0', STR_PAD_LEFT);
 
-        return view('invoices.create', compact('departments', 'products', 'employees', 'invoice_num'));
+        return view('invoices.create', compact('departments', 'employees', 'products', 'invoice_num'));
     }
+
+
 
 
     /**
@@ -71,9 +99,31 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::guard('employee')->user();
+        $user_type = $user->user_type ?? 'employee';
+
+        // تحديد القسم المستخدم
+        $departmentToUse = $user_type === 'admin' ? $request->department_id : $user->department_id;
+
+        // جلب بيانات القسم
+        $department = Department::find($departmentToUse);
+
+        // تحديد البادئة بناءً على اسم القسم
+        $prefix = match (true) {
+            str_contains($department->name, 'ملابس') => 'CH', // ملابس = CH
+            str_contains($department->name, 'أحذية') => 'SH', // أحذية = SH
+            default => 'DEPT',
+        };
+
+        // جلب آخر فاتورة لهذا القسم لتحديد الرقم التالي
+        $latestInvoice = Invoice::where('department_id', $departmentToUse)->latest('id')->first();
+        $nextNumber = $latestInvoice ? $latestInvoice->id + 1 : 1;
+
+        // تنسيق رقم الفاتورة
+        $invoiceNum = $prefix . '-' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+
+        // التحقق من البيانات
         $request->validate([
-            'department_id' => 'required|exists:departments,id',
-            'invoice_num' => 'required|string|unique:invoices,invoice_num',
             'employee_id' => 'required|exists:employees,id',
             'invoice_date' => 'required|date',
             'payment_type' => 'required|string',
@@ -85,11 +135,10 @@ class InvoiceController extends Controller
         ]);
 
         try {
-            // التحقق من الكميات المتوفرة لكل متغير
+            // التأكد من توفر الكمية
             foreach ($request->variant_id as $index => $variant_id) {
                 $variant = Product_variant::findOrFail($variant_id);
                 $qty = $request->quantity[$index];
-
                 if ($variant->quantity < $qty) {
                     return back()->withErrors([
                         "variant_id.{$index}" => "الكمية غير كافية للمنتج: {$variant->name}"
@@ -97,11 +146,10 @@ class InvoiceController extends Controller
                 }
             }
 
-            // حساب المجموع الكلي
-            $total = 0;
-            foreach ($request->quantity as $index => $qty) {
-                $total += $qty * $request->unit_price[$index];
-            }
+            // حساب الإجمالي والخصم والباقي
+            $total = collect($request->quantity)->zip($request->unit_price)->sum(function ($pair) {
+                return $pair[0] * $pair[1];
+            });
 
             $discount = $request->discount_amount ?? 0;
             $paid = $request->paid_amount ?? 0;
@@ -110,8 +158,8 @@ class InvoiceController extends Controller
             // إنشاء الفاتورة
             $invoice = Invoice::create([
                 'customer_name' => $request->customer_name,
-                'department_id' => $request->department_id,
-                'invoice_num' => $request->invoice_num,
+                'department_id' => $departmentToUse,
+                'invoice_num' => $invoiceNum,
                 'discount_amount' => $discount,
                 'employee_id' => $request->employee_id,
                 'total_amount' => $total - $discount,
@@ -122,7 +170,7 @@ class InvoiceController extends Controller
                 'invoice_date' => $request->invoice_date,
             ]);
 
-            // حفظ العناصر مع تحديث الكميات وتسجيل حركة المخزون
+            // إنشاء العناصر وتحديث الكمية
             foreach ($request->variant_id as $index => $variant_id) {
                 $qty = $request->quantity[$index];
                 $unit_price = $request->unit_price[$index];
@@ -136,10 +184,10 @@ class InvoiceController extends Controller
                     'total_price' => $qty * $unit_price,
                 ]);
 
-                // خصم الكمية من المتغير
+                // خصم الكمية من المخزون
                 $variant->decrement('quantity', $qty);
 
-                // تسجيل حركة المخزون
+                // تسجيل حركة الجرد
                 InventoryLog::create([
                     'product_variant_id' => $variant_id,
                     'change_type' => 'بيع',
@@ -161,9 +209,19 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        $invoice->load(['department', 'employee', 'items.product']);
+        $user = Auth::guard('employee')->user();
+
+        $user_type = $user->user_type ?? 'employee';
+
+        if ($user_type !== 'admin' && $invoice->department_id !== $user->department_id) {
+            abort(403, 'ليس لديك صلاحية مشاهدة هذه الفاتورة');
+        }
+
+        $invoice->load(['department', 'employee', 'items.productVariant.product']);
+
         return view('invoices.show', compact('invoice'));
     }
+
 
 
     /**
@@ -171,13 +229,26 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        $departments = Department::all();
-        $products = Product::all();
-        $employees = Employee::all();
+        $user = Auth::guard('employee')->user();
+        $user_type = $user->user_type ?? 'employee';
+
+        if ($user_type == 'admin') {
+            $departments = Department::all();
+            $products = Product::with('variants')->get();
+            $employees = Employee::all();
+        } else {
+            $department_id = $user->department_id;
+
+            $departments = Department::where('id', $department_id)->get();
+            $products = Product::with('variants')->where('department_id', $department_id)->get();
+            $employees = Employee::where('department_id', $department_id)->get();
+        }
+
         $invoice->load('items');
 
         return view('invoices.edit', compact('invoice', 'departments', 'products', 'employees'));
     }
+
 
 
     /**
@@ -185,8 +256,10 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, Invoice $invoice)
     {
+        $user = Auth::guard('employee')->user();
+        $user_type = $user->user_type ?? 'employee';
+
         $request->validate([
-            'department_id' => 'required|exists:departments,id',
             'employee_id' => 'required|exists:employees,id',
             'invoice_date' => 'required|date',
             'payment_type' => 'required|string',
@@ -197,7 +270,35 @@ class InvoiceController extends Controller
             'unit_price.*' => 'required|numeric|min:0',
         ]);
 
+        if ($user_type == 'admin') {
+            $departmentToUse = $request->department_id;
+        } else {
+            $departmentToUse = $user->department_id;
+        }
+
         try {
+            // استرجاع العناصر القديمة لزيادة المخزون
+            foreach ($invoice->items as $oldItem) {
+                $variant = Product_variant::find($oldItem->product_variant_id);
+                if ($variant) {
+                    $variant->increment('quantity', $oldItem->quantity);
+
+                    // حذف سجل الحركة القديم إذا أردت، أو إضافة حركة إرجاع
+                    InventoryLog::create([
+                        'product_variant_id' => $variant->id,
+                        'change_type' => 'إرجاع تعديل فاتورة',
+                        'quantity' => $oldItem->quantity,
+                        'description' => 'إرجاع كمية عند تعديل فاتورة #' . $invoice->invoice_num,
+                        'created_by' => auth()->id(),
+                        'created_at' => now(),
+                    ]);
+                }
+            }
+
+            // حذف العناصر القديمة
+            $invoice->items()->delete();
+
+            // حساب المجموع الجديد
             $total = 0;
             foreach ($request->quantity as $index => $qty) {
                 $total += $qty * $request->unit_price[$index];
@@ -207,9 +308,10 @@ class InvoiceController extends Controller
             $paid = $request->paid_amount ?? 0;
             $rest = ($total - $discount) - $paid;
 
+            // تحديث بيانات الفاتورة
             $invoice->update([
                 'customer_name' => $request->customer_name,
-                'department_id' => $request->department_id,
+                'department_id' => $departmentToUse,
                 'discount_amount' => $discount,
                 'employee_id' => $request->employee_id,
                 'total_amount' => $total - $discount,
@@ -220,16 +322,36 @@ class InvoiceController extends Controller
                 'invoice_date' => $request->invoice_date,
             ]);
 
-
-            $invoice->items()->delete();
-
+            // إنشاء العناصر الجديدة وتقليل الكمية من المخزون
             foreach ($request->variant_id as $index => $variant_id) {
+                $qty = $request->quantity[$index];
+                $unit_price = $request->unit_price[$index];
+                $variant = Product_variant::findOrFail($variant_id);
+
+                // تحقق من توفر الكمية المطلوبة
+                if ($variant->quantity < $qty) {
+                    return back()->withErrors([
+                        "variant_id.{$index}" => "الكمية غير كافية للمنتج: {$variant->name}"
+                    ])->withInput();
+                }
+
                 InvoiceItem::create([
                     'invoice_id' => $invoice->id,
                     'product_variant_id' => $variant_id,
-                    'quantity' => $request->quantity[$index],
-                    'unit_price' => $request->unit_price[$index],
-                    'total_price' => $request->quantity[$index] * $request->unit_price[$index],
+                    'quantity' => $qty,
+                    'unit_price' => $unit_price,
+                    'total_price' => $qty * $unit_price,
+                ]);
+
+                $variant->decrement('quantity', $qty);
+
+                InventoryLog::create([
+                    'product_variant_id' => $variant_id,
+                    'change_type' => 'بيع تعديل فاتورة',
+                    'quantity' => -$qty,
+                    'description' => 'بيع عبر تعديل فاتورة #' . $invoice->invoice_num,
+                    'created_by' => auth()->id(),
+                    'created_at' => now(),
                 ]);
             }
 
@@ -246,6 +368,22 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         try {
+            foreach ($invoice->items as $item) {
+                $variant = Product_variant::find($item->product_variant_id);
+                if ($variant) {
+
+                    $variant->increment('quantity', $item->quantity);
+
+                    InventoryLog::create([
+                        'product_variant_id' => $variant->id,
+                        'change_type' => 'إرجاع حذف فاتورة',
+                        'quantity' => $item->quantity,
+                        'description' => 'إرجاع كمية عند حذف فاتورة #' . $invoice->invoice_num,
+                        'created_by' => auth()->id(),
+                        'created_at' => now(),
+                    ]);
+                }
+            }
             $invoice->items()->delete();
             $invoice->delete();
 
@@ -254,12 +392,14 @@ class InvoiceController extends Controller
             return back()->with('error', 'حدث خطأ أثناء الحذف: ' . $e->getMessage());
         }
     }
+
     public function print(Invoice $invoice)
     {
         $invoice->load(['department', 'employee', 'items.productVariant.product']);
-        $pdf = PDf::loadView('invoices.pdf', compact('invoice'))->setPaper('A4', 'portrait');
+        $pdf = PDF::loadView('invoices.pdf', compact('invoice'))->setPaper('A4', 'portrait');
 
         return $pdf->stream('invoice-' . $invoice->invoice_num . '.pdf');
     }
+
 
 }

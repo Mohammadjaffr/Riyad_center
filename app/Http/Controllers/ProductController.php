@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,12 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $user = auth()->user();
         $query = Product::with(['department', 'variants']);
+
+        if ($user->department_id != 1) {
+            $query->where('department_id', $user->department_id);
+        }
 
         if ($request->filled('search')) {
             $search = $request->search;
@@ -33,9 +39,6 @@ class ProductController extends Controller
 
         return view('products.index', compact('products'));
     }
-
-
-
 
 
     /**
@@ -105,7 +108,13 @@ class ProductController extends Controller
         ]);
 
         // حفظ بيانات المنتج
-        $data = $request->only(['name', 'model_num', 'department_id', 'description']);
+        $data = $request->only(['name', 'model_num', 'description']);
+        $data['department_id'] = $request->department_id;
+//        if (auth()->user()->hasRole('admin')) {
+//
+//        } else {
+//            $data['department_id'] = auth()->user()->department_id;
+//        }
 
         if ($request->hasFile('product_image')) {
             $path = $request->file('product_image')->store('products', 'public');
@@ -127,23 +136,15 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'تم إنشاء المنتج مع المتغيرات بنجاح.');
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-        public function edit(Product $product)
-        {
-            $departments = Department::all();
-            return view('products.edit', compact('product', 'departments'));
-        }
-
+    public function edit(Product $product)
+    {
+        $departments = Department::all();
+        return view('products.edit', compact('product', 'departments'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -168,18 +169,6 @@ class ProductController extends Controller
             'model_num.string' => 'يجب أن يكون رقم الموديل نصًا',
             'model_num.max' => 'رقم الموديل يجب ألا يتجاوز 255 حرفًا',
 
-            'quantity.required' => 'حقل كمية المخزون مطلوب',
-            'quantity.integer' => 'يجب أن تكون كمية المخزون عددًا صحيحًا',
-            'quantity.min' => 'كمية المخزون لا يمكن أن تكون أقل من 0',
-
-            'cost_price.required' => 'حقل سعر التكلفة مطلوب',
-            'cost_price.numeric' => 'يجب أن يكون سعر التكلفة رقمًا',
-            'cost_price.min' => 'سعر التكلفة لا يمكن أن يكون أقل من 0',
-
-            'sell_price.required' => 'حقل سعر البيع مطلوب',
-            'sell_price.numeric' => 'يجب أن يكون سعر البيع رقمًا',
-            'sell_price.min' => 'سعر البيع لا يمكن أن يكون أقل من 0',
-
             'department_id.required' => 'يجب اختيار القسم',
             'department_id.exists' => 'القسم المحدد غير موجود',
 
@@ -189,15 +178,14 @@ class ProductController extends Controller
         ]);
 
         if ($request->hasFile('product_image')) {
-            $imageName = time() . '.' . $request->product_image->extension();
-            $request->product_image->move(public_path('uploads/products'), $imageName);
-            $validated['product_image'] = 'uploads/products/' . $imageName;
+            $path = $request->file('product_image')->store('products', 'public');
+            $validated['product_image'] = $path;
         }
 
         $product->update($validated);
+
         return redirect()->route('products.index')->with('success', 'تم تحديث المنتج بنجاح');
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -205,6 +193,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+
         return redirect()->route('products.index')->with('success', 'تم حذف المنتج بنجاح.');
     }
 }

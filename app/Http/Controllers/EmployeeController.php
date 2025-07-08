@@ -6,6 +6,7 @@ use App\Models\Department;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class EmployeeController extends Controller
 {
@@ -39,7 +40,8 @@ class EmployeeController extends Controller
     public function create()
     {
         $departments = Department::all();
-        return view('employees.create', compact('departments'));
+        $roles = Role::all();
+        return view('employees.create', compact('departments','roles'));
     }
 
     /**
@@ -53,13 +55,14 @@ class EmployeeController extends Controller
             'phone' => 'required|unique:employees,phone',
             'password' => 'required|string|min:6',
             'status' => 'required',
-            'role' => 'required|string|max:50',
             'salary' => 'required|numeric|min:0',
+            'roles_name' => 'required',
             'department_id' => 'required|exists:departments,id',
         ], [
             'name.required' => 'حقل الاسم مطلوب',
             'phone.required' => 'حقل الهاتف مطلوب',
             'phone.unique' => 'رقم الهاتف مستخدم بالفعل',
+            'roles_name.required' => 'حقل الدور مطلوب',
 
             'password.required' => 'حقل كلمة المرور مطلوب',
             'password.string' => 'يجب أن تكون كلمة المرور نصًا',
@@ -67,10 +70,6 @@ class EmployeeController extends Controller
 
             'status.required' => 'حقل الحالة مطلوب',
 //            'status.in' => 'الحالة المختارة غير صحيحة',
-
-            'role.required' => 'حقل الدور مطلوب',
-            'role.string' => 'يجب أن يكون الدور نصًا',
-            'role.max' => 'الدور لا يجب أن يتجاوز 50 حرفًا',
 
             'salary.required' => 'حقل الراتب مطلوب',
             'salary.numeric' => 'يجب أن يكون الراتب رقمًا',
@@ -82,7 +81,10 @@ class EmployeeController extends Controller
 
         $data['password'] = Hash::make($data['password']);
 
-        Employee::create($data);
+        $employee=  Employee::create($data);
+        if ($request->filled('role')) {
+            $employee->assignRole($request->role);
+        }
         return redirect()->route('employees.index')->with('success', 'تمت إضافة الموظف بنجاح');
     }
 
@@ -100,7 +102,8 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         $departments = Department::all();
-        return view('employees.edit', compact('employee', 'departments'));
+        $roles = Role::all();
+        return view('employees.edit', compact('employee', 'departments','roles'));
     }
 
     /**
@@ -112,7 +115,6 @@ class EmployeeController extends Controller
             'name' => 'required',
             'phone' => 'required|unique:employees,phone,' . $employee->id,
             'status' => 'required',
-            'role' => 'required',
             'salary' => 'required|numeric',
             'department_id' => 'required|exists:departments,id',
         ]);
@@ -124,6 +126,9 @@ class EmployeeController extends Controller
         }
 
         $employee->update($data);
+        if ($request->filled('role')) {
+            $employee->syncRoles([$request->role]);
+        }
         return redirect()->route('employees.index')->with('success', 'تم تعديل الموظف');
     }
 

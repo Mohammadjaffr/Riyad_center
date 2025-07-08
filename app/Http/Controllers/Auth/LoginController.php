@@ -61,8 +61,9 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         return [
-            $this->username() => $request->input('name'),
-            'password' => $request->input('password'),
+            'name' => $request->name,
+            'password' => $request->password,
+            'status'=>'نشط',
         ];
     }
 

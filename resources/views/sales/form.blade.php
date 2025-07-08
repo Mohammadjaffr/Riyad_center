@@ -7,9 +7,9 @@
     <label class="form-label fw-bold">القسم</label>
     <select name="department_id" class="summary-input flex-grow-1 w-100 w-md-auto {{ $errors->has('department_id') ? 'is-invalid' : '' }}"  style="text-align: right" >
         <option value="">اختر القسم</option>
-        @foreach($departments as $dep)
-            <option value="{{ $dep->id }}">{{ $dep->name }}</option>
-        @endforeach
+        <option value="{{ Auth::user()->department_id }}" selected>
+            {{ Auth::user()->department->name ?? 'القسم غير موجود' }}
+        </option>
     </select>
     @error('department_id')
     <span class="invalid-feedback text-end d-block" role="alert">

@@ -16,6 +16,8 @@
             100% { opacity: 0; visibility: hidden; }
         }
     </style>
-{{--    <div class="alert alert-success text-center">welcome to my project</div>--}}
-    @include('dashboard')
+    <div class="container py-4">
+        <h2 class="text-center mb-4 text-dark-blue">لوحة تحكم المدير</h2>
+        @include('dashboard')
+    </div>
 @endsection
