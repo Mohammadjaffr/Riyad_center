@@ -28,7 +28,7 @@
 
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
             <div class="row g-2 align-items-center mb-3">
-                <form method="GET" action="{{ route('employee-advance-payments.index') }}" class="col-md-6 col-lg-4 mb-3">
+                <form method="GET" action="{{ route('employee-advance-payments.index') }}" class="col-md-6 col-lg-4 mb-3 mt-4">
                     <div class="input-group">
                         <input
                             type="text"
@@ -38,15 +38,15 @@
                             value="{{ request('search') }}"
                             style="text-align: right;height: 43px!important;"
                         >
-                        <button class="btn btn-blue position-absolute rounded-circle my-1" style="left:25px;" type="submit">
+                        <button class=" search-btn my-1"  type="submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </form>
-
-                <div class="col-2 col-md-7"></div>
-                <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
-                    <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
+                <div class="d-none d-lg-flex col-lg-6"></div>
+                <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
+                    <!-- زر لفتح المودال -->
+                    <button type="button" class="btn btn-blue w-100 w-md-auto filter-btn" data-bs-toggle="modal" data-bs-target="#filterModal">
                         <i class="fa fa-filter"></i> فلترة
                     </button>
                 </div>

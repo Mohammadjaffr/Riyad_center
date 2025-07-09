@@ -28,13 +28,24 @@
                 <div class="col-12 col-md-4">
                     <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">
                 </div>
-                <div class="col-12 col-md-7"></div>
-                <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
+                <div class="d-none d-lg-flex col-lg-6">
+
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
                     <!-- زر لفتح المودال -->
-                    <button type="button" class="btn btn-blue" >
-                        <i class="fa fa-filter"></i> فلترة
+                    <button type="button" class="btn btn-blue w-100 w-md-auto filter-btn">
+                        <i class="fa fa-filter"></i> <span class="d-inline">فلترة</span>
                     </button>
                 </div>
+{{--                <div class="col-12 col-md-7"></div>--}}
+{{--                <div class="col-4 col-md-1 text-center mb-2 mb-md-0">--}}
+{{--                    <!-- زر لفتح المودال -->--}}
+{{--                    <button type="button" class="btn btn-blue" >--}}
+{{--                        <i class="fa fa-filter"></i> فلترة--}}
+{{--                    </button>--}}
+{{--                </div>--}}
             </div>
             <div class="table-responsive ">
                 <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 900px;">

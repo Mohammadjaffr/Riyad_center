@@ -10,24 +10,7 @@
     @php
         use Illuminate\Support\Facades\Storage;
     @endphp
-    <style>
-        @keyframes fadeInOut {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { opacity: 0; visibility: hidden; }
-        }
-        .page-item.active .page-link {
-            background-color: var(--dark-blue) !important;
-            border-color: var(--dark-blue) !important;
-            color: white !important;
-        }
 
-        .page-link {
-            color: var(--dark-blue) !important;
-        }
-
-    </style>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);">المنتجات</h2>
@@ -39,29 +22,28 @@
         </div>
 
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
-            <div class="row g-2 align-items-center mb-3">
-                <form method="GET" action="{{ route('products.index') }}" class="col-md-6 col-lg-4 mb-3">
+            <div class="row g-2 align-items-center mb-3 ">
+                <form method="GET" action="{{ route('products.index') }}" class="col-md-6 col-lg-4 mb-3 mt-4">
                     <div class="input-group">
                         <input
                             type="text"
                             name="search"
-                            class="form-control summary-input flex-grow-1 w-100 w-md-auto"
+                            class="form-control summary-input flex-grow-1 w-100 w-md-auto "
                             placeholder="ابحث باسم المنتج أو رقم الموديل..."
                             value="{{ request('search') }}"
                             style="text-align: right; height: 43px!important;"
                         >
-                        <button class="btn btn-blue position-absolute  rounded-circle my-1 " style="left:25px;" type="submit">
+                        <button class="search-btn my-1" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </form>
-
-
-                <div class="col-2 col-md-7"></div>
-                <div class="col-4 col-md-1 col-sm-12 text-center mb-2 mb-md-0">
+                <div class="d-none d-lg-flex col-lg-6">
+                </div>
+                <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center justify-content-lg-end align-items-center">
                     <!-- زر لفتح المودال -->
-                    <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
-                        <i class="fa fa-filter"></i> فلترة
+                    <button type="button" class="btn btn-blue w-100 w-md-auto filter-btn ms-lg-auto" data-bs-toggle="modal" data-bs-target="#filterModal">
+                        <i class="fa fa-filter"></i> <span class="d-inline">فلترة</span>
                     </button>
                 </div>
             </div>
@@ -240,3 +222,33 @@
     </script>
 
 @endsection
+
+<style>
+    .filter-btn {
+        min-width: 42px;
+        min-height: 42px;
+        border-radius: 50px;
+        padding: 0.375rem 1.2rem;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+    }
+    @media (max-width: 576px) {
+        .filter-btn {
+            min-width: 42px;
+            min-height: 42px;
+            padding: 0 !important;
+            border-radius: 50%;
+            font-size: 1.1rem;
+        }
+        .filter-btn span {
+            display: none !important;
+        }
+    }
+</style>
+
+
+

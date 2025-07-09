@@ -40,7 +40,7 @@
                         <input type="date" name="date_to" class="summary-input text-end flex-grow-1 w-100 w-md-auto" value="{{ request('date_to') }}">
                     </div>
 
-                        <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
+                        <div class="col-4 col-md-2 text-center mb-2 mb-md-0">
                             <button type="submit" class="btn btn-blue">
                                 <i class="fa fa-filter"></i> فلترة
                             </button>
