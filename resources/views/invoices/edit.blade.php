@@ -52,6 +52,7 @@
                 </div>
 
                 <!-- العناصر -->
+                <div class="table-responsive">
                 <table class="table table-bordered align-middle text-center custom-invoice-table mb-0 table-striped" id="items-table">
                     <thead class="table-secondary">
                     <tr>
@@ -89,8 +90,7 @@
                     @endforeach
                     </tbody>
                 </table>
-
-{{--                <button type="button" class="btn btn-secondary mt-2 mb-3" id="add-item">+ إضافة عنصر</button>--}}
+                </div>
                 <button type="button" class="btn btn-blue my-2" id="add-item">إضافة </button>
 
                 <!-- الملخص -->
@@ -98,7 +98,6 @@
                 <div class="row mb-2">
                             <div class="col-12 text-end">
                                 <span class="fw-bold ms-5" style="font-size:1.2rem;">المجموع</span>
-                                <!-- <span  class="fw-bold d-inline-block ms-3" style="font-size:1.2rem;" id="final_total">0.00</span> -->
                                 <input type="text" id="final_total" class="summary-input flex-grow-1 w-100 w-md-auto" value="" readonly>
 
                                 <input type="hidden" name="total_amount" id="total_amount">
@@ -122,12 +121,6 @@
                             </select>
                         </div>
                     </div>
-                    <!-- <div class="row mb-2">
-                        <div class="col-md-4">
-                            <label class="form-label fw-bold">المجموع </label>
-                            <input type="text" id="final_total" class="summary-input flex-grow-1 w-100 w-md-auto" value="" readonly>
-                        </div>
-                    </div> -->
                     <div class="row mb-3">
                         <div class="col-12">
                             <label  class="form-label fw-bold">ملاحظات</label>
