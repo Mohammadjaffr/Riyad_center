@@ -106,5 +106,53 @@
         </div>
     </div>
 </nav>
+<script>
+    function toggleDropdown(event) {
+        event.preventDefault();
+        var invoice_menu = document.getElementById('invoicesDropdownMenu');
+        invoice_menu.style.display = (invoice_menu.style.display === 'block') ? 'none' : 'block';
+    }
+    function deptDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('deptDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 
+    }
+    function empDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('empDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function purchasesDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('purchasesDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function reportDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('reportDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function returnDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('returnDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function roleDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('roleDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function productsDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('productsDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+</script>
 

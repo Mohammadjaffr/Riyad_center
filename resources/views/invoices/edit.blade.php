@@ -14,7 +14,6 @@
             <form action="{{ route('invoices.update', $invoice->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-
                 <!-- معلومات الفاتورة -->
                 <div class="invoice-info-box rounded-4 p-3 mb-4">
                     <div class="row g-2 mb-2">

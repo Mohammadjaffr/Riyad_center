@@ -37,8 +37,55 @@
         </ul>
     </nav>
 </aside>
-
 <script>
+    function deptSideDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('deptSideDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function roleSideDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('roleSideDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function productsSideDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('productsSideDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function invoicesSideDropdown(event) {
+        event.preventDefault();
+        var invoice_menu = document.getElementById('invoicesSideDropdownMenu');
+        invoice_menu.style.display = (invoice_menu.style.display === 'block') ? 'none' : 'block';
+    }
+    function empSideDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('empSideDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function purchasesSideDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('purchasesSideDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function returnSideDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('returnSideDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+    function stockSideDropdown(event) {
+        event.preventDefault();
+        var menu = document.getElementById('stockSideDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+    }
+
     document.addEventListener('click', function (e) {
         if (!e.target.classList.contains('dropdown-toggle')) {
             document.querySelectorAll('[id$="Menu"]').forEach(menu => {

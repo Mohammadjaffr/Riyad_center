@@ -125,3 +125,4 @@
                 <a class="nav-link text-white fw-bold d-lg-none d-md-flex" href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}">الجرد السنوي</a>
             </div>
         </li>
+

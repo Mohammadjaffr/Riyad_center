@@ -22,10 +22,10 @@
 
         {{-- الراجع Dropdown --}}
         <li class="nav-item position-relative w-100">
-            <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="returnDropdown" role="button" onclick="returnDropdown(event)" aria-expanded="false">
+            <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="returnSideDropdown" role="button" onclick="returnSideDropdown(event)" aria-expanded="false">
                 الراجع
             </a>
-            <div class="rounded-2 mt-2" id="returnDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
+            <div class="rounded-2 mt-2" id="returnSideDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
                 @can('إضافة مرتجع البيع')
                     <a class="dropdown-item-custom" href="{{ route('sales-returns.create') }}">إضافة راجع البيع</a>
                 @endcan
@@ -41,10 +41,10 @@
         {{-- المخزون Dropdown --}}
         @can('المخزون')
             <li class="nav-item position-relative w-100">
-                <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="reportDropdown" role="button" onclick="reportDropdown(event)" aria-expanded="false">
+                <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="stockSideDropdown" role="button" onclick="stockSideDropdown(event)" aria-expanded="false">
                     المخزون
                 </a>
-                <div class="rounded-2 mt-2" id="reportDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
+                <div class="rounded-2 mt-2" id="stockSideDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
                     @can('عرض سجل المخزون')
                         <a class="dropdown-item-custom" href="{{ url('/inventory-logs') }}">سجل المخزون</a>
@@ -65,11 +65,13 @@
                 </div>
             </li>
         @endcan
+        {{-- الفواتير Dropdown --}}
+
         <li class="nav-item position-relative w-100">
-            <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="invoicesDropdown" role="button" onclick="toggleDropdown(event)" aria-expanded="false">
+            <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="invoicesSideDropdown" role="button" onclick="invoicesSideDropdown(event)" aria-expanded="false">
                 الفواتير
             </a>
-            <div class="rounded-2 mt-2" id="invoicesDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
+            <div class="rounded-2 mt-2" id="invoicesSideDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
 
                 @can('إضافة فاتورة')
                     <a class="dropdown-item-custom" href="{{ route('invoices.create') }}">إضافة فاتورة</a>
