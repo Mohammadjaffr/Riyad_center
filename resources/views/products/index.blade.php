@@ -7,7 +7,9 @@
             {{ session('success') ?? session('error') }}
         </div>
     @endif
-
+    @php
+        use Illuminate\Support\Facades\Storage;
+    @endphp
     <style>
         @keyframes fadeInOut {
             0% { opacity: 0; }
@@ -15,6 +17,16 @@
             90% { opacity: 1; }
             100% { opacity: 0; visibility: hidden; }
         }
+        .page-item.active .page-link {
+            background-color: var(--dark-blue) !important;
+            border-color: var(--dark-blue) !important;
+            color: white !important;
+        }
+
+        .page-link {
+            color: var(--dark-blue) !important;
+        }
+
     </style>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -38,7 +50,7 @@
                             value="{{ request('search') }}"
                             style="text-align: right; height: 43px!important;"
                         >
-                        <button class="btn btn-blue position-absolute rounded-circle my-1 " style="left:25px;" type="submit">
+                        <button class="btn btn-blue position-absolute  rounded-circle my-1 " style="left:25px;" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -46,7 +58,7 @@
 
 
                 <div class="col-2 col-md-7"></div>
-                <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
+                <div class="col-4 col-md-1 col-sm-12 text-center mb-2 mb-md-0">
                     <!-- زر لفتح المودال -->
                     <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
                         <i class="fa fa-filter"></i> فلترة
@@ -74,9 +86,22 @@
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td>{{ $product->name }}</td>
-                            <td>
-                                <img src="{{ asset($product->product_image) }}" alt="{{ $product->name }}" class="img-fluid" style="max-width: 80px; max-height: 80px;">
+                            <td class="text-center align-middle">
+                                @if($product->product_image)
+                                    <img src="{{ Storage::url($product->product_image) }}"
+                                         alt="{{ $product->name }}"
+                                         class="rounded-circle shadow-sm border"
+                                         style="width: 60px; height: 60px; object-fit: cover; background: #f8f9fa;">
+                                @else
+                                    <img src="{{ asset('assets/images/logo.png') }}"
+                                         alt="صورة افتراضية"
+                                         class="rounded-circle shadow-sm border"
+                                         style="width: 60px; height: 60px; object-fit: cover; background: #f8f9fa;">
+                                @endif
                             </td>
+{{--                            <td>--}}
+{{--                                 <img src="{{ asset( $product->product_image) }}" alt="{{ $product->name }}" class="img-fluid" style="max-width: 80px; max-height: 80px;">--}}
+{{--                            </td>--}}
                             <td>{{ $product->model_num }}</td>
                             <td>{{ Str::limit($product->description, 25) }}</td>
                             <td>{{ $product->department->name ?? '-' }}</td>
@@ -133,9 +158,8 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{ $products->appends(request()->query())->links('pagination::bootstrap-4')->with(['class' => 'custom-pagination']) }}
             </div>
-            {{ $products->appends(request()->query())->links() }}
-
         </div>
     </div>
 

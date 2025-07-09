@@ -4,19 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="style all department section">
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="update qty modal">
+      <change afterPath="$PROJECT_DIR$/public/uploads/products/user.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/products/yEGqUlqtZQQXcQvtIvau6BeYWArICwcPMqfUnGUZ.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/navbar_roles/admin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/navbar_roles/clothes.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/navbar_roles/shoes.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/sidebar_roles/admin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/sidebar_roles/clothes.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/sidebar_roles/shoes.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/Js/custom-Js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/Js/custom-Js.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock_adjustments/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock_adjustments/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +170,7 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -183,7 +187,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "test",
-    "last_opened_file_path": "D:/github/Riyad_center/resources/views/stock_adjustments",
+    "last_opened_file_path": "D:/github/Riyad_center/resources/views",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -194,11 +198,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\Riyad_center\resources\views" />
+      <recent name="D:\github\Riyad_center\public\uploads\products" />
+      <recent name="D:\github\Riyad_center\resources\views\sidebar_role" />
       <recent name="D:\github\Riyad_center\resources\views\stock_adjustments" />
       <recent name="D:\github\Riyad_center\public\assets\images" />
-      <recent name="D:\github\Riyad_center\resources\views\inventory_logs" />
-      <recent name="D:\github\Riyad_center\resources\views\employee_advance_payments" />
-      <recent name="D:\github\Riyad_center\resources\views\payments" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\github\Riyad_center\resources\views\pages\products" />
@@ -243,7 +247,13 @@
       <workItem from="1750748118223" duration="29663000" />
       <workItem from="1751060630835" duration="40929000" />
       <workItem from="1751184116432" duration="6874000" />
-      <workItem from="1751370452765" duration="21882000" />
+      <workItem from="1751370452765" duration="22223000" />
+      <workItem from="1751410302170" duration="24542000" />
+      <workItem from="1751558452480" duration="10572000" />
+      <workItem from="1751583009333" duration="28000" />
+      <workItem from="1751638671348" duration="4965000" />
+      <workItem from="1751988791251" duration="4383000" />
+      <workItem from="1752001892265" duration="16626000" />
     </task>
     <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
       <option name="closed" value="true" />
@@ -453,7 +463,71 @@
       <option name="project" value="LOCAL" />
       <updated>1751404507606</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="style part of products section">
+      <option name="closed" value="true" />
+      <created>1751410156838</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1751410156838</updated>
+    </task>
+    <task id="LOCAL-00028" summary="style all invoices section">
+      <option name="closed" value="true" />
+      <created>1751452700635</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1751452700635</updated>
+    </task>
+    <task id="LOCAL-00029" summary="style all employees section">
+      <option name="closed" value="true" />
+      <created>1751456697521</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1751456697521</updated>
+    </task>
+    <task id="LOCAL-00030" summary="style all purchases management and sales section">
+      <option name="closed" value="true" />
+      <created>1751457843575</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1751457843575</updated>
+    </task>
+    <task id="LOCAL-00031" summary="style all products and inventory logs section">
+      <option name="closed" value="true" />
+      <created>1751464629036</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1751464629036</updated>
+    </task>
+    <task id="LOCAL-00032" summary="add modal + back button and edit hover in sidebar">
+      <option name="closed" value="true" />
+      <created>1751487724108</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1751487724108</updated>
+    </task>
+    <task id="LOCAL-00033" summary="update qty + search icon + print pages">
+      <option name="closed" value="true" />
+      <created>1751578494590</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1751578494590</updated>
+    </task>
+    <task id="LOCAL-00034" summary="update qty modal">
+      <option name="closed" value="true" />
+      <created>1751657828431</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1751657828431</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -471,11 +545,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="إضافة صفحة الLogin" />
-    <MESSAGE value="تعديل صفحة الLogin" />
-    <MESSAGE value="تشطيب الفوتر و الناف بار و السايد بار" />
-    <MESSAGE value="إضافة فاتورة تعديل" />
-    <MESSAGE value="تعديل  البحث عن منتجات" />
     <MESSAGE value="style.css" />
     <MESSAGE value="add products" />
     <MESSAGE value="add and list products" />
@@ -493,17 +562,14 @@
     <MESSAGE value="تصميم الداش بورد" />
     <MESSAGE value="edit navbar.blade.php" />
     <MESSAGE value="style all department section" />
-    <option name="LAST_COMMIT_MESSAGE" value="style all department section" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/sales/index.blade.php</url>
-          <line>4</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="style part of products section" />
+    <MESSAGE value="style all invoices section" />
+    <MESSAGE value="style all employees section" />
+    <MESSAGE value="style all purchases management and sales section" />
+    <MESSAGE value="style all products and inventory logs section" />
+    <MESSAGE value="add modal + back button and edit hover in sidebar" />
+    <MESSAGE value="update qty + search icon + print pages" />
+    <MESSAGE value="update qty modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="update qty modal" />
   </component>
 </project>

@@ -91,7 +91,7 @@
                         @foreach($oldVariants as $index => $variant)
                             <div class="variant-item mb-3 p-3 border rounded" data-index="{{ $index }}" >
                                 <div class="row g-3 align-items-center">
-                                    <div class="col-2">
+                                    <div class="col-12 col-lg-2">
                                         <select name="variants[{{ $index }}][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
                                             <option value="" disabled {{ empty($variant['size']) ? 'selected' : '' }}>اختر المقاس</option>
                                             <option value="XS" {{ (isset($variant['size']) && $variant['size'] == 'XS') ? 'selected' : '' }}>XS</option>
@@ -102,19 +102,19 @@
                                             <option value="XXL" {{ (isset($variant['size']) && $variant['size'] == 'XXL') ? 'selected' : '' }}>XXL</option>
                                         </select>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-12 col-lg-2">
                                         <input type="text" name="variants[{{ $index }}][color]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="اللون" value="{{ $variant['color'] ?? '' }}" required>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-12 col-lg-2">
                                         <input type="number" name="variants[{{ $index }}][quantity]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="كمية المخزون" min="0" value="{{ $variant['quantity'] ?? 0 }}" required>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-12 col-lg-2">
                                         <input type="number" step="0.01" name="variants[{{ $index }}][sell_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر البيع" value="{{ $variant['sell_price'] ?? '' }}" required>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-12 col-lg-2">
                                         <input type="number" step="0.01" name="variants[{{ $index }}][cost_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر التكلفة" value="{{ $variant['cost_price'] ?? '' }}" required>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-12 col-lg-2">
                                         <button type="button" class="btn btn-danger btn-sm remove-variant-btn"><i class="fa fa-trash"></i></button>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                         {{-- أول متغير افتراضي --}}
                         <div class="variant-item mb-3 p-3 border rounded" data-index="0">
                             <div class="row g-3 align-items-center">
-                                <div class="col-2">
+                                <div class="col-12 col-lg-2">
                                     <select name="variants[0][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
                                         <option value="" disabled selected>اختر المقاس</option>
                                         <option value="XS">XS</option>
@@ -135,19 +135,19 @@
                                         <option value="XXL">XXL</option>
                                     </select>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-12 col-lg-2">
                                     <input type="text" name="variants[0][color]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="اللون" required>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-12 col-lg-2">
                                     <input type="number" name="variants[0][quantity]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="كمية المخزون" min="0" required>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-12 col-lg-2">
                                     <input type="number" step="0.01" name="variants[0][sell_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر البيع" required>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-12 col-lg-2">
                                     <input type="number" step="0.01" name="variants[0][cost_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر التكلفة" required>
                                 </div>
-                                <div class="col-2 ">
+                                <div class="col-12 col-lg-2 ">
                                     <button type="button" class="btn btn-danger btn-sm remove-variant-btn"><i class="fa fa-trash"></i> </button>
                                 </div>
                             </div>
@@ -177,7 +177,7 @@
         const html = `
 <div class="variant-item mb-3 p-3 border rounded" data-index="${variantIndex}">
     <div class="row g-3 align-items-center">
-        <div class="col-2">
+        <div class="col-12 col-lg-2">
             <select name="variants[${variantIndex}][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
                 <option value="" disabled selected>اختر المقاس</option>
                 <option value="XS">XS</option>
@@ -188,19 +188,19 @@
                 <option value="XXL">XXL</option>
             </select>
         </div>
-        <div class="col-2">
+        <div class="col-12 col-lg-2">
             <input type="text" name="variants[${variantIndex}][color]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="اللون" required>
         </div>
-        <div class="col-2">
+        <div class="col-12 col-lg-2">
 <input type="number" name="variants[${variantIndex}][quantity]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="كمية المخزون" min="0" required>
         </div>
-        <div class="col-2">
+        <div class="col-12 col-lg-2">
             <input type="number" step="0.01" name="variants[${variantIndex}][sell_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر البيع" required>
         </div>
-        <div class="col-2">
+        <div class="col-12 col-lg-2">
             <input type="number" step="0.01" name="variants[${variantIndex}][cost_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر التكلفة" required>
         </div>
-        <div class="col-2">
+        <div class="col-12 col-lg-2">
             <button type="button" class="btn btn-danger btn-sm remove-variant-btn"><i class="fa fa-trash"></i></button>
         </div>
     </div>

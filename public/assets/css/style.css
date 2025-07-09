@@ -281,12 +281,12 @@ body {
         border-radius: 0 !important;
     }
 }
-@media (min-width: 991px), (max-width: 554.98px) {
+@media (min-width: 991px) {
     .logo-991 {
         display: none !important;
     }
 }
-@media (min-width: 555px) and (max-width: 990.98px) {
+@media  (max-width: 990.98px) {
     .logo-991 {
         display: block !important;
     }
