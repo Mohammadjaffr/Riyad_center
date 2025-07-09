@@ -87,7 +87,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="table-responsive">
                         <table class="table table-bordered align-middle text-center custom-invoice-table mb-0 table-striped" id="items-table">
                             <thead class="table-secondary">
                             <tr>

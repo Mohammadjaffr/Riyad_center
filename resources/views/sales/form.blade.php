@@ -30,7 +30,7 @@
 
 <hr>
 <h5 style="color: var(--dark-blue);">تفاصيل المنتجات</h5>
-
+<div class="table-responsive">
 <table class="table table-bordered align-middle text-center custom-invoice-table mb-0 table-striped" id="items-table">
     <thead class="table-secondary">
     <tr>
@@ -64,6 +64,7 @@
     </tr>
     </tbody>
 </table>
+</div>
 <button type="button" class="btn btn-new-invoice my-2" id="add-item">إضافة </button>
 
 <div class="mb-3">
