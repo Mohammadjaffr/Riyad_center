@@ -38,7 +38,7 @@
         {{-- الصلاحيات Dropdown --}}
 
         <li class="nav-item position-relative w-100">
-            <a class="nav-link sidebar-link-custom" href="{{ route('admin.roles_permissions.index')}}">الصلاحيات</a>
+            <a class="nav-link text-white fw-bold d-lg-none d-md-flex" href="{{ route('admin.roles_permissions.index')}}">الصلاحيات</a>
 
 {{--            <a href="#" class="nav-link text-white fw-bold d-lg-none d-md-flex dropdown-toggle" id="roleDropdown" role="button" onclick="roleDropdown(event)" aria-expanded="false">--}}
 {{--                الصلاحيات--}}

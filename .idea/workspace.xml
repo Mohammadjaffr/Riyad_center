@@ -4,27 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="update responsive of index (search icon and filter)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/roles_permissions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/roles_permissions/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee_advance_payments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_advance_payments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee_salaries/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_salaries/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employees/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/current.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/current.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/monthly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/monthly.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/yearly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/yearly.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" afterDir="false" />
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="update responsive , search icon , roles page">
       <change beforePath="$PROJECT_DIR$/resources/views/navbar_roles/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar_roles/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/payments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/purchase_returns/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchase_returns/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/purchases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchases/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sales/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sales_returns/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales_returns/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar_roles/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar_roles/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock_adjustments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock_adjustments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +240,7 @@
       <workItem from="1751583009333" duration="28000" />
       <workItem from="1751638671348" duration="4965000" />
       <workItem from="1751988791251" duration="4383000" />
-      <workItem from="1752001892265" duration="44345000" />
+      <workItem from="1752001892265" duration="44665000" />
     </task>
     <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
       <option name="closed" value="true" />
@@ -573,7 +554,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752063242713</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="update responsive , search icon , roles page">
+      <option name="closed" value="true" />
+      <created>1752154312364</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1752154312365</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,7 +580,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit products/index" />
     <MESSAGE value="add and show invoice" />
     <MESSAGE value="edit product/form + create and add employees/ careat + index +form" />
     <MESSAGE value="edit employees/index" />
@@ -616,6 +604,7 @@
     <MESSAGE value="update create and edit responsive" />
     <MESSAGE value="update sidebar and navbar" />
     <MESSAGE value="update responsive of index (search icon and filter)" />
-    <option name="LAST_COMMIT_MESSAGE" value="update responsive of index (search icon and filter)" />
+    <MESSAGE value="update responsive , search icon , roles page" />
+    <option name="LAST_COMMIT_MESSAGE" value="update responsive , search icon , roles page" />
   </component>
 </project>
