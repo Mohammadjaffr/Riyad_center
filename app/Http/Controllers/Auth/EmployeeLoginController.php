@@ -34,6 +34,8 @@ class EmployeeLoginController extends Controller
                     return redirect()->route('dashboard.admin');
                 case 2:
                     return redirect()->route('dashboard.clothes');
+                case 3:
+                    return redirect()->route('dashboard.shoes');
                 default:
                     return redirect()->route('home');
             }
