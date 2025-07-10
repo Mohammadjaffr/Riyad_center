@@ -24,7 +24,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('employee.login') }}">
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mb-3" dir="rtl">
                         <label for="phone" class="form-label text-dark-blue text-end">{{ __('رقم الجوال') }}</label>
