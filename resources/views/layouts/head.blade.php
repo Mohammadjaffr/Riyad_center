@@ -12,11 +12,11 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="مركز الرياض للملابس الرجالية الجاهزة والأحذية والبدلات">
     <meta property="og:description" content="مركز الرياض متخصص في بيع الملابس الرجالية الجاهزة، الأحذية، والبدلات. جودة عالية، أناقة، وخدمة متميزة.">
-    <meta property="og:image" content="{{ asset('images/logo.png') }}">
+    <meta property="og:image" content="{{ asset('assets/images/logo.png') }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="مركز الرياض للملابس الرجالية الجاهزة والأحذية والبدلات">
     <meta name="twitter:description" content="مركز الرياض متخصص في بيع الملابس الرجالية الجاهزة، الأحذية، والبدلات. جودة عالية، أناقة، وخدمة متميزة.">
-    <meta name="twitter:image" content="{{ asset('images/logo.png') }}">
+    <meta name="twitter:image" content="{{ asset('assets/images/logo.png') }}">
 {{--    <link rel="stylesheet" href="{{asset('assets/css/custom-style.css')}}">--}}
 {{--    <link rel="stylesheet" href="{{asset('assets/css/fonts.css')}}">--}}
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
