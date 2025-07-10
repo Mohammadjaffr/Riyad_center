@@ -90,7 +90,6 @@
                 <a class="dropdown-item-custom" href="{{ route('sales-returns.index') }}">عرض راجع البيع</a>
                 <a class="dropdown-item-custom" href="{{ route('purchase-returns.create') }}">إضافة راجع الشراء</a>
                 <a class="dropdown-item-custom" href="{{ route('purchase-returns.index') }}">عرض راجع الشراء</a>
-                <a class="dropdown-item-custom" href="{{ route('inventory-reports.index') }}">عرض التقارير</a>
             </div>
         </li>
 
@@ -104,6 +103,8 @@
                 <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'current']) }}">الجرد الحالي</a>
                 <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}">الجرد الشهري</a>
                 <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}">الجرد السنوي</a>
+                <a class="dropdown-item-custom" href="{{ route('inventory-reports.index') }}">عرض التقارير</a>
+
             </div>
         </li>
 
