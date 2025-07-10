@@ -52,7 +52,7 @@
                         @endif
 
                         @if($employee && $employee->department_id == 3)
-                            @include('navebar_roles.shoes')
+                            @include('navbar_roles.shoes')
                         @endif
 
                     @endif
