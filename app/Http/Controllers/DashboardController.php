@@ -67,7 +67,7 @@ class DashboardController extends Controller
         $totalSales = Sale::where('department_id', $department_id)->count();
 
         // المخزون (مجموع الكميات) من جدول product_variants المرتبطة بمنتجات القسم
-        $totalStock = ProductVariant::whereHas('product', function ($q) use ($department_id) {
+        $totalStock = Product_variant::whereHas('product', function ($q) use ($department_id) {
             $q->where('department_id', $department_id);
         })->sum('quantity');
 
