@@ -12,6 +12,16 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        return view('auth.employee-login');
+    }
+
+    /**
      * إلى أين يُعاد التوجيه بعد تسجيل الدخول
      *
      * @var string
@@ -24,14 +34,6 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-
-    /**
-     * عرض نموذج تسجيل الدخول
-     */
-    public function showLoginForm()
-    {
-        return view('auth.login'); // يمكنك تغييره إلى 'auth-form' لو أردت
     }
 
     /**

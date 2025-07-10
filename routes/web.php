@@ -25,10 +25,10 @@ Route::get('/', function () {
     return view('auth.employee-login');
 });
 
-Route::get('/login', [EmployeeLoginController::class, 'showLoginForm'])->name('employee.login.form');
-Route::post('/login', [EmployeeLoginController::class, 'login'])->name('employee.login');
-Route::post('/logout', [EmployeeLoginController::class, 'logout'])->name('employee.logout');
-
+//Route::get('/login', [EmployeeLoginController::class, 'showLoginForm'])->name('employee.login.form');
+//Route::post('/login', [EmployeeLoginController::class, 'login'])->name('employee.login');
+//Route::post('/logout', [EmployeeLoginController::class, 'logout'])->name('employee.logout');
+ Auth::routes();
 Route::middleware(['auth:employee'])->group(function () {
 //    Route::get('/home', fn() => view('home'))->name('home');
 
