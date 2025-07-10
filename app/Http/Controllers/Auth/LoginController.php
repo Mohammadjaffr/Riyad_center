@@ -55,6 +55,37 @@ class LoginController extends Controller
 
         return $field;
     }
+    public function login(Request $request)
+    {
+        $credentials = $request->only('phone', 'password');
+
+        if (Auth::guard('employee')->attempt($credentials)) {
+            $request->session()->regenerate();
+            $employee = Auth::guard('employee')->user();
+
+            session([
+                'user_type' => 'employee',
+                'department_id' => $employee->department_id,
+            ]);
+
+            if ($employee->hasRole('admin')) {
+                return redirect()->route('dashboard.admin');
+            }
+
+            switch ($employee->department_id) {
+                case 1:
+                    return redirect()->route('dashboard.admin');
+                case 2:
+                    return redirect()->route('dashboard.clothes');
+                default:
+                    return redirect()->route('home');
+            }
+        }
+
+        return back()->withErrors([
+            'phone' => 'بيانات الدخول غير صحيحة',
+        ]);
+    }
 
 
     /**
