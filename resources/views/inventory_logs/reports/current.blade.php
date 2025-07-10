@@ -3,8 +3,8 @@
 {{--@section('content')--}}
 
     <div class="container py-4 " dir="rtl">
-        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-            <h2 class="mb-3 mb-md-0 " style="color: var(--dark-blue);"> تقرير الجرد الحالي - {{ now()->format('Y/m') }}</h2>
+        <div class="d-flex justify-content-center align-items-center mb-3 flex-wrap">
+            <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);"> تقرير الجرد الحالي - {{ now()->format('Y/m') }}</h2>
 
         </div>
         <div class="bg-white rounded-4 p-3 shadow-sm">

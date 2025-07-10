@@ -27,19 +27,37 @@
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
             <div class="row g-2 align-items-center mb-3">
                 <form method="GET" action="{{ route('employees.index') }}" class="col-md-6 col-lg-4 mb-3 mt-4">
-                    <div class="input-group">
+                    <div class="input-group" style="position: relative;">
                         <input
                             type="text"
                             name="search"
-                            class="form-control summary-input flex-grow-1 w-100 w-md-auto"
-                            placeholder="ابحث برقم الموضف أو اسم الموظف..."
+                            class="form-control summary-input w-100"
+                            placeholder="ابحث برقم الموظف أو اسم الموظف..."
                             value="{{ request('search') }}"
-                            style="text-align: right;height: 43px!important;"
+                            style="text-align: right; height: 43px; padding-right: 40px;"
                         >
-                        <button class=" search-btn my-1"  type="submit">
-                            <i class="fa fa-search"></i>
+                        <button
+                            class="search-btn "
+                            type="submit"
+                            style="position: absolute; left:15px; top: 50%; transform: translateY(-50%); background: none; border: none; z-index: 5;"
+                        >
+                            <i class="fa fa-search" style="color: #fff;"></i>
                         </button>
                     </div>
+
+{{--                    <div class="input-group">--}}
+{{--                        <input--}}
+{{--                            type="text"--}}
+{{--                            name="search"--}}
+{{--                            class="form-control summary-input flex-grow-1 w-100 w-md-auto"--}}
+{{--                            placeholder="ابحث برقم الموضف أو اسم الموظف..."--}}
+{{--                            value="{{ request('search') }}"--}}
+{{--                            style="text-align: right;height: 43px!important;"--}}
+{{--                        >--}}
+{{--                        <button class=" search-btn my-1"  type="submit">--}}
+{{--                            <i class="fa fa-search"></i>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
                 </form>
                 <div class="d-none d-lg-flex col-lg-6"></div>
                 <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">

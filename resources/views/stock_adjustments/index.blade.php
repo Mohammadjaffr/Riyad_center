@@ -17,7 +17,7 @@
         }
     </style>
     <div class="container py-4">
-        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+        <div class="d-flex justify-content-center align-items-center mb-3 flex-wrap">
             <h2 class="mb-3 mb-md-0" style="color: var(--dark-blue);">سجل تعديلات الجرد</h2>
          </div>
 
@@ -25,9 +25,26 @@
             <div class="row g-2 align-items-center mb-3">
 
 
-                <div class="col-12 col-md-4">
-                    <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">
-                </div>
+                <form method="GET" action="{{ route('stock-adjustments.index') }}" class="col-md-6 col-lg-4 mb-3 mt-4">
+                    <div class="input-group" style="position: relative;">
+                        <input
+                            type="text"
+                            name="search"
+                            class="form-control summary-input w-100"
+                            placeholder="ابحث ..."
+                            value="{{ request('search') }}"
+                            style="text-align: right; height: 43px; padding-right: 40px;"
+                        >
+                        <button
+                            class="search-btn "
+                            type="submit"
+                            style="position: absolute; left:15px; top: 50%; transform: translateY(-50%); background: none; border: none; z-index: 5;"
+                        >
+                            <i class="fa fa-search" style="color: #fff;"></i>
+                        </button>
+                    </div>
+
+                </form>
                 <div class="d-none d-lg-flex col-lg-6">
 
                 </div>

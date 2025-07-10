@@ -17,14 +17,16 @@
         {{-- الصلاحيات Dropdown --}}
 
         <li class="nav-item position-relative w-100">
-            <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="roleSideDropdown" role="button" onclick="roleSideDropdown(event)" aria-expanded="false">
-                الصلاحيات
-            </a>
-            <div class="rounded-2 mt-2" id="roleSideDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
-                <a class="nav-link sidebar-link-custom" href="{{ route('admin.roles_permissions.index') }}">قائمة الصلاحيات</a>
-                <a class="dropdown-item-custom" href="{{ route('admin.permissions.store') }}">إضافة صلاحية</a>
+            <a class="nav-link sidebar-link-custom" href="{{ route('admin.roles_permissions.index') }}">الصلاحيات</a>
 
-            </div>
+            {{--            <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="roleSideDropdown" role="button" onclick="roleSideDropdown(event)" aria-expanded="false">--}}
+{{--                الصلاحيات--}}
+{{--            </a>--}}
+{{--            <div class="rounded-2 mt-2" id="roleSideDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">--}}
+{{--                <a class="nav-link sidebar-link-custom" href="{{ route('admin.roles_permissions.index') }}">قائمة الصلاحيات</a>--}}
+{{--                <a class="dropdown-item-custom" href="{{ route('admin.permissions.store') }}">إضافة صلاحية</a>--}}
+
+{{--            </div>--}}
         </li>
         {{--                <a class="nav-link sidebar-link-custom" href="{{ route('admin.roles_permissions.index') }}">قائمة الصلاحيات</a>--}}
         {{-- المنتجات Dropdown --}}
