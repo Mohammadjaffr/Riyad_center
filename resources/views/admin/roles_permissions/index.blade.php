@@ -66,7 +66,7 @@
 
                 {{-- جدول عرض الأدوار --}}
                         <div class="table-responsive ">
-                            <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 900px;">
+                            <table class="table table-hover align-middle text-center table-striped custom-invoice-table" >
                                 <thead class="table-light">
                     <tr>
                         <th>اسم الدور</th>
@@ -90,17 +90,18 @@
 
                             <td>
                                 {{-- زر تعديل صلاحيات الدور (يفتح مودال) --}}
-                                <button class="btn btn-sm btn-blue p-2" data-bs-toggle="modal" data-bs-target="#editRoleModal{{ $role->id }}">
+                                <button class="btn btn-sm btn-blue py-2 px-3" data-bs-toggle="modal" data-bs-target="#editRoleModal{{ $role->id }}">
                                     <i class="fa fa-pen"></i>
-                                    تعديل الصلاحيات</button>
+{{--                                    تعديل الصلاحيات--}}
+                                </button>
 
                                 {{-- زر حذف الدور --}}
                                 <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" class="d-inline" >
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn   mx-2 btn-danger rounded-3" title="حذف" data-bs-toggle="modal" data-bs-target="#deleteRoleModal" data-role-id="{{ $role->id }}">
+                                    <button type="button" class="btn py-1  mx-2  btn-danger rounded-3" title="حذف" data-bs-toggle="modal" data-bs-target="#deleteRoleModal" data-role-id="{{ $role->id }}">
                                         <i class="fa fa-trash"></i>
-                                        حذف
+{{--                                        حذف--}}
                                     </button>
                                 </form>
 
@@ -176,7 +177,7 @@
 
                     {{-- جدول عرض الصلاحيات --}}
                     <div class="table-responsive ">
-                        <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 900px;">
+                        <table class="table table-hover align-middle text-center table-striped custom-invoice-table" >
                         <thead>
                         <tr>
                             <th>اسم الصلاحية</th>
@@ -234,7 +235,7 @@
 
                         <h5 class="mb-5 mb-md-0" style="color: var(--dark-blue);"> قائمة الموظفين وأدوارهم </h5>
                 <div class="table-responsive ">
-                        <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 900px;">
+                        <table class="table table-hover align-middle text-center table-striped custom-invoice-table" >
                             <thead class="table-light">
                     <tr>
                         <th>الاسم</th>

@@ -48,7 +48,7 @@
                 <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center justify-content-lg-end align-items-center">
                     <!-- زر لفتح المودال -->
                     <button type="button" class="btn btn-blue w-100 w-md-auto filter-btn ms-lg-auto" data-bs-toggle="modal" data-bs-target="#filterModal">
-                        <i class="fa fa-filter"></i> <span class="d-inline">فلترة</span>
+                        <i class="fa fa-filter"></i> فلترة
                     </button>
                 </div>
             </div>

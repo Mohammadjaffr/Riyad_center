@@ -65,10 +65,10 @@ window.addEventListener('DOMContentLoaded', function() {
 // }
 function toggleAccountDropdown(event) {
     event.preventDefault();
-    var menu = document.getElementById('accountDropdownMenu');
+    var menu = document.getElementById('toggleAccountDropdownMenu');
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
     document.addEventListener('click', function handler(e) {
-        var dropdownItem = document.getElementById('accountDropdown');
+        var dropdownItem = document.getElementById('toggleAccountDropdown');
         if (!dropdownItem.contains(e.target) && !menu.contains(e.target)) {
             menu.style.display = 'none';
             document.removeEventListener('click', handler);
