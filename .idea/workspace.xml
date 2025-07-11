@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="add toggleAccountDropdown in navbar.blade.php">
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit logout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navbar_roles/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar_roles/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navbar_roles/clothes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar_roles/clothes.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navbar_roles/shoes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar_roles/shoes.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -589,7 +587,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752250453319</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="edit logout">
+      <option name="closed" value="true" />
+      <created>1752255137252</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1752255137253</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +613,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit employees/index" />
     <MESSAGE value="add create+form+index of suppliers + purchases" />
     <MESSAGE value="add create+form+index of salaries + sales" />
     <MESSAGE value="تصميم جميع الواجهات عدا واجهة اضافة فاتورة" />
@@ -632,7 +637,8 @@
     <MESSAGE value="update responsive , search icon , roles page" />
     <MESSAGE value="add account button and edit role's table" />
     <MESSAGE value="add toggleAccountDropdown in navbar.blade.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="add toggleAccountDropdown in navbar.blade.php" />
+    <MESSAGE value="edit logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit logout" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -51,7 +51,7 @@
                         <div class="row g-2 mb-2">
                             <div class="col-12 col-md-4">
                                 <label class="form-label fw-bold">اسم الموظف:</label>
-                                <input type="text" class="summary-input flex-grow-1 w-100 w-md-auto" value="{{ Auth::guard('employee')->user()->name }}" readonly>
+                                <input type="text" name="employee_name" class="summary-input flex-grow-1 w-100 w-md-auto" value="{{ Auth::guard('employee')->user()->name }}" readonly>
                                 <input type="hidden" name="employee_id" value="{{ Auth::guard('employee')->id() }}">
 
                             </div>
@@ -398,7 +398,8 @@
         function previewInvoice() {
             document.getElementById('preview_customer_name').textContent = document.querySelector('input[name=customer_name]').value;
             document.getElementById('preview_department').textContent = document.querySelector('select[name=department_id] option:checked').textContent;
-            document.getElementById('preview_employee').textContent = document.querySelector('select[name=employee_id] option:checked').textContent;
+            // document.getElementById('preview_employee').textContent = document.querySelector('input[readonly][type="text"]').value;
+            document.getElementById('preview_employee').textContent = document.querySelector('input[name=employee_name]').value;
             document.getElementById('preview_invoice_date').textContent = document.querySelector('input[name=invoice_date]').value;
 
             // افرغ جدول العناصر
@@ -428,7 +429,7 @@
             const discount = parseFloat(document.querySelector('input[name=discount_amount]').value) || 0;
             const paid = parseFloat(document.querySelector('input[name=paid_amount]').value) || 0;
             const totalAmount = parseFloat(document.getElementById('total_amount').value) || 0;
-            const rest = totalAmount - discount - paid;
+            const rest = totalAmount - paid;
 
             document.getElementById('preview_discount').textContent = discount.toFixed(2);
             document.getElementById('preview_paid').textContent = paid.toFixed(2);
