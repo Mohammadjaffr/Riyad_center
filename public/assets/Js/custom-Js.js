@@ -63,18 +63,7 @@ window.addEventListener('DOMContentLoaded', function() {
 //     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 //
 // }
-function toggleAccountDropdown(event) {
-    event.preventDefault();
-    var menu = document.getElementById('toggleAccountDropdownMenu');
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-    document.addEventListener('click', function handler(e) {
-        var dropdownItem = document.getElementById('toggleAccountDropdown');
-        if (!dropdownItem.contains(e.target) && !menu.contains(e.target)) {
-            menu.style.display = 'none';
-            document.removeEventListener('click', handler);
-        }
-    });
-}
+
 function handleSidebarToggleVisibility() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     if (window.innerWidth < 992) {
