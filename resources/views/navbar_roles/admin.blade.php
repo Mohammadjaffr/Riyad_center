@@ -22,7 +22,9 @@
         <li class="nav-item w-100">
             <a class="nav-link text-white fw-bold d-lg-none d-md-flex" href="{{ url('/dashboard/admin') }}">الرئيسية</a>
         </li>
-
+<li class="nav-item w-100">
+    <a class="nav-link text-white fw-bold d-lg-none d-md-flex" href=" ">الملف الشخصي</a>
+</li>
 
         {{-- الأقسام Dropdown --}}
         <li class="nav-item position-relative w-100">
@@ -127,20 +129,30 @@
                 <a class="nav-link text-white fw-bold d-lg-none d-md-flex" href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}">الجرد السنوي</a>
             </div>
         </li>
-<li class="nav-item position-relative w-100">
-    <a href="#" class="nav-link text-white fw-bold d-lg-none d-md-flex dropdown-toggle" id="toggleAccountDropdown" role="button" onclick="toggleAccountDropdown(event)" aria-expanded="false">
-        حسابي
-    </a>
-    <div class="rounded-2 mt-2" id="toggleAccountDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
-        <a class="nav-link text-white fw-bold d-lg-none d-md-flex" href="">الملف الشخصي</a>
-        <a class="nav-link text-white fw-bold d-lg-none d-md-flex" href="">الاعدادات</a>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit"
-                    class="nav-link text-white fw-bold d-lg-none d-md-flex">
-                تسجيل خروج
-            </button>
-        </form>
-
-    </div>
+<li class="nav-item w-100">
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit"
+                class="nav-link text-white fw-bold d-lg-none d-md-flex">
+            تسجيل خروج
+        </button>
+    </form>
 </li>
+
+{{--<li class="nav-item position-relative w-100">--}}
+{{--    <a href="#" class="nav-link text-white fw-bold d-lg-none d-md-flex dropdown-toggle" id="toggleAccountDropdown" role="button" onclick="toggleAccountDropdown(event)" aria-expanded="false">--}}
+{{--        حسابي--}}
+{{--    </a>--}}
+{{--    <div class="rounded-2 mt-2" id="toggleAccountDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">--}}
+{{--        <a class="nav-link text-white fw-bold d-lg-none d-md-flex" href="">الملف الشخصي</a>--}}
+{{--        <a class="nav-link text-white fw-bold d-lg-none d-md-flex" href="">الاعدادات</a>--}}
+{{--        <form action="{{ route('logout') }}" method="POST">--}}
+{{--            @csrf--}}
+{{--            <button type="submit"--}}
+{{--                    class="nav-link text-white fw-bold d-lg-none d-md-flex">--}}
+{{--                تسجيل خروج--}}
+{{--            </button>--}}
+{{--        </form>--}}
+
+{{--    </div>--}}
+{{--</li>--}}
