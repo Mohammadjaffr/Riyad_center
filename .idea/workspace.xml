@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit login">
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit logout button and hide images in small devices">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employees/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_reports/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_reports/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/purchases/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchases/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sales/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -616,7 +613,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752265422272</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="edit logout button and hide images in small devices">
+      <option name="closed" value="true" />
+      <created>1752267571120</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1752267571120</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +639,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="تصميم جميع الواجهات عدا واجهة اضافة فاتورة" />
     <MESSAGE value="تعديل التكست اريا" />
     <MESSAGE value="تعديل اضافة فاتورة" />
     <MESSAGE value="تم تعديل اضافة الفاتورة و تنسيق المودل" />
@@ -659,14 +663,15 @@
     <MESSAGE value="edit logout" />
     <MESSAGE value="edit preview window" />
     <MESSAGE value="edit login" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit login" />
+    <MESSAGE value="edit logout button and hide images in small devices" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit logout button and hide images in small devices" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/layouts/navbar.blade.php</url>
-          <line>156</line>
+          <line>157</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

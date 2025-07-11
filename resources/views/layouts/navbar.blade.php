@@ -28,9 +28,10 @@
         </button>
 
         <!-- السايدبار (Offcanvas) -->
-        <div class="offcanvas offcanvas-start bg-dark-blue text-white" tabindex="-1" id="mainNavbar"
+        <div class="offcanvas offcanvas-start  text-white bg-dark-blue " tabindex="-1" id="mainNavbar"
+             style="width: 40%;"
              aria-labelledby="mainNavbarLabel">
-            <div class="offcanvas-header">
+            <div class="offcanvas-header text-white">
                 <h5 class="offcanvas-title" id="mainNavbarLabel">القائمة</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
