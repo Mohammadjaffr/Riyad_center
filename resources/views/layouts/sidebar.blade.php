@@ -9,8 +9,7 @@
         <div class="sidebar-desc text-center mt-2">
             <span class="d-block text-white-50 small" style="font-size: 10px;">
                 HELMY AL-HAIDARI FOR GENERAL TRADE<br>
-                لبيع جميع الأنشطة التجارية - خياطة و تفصيل الأزياء الرسمية
-            </span>
+مركز الرياض للملابس الرجالية الجاهزة والأحذية والبدلات            </span>
         </div>
     </div>
 

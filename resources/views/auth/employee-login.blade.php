@@ -1,21 +1,22 @@
 @extends('layouts.head')
 @section('title' ,'تسجيل الدخول')
 
-    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light-beige">
+    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light-beige mt-5">
         <div class="login-card row bg-white rounded-5 shadow-lg overflow-hidden">
 
             <!-- Left Panel (Image Section) -->
-            <div class="col-md-6 d-flex flex-column justify-content-center align-items-center p-4 bg-dark-blue text-white">
+            <div class="col-md-6 d-flex flex-column justify-content-center align-items-center p-4 pt-sm-2 bg-dark-blue text-white d-none d-md-flex">
                 <h2 class="mb-4">تسجيل الدخول</h2>
-                <img src="{{asset('assets/images/login.png')}}" alt="Register Illustration" class="img-fluid login-illustration">
+                <img src="{{asset('assets/images/login.png')}}" alt="Register Illustration" class="img-fluid login-illustration ">
             </div>
             <div class="col-md-6 p-5 d-flex flex-column justify-content-center">
 
-                <div class="text-center mb-5 bg-white">
-                    <img src="{{asset('assets/images/logo.png')}} " alt="Company Logo" class="img-fluid company-logo mb-3">
+                <div class="text-center mb-2 mb-md-5 bg-white">
+                    <img src="{{asset('assets/images/logo.png')}} " alt="Company Logo" class="img-fluid company-logo mb-sm-1 mb-md-3 ">
                     <div class="desc">
-                        HELMY AL-HAIDARI FOR GENERAL TRADE<br>
-                        لبيع جميع الأنشطة التجارية - خياطة و تفصيل الأزياء الرسمية
+                        <span class="d-none d-md-flex"> HELMY AL-HAIDARI FOR GENERAL TRADE<br></span>
+
+                        مركز الرياض للملابس الرجالية الجاهزة والأحذية والبدلات
                     </div>
                 </div>
                 @if(session('error'))
