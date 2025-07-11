@@ -26,7 +26,7 @@
 
             <div class="col-12 col-md-4">
 {{--                <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">--}}
-                <form method="GET" class="mb-3">
+                <form method="GET" class="mb-3 mt-4">
                     <select name="type" class="summary-input text-end flex-grow-1 w-md-auto  w-100 d-inline-block">
                         <option value="" {{ request('type') == '' ? 'selected' : '' }}>كل الحركات</option>
                         <option value="شراء" {{ request('type') == 'شراء' ? 'selected' : '' }}>شراء</option>
@@ -38,10 +38,17 @@
 
                 </form>
             </div>
-            <div class="col-12 col-md-7"></div>
-            <div class="col-4 col-md-1 text-center mb-2 mb-md-0">
+{{--            <div class="col-12 col-md-7"></div>--}}
+{{--            <div class="col-4 col-md-1 text-center mb-2 mb-md-0">--}}
+{{--                <!-- زر لفتح المودال -->--}}
+{{--                <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">--}}
+{{--                    <i class="fa fa-filter"></i> فلترة--}}
+{{--                </button>--}}
+{{--            </div>--}}
+            <div class="d-none d-lg-flex col-lg-6"></div>
+            <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
                 <!-- زر لفتح المودال -->
-                <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">
+                <button type="button" class="btn btn-blue w-100 w-md-auto filter-btn" data-bs-toggle="modal" data-bs-target="#filterModal">
                     <i class="fa fa-filter"></i> فلترة
                 </button>
             </div>

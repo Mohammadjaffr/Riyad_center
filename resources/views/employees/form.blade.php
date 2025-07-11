@@ -81,7 +81,7 @@
 
         </div>
     </div>
-    <div class="col-12 col-md-4 text-center order-1 order-md-0 mb-3 mb-md-0">
+    <div class="col-12 col-md-4 text-center order-1 order-md-0 mb-3 mb-md-0 d-none d-md-flex">
         <img id="product-preview" src="{{ asset('assets/images/account.png') }}" alt="Product Illustration" class="img-fluid " style="max-width: 220px;">
     </div>
 

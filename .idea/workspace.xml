@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit preview window">
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/employee-login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/employee-login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employees/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inventory_reports/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_reports/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/purchases/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchases/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sales/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -604,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752262832619</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="edit login">
+      <option name="closed" value="true" />
+      <created>1752265422272</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1752265422272</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,7 +634,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add create+form+index of salaries + sales" />
     <MESSAGE value="تصميم جميع الواجهات عدا واجهة اضافة فاتورة" />
     <MESSAGE value="تعديل التكست اريا" />
     <MESSAGE value="تعديل اضافة فاتورة" />
@@ -647,7 +658,8 @@
     <MESSAGE value="add toggleAccountDropdown in navbar.blade.php" />
     <MESSAGE value="edit logout" />
     <MESSAGE value="edit preview window" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit preview window" />
+    <MESSAGE value="edit login" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit login" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
