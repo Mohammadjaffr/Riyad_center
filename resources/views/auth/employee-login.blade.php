@@ -1,7 +1,7 @@
 @extends('layouts.head')
 @section('title' ,'تسجيل الدخول')
 
-    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light-beige mt-5">
+    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light-beige mt-2">
         <div class="login-card row bg-white rounded-5 shadow-lg overflow-hidden">
 
             <!-- Left Panel (Image Section) -->

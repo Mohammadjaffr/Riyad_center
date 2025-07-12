@@ -8,7 +8,7 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        padding-top: 70px;
+        padding-top: 80px;
         padding-right: 15rem;
 
     }
