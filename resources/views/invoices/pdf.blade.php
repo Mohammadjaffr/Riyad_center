@@ -4,13 +4,6 @@
     <meta charset="UTF-8">
     <title>فاتورة مبيعات</title>
     <style>
-        {{--@font-face {--}}
-        {{--    font-family: 'cairo';--}}
-        {{--    font-weight: normal;--}}
-        {{--    font-style: normal;--}}
-        {{--    src: url('{{ storage_path("fonts/Amiri-Regular.ttf") }}') format("truetype");--}}
-        {{--}--}}
-
         body {
             font-family: 'amiri', DejaVu Sans, sans-serif;
             direction: rtl;

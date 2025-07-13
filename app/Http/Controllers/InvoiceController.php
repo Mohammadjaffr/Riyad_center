@@ -13,7 +13,7 @@ use App\Models\Product_variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade\Pdf;
+use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 
 class InvoiceController extends Controller
@@ -396,10 +396,14 @@ class InvoiceController extends Controller
     public function print(Invoice $invoice)
     {
         $invoice->load(['department', 'employee', 'items.productVariant.product']);
-        $pdf = PDF::loadView('invoices.pdf', compact('invoice'))->setPaper('A4', 'portrait');
+
+        $pdf = PDF::loadView('invoices.pdf', compact('invoice'), [], [
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'default_font' => 'amiri', 
+        ]);
 
         return $pdf->stream('invoice-' . $invoice->invoice_num . '.pdf');
     }
-
 
 }
