@@ -30,3 +30,4 @@
         <img id="product-preview" src="{{ asset('assets/images/Add files-rafiki.png') }}" alt="Product Illustration" class="img-fluid " style="max-width: 220px;">
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

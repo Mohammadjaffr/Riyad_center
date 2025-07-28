@@ -23,10 +23,15 @@ class SaleController extends Controller
         $sort = in_array($sort, ['asc', 'desc']) ? $sort : 'desc';
 
         $sales = Sale::with(['employee', 'department'])
+//            ->when($search, function ($query, $search) {
+//                $query->where(function($q) use ($search) {
+//                    $q->where('invoice_num', 'like', "%{$search}%")
+//                        ->orWhereHas('employee', function ($q2) use ($search) {
+//                            $q2->where('name', 'like', "%{$search}%");
+//                        });
             ->when($search, function ($query, $search) {
                 $query->where(function($q) use ($search) {
-                    $q->where('invoice_num', 'like', "%{$search}%")
-                        ->orWhereHas('employee', function ($q2) use ($search) {
+                    $q->WhereHas('employee', function ($q2) use ($search) {
                             $q2->where('name', 'like', "%{$search}%");
                         });
                 });

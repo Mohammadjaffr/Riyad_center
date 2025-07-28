@@ -18,7 +18,7 @@ class PaymentController extends Controller
 
         $payments = Payment::with(['invoice', 'creator'])
             ->when($search, function ($query, $search) {
-                $query->where('payment_reference', 'like', "%{$search}%")
+                $query->where('payment_method', 'like', "%{$search}%")
                     ->orWhereHas('invoice', function ($q) use ($search) {
                         $q->where('invoice_num', 'like', "%{$search}%")
                             ->orWhereHas('employee', function ($q2) use ($search) {

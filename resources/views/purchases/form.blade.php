@@ -1,4 +1,13 @@
-            <div class="mb-3">
+@if($suppliers->isEmpty())
+    <div class="alert alert-warning">لا يوجد موردين متاحين</div>
+@else
+
+
+@foreach($suppliers as $supplier)
+    <p >  {{ $supplier->name }}</p>
+@endforeach
+@endif
+<div class="mb-3">
                 <label class="form-label fw-bold">المورد</label>
                 <select name="supplier_id" class="summary-input flex-grow-1 w-100 w-md-auto {{ $errors->has('supplier_id') ? 'is-invalid' : '' }}"   style="text-align: right" >
                     <option value="">اختر المورد</option>
@@ -100,6 +109,8 @@
   </div>
 </div>
 {{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>--}}
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
             <script>
                 // تحديث السعر عند تغيير المتغير
                 document.addEventListener('change', function(e) {

@@ -33,21 +33,7 @@
         @endif
 
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
-{{--            <div class="row g-2 align-items-center mb-3">--}}
-
-
-{{--                <div class="col-12 col-md-4">--}}
-{{--                    <input type="text" class="form-control summary-input flex-grow-1 w-100 w-md-auto" placeholder="البحث ..." style="text-align: right;">--}}
-{{--                </div>--}}
-{{--                <div class="col-12 col-md-7"></div>--}}
-{{--                <div class="col-4 col-md-1 text-center mb-2 mb-md-0">--}}
-{{--                    <!-- زر لفتح المودال -->--}}
-{{--                    <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#filterModal">--}}
-{{--                        <i class="fa fa-filter"></i> فلترة--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
+            <div class="row g-2 align-items-center mb-3">
                 <div class="row g-2 align-items-center mb-3">
                     <form method="GET" action="" class="col-md-6 col-lg-4 mb-3 mt-4">
                         <div class="input-group" style="position: relative;">
@@ -55,7 +41,7 @@
                                 type="text"
                                 name="search"
                                 class="form-control summary-input w-100"
-                                placeholder="ابحث ..."
+                                placeholder="ابحث باسم المنتج..."
                                 value="{{ request('search') }}"
                                 style="text-align: right; height: 43px; padding-right: 40px;"
                             >
@@ -67,20 +53,6 @@
                                 <i class="fa fa-search" style="color: #fff;"></i>
                             </button>
                         </div>
-
-{{--                        <div class="input-group">--}}
-{{--                            <input--}}
-{{--                                type="text"--}}
-{{--                                name="search"--}}
-{{--                                class="form-control summary-input"--}}
-{{--                                placeholder="البحث..."--}}
-{{--                                value="{{ request('search') }}"--}}
-{{--                                style="text-align: right;height: 43px!important;"--}}
-{{--                            >--}}
-{{--                            <button class=" search-btn my-1"  type="submit">--}}
-{{--                                <i class="fa fa-search"></i>--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
                     </form>
                     <div class="d-none d-lg-flex col-lg-6"></div>
                     <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
@@ -170,4 +142,50 @@
 {{--            {{ $logs->links() }}--}}
 {{--        </div>--}}
 {{--    </div>--}}
+    <!-- فلترة -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg ">
+            <div class="modal-content rounded-4 bg-white">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark-blue" id="filterModalLabel">فلترة المنتجات</h5>
+                </div>
+                <form method="GET" action="{{ route('sales-returns.index') }}">
+                    <div class="modal-body ">
+                        <div class="row g-3 text-dark-blue">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">بحث باسم المنتج</label>
+                                <input
+                                    type="text"
+                                    id="search"
+                                    name="search"
+                                    class="summary-input flex-grow-1 w-100 w-md-auto"
+                                    value="{{ request('search') }}"
+                                    placeholder="مثال: تيشيرت"
+                                    autocomplete="off"
+                                />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">الترتيب</label>
+                                <select name="sort" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue">
+                                    <option value="" disabled selected>اختر</option>
+                                    <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>تصاعدي</option>
+                                    <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>تنازلي</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-between">
+                        <a href="{{ route('products.index') }}" class="btn btn-outline-blue">إعادة تعيين</a>
+                        <button type="submit" class="btn btn-blue">
+                            <i class="fa fa-search"></i> تطبيق الفلتر
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 @endsection

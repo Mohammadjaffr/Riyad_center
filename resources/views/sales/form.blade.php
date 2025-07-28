@@ -75,7 +75,7 @@
 <button type="submit" class="btn btn-primary">حفظ</button>
 <a href="{{route('sales.index')}}" class="btn btn-outline-blue">رجوع</a>
 <!-- Modal for Quantity Error -->
-<div class="modal fade" id="quantityModal" tabindex="-1" aria-labelledby="quantityModalLabel" aria-hidden="true">
+<div class="modal fade" id="quantityModal" tabindex="-1" aria-labelledby="quantityModalLabel" aria-hidden="true" style="z-index: 2000;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -91,7 +91,7 @@
     </div>
   </div>
 </div>
-{{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>--}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     // تحديث السعر عند تغيير المتغير
     document.addEventListener('change', function(e) {

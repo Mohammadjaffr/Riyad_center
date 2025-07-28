@@ -51,19 +51,6 @@
                         </button>
                     </div>
 
-{{--                    <div class="input-group">--}}
-{{--                        <input--}}
-{{--                            type="text"--}}
-{{--                            name="search"--}}
-{{--                            class="form-control summary-input"--}}
-{{--                            placeholder="ابحث باسم الموظف أو رقم الفاتورة..."--}}
-{{--                            value="{{ request('search') }}"--}}
-{{--                            style="text-align: right; height: 43px!important;"--}}
-{{--                        >--}}
-{{--                        <button class=" search-btn my-1"  type="submit">--}}
-{{--                            <i class="fa fa-search"></i>--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
                 </form>
                 <div class="d-none d-lg-flex col-lg-6"></div>
                 <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
@@ -152,6 +139,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 @endsection
 

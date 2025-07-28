@@ -4,16 +4,16 @@
 
 
         {{-- الأقسام Dropdown --}}
-        <li class="nav-item position-relative w-100">
-            <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="deptSideDropdown" role="button" onclick="deptSideDropdown(event)" aria-expanded="false">
-                الأقسام
-            </a>
-            <div class="rounded-2 mt-2" id="deptSideDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
-                <a class="dropdown-item-custom" href="{{ route('stock-adjustments.create') }}">إضافة جرد</a>
-                <a class="dropdown-item-custom" href="{{ route('stock-adjustments.index') }}">الجرد</a>
-                {{--                        <a class="dropdown-item-custom" href="{{ route('departments.index') }}">إضافة قسم</a>--}}
-            </div>
-        </li>
+{{--        <li class="nav-item position-relative w-100">--}}
+{{--            <a href="#" class="nav-link sidebar-link-custom dropdown-toggle" id="deptSideDropdown" role="button" onclick="deptSideDropdown(event)" aria-expanded="false">--}}
+{{--                الأقسام--}}
+{{--            </a>--}}
+{{--            <div class="rounded-2 mt-2" id="deptSideDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">--}}
+{{--                <a class="dropdown-item-custom" href="{{ route('stock-adjustments.create') }}">إضافة جرد</a>--}}
+{{--                <a class="dropdown-item-custom" href="{{ route('stock-adjustments.index') }}">الجرد</a>--}}
+{{--                --}}{{--                        <a class="dropdown-item-custom" href="{{ route('departments.index') }}">إضافة قسم</a>--}}
+{{--            </div>--}}
+{{--        </li>--}}
         {{-- الصلاحيات Dropdown --}}
 
         <li class="nav-item position-relative w-100">

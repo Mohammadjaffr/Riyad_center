@@ -22,48 +22,42 @@
          </div>
 
         <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
-            <div class="row g-2 align-items-center mb-3">
+{{--            <div class="row g-2 align-items-center mb-3">--}}
 
 
-                <form method="GET" action="{{ route('stock-adjustments.index') }}" class="col-md-6 col-lg-4 mb-3 mt-4">
-                    <div class="input-group" style="position: relative;">
-                        <input
-                            type="text"
-                            name="search"
-                            class="form-control summary-input w-100"
-                            placeholder="ابحث ..."
-                            value="{{ request('search') }}"
-                            style="text-align: right; height: 43px; padding-right: 40px;"
-                        >
-                        <button
-                            class="search-btn "
-                            type="submit"
-                            style="position: absolute; left:15px; top: 50%; transform: translateY(-50%); background: none; border: none; z-index: 5;"
-                        >
-                            <i class="fa fa-search" style="color: #fff;"></i>
-                        </button>
-                    </div>
+{{--                <form method="GET" action="{{ route('stock-adjustments.index') }}" class="col-md-6 col-lg-4 mb-3 mt-4">--}}
+{{--                    <div class="input-group" style="position: relative;">--}}
+{{--                        <input--}}
+{{--                            type="text"--}}
+{{--                            name="search"--}}
+{{--                            class="form-control summary-input w-100"--}}
+{{--                            placeholder="ابحث باسم المنتج ..."--}}
+{{--                            value="{{ request('search') }}"--}}
+{{--                            style="text-align: right; height: 43px; padding-right: 40px;"--}}
+{{--                        >--}}
+{{--                        <button--}}
+{{--                            class="search-btn "--}}
+{{--                            type="submit"--}}
+{{--                            style="position: absolute; left:15px; top: 50%; transform: translateY(-50%); background: none; border: none; z-index: 5;"--}}
+{{--                        >--}}
+{{--                            <i class="fa fa-search" style="color: #fff;"></i>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
 
-                </form>
-                <div class="d-none d-lg-flex col-lg-6">
+{{--                </form>--}}
+{{--                <div class="d-none d-lg-flex col-lg-6">--}}
 
-                </div>
+{{--                </div>--}}
 
 
-                <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
-                    <!-- زر لفتح المودال -->
-                    <button type="button" class="btn btn-blue w-100 w-md-auto filter-btn">
-                        <i class="fa fa-filter"></i> <span class="d-inline">فلترة</span>
-                    </button>
-                </div>
-{{--                <div class="col-12 col-md-7"></div>--}}
-{{--                <div class="col-4 col-md-1 text-center mb-2 mb-md-0">--}}
+{{--                <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">--}}
 {{--                    <!-- زر لفتح المودال -->--}}
-{{--                    <button type="button" class="btn btn-blue" >--}}
-{{--                        <i class="fa fa-filter"></i> فلترة--}}
+{{--                    <button type="button" class="btn btn-blue w-100 w-md-auto filter-btn">--}}
+{{--                        <i class="fa fa-filter"></i> <span class="d-inline">فلترة</span>--}}
 {{--                    </button>--}}
 {{--                </div>--}}
-            </div>
+
+{{--            </div>--}}
             <div class="table-responsive ">
                 <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 900px;">
                     <thead class="table-light">
@@ -93,4 +87,6 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 @endsection

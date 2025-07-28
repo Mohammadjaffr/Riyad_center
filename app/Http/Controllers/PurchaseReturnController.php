@@ -9,9 +9,25 @@ use Illuminate\Http\Request;
 
 class PurchaseReturnController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $logs = InventoryLog::where('change_type', 'مرتجع شراء')->latest()->with('productVariant.product')->paginate(20);
+        $search = $request->input('search');
+        $sort = $request->input('sort');
+
+        $logs = InventoryLog::where('change_type', 'مرتجع شراء')
+            ->when($search, function ($query, $search) {
+                $query->whereHas('productVariant.product', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                });
+            })
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('created_at', $sort);
+            }, function ($query) {
+                $query->latest();
+            })
+            ->with('productVariant.product')
+            ->paginate(10);
+//        $logs = InventoryLog::where('change_type', 'مرتجع شراء')->latest()->with('productVariant.product')->paginate(20);
         return view('purchase_returns.index', compact('logs'));
     }
 

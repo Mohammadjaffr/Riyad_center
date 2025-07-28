@@ -40,7 +40,7 @@
                         type="text"
                         name="search"
                         class="form-control summary-input w-100"
-                        placeholder="ابحث برقم الفاتورة أو اسم المورد..."
+                        placeholder="ابحث باسم المورد..."
                         value="{{ request('search') }}"
                         style="text-align: right; height: 43px; padding-right: 40px;"
                     >
@@ -53,19 +53,7 @@
                     </button>
                 </div>
 
-{{--                <div class="input-group">--}}
-{{--                    <input--}}
-{{--                        type="text"--}}
-{{--                        name="search"--}}
-{{--                        class="form-control summary-input"--}}
-{{--                        placeholder="ابحث برقم الفاتورة أو اسم المورد..."--}}
-{{--                        value="{{ request('search') }}"--}}
-{{--                        style="text-align: right;height: 43px!important;"--}}
-{{--                    >--}}
-{{--                    <button class=" search-btn my-1"  type="submit">--}}
-{{--                        <i class="fa fa-search"></i>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
+
             </form>
             <div class="d-none d-lg-flex col-lg-6"></div>
             <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
@@ -130,20 +118,20 @@
                     <div class="row g-3 text-dark-blue">
                         <!-- حقل البحث -->
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">بحث برقم الفاتورة أو اسم المورد</label>
+                            <label class="form-label fw-bold">بحث باسم المورد</label>
                             <input
                                 type="text"
                                 name="search"
                                 class="summary-input w-100"
                                 value="{{ request('search') }}"
-                                placeholder="مثال: فاتورة 00123، المورد علي"
+                                placeholder="مثال: المورد علي"
                                 autocomplete="off"
                             />
                         </div>
 
                         <!-- الترتيب حسب التاريخ -->
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">الترتيب حسب تاريخ الفاتورة</label>
+                            <label class="form-label fw-bold">الترتيب حسب تاريخ الشراء</label>
                             <select name="sort" class="summary-input w-100 text-dark-blue">
                                 <option value="" disabled {{ !request('sort') ? 'selected' : '' }}>اختر</option>
                                 <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>من الأقدم إلى الأحدث</option>
@@ -165,5 +153,6 @@
         </div>
     </div>
 </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 @endsection

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\InventoryLog;
 use App\Models\Product_variant;
@@ -10,9 +11,26 @@ use Illuminate\Http\Request;
 
 class SalesReturnController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $logs = InventoryLog::where('change_type', 'مرتجع بيع')->latest()->with('productVariant.product')->paginate(20);
+        $search = $request->input('search');
+        $sort = $request->input('sort');
+
+        $logs = InventoryLog::where('change_type', 'مرتجع بيع')
+            ->when($search, function ($query, $search) {
+                $query->whereHas('productVariant.product', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                });
+            })
+            ->when($sort, function ($query, $sort) {
+                $query->orderBy('created_at', $sort);
+            }, function ($query) {
+                $query->latest();
+            })
+            ->with('productVariant.product')
+            ->paginate(10);
+
+//        $logs = InventoryLog::where('change_type', 'مرتجع بيع')->latest()->with('productVariant.product')->paginate(20);
         return view('sales_returns.index', compact('logs'));
     }
 

@@ -32,13 +32,15 @@ class PurchaseController extends Controller
 
         $purchases = $purchases
             ->when($search, function ($query, $search) {
-                $query->where('invoice_num', 'like', "%{$search}%")
-                    ->orWhereHas('supplier', function ($q) use ($search) {
-                        $q->where('name', 'like', "%{$search}%");
+//                $query->where('invoice_num', 'like', "%{$search}%")
+//                    ->orWhereHas('supplier', function ($q) use ($search) {
+//                        $q->where('name', 'like', "%{$search}
+                $query->WhereHas('supplier', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
                     });
             })
             ->when($sort, function ($query, $sort) {
-                $query->orderBy('invoice_date', $sort);
+                $query->orderBy('purchase_date', $sort);
             }, function ($query) {
                 $query->latest();
             })
@@ -68,6 +70,34 @@ class PurchaseController extends Controller
         }
 
         return view('purchases.create', compact('suppliers', 'products'));
+
+//        $employee = Auth::guard('employee')->user();
+//        $user_type = $employee->user_type ?? 'employee';
+//
+//        // إضافة هذا السطر لفحص بيانات الموظف
+//        \Log::info('Employee Data:', [
+//            'id' => $employee->id,
+//            'user_type' => $user_type,
+//            'department_id' => $employee->department_id ?? 'null'
+//        ]);
+//
+//        if ($user_type == 'admin') {
+//            $suppliers = Supplier::all();
+//            $products = Product::with('variants')->get();
+//        } else {
+//            $departmentId = $employee->department_id;
+//            $suppliers = Supplier::where('department_id', $departmentId)->get();
+//            $products = Product::where('department_id', $departmentId)->with('variants')->get();
+//        }
+//
+//        // إضافة هذا السطر لفحص البيانات المرسلة
+//        \Log::info('Suppliers Data:', [
+//            'count' => $suppliers->count(),
+//            'is_admin' => ($user_type == 'admin'),
+//            'department_filter' => ($user_type != 'admin') ? $departmentId : 'none'
+//        ]);
+//
+//        return view('purchases.create', compact('suppliers', 'products'));
     }
 
 
