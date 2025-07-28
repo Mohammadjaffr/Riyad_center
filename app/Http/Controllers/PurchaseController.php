@@ -57,19 +57,19 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        $employee = Auth::guard('employee')->user();
-        $user_type = $employee->user_type ?? 'employee';
+       $employee = Auth::guard('employee')->user();
+    $user_type = strtolower($employee->user_type ?? 'employee');
 
-        if ($user_type == 'admin') {
-            $suppliers = Supplier::all();
-            $products = Product::with('variants')->get();
-        } else {
-            $departmentId = $employee->department_id;
-            $suppliers = Supplier::where('department_id', $departmentId)->get();
-            $products = Product::where('department_id', $departmentId)->with('variants')->get();
-        }
+    if ($user_type === 'admin') {
+        $suppliers = Supplier::all();
+        $products = Product::with('variants')->get();
+    } else {
+        $departmentId = $employee->department_id;
+           $suppliers = Supplier::all();
+        $products = Product::where('department_id', $departmentId)->with('variants')->get();
+    }
 
-        return view('purchases.create', compact('suppliers', 'products'));
+    return view('purchases.create', compact('suppliers', 'products'));
 
 //        $employee = Auth::guard('employee')->user();
 //        $user_type = $employee->user_type ?? 'employee';
