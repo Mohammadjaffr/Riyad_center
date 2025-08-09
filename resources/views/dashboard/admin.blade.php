@@ -21,50 +21,50 @@
 
         <div class="container-fluid px-2">
             <div class="row g-3 mb-4">
-                <!-- إجمالي المبيعات -->
+                <!-- عدد القطع المباعة -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card invoice-card text-center custom-shadow h-100">
                         <div class="card-body p-3">
-                            <div class="fw-bold text-white rounded-3 py-1 mb-2" style="background: #FFCF55; border-radius: 0.5rem; font-size: 1.1rem;">إجمالي المبيعات</div>
-                            <div class="fs-2 fw-bold">{{ number_format($totalSalesAmount, 2) }}</div>
+                            <div class="fw-bold text-white rounded-3 py-1 mb-2" style="background: #FFCF55; border-radius: 0.5rem; font-size: 1.1rem;">القطع المباعة</div>
+                            <div class="fs-2 fw-bold">{{ number_format($totalSoldItems) }}</div>
                             <div class="mt-2">
                                 <i class="fa fa-chart-line fa-lg" style="color: #FFCF55;"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- إجمالي المشتريات -->
+                <!-- عدد القطع المشتراة -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card invoice-card text-center custom-shadow h-100">
                         <div class="card-body p-3">
-                            <div class="fw-bold text-white bg-dark-blue rounded-3 py-1 mb-2" style="font-size: 1.1rem;">إجمالي المشتريات</div>
-                            <div class="fs-2 fw-bold">{{ number_format($totalPurchasesAmount, 2) }}</div>
+                            <div class="fw-bold text-white bg-dark-blue rounded-3 py-1 mb-2" style="font-size: 1.1rem;">القطع المشتراة</div>
+                            <div class="fs-2 fw-bold">{{ number_format($totalPurchasedItems) }}</div>
                             <div class="mt-2">
                                 <i class="fa fa-shopping-cart fa-lg text-dark-blue"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- إجمالي المخزون -->
+                <!-- عدد القطع في المخزن -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card invoice-card text-center custom-shadow h-100">
                         <div class="card-body p-3">
-                            <div class="fw-bold text-white rounded-3 py-1 mb-2 card-bg-invoice-out" style="font-size: 1.1rem;">إجمالي المخزون</div>
-                            <div class="fs-2 fw-bold">{{ number_format($totalStockValue, 2) }}</div>
+                            <div class="fw-bold text-white rounded-3 py-1 mb-2 card-bg-invoice-out" style="font-size: 1.1rem;">القطع في المخزن</div>
+                            <div class="fs-2 fw-bold">{{ number_format($totalStockItems) }}</div>
                             <div class="mt-2">
                                 <i class="fa fa-boxes fa-lg card-icon-invoice-out"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- الربح -->
+                <!-- عدد الموظفين -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card invoice-card text-center custom-shadow h-100">
                         <div class="card-body p-3">
-                            <div class="fw-bold text-white bg-primary rounded-3 py-1 mb-2" style="font-size: 1.1rem; background: #1877f2 !important;">الربح</div>
-                            <div class="fs-2 fw-bold">{{ number_format($totalProfit, 2) }}</div>
+                            <div class="fw-bold text-white bg-primary rounded-3 py-1 mb-2" style="font-size: 1.1rem; background: #1877f2 !important;">عدد الموظفين</div>
+                            <div class="fs-2 fw-bold">{{ number_format($totalEmployees) }}</div>
                             <div class="mt-2">
-                                <i class="fa fa-dollar-sign fa-lg" style="color: #1877f2;"></i>
+                                <i class="fa fa-users fa-lg" style="color: #1877f2;"></i>
                             </div>
                         </div>
                     </div>
@@ -122,15 +122,15 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['إجمالي المبيعات', 'إجمالي المشتريات', 'إجمالي المخزون', 'الربح'],
+                    labels: ['القطع المباعة', 'القطع المشتراة', 'القطع في المخزن', 'عدد الموظفين'],
                     datasets: [{
-                        label: 'المبلغ',
-                        data: [{{ $totalSalesAmount }}, {{ $totalPurchasesAmount }}, {{ $totalStockValue }}, {{ $totalProfit }}],
+                        label: 'العدد',
+                        data: [{{ $totalSoldItems }}, {{ $totalPurchasedItems }}, {{ $totalStockItems }}, {{ $totalEmployees }}],
                         backgroundColor: [
-                            '#FFCF55', // إجمالي المبيعات
-                            '#11294F', // إجمالي المشتريات
-                            '#A4C8E1', // إجمالي المخزون
-                            '#1877f2', // الربح
+                            '#FFCF55', // القطع المباعة
+                            '#11294F', // القطع المشتراة
+                            '#A4C8E1', // القطع في المخزن
+                            '#1877f2', // عدد الموظفين
                         ],
                         borderRadius: 8,
                         borderSkipped: false

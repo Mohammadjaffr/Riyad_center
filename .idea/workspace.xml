@@ -4,29 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit all search boxes and filters + edit account button with all pages">
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InventoryLogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InventoryLogController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SalesReturnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SalesReturnController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/roles_permissions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/roles_permissions/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/admin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/clothes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/clothes.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shoes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shoes.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employees/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/current.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/current.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/purchases/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchases/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar_roles/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar_roles/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar_roles/clothes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar_roles/clothes.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,15 +251,7 @@
       <workItem from="1752416682579" duration="901000" />
       <workItem from="1752528229887" duration="1130000" />
       <workItem from="1753000263206" duration="39145000" />
-      <workItem from="1754749496258" duration="5537000" />
-    </task>
-    <task id="LOCAL-00002" summary="تعديل صفحة الLogin">
-      <option name="closed" value="true" />
-      <created>1750711221034</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1750711221034</updated>
+      <workItem from="1754749496258" duration="11760000" />
     </task>
     <task id="LOCAL-00003" summary="تشطيب الفوتر و الناف بار و السايد بار">
       <option name="closed" value="true" />
@@ -660,7 +637,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753699846946</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="updates">
+      <option name="closed" value="true" />
+      <created>1754764631189</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1754764631190</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,7 +663,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="تم تعديل اضافة الفاتورة و تنسيق المودل" />
     <MESSAGE value="تصميم الداش بورد" />
     <MESSAGE value="edit navbar.blade.php" />
     <MESSAGE value="style all department section" />
@@ -703,7 +687,8 @@
     <MESSAGE value="edit logout button and hide images in small devices" />
     <MESSAGE value="edit size of navbar and sidebar" />
     <MESSAGE value="edit all search boxes and filters + edit account button with all pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit all search boxes and filters + edit account button with all pages" />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -715,7 +700,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/dashboard/clothes.blade.php</url>
-          <line>165</line>
+          <line>163</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

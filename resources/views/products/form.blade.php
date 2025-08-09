@@ -84,39 +84,63 @@
 
                 <div id="variants-container">
                     @php
-                        $oldVariants = old('variants', $product->variants ?? []);
+                        // في حالة التحديث، إذا لم توجد أخطاء validation، استخدم البيانات من قاعدة البيانات
+                        if (isset($product) && $product->exists && !$errors->any()) {
+                            $oldVariants = $product->variants;
+                        } else {
+                            // في حالة وجود أخطاء validation أو إنشاء منتج جديد، استخدم old values
+                            $oldVariants = old('variants', isset($product) ? $product->variants : []);
+                        }
                     @endphp
 
                     @if(count($oldVariants) > 0)
                         @foreach($oldVariants as $index => $variant)
                             <div class="variant-item mb-3 p-3 border rounded" data-index="{{ $index }}" >
+                                @if(isset($variant['id']) || (is_object($variant) && isset($variant->id)))
+                                    <input type="hidden" name="variants[{{ $index }}][id]" value="{{ isset($variant['id']) ? $variant['id'] : $variant->id }}">
+                                @endif
                                 <div class="row g-3 align-items-center">
                                     <div class="col-12 col-lg-2">
                                         <select name="variants[{{ $index }}][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
-                                            <option value="" disabled {{ empty($variant['size']) ? 'selected' : '' }}>اختر المقاس</option>
-                                            <option value="-" {{ (isset($variant['size']) && $variant['size'] == '-') ? 'selected' : '' }}>-</option>
-                                            <option value="رجالي" {{ (isset($variant['size']) && $variant['size'] == 'رجالي') ? 'selected' : '' }}>رجالي</option>
-                                            <option value="شبابي" {{ (isset($variant['size']) && $variant['size'] == 'شبابي') ? 'selected' : '' }}>شبابي</option>
-                                            <option value="ولادي" {{ (isset($variant['size']) && $variant['size'] == 'ولادي') ? 'selected' : '' }}>ولادي</option>
-                                            <option value="XS" {{ (isset($variant['size']) && $variant['size'] == 'XS') ? 'selected' : '' }}>XS</option>
-                                            <option value="S" {{ (isset($variant['size']) && $variant['size'] == 'S') ? 'selected' : '' }}>S</option>
-                                            <option value="M" {{ (isset($variant['size']) && $variant['size'] == 'M') ? 'selected' : '' }}>M</option>
-                                            <option value="L" {{ (isset($variant['size']) && $variant['size'] == 'L') ? 'selected' : '' }}>L</option>
-                                            <option value="XL" {{ (isset($variant['size']) && $variant['size'] == 'XL') ? 'selected' : '' }}>XL</option>
-                                            <option value="XXL" {{ (isset($variant['size']) && $variant['size'] == 'XXL') ? 'selected' : '' }}>XXL</option>
+                                            @php
+                                                $variantSize = isset($variant['size']) ? $variant['size'] : (is_object($variant) ? $variant->size : '');
+                                            @endphp
+                                            <option value="" disabled {{ empty($variantSize) ? 'selected' : '' }}>اختر المقاس</option>
+                                            <option value="-" {{ $variantSize == '-' ? 'selected' : '' }}>-</option>
+                                            <option value="رجالي" {{ $variantSize == 'رجالي' ? 'selected' : '' }}>رجالي</option>
+                                            <option value="شبابي" {{ $variantSize == 'شبابي' ? 'selected' : '' }}>شبابي</option>
+                                            <option value="ولادي" {{ $variantSize == 'ولادي' ? 'selected' : '' }}>ولادي</option>
+                                            <option value="XS" {{ $variantSize == 'XS' ? 'selected' : '' }}>XS</option>
+                                            <option value="S" {{ $variantSize == 'S' ? 'selected' : '' }}>S</option>
+                                            <option value="M" {{ $variantSize == 'M' ? 'selected' : '' }}>M</option>
+                                            <option value="L" {{ $variantSize == 'L' ? 'selected' : '' }}>L</option>
+                                            <option value="XL" {{ $variantSize == 'XL' ? 'selected' : '' }}>XL</option>
+                                            <option value="XXL" {{ $variantSize == 'XXL' ? 'selected' : '' }}>XXL</option>
                                         </select>
                                     </div>
                                     <div class="col-12 col-lg-2">
-                                        <input type="text" name="variants[{{ $index }}][color]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="اللون" value="{{ $variant['color'] ?? '' }}" required>
+                                        @php
+                                            $variantColor = isset($variant['color']) ? $variant['color'] : (is_object($variant) ? $variant->color : '');
+                                        @endphp
+                                        <input type="text" name="variants[{{ $index }}][color]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="اللون" value="{{ $variantColor }}" required>
                                     </div>
                                     <div class="col-12 col-lg-2">
-                                        <input type="number" name="variants[{{ $index }}][quantity]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="كمية المخزون" min="0" value="{{ $variant['quantity'] ?? 0 }}" required>
+                                        @php
+                                            $variantQuantity = isset($variant['quantity']) ? $variant['quantity'] : (is_object($variant) ? $variant->quantity : 0);
+                                        @endphp
+                                        <input type="number" name="variants[{{ $index }}][quantity]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="كمية المخزون" min="0" value="{{ $variantQuantity }}" required>
                                     </div>
                                     <div class="col-12 col-lg-2">
-                                        <input type="number" step="0.01" name="variants[{{ $index }}][sell_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر البيع" value="{{ $variant['sell_price'] ?? '' }}" required>
+                                        @php
+                                            $variantSellPrice = isset($variant['sell_price']) ? $variant['sell_price'] : (is_object($variant) ? $variant->sell_price : '');
+                                        @endphp
+                                        <input type="number" step="0.01" name="variants[{{ $index }}][sell_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر البيع" value="{{ $variantSellPrice }}" required>
                                     </div>
                                     <div class="col-12 col-lg-2">
-                                        <input type="number" step="0.01" name="variants[{{ $index }}][cost_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر التكلفة" value="{{ $variant['cost_price'] ?? '' }}" required>
+                                        @php
+                                            $variantCostPrice = isset($variant['cost_price']) ? $variant['cost_price'] : (is_object($variant) ? $variant->cost_price : '');
+                                        @endphp
+                                        <input type="number" step="0.01" name="variants[{{ $index }}][cost_price]" class="summary-input flex-grow-1 w-100 w-md-auto" placeholder="سعر التكلفة" value="{{ $variantCostPrice }}" required>
                                     </div>
                                     <div class="col-12 col-lg-2">
                                         <button type="button" class="btn btn-danger btn-sm remove-variant-btn"><i class="fa fa-trash"></i></button>
@@ -178,10 +202,24 @@
 
 {{-- سكريبت لإضافة وحذف المتغيرات --}}
 <script>
-    let variantIndex = {{ count($oldVariants) > 0 ? count($oldVariants) : 1 }};
+    // حساب أعلى فهرس موجود لتجنب التكرار
+    function getNextVariantIndex() {
+        const existingVariants = document.querySelectorAll('.variant-item');
+        let maxIndex = -1;
+        
+        existingVariants.forEach(function(variant) {
+            const dataIndex = parseInt(variant.getAttribute('data-index'));
+            if (dataIndex > maxIndex) {
+                maxIndex = dataIndex;
+            }
+        });
+        
+        return maxIndex + 1;
+    }
 
     document.getElementById('add-variant-btn').addEventListener('click', function() {
         const container = document.getElementById('variants-container');
+        const variantIndex = getNextVariantIndex();
 
         const html = `
 <div class="variant-item mb-3 p-3 border rounded" data-index="${variantIndex}">
@@ -221,7 +259,6 @@
 
 
         container.insertAdjacentHTML('beforeend', html);
-        variantIndex++;
     });
 
 

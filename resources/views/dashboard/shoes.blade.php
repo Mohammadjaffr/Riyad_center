@@ -33,38 +33,38 @@
                         </div>
                     </div>
                 </div>
-                <!-- المبيعات -->
+                <!-- القطع المباعة -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card invoice-card text-center custom-shadow h-100">
                         <div class="card-body p-3">
-                            <div class="fw-bold text-white rounded-3 py-1 mb-2" style="background: #FFCF55; border-radius: 0.5rem; font-size: 1.1rem;">المبيعات</div>
-                            <div class="fs-2 fw-bold">{{$totalSales}}</div>
+                            <div class="fw-bold text-white rounded-3 py-1 mb-2" style="background: #FFCF55; border-radius: 0.5rem; font-size: 1.1rem;">القطع المباعة</div>
+                            <div class="fs-2 fw-bold">{{$totalSoldItems}}</div>
                             <div class="mt-2">
-                                <i class="fa fa-user-tie fa-lg" style="color: #FFCF55;"></i>
+                                <i class="fa fa-chart-line fa-lg" style="color: #FFCF55;"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- المخزون  -->
+                <!-- القطع المشتراة -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card invoice-card text-center custom-shadow h-100">
                         <div class="card-body p-3">
-                            <div class="fw-bold text-white rounded-3 py-1 mb-2 card-bg-invoice-out" style="font-size: 1.1rem;">المخزون </div>
-                            <div class="fs-2 fw-bold">{{$totalStock}}</div>
+                            <div class="fw-bold text-white bg-dark-blue rounded-3 py-1 mb-2" style="font-size: 1.1rem;">القطع المشتراة</div>
+                            <div class="fs-2 fw-bold">{{$totalPurchasedItems}}</div>
                             <div class="mt-2">
-                                <i class="fa fa-file-invoice fa-lg card-icon-invoice-out"></i>
+                                <i class="fa fa-shopping-cart fa-lg text-dark-blue"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- الربح -->
+                <!-- القطع المتبقية -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card invoice-card text-center custom-shadow h-100">
                         <div class="card-body p-3">
-                            <div class="fw-bold text-white bg-primary rounded-3 py-1 mb-2" style="font-size: 1.1rem; background: #1877f2 !important;">الربح</div>
-                            <div class="fs-2 fw-bold">{{$totalProfit}}</div>
+                            <div class="fw-bold text-white rounded-3 py-1 mb-2 card-bg-invoice-out" style="font-size: 1.1rem;">القطع المتبقية</div>
+                            <div class="fs-2 fw-bold">{{$totalStockItems}}</div>
                             <div class="mt-2">
-                                <i class="fa fa-file-invoice-dollar fa-lg" style="color: #1877f2;"></i>
+                                <i class="fa fa-boxes fa-lg card-icon-invoice-out"></i>
                             </div>
                         </div>
                     </div>
@@ -99,9 +99,9 @@
                             <div class="w-100 mb-2">
                                 <ul class="dashboard-filters">
                                     <li><span class="dashboard-dot dashboard-dot-clients"></span><span class="dashboard-filter-label">الموظفين</span></li>
-                                    <li><span class="dashboard-dot dashboard-dot-sellers"></span><span class="dashboard-filter-label">المبيعات</span></li>
-                                    <li><span class="dashboard-dot dashboard-dot-invoices"></span><span class="dashboard-filter-label"> المخزون</span></li>
-                                    <li><span class="dashboard-dot dashboard-dot-invoices-received"></span><span class="dashboard-filter-label"> الربح</span></li>
+                                    <li><span class="dashboard-dot dashboard-dot-sellers"></span><span class="dashboard-filter-label">القطع المباعة</span></li>
+                                    <li><span class="dashboard-dot dashboard-dot-invoices"></span><span class="dashboard-filter-label">القطع المشتراة</span></li>
+                                    <li><span class="dashboard-dot dashboard-dot-invoices-received"></span><span class="dashboard-filter-label">القطع المتبقية</span></li>
                                 </ul>
                             </div>
                             <div class="w-100">
@@ -122,17 +122,15 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['الربح', 'المخزون', 'المبيعات','الموظفين' ],
+                    labels: ['الموظفين', 'القطع المباعة', 'القطع المشتراة', 'القطع المتبقية'],
                     datasets: [{
                         label: 'عدد',
-                        data: [{{ $totalProfit }}, {{ $totalStock }}, {{ $totalSales }}, {{ $totalEmployees }}],
+                        data: [{{ $totalEmployees }}, {{ $totalSoldItems }}, {{ $totalPurchasedItems }}, {{ $totalStockItems }}],
                         backgroundColor: [
-                            '#1877f2',
-                            '#A4C8E1',
-                            '#FFCF55',
-                            '#11294F',
-
-
+                            '#11294F', // الموظفين
+                            '#FFCF55', // القطع المباعة
+                            '#11294F', // القطع المشتراة
+                            '#A4C8E1', // القطع المتبقية
                         ],
                         borderRadius: 8,
                         borderSkipped: false
