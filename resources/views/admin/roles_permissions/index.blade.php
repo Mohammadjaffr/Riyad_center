@@ -112,7 +112,7 @@
                         </tr>
 
                         {{-- مودال تعديل صلاحيات الدور --}}
-                        <div class="modal fade" id="editRoleModal{{ $role->id }}" tabindex="-1" aria-labelledby="editRoleModalLabel{{ $role->id }}" aria-hidden="true">
+                        <div class="modal fade" id="editRoleModal{{ $role->id }}" tabindex="-1" aria-labelledby="editRoleModalLabel{{ $role->id }}" aria-hidden="true" style="z-index: 2500">
                             <div class="modal-dialog">
                                 <form method="POST" action="{{ route('admin.roles_permissions.update') }}">
                                     @csrf

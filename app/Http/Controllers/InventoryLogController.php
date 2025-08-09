@@ -21,32 +21,32 @@ class InventoryLogController extends Controller
         $user_type = $user->user_type ?? 'employee';
         $department_id = $user->department_id;
 
-        $logs = InventoryLog::with(['productVariant.product', 'employee'])
-            ->when($search, function ($query, $search) {
-                $query->where(function ($q) use ($search) {
-                    $q->whereHas('productVariant.product', function ($q2) use ($search) {
-                        $q2->where('name', 'like', "%{$search}%");
-                    })->orWhereHas('employee', function ($q2) use ($search) {
-                        $q2->where('name', 'like', "%{$search}%");
-                    });
-                });
-            })
-            ->when($type, function ($query, $type) {
-                $query->where('change_type', $type);
-            })
-            ->when(!is_null($department_id), function ($query) use ($department_id) {
-                $query->whereHas('productVariant.product', function ($q) use ($department_id) {
-                    $q->where('department_id', $department_id);
-                });
-            })
-
-
-            ->when($sort, function ($query, $sort) {
-                $query->orderBy('created_at', $sort);
-            }, function ($query) {
-                $query->latest();
-            })
-            ->paginate(10);
+        $logs = InventoryLog::with(['productVariant.product', 'employee'])->get();
+//            ->when($search, function ($query, $search) {
+//                $query->where(function ($q) use ($search) {
+//                    $q->whereHas('productVariant.product', function ($q2) use ($search) {
+//                        $q2->where('name', 'like', "%{$search}%");
+//                    })->orWhereHas('employee', function ($q2) use ($search) {
+//                        $q2->where('name', 'like', "%{$search}%");
+//                    });
+//                });
+//            })
+//            ->when($type, function ($query, $type) {
+//                $query->where('change_type', $type);
+//            })
+//            ->when(!is_null($department_id), function ($query) use ($department_id) {
+//                $query->whereHas('productVariant.product', function ($q) use ($department_id) {
+//                    $q->where('department_id', $department_id);
+//                });
+//            })
+//
+//
+//            ->when($sort, function ($query, $sort) {
+//                $query->orderBy('created_at', $sort);
+//            }, function ($query) {
+//                $query->latest();
+//            })
+//            ->paginate(10);
 
         return view('inventory_logs.index', compact('logs'));
     }

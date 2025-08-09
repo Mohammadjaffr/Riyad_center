@@ -69,7 +69,7 @@ class InvoiceController extends Controller
 
 
         $employees = Employee::where('department_id', $department_id)->get();
-        if ($user_type =='admin'){
+        if ($department_id ==1){
             $products = Product::with('variants')->get();
             $departments = Department::where('id', null ?? 'admin')->get();
 
@@ -231,8 +231,11 @@ class InvoiceController extends Controller
     {
         $user = Auth::guard('employee')->user();
         $user_type = $user->user_type ?? 'employee';
+        $employee = Auth::guard('employee')->user();
 
-        if ($user_type == 'admin') {
+        $department_id = session('department_id');
+
+        if ($department_id == 1) {
             $departments = Department::all();
             $products = Product::with('variants')->get();
             $employees = Employee::all();
@@ -400,7 +403,7 @@ class InvoiceController extends Controller
         $pdf = PDF::loadView('invoices.pdf', compact('invoice'), [], [
             'mode' => 'utf-8',
             'format' => 'A4',
-            'default_font' => 'amiri', 
+            'default_font' => 'amiri',
         ]);
 
         return $pdf->stream('invoice-' . $invoice->invoice_num . '.pdf');

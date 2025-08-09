@@ -54,7 +54,6 @@
                     </button>
                 </div>
                 </div>
-            </div>
             <div class="table-responsive ">
                 <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 900px;">
                     <thead class="table-light">

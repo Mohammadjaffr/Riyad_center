@@ -32,10 +32,10 @@ class ProductController extends Controller
         if ($request->filled('sort')) {
             $query->orderBy('name', $request->sort);
         } else {
-            $query->latest();
+            $query->first();
         }
 
-        $products = $query->paginate(2);
+        $products = $query->paginate(20);
 
         return view('products.index', compact('products'));
     }

@@ -100,7 +100,7 @@
             </a>
             <div class="rounded-2 mt-2" id="stockSideDropdownMenu" style="display: none; width: 12rem !important; text-align: right;">
                 <a class="dropdown-item-custom" href="{{ url('/inventory-logs') }}">سجل المخزون</a>
-                <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'current']) }}">الجرد الحالي</a>
+                <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'current']) }}">الجرد اليومي</a>
                 <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}">الجرد الشهري</a>
                 <a class="dropdown-item-custom" href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}">الجرد السنوي</a>
                 <a class="dropdown-item-custom" href="{{ route('inventory-reports.index') }}">عرض التقارير</a>

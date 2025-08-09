@@ -6,13 +6,13 @@
                 <a class="nav-link sidebar-link-custom" href="{{ route('products.index') }}">المنتجات</a>
             @endcan
         </li>
-
+        @can('عرض المشتريات')
         <li class="nav-item position-relative w-100">
-            @can('عرض المشتريات')
-                <a class="nav-link sidebar-link-custom" href="{{ route('purchases.index') }}">المشتريات</a>
-            @endcan
-        </li>
 
+                <a class="nav-link sidebar-link-custom" href="{{ route('purchases.index') }}">المشتريات</a>
+
+        </li>
+        @endcan
 
         @can('عرض المبيعات')
             <li class="nav-item w-100">

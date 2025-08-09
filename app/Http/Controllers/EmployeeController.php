@@ -82,8 +82,8 @@ class EmployeeController extends Controller
         $data['password'] = Hash::make($data['password']);
 
         $employee=  Employee::create($data);
-        if ($request->filled('role')) {
-            $employee->assignRole($request->role);
+        if ($request->filled('roles_name')) {
+            $employee->assignRole($request->roles_name);
         }
         return redirect()->route('employees.index')->with('success', 'تمت إضافة الموظف بنجاح');
     }
@@ -116,6 +116,7 @@ class EmployeeController extends Controller
             'phone' => 'required|unique:employees,phone,' . $employee->id,
             'status' => 'required',
             'salary' => 'required|numeric',
+            'roles_name' => 'required',
             'department_id' => 'required|exists:departments,id',
         ]);
 
@@ -126,8 +127,8 @@ class EmployeeController extends Controller
         }
 
         $employee->update($data);
-        if ($request->filled('role')) {
-            $employee->syncRoles([$request->role]);
+        if ($request->filled('roles_name')) {
+            $employee->syncRoles([$request->roles_name]);
         }
         return redirect()->route('employees.index')->with('success', 'تم تعديل الموظف');
     }

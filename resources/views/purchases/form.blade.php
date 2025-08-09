@@ -116,7 +116,7 @@
     </div>
 </div>
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>--}}
 
 <script>
     // تحديث السعر عند تغيير المتغير
@@ -129,7 +129,7 @@
             const stock = selectedOption.getAttribute('data-stock') || 0;
 
             tr.querySelector('.unit_price').value = parseFloat(price).toFixed(2);
-            tr.querySelector('.quantity').max = stock;
+            // tr.querySelector('.quantity').max = stock;
             tr.querySelector('.quantity').value = 1;
 
             updateRowTotal(tr);
@@ -260,26 +260,26 @@
         document.getElementById('preview_rest').textContent = rest.toFixed(2);
     }
 
-    function showQuantityModal(message) {
-        document.getElementById('quantityModalMessage').innerText = message;
-        var myModal = new bootstrap.Modal(document.getElementById('quantityModal'));
-        myModal.show();
-    }
-    document.addEventListener('input', function(e) {
-        if (e.target.matches('.quantity')) {
-            const qtyInput = e.target;
-            const tr = qtyInput.closest('tr');
-            const select = tr.querySelector('select.variant-select');
-            const selectedOption = select.options[select.selectedIndex];
-            const maxStock = parseInt(selectedOption.getAttribute('data-stock')) || 0;
-            let qty = parseInt(qtyInput.value) || 1;
-            if (qty > maxStock) {
-                showQuantityModal('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
-                // alert('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
-                qtyInput.value = maxStock > 0 ? maxStock : 1;
-                updateRowTotal(tr);
-                updateInvoiceTotal();
-            }
-        }
-    });
+    // function showQuantityModal(message) {
+    //     document.getElementById('quantityModalMessage').innerText = message;
+    //     var myModal = new bootstrap.Modal(document.getElementById('quantityModal'));
+    //     myModal.show();
+    // }
+    // document.addEventListener('input', function(e) {
+    //     if (e.target.matches('.quantity')) {
+    //         const qtyInput = e.target;
+    //         const tr = qtyInput.closest('tr');
+    //         const select = tr.querySelector('select.variant-select');
+    //         const selectedOption = select.options[select.selectedIndex];
+    //         const maxStock = parseInt(selectedOption.getAttribute('data-stock')) || 0;
+    //         let qty = parseInt(qtyInput.value) || 1;
+    //         if (qty > maxStock) {
+    //             showQuantityModal('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
+    //             // alert('الكمية غير كافية في المخزن! الحد الأقصى المتاح: ' + maxStock);
+    //             qtyInput.value = maxStock > 0 ? maxStock : 1;
+    //             updateRowTotal(tr);
+    //             updateInvoiceTotal();
+    //         }
+    //     }
+    // });
 </script>

@@ -9,6 +9,7 @@ use App\Models\Product_variant;
 use App\Models\Sale;
 use App\Models\SaleItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
@@ -48,14 +49,25 @@ class SaleController extends Controller
      */
     public function create()
     {
+        $user_type = strtolower($employee->user_type ?? 'employee');
+        $employee = Auth::guard('employee')->user();
         $department_id = session('department_id');
 
-        $products = Product::with('variants')
-            ->where('department_id', $department_id)
-            ->get();
-        $departments = Department::orderBy('name')->get();
+        if ($department_id ==1) {
+            $products = Product::with('variants')->get();
 
-        return view('sales.create', compact('products', 'departments'));
+        } else {
+            $departmentId = $employee->department_id;
+            $products = Product::where('department_id', $departmentId)->with('variants')->get();
+        }
+//        $department_id = session('department_id');
+//
+//        $products = Product::with('variants')
+//            ->where('department_id', $department_id)
+//            ->get();
+//        $departments = Department::orderBy('name')->get();
+
+        return view('sales.create', compact('products'));
     }
 
 

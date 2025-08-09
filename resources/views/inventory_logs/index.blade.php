@@ -33,13 +33,13 @@
             <div class="d-flex gap-2 mb-3 flex-wrap ">
                 <div class="col-12 col-md-4 text-end mb-3 mb-md-0"></div>
                 @can('عرض الجرد الحالي')
-                <a href="{{ route('inventory-logs.report', ['type' => 'current']) }}" class="btn btn-outline-blue">📦 الجرد الحالي</a>
+                <a href="{{ route('inventory-logs.report', ['type' => 'current']) }}" class="btn btn-outline-blue"> الجرد اليومي</a>
                 @endcan
                 @can('عرض الجرد الشهري')
-                <a href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}" class="btn btn-outline-blue">📅 الجرد الشهري</a>
+                <a href="{{ route('inventory-logs.report', ['type' => 'monthly']) }}" class="btn btn-outline-blue"> الجرد الشهري</a>
                 @endcan
                 @can('عرض الجرد السنوي')
-                <a href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}" class="btn btn-outline-blue">🗓 الجرد السنوي</a>
+                <a href="{{ route('inventory-logs.report', ['type' => 'yearly']) }}" class="btn btn-outline-blue"> الجرد السنوي</a>
                 @endcan
             </div>
 

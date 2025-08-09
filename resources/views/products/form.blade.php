@@ -95,6 +95,9 @@
                                         <select name="variants[{{ $index }}][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
                                             <option value="" disabled {{ empty($variant['size']) ? 'selected' : '' }}>اختر المقاس</option>
                                             <option value="-" {{ (isset($variant['size']) && $variant['size'] == '-') ? 'selected' : '' }}>-</option>
+                                            <option value="رجالي" {{ (isset($variant['size']) && $variant['size'] == 'رجالي') ? 'selected' : '' }}>رجالي</option>
+                                            <option value="شبابي" {{ (isset($variant['size']) && $variant['size'] == 'شبابي') ? 'selected' : '' }}>شبابي</option>
+                                            <option value="ولادي" {{ (isset($variant['size']) && $variant['size'] == 'ولادي') ? 'selected' : '' }}>ولادي</option>
                                             <option value="XS" {{ (isset($variant['size']) && $variant['size'] == 'XS') ? 'selected' : '' }}>XS</option>
                                             <option value="S" {{ (isset($variant['size']) && $variant['size'] == 'S') ? 'selected' : '' }}>S</option>
                                             <option value="M" {{ (isset($variant['size']) && $variant['size'] == 'M') ? 'selected' : '' }}>M</option>
@@ -129,6 +132,10 @@
                                     <select name="variants[0][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
                                         <option value="" disabled selected>اختر المقاس</option>
                                         <option value="-">-</option>
+
+                                        <option value="رجالي">رجالي</option>
+                                        <option value="شبابي" >شبابي</option>
+                                        <option value="ولادي" >ولادي</option>
                                         <option value="XS">XS</option>
                                         <option value="S">S</option>
                                         <option value="M">M</option>
@@ -183,6 +190,9 @@
             <select name="variants[${variantIndex}][size]" class="summary-input flex-grow-1 w-100 w-md-auto text-dark-blue" required>
                 <option value="" disabled selected>اختر المقاس</option>
                 <option value="-">-</option>
+                <option value="رجالي">رجالي</option>
+                <option value="شبابي" >شبابي</option>
+                <option value="ولادي" >ولادي</option>
                 <option value="XS">XS</option>
                 <option value="S">S</option>
                 <option value="M">M</option>

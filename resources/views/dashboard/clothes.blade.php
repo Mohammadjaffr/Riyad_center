@@ -82,7 +82,7 @@
                         </span>
                             </div>
                         </div>
-                        <div class="fw-bold fs-5 mb-1 card-title-dark">موضف قسم الملابس</div>
+                        <div class="fw-bold fs-5 mb-1 card-title-dark">موظف قسم الملابس</div>
                         <div class="mb-1 " style="font-size: 1rem; ">اسم المستخدم: <span class="fw-normal">{{Auth()->user()->name}}</span></div>
                         <div class="mb-0" style="font-size: 1rem; ">الهاتف: <span class="fw-normal">{{Auth()->user()->phone}}</span></div>
                     </div>
@@ -115,6 +115,8 @@
         </div>
         <!-- Chart.js CDN -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
         <script>
             const ctx = document.getElementById('dashboardBarChart').getContext('2d');
             new Chart(ctx, {

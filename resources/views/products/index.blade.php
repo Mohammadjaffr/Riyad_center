@@ -57,7 +57,7 @@
                 <table class="table table-hover align-middle text-center table-striped custom-invoice-table" style="min-width: 1000px;">
                     <thead class="table-light">
                     <tr>
-                        <th>id</th>
+                        <th>#</th>
                         <th>اسم المنتج</th>
                         <th>صورة المنتج</th>
                         <th>رقم الموديل</th>
@@ -71,7 +71,7 @@
                     <tbody>
                     @foreach($products as $product)
                         <tr>
-                            <td>{{ $product->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $product->name }}</td>
                             <td class="text-center align-middle">
                                 @if($product->product_image)

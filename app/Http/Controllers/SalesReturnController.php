@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\Employee;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\Payment;
@@ -8,6 +10,7 @@ use App\Models\Product;
 use App\Models\InventoryLog;
 use App\Models\Product_variant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SalesReturnController extends Controller
 {
@@ -15,12 +18,36 @@ class SalesReturnController extends Controller
     {
         $search = $request->input('search');
         $sort = $request->input('sort');
+        $employee = Auth::guard('employee')->user();
+        $user_type = $employee->user_type ?? 'employee';
+        $departmentId = auth()->user()->department_id; // قسم المستخدم الحالي
 
-        $logs = InventoryLog::where('change_type', 'مرتجع بيع')
+        $department_id = session('department_id');
+        $employees = Employee::where('department_id', $department_id)->get();
+        if ($department_id ==1) {
+            $logs = InventoryLog::where('change_type', 'مرتجع بيع')
+                ->when($search, function ($query, $search) {
+                    $query->whereHas('productVariant.product', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    });
+                })
+                ->when($sort, function ($query, $sort) {
+                    $query->orderBy('created_at', $sort);
+                }, function ($query) {
+                    $query->latest();
+                })
+                ->with('productVariant.product')
+                ->paginate(10);
+        }else{
+            $logs = InventoryLog::where('change_type', 'مرتجع بيع')
             ->when($search, function ($query, $search) {
                 $query->whereHas('productVariant.product', function ($q) use ($search) {
                     $q->where('name', 'like', "%{$search}%");
                 });
+            })
+            // هنا نضيف شرط القسم
+            ->whereHas('productVariant.product', function ($q) use ($departmentId) {
+                $q->where('department_id', $departmentId);
             })
             ->when($sort, function ($query, $sort) {
                 $query->orderBy('created_at', $sort);
@@ -30,13 +57,26 @@ class SalesReturnController extends Controller
             ->with('productVariant.product')
             ->paginate(10);
 
+        }
 //        $logs = InventoryLog::where('change_type', 'مرتجع بيع')->latest()->with('productVariant.product')->paginate(20);
         return view('sales_returns.index', compact('logs'));
     }
 
     public function create()
     {
-        $invoices = Invoice::with('items.productVariant.product')->get();
+        $employee = Auth::guard('employee')->user();
+        $user_type = $employee->user_type ?? 'employee';
+
+        $department_id = session('department_id');
+        $employees = Employee::where('department_id', $department_id)->get();
+        if ($department_id ==1){
+            $invoices = Invoice::with('items.productVariant.product')->get();
+
+        }else{
+            $invoices = Invoice::with('items.productVariant.product')->where( 'department_id',$department_id)->get();
+        }
+
+//        $invoices = Invoice::with('items.productVariant.product')->get();
         return view('sales_returns.create', compact('invoices'));
     }
 

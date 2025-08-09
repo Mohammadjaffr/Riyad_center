@@ -4,48 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit size of navbar and sidebar">
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="edit all search boxes and filters + edit account button with all pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InventoryLogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InventoryLogController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseReturnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseReturnController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SalesReturnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SalesReturnController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/roles_permissions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/roles_permissions/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee_advance_payments/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_advance_payments/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee_advance_payments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_advance_payments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee_salaries/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_salaries/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee_salaries/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee_salaries/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employees/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/clothes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/clothes.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shoes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shoes.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/employees/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employees/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_reports/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_reports/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/current.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/current.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/invoices/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navbar_roles/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navbar_roles/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/payments/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payments/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/payments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/purchase_returns/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchase_returns/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/purchase_returns/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchase_returns/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/purchases/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchases/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/purchases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchases/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sales/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sales/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sales_returns/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales_returns/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sales_returns/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sales_returns/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar_roles/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar_roles/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock_adjustments/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock_adjustments/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stock_adjustments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stock_adjustments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/suppliers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/suppliers/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sidebar_roles/clothes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar_roles/clothes.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,15 +265,8 @@
       <workItem from="1752316913629" duration="1345000" />
       <workItem from="1752416682579" duration="901000" />
       <workItem from="1752528229887" duration="1130000" />
-      <workItem from="1753000263206" duration="18651000" />
-    </task>
-    <task id="LOCAL-00001" summary="إضافة صفحة الLogin">
-      <option name="closed" value="true" />
-      <created>1750667069852</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1750667069852</updated>
+      <workItem from="1753000263206" duration="39145000" />
+      <workItem from="1754749496258" duration="5537000" />
     </task>
     <task id="LOCAL-00002" summary="تعديل صفحة الLogin">
       <option name="closed" value="true" />
@@ -678,7 +652,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752317471474</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="edit all search boxes and filters + edit account button with all pages">
+      <option name="closed" value="true" />
+      <created>1753699846945</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1753699846946</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -696,7 +678,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="تعديل اضافة فاتورة" />
     <MESSAGE value="تم تعديل اضافة الفاتورة و تنسيق المودل" />
     <MESSAGE value="تصميم الداش بورد" />
     <MESSAGE value="edit navbar.blade.php" />
@@ -721,7 +702,8 @@
     <MESSAGE value="edit login" />
     <MESSAGE value="edit logout button and hide images in small devices" />
     <MESSAGE value="edit size of navbar and sidebar" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit size of navbar and sidebar" />
+    <MESSAGE value="edit all search boxes and filters + edit account button with all pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit all search boxes and filters + edit account button with all pages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -730,6 +712,11 @@
           <url>file://$PROJECT_DIR$/resources/views/layouts/navbar.blade.php</url>
           <line>159</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/dashboard/clothes.blade.php</url>
+          <line>165</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

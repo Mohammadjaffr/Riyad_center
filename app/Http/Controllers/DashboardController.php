@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $user_type = $user->user_type ?? 'employee';
         $department_id = $user->department_id;
 
-        if ($user_type === 'admin') {
+        if ($department_id === 1) {
             $employeesByDepartment = Employee::select('department_id', DB::raw('count(*) as total'))
                 ->groupBy('department_id')
                 ->with('department')
@@ -35,23 +35,35 @@ class DashboardController extends Controller
 
         $totalEmployees = $employeesByDepartment->sum('total');
 
-        $totalSales = $user_type === 'admin'
-            ? Sale::count()
-            : Sale::where('department_id', $department_id)->count();
+        // إجمالي المبيعات (مجموع مبالغ المبيعات)
+        $totalSalesAmount = $user_type === 'admin'
+            ? Sale::sum('total_amount')
+            : Sale::where('department_id', $department_id)->sum('total_amount');
 
-        $totalStock = $user_type === 'admin'
-            ? Product_variant::sum('quantity')
-            : Product_variant::where('product_id', $department_id)->sum('quantity');
+        // إجمالي المشتريات (مجموع مبالغ المشتريات)
+        $totalPurchasesAmount = $user_type === 'admin'
+            ? DB::table('purchases')->sum('total_amount')
+            : DB::table('purchases')->where('department_id', $department_id)->sum('total_amount');
+
+        // إجمالي قيمة المخزون (مجموع سعر البيع × الكمية)
+        $totalStockValue = $user_type === 'admin'
+            ? Product_variant::sum(DB::raw('sell_price * quantity'))
+            : Product_variant::whereHas('product', function ($q) use ($department_id) {
+                $q->where('department_id', $department_id);
+            })->sum(DB::raw('sell_price * quantity'));
 
         $totalProfit = $user_type === 'admin'
             ? SaleItem::sum(DB::raw('(total_price - unit_price) * quantity'))
-            : SaleItem::where('product_id', $department_id)->sum(DB::raw('(total_price - unit_price) * quantity'));
+            : SaleItem::whereHas('product', function ($q) use ($department_id) {
+                $q->where('department_id', $department_id);
+            })->sum(DB::raw('(total_price - unit_price) * quantity'));
 
         return view('dashboard.admin', compact(
             'employeesByDepartment',
             'totalEmployees',
-            'totalSales',
-            'totalStock',
+            'totalSalesAmount',
+            'totalPurchasesAmount',
+            'totalStockValue',
             'totalProfit'
         ));
     }
