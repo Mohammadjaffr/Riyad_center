@@ -6,6 +6,7 @@ use App\Models\Department;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -32,10 +33,10 @@ class ProductController extends Controller
         if ($request->filled('sort')) {
             $query->orderBy('name', $request->sort);
         } else {
-            $query->first();
+            $query->latest();
         }
 
-        $products = $query->paginate(20);
+        $products = $query->paginate(2);
 
         return view('products.index', compact('products'));
     }
@@ -110,11 +111,11 @@ class ProductController extends Controller
         // حفظ بيانات المنتج
         $data = $request->only(['name', 'model_num', 'description']);
         $data['department_id'] = $request->department_id;
-//        if (auth()->user()->hasRole('admin')) {
-//
-//        } else {
-//            $data['department_id'] = auth()->user()->department_id;
-//        }
+        //        if (auth()->user()->hasRole('admin')) {
+        //
+        //        } else {
+        //            $data['department_id'] = auth()->user()->department_id;
+        //        }
 
         if ($request->hasFile('product_image')) {
             $path = $request->file('product_image')->store('products', 'public');
@@ -149,43 +150,73 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'model_num' => 'required|string|max:255',
-            'department_id' => 'required|exists:departments,id',
-            'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ], [
-            'name.required' => 'حقل اسم المنتج مطلوب',
-            'name.string' => 'يجب أن يكون اسم المنتج نصًا',
-            'name.max' => 'اسم المنتج يجب ألا يتجاوز 255 حرفًا',
+  public function update(Request $request, Product $product)
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'model_num' => 'required|string|max:255',
+        'department_id' => 'required|exists:departments,id',
+        'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
 
-            'description.required' => 'حقل الوصف مطلوب',
-            'description.string' => 'يجب أن يكون الوصف نصًا',
+        'variants' => 'required|array|min:1',
+        'variants.*.id' => 'nullable|integer|exists:product_variants,id',
+        'variants.*.size' => 'required|string',
+        'variants.*.color' => 'required|string',
+        'variants.*.quantity' => 'required|integer|min:0',
+        'variants.*.sell_price' => 'required|numeric|min:0',
+        'variants.*.cost_price' => 'required|numeric|min:0',
+    ]);
 
-            'model_num.required' => 'حقل رقم الموديل مطلوب',
-            'model_num.string' => 'يجب أن يكون رقم الموديل نصًا',
-            'model_num.max' => 'رقم الموديل يجب ألا يتجاوز 255 حرفًا',
-
-            'department_id.required' => 'يجب اختيار القسم',
-            'department_id.exists' => 'القسم المحدد غير موجود',
-
-            'product_image.image' => 'يجب أن تكون صورة المنتج ملف صورة',
-            'product_image.mimes' => 'يجب أن تكون صيغة الصورة jpeg أو png أو jpg أو gif',
-            'product_image.max' => 'حجم صورة المنتج يجب ألا يتجاوز 2 ميغابايت',
-        ]);
-
-        if ($request->hasFile('product_image')) {
-            $path = $request->file('product_image')->store('products', 'public');
-            $validated['product_image'] = $path;
-        }
-
-        $product->update($validated);
-
-        return redirect()->route('products.index')->with('success', 'تم تحديث المنتج بنجاح');
+    if ($request->hasFile('product_image')) {
+        $path = $request->file('product_image')->store('products', 'public');
+        $validated['product_image'] = $path;
     }
+
+    $product->update($validated);
+
+    $formVariantIds = collect($request->variants)
+        ->pluck('id')
+        ->filter()
+        ->toArray();
+
+    $variantsToDelete = $product->variants()
+        ->whereNotIn('id', $formVariantIds)
+        ->get();
+
+    foreach ($variantsToDelete as $variant) {
+        $hasLogs = \DB::table('inventory_logs')->where('product_variant_id', $variant->id)->exists();
+
+        if ($hasLogs) {
+            continue;
+        } else {
+            $variant->delete();
+        }
+    }
+
+    foreach ($request->variants as $variant) {
+        if (!empty($variant['id'])) {
+            $product->variants()->where('id', $variant['id'])->update([
+                'size' => $variant['size'],
+                'color' => $variant['color'],
+                'quantity' => $variant['quantity'],
+                'sell_price' => $variant['sell_price'],
+                'cost_price' => $variant['cost_price'],
+            ]);
+        } else {
+            $product->variants()->create([
+                'size' => $variant['size'],
+                'color' => $variant['color'],
+                'quantity' => $variant['quantity'],
+                'sell_price' => $variant['sell_price'],
+                'cost_price' => $variant['cost_price'],
+            ]);
+        }
+    }
+
+    return redirect()->route('products.index')->with('success', 'تم تحديث المنتج والمتغيرات بنجاح');
+}
+
 
     /**
      * Remove the specified resource from storage.

@@ -13,10 +13,7 @@ class Product_variant extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function inventoryLogs()
-    {
-        return $this->hasMany(InventoryLog::class);
-    }
+   
     public function invoiceItems()
     {
         return $this->hasMany(InvoiceItem::class, 'product_variant_id');
@@ -33,4 +30,9 @@ class Product_variant extends Model
             }
         });
     }
+    public function inventoryLogs()
+{
+    return $this->hasMany(InventoryLog::class, 'product_variant_id');
+}
+
 }
