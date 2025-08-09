@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="updates">
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="updates of dashboard and ProductController.php">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/clothes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/clothes.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shoes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shoes.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/form.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,15 +246,7 @@
       <workItem from="1752416682579" duration="901000" />
       <workItem from="1752528229887" duration="1130000" />
       <workItem from="1753000263206" duration="39145000" />
-      <workItem from="1754749496258" duration="11760000" />
-    </task>
-    <task id="LOCAL-00003" summary="تشطيب الفوتر و الناف بار و السايد بار">
-      <option name="closed" value="true" />
-      <created>1750764018237</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1750764018237</updated>
+      <workItem from="1754749496258" duration="12157000" />
     </task>
     <task id="LOCAL-00004" summary="إضافة فاتورة تعديل">
       <option name="closed" value="true" />
@@ -645,7 +632,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754764631190</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="updates of dashboard and ProductController.php">
+      <option name="closed" value="true" />
+      <created>1754771508861</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1754771508861</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +658,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="تصميم الداش بورد" />
     <MESSAGE value="edit navbar.blade.php" />
     <MESSAGE value="style all department section" />
     <MESSAGE value="style part of products section" />
@@ -688,7 +682,8 @@
     <MESSAGE value="edit size of navbar and sidebar" />
     <MESSAGE value="edit all search boxes and filters + edit account button with all pages" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="updates of dashboard and ProductController.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates of dashboard and ProductController.php" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

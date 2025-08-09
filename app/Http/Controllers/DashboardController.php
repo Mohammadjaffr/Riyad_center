@@ -38,7 +38,7 @@ class DashboardController extends Controller
         $totalEmployees = $employeesByDepartment->sum('total');
 
         // عدد القطع المباعة (مجموع كميات المبيعات + الفواتير)
-        if ($user_type === 'admin') {
+        if ($department_id === 1) {
             // للمدير: جميع القطع المباعة من كل الأقسام
             $totalSoldFromSales = SaleItem::sum('quantity');
             $totalSoldFromInvoices = InvoiceItem::sum('quantity');
@@ -47,23 +47,23 @@ class DashboardController extends Controller
             $totalSoldFromSales = SaleItem::whereHas('product', function ($q) use ($department_id) {
                 $q->where('department_id', $department_id);
             })->sum('quantity');
-            
+
             $totalSoldFromInvoices = InvoiceItem::whereHas('productVariant.product', function ($q) use ($department_id) {
                 $q->where('department_id', $department_id);
             })->sum('quantity');
         }
-        
+
         $totalSoldItems = $totalSoldFromSales + $totalSoldFromInvoices;
 
         // عدد القطع المشتراة (مجموع كميات المشتريات)
-        $totalPurchasedItems = $user_type === 'admin'
+        $totalPurchasedItems = $department_id === 1
             ? PurchaseItem::sum('quantity')
             : PurchaseItem::whereHas('product', function ($q) use ($department_id) {
                 $q->where('department_id', $department_id);
             })->sum('quantity');
 
         // عدد القطع المتبقية في المخزن (مجموع الكميات الحالية)
-        $totalStockItems = $user_type === 'admin'
+        $totalStockItems = $department_id === 1
             ? Product_variant::sum('quantity')
             : Product_variant::whereHas('product', function ($q) use ($department_id) {
                 $q->where('department_id', $department_id);
@@ -89,11 +89,11 @@ class DashboardController extends Controller
         $totalSoldFromSales = SaleItem::whereHas('product', function ($q) use ($department_id) {
             $q->where('department_id', $department_id);
         })->sum('quantity');
-        
+
         $totalSoldFromInvoices = InvoiceItem::whereHas('productVariant.product', function ($q) use ($department_id) {
             $q->where('department_id', $department_id);
         })->sum('quantity');
-        
+
         $totalSoldItems = $totalSoldFromSales + $totalSoldFromInvoices;
 
         // عدد القطع المشتراة لقسم الملابس
@@ -113,7 +113,7 @@ class DashboardController extends Controller
             'totalStockItems'
         ));
     }
-    
+
 
     public function shoes()
     {
@@ -128,11 +128,11 @@ class DashboardController extends Controller
         $totalSoldFromSales = SaleItem::whereHas('product', function ($q) use ($department_id) {
             $q->where('department_id', $department_id);
         })->sum('quantity');
-        
+
         $totalSoldFromInvoices = InvoiceItem::whereHas('productVariant.product', function ($q) use ($department_id) {
             $q->where('department_id', $department_id);
         })->sum('quantity');
-        
+
         $totalSoldItems = $totalSoldFromSales + $totalSoldFromInvoices;
 
         // عدد القطع المشتراة لقسم الأحذية
