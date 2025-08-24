@@ -10,7 +10,7 @@
     <table>
         <thead>
         <tr>
-            <th>المنتج</th>
+{{--            <th>المنتج</th>--}}
             <th>النوع</th>
             <th>الكمية</th>
             <th>الوصف</th>
@@ -21,8 +21,8 @@
         <tbody>
         @foreach($logs as $log)
             <tr>
-                <td>{{ $log->product->name }}</td>
-{{--                <td>{{ $log->productVariant->product->name }}</td> --}}
+{{--                <td>{{ $log->product->name }}</td>--}}
+{{--                <td>{{ $log->productVariant->product->name }}</td>--}}
                 <td>{{ $log->change_type }}</td>
                 <td>{{ $log->quantity }}</td>
                 <td>{{ $log->description }}</td>

@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="updates of dashboard and ProductController.php">
-      <change afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/yearly.blade.php" afterDir="false" />
+    <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InventoryReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InventoryReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/monthly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/monthly.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/invoices/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/pdf.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/invoices/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/monthly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/monthly.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/yearly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/yearly.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/yearly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/yearly.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,14 +255,8 @@
       <workItem from="1755072802599" duration="3207000" />
       <workItem from="1755107273076" duration="10624000" />
       <workItem from="1755982987059" duration="6843000" />
-    </task>
-    <task id="LOCAL-00005" summary="تعديل  البحث عن منتجات">
-      <option name="closed" value="true" />
-      <created>1750781444066</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1750781444066</updated>
+      <workItem from="1756025815668" duration="4010000" />
+      <workItem from="1756053518504" duration="59000" />
     </task>
     <task id="LOCAL-00006" summary="style.css">
       <option name="closed" value="true" />
@@ -652,7 +642,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754771902513</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="updates">
+      <option name="closed" value="true" />
+      <created>1756026007837</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1756026007837</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -693,9 +691,9 @@
     <MESSAGE value="edit logout button and hide images in small devices" />
     <MESSAGE value="edit size of navbar and sidebar" />
     <MESSAGE value="edit all search boxes and filters + edit account button with all pages" />
-    <MESSAGE value="updates" />
     <MESSAGE value="updates of dashboard and ProductController.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates of dashboard and ProductController.php" />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
