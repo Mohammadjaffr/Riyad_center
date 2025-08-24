@@ -70,8 +70,8 @@
                 @foreach($invoice->items as $index => $item)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $item->product->name ?? '' }}</td>
-                        <td>{{ $item->product->model_num ?? '-' }}</td>
+                        <td>{{ $item->productVariant->product->name ?? '' }}</td>
+                        <td>{{ $item->productVariant->product->model_num ?? '-' }}</td>
                         <td>{{ $item->quantity }}</td>
                         <td>{{ number_format($item->unit_price, 2) }}</td>
                         <td>{{ number_format($item->total_price, 2) }}</td>

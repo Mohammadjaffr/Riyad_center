@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
+//use niklasravnsborg\LaravelPdf\Facades\Pdf;
+
 
 class InvoiceController extends Controller
 {
@@ -210,7 +212,6 @@ class InvoiceController extends Controller
     public function show(Invoice $invoice)
     {
         $user = Auth::guard('employee')->user();
-
         $user_type = $user->user_type ?? 'employee';
 
         if ($user_type !== 'admin' && $invoice->department_id !== $user->department_id) {
@@ -400,11 +401,7 @@ class InvoiceController extends Controller
     {
         $invoice->load(['department', 'employee', 'items.productVariant.product']);
 
-        $pdf = PDF::loadView('invoices.pdf', compact('invoice'), [], [
-            'mode' => 'utf-8',
-            'format' => 'A4',
-            'default_font' => 'amiri',
-        ]);
+        $pdf = PDF::loadView('invoices.pdf', compact('invoice'));
 
         return $pdf->stream('invoice-' . $invoice->invoice_num . '.pdf');
     }

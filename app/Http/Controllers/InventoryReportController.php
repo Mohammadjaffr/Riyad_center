@@ -13,11 +13,6 @@ class InventoryReportController extends Controller
         $department_id = $user->department_id;
 
         $logs = InventoryLog::with(['productVariant.product', 'employee'])
-            ->when($department_id, function ($query) use ($department_id) {
-                $query->whereHas('productVariant.product', function ($q) use ($department_id) {
-                    $q->where('department_id', $department_id);
-                });
-            })
             ->latest()
             ->paginate(20);
 

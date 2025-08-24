@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="updates of dashboard and ProductController.php">
+      <change afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/yearly.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InventoryReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InventoryReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/monthly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/monthly.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/invoices/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/pdf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/invoices/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,13 +151,7 @@
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
       <path value="$PROJECT_DIR$/vendor/laravel/breeze" />
-      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
-      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
       <path value="$PROJECT_DIR$/vendor/mehradsadeghi/laravel-filter-querystring" />
-      <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
-      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
-      <path value="$PROJECT_DIR$/vendor/dompdf/php-font-lib" />
-      <path value="$PROJECT_DIR$/vendor/dompdf/php-svg-lib" />
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
@@ -158,6 +159,12 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
+      <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/mpdf/psr-http-message-shim" />
+      <path value="$PROJECT_DIR$/vendor/mpdf/psr-log-aware-trait" />
+      <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
+      <path value="$PROJECT_DIR$/vendor/niklasravnsborg/laravel-pdf" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -174,7 +181,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;test&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/github/Riyad_center/resources/views&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/github/Riyad_center/resources/views/inventory_logs/reports/pdf&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -186,11 +193,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\Riyad_center\resources\views\inventory_logs\reports\pdf" />
       <recent name="D:\github\Riyad_center\resources\views" />
       <recent name="D:\github\Riyad_center\public\uploads\products" />
       <recent name="D:\github\Riyad_center\resources\views\sidebar_role" />
       <recent name="D:\github\Riyad_center\resources\views\stock_adjustments" />
-      <recent name="D:\github\Riyad_center\public\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\github\Riyad_center\resources\views\pages\products" />
@@ -246,15 +253,12 @@
       <workItem from="1752416682579" duration="901000" />
       <workItem from="1752528229887" duration="1130000" />
       <workItem from="1753000263206" duration="39145000" />
-      <workItem from="1754749496258" duration="12157000" />
-    </task>
-    <task id="LOCAL-00004" summary="إضافة فاتورة تعديل">
-      <option name="closed" value="true" />
-      <created>1750774474137</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1750774474137</updated>
+      <workItem from="1754749496258" duration="12260000" />
+      <workItem from="1754818602531" duration="2529000" />
+      <workItem from="1755069337167" duration="851000" />
+      <workItem from="1755072802599" duration="3207000" />
+      <workItem from="1755107273076" duration="10624000" />
+      <workItem from="1755982987059" duration="6843000" />
     </task>
     <task id="LOCAL-00005" summary="تعديل  البحث عن منتجات">
       <option name="closed" value="true" />
@@ -640,7 +644,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754771508861</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="updates of dashboard and ProductController.php">
+      <option name="closed" value="true" />
+      <created>1754771902513</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1754771902513</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
