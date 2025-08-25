@@ -7,9 +7,7 @@
     <list default="true" id="8bc53fed-b176-424a-a163-879a8188ea86" name="Changes" comment="updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/monthly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/monthly.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/yearly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/pdf/yearly.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inventory_logs/reports/yearly.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inventory_logs/reports/yearly.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/invoices/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/pdf.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,15 +254,10 @@
       <workItem from="1755107273076" duration="10624000" />
       <workItem from="1755982987059" duration="6843000" />
       <workItem from="1756025815668" duration="4010000" />
-      <workItem from="1756053518504" duration="59000" />
-    </task>
-    <task id="LOCAL-00006" summary="style.css">
-      <option name="closed" value="true" />
-      <created>1750787487364</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1750787487365</updated>
+      <workItem from="1756053518504" duration="316000" />
+      <workItem from="1756056912983" duration="1066000" />
+      <workItem from="1756058469644" duration="246000" />
+      <workItem from="1756110312780" duration="3105000" />
     </task>
     <task id="LOCAL-00007" summary="add products">
       <option name="closed" value="true" />
@@ -650,7 +643,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756026007837</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="updates">
+      <option name="closed" value="true" />
+      <created>1756053749725</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1756053749725</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

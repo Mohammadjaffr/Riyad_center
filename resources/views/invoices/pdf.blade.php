@@ -1,3 +1,4 @@
+{{--@extends('layouts.head')--}}
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -33,7 +34,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            border-bottom: 2px solid #e9ecef;
+            /*border-bottom: 2px solid #e9ecef;*/
             padding-bottom: 20px;
         }
 
@@ -149,7 +150,7 @@
         .summary-table td {
             padding: 12px 15px;
             text-align: center;
-            border: 1px solid #dee2e6;
+            /*border: 1px solid #dee2e6;*/
             font-size: 14px;
         }
 
@@ -234,7 +235,7 @@
             <div class="row align-items-center ">
             <!-- Right Info -->
             <div class="customer-info">
-                <div class="mb-5"></div>
+
                 <p class="mb-0 form-label fw-bold"><b>الاسم: {{ $invoice->customer_name }}</b></p>
                 <p class="mb-0 form-label fw-bold"><b>القسم: {{ $invoice->department->name ?? '-' }}</b></p>
 
@@ -249,7 +250,7 @@
                 </div>
             <!-- left Info -->
             <div class="employee-info">
-                <div class="mb-5"></div>
+
                 <p class="mb-0 form-label fw-bold"> <b> الموظف:{{ $invoice->employee->name ?? '-' }}</b></p>
                 <p class="mb-0 form-label fw-bold"> <b> طريقة الدفع:{{ $invoice->payment_type }}</b></p>
 
@@ -328,5 +329,6 @@
             </div>
         </div>
     </div> -->
+    </div>
 </body>
 </html>
