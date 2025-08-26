@@ -80,9 +80,9 @@
                 <a href="#" onclick="window.print()" class="btn btn-outline-blue mb-3 col-12 col-md-3">
                      طباعة التقرير
                 </a>
-{{--                <a href="{{ route('inventory-logs.pdf', $type) }}?{{ http_build_query(request()->all()) }}" class="btn btn-outline-danger mb-3 col-12 col-md-3">--}}
-{{--                     PDF--}}
-{{--                </a>--}}
+                <a href="{{ route('inventory-logs.pdf', $type) }}?{{ http_build_query(request()->all()) }}" class="btn btn-outline-danger mb-3 col-12 col-md-3">
+                     PDF
+                </a>
 
         </div>
     </div>

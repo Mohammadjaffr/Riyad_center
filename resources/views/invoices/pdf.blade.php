@@ -38,63 +38,34 @@
             padding-bottom: 20px;
         }
 
-        .logo-section {
+
+        .store-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .store-logo img {
+            width: 90px;
+            height: auto;
+            display: block;
+        }
+        .store-text {
             text-align: center;
-            flex: 1;
         }
-
-        .logo {
-            max-width: 80px;
-            margin-bottom: 10px;
-        }
-
-        .invoice-title {
-            font-size: 24px;
+        .store-name {
+            font-size: 20px;
             font-weight: bold;
             color: #2c3e50;
-            margin: 0;
+            margin-bottom: 4px;
         }
-
-        .invoice-info {
-            text-align: center;
-            margin-top: -10px;
-        }
-
-        .invoice-number {
-            font-size: 16px;
-            font-weight: bold;
+        .store-details {
+            font-size: 13px;
             color: #495057;
-            margin: 5px 0;
-        }
-
-        .invoice-date {
-            font-size: 14px;
-            color: #6c757d;
-            margin: 5px 0;
-        }
-
-        .customer-info {
-            flex: 1;
-            text-align: right;
-        }
-
-        .employee-info {
-            margin-top: -110px;
-            flex: 1;
-            text-align: left;
-        }
-
-        .info-label {
-            font-weight: bold;
-            color: #495057;
-            margin: 8px 0;
-            font-size: 16px;
-        }
-
-        .info-value {
-            color: #6c757d;
-            margin: 5px 0;
-            font-size: 14px;
+            line-height: 1.6;
         }
 
         .table-container {
@@ -135,17 +106,6 @@
         .invoice-table tr:hover {
             background-color: #e9ecef;
         }
-
-        .summary-section {
-            margin: 30px 0;
-        }
-
-        .summary-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
         .summary-table th,
         .summary-table td {
             padding: 12px 15px;
@@ -170,9 +130,7 @@
         .notes-section {
             margin: 30px 0;
             padding: 20px;
-            background: #f8f9fa;
             border-radius: 8px;
-            border-left: 4px solid #007bff;
         }
 
         .notes-label {
@@ -197,7 +155,7 @@
 
         .thank-you {
             font-size: 18px;
-            color: #28a745;
+            color: #2c3e50;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -206,10 +164,6 @@
             color: #6c757d;
             font-size: 12px;
             margin-top: 10px;
-        }
-
-        .page-break {
-            page-break-before: always;
         }
 
         @media print {
@@ -227,37 +181,32 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header Section -->
-        <div class="header-row">
-
-
-
-            <div class="row align-items-center ">
-            <!-- Right Info -->
-            <div class="customer-info">
-
-                <p class="mb-0 form-label fw-bold"><b>الاسم: {{ $invoice->customer_name }}</b></p>
-                <p class="mb-0 form-label fw-bold"><b>القسم: {{ $invoice->department->name ?? '-' }}</b></p>
-
+        <!-- Store Header: Logo + Shop details -->
+        <div class="store-header">
+            <div class="store-logo">
+                <img src="{{ public_path('assets/images/logo.png') }}" alt="Logo" style="width:80px;height: 80px; margin-right: 45%">
             </div>
-                <!-- Logo Center -->
-                <div class="invoice-info">
-{{--                    <img src="{{asset('assets/images/logo.png')}}" alt="Logo" style="max-width: 100px;">--}}
-                    <div class="">
-                        <small  class="form-label fw-bold"><b>رقم الفاتورة: {{ $invoice->invoice_num }}</b></small><br>
-                        <small  class="form-label fw-bold"><b>تاريخ الإصدار: {{ $invoice->invoice_date }}</b></small>
-                    </div>
+            <div class="store-text">
+                <div class="store-name">مركز الرياض للملابس الرجالية الجاهزة والأحذية والبدلات</div>
+                <div class="store-details">
+                    العنوان: القطن - شارع رئيسي | هاتف: 05455555
                 </div>
-            <!-- left Info -->
-            <div class="employee-info">
-
-                <p class="mb-0 form-label fw-bold"> <b> الموظف:{{ $invoice->employee->name ?? '-' }}</b></p>
-                <p class="mb-0 form-label fw-bold"> <b> طريقة الدفع:{{ $invoice->payment_type }}</b></p>
-
             </div>
-            </div>
-
-
+        </div>
+        <!-- Header Section -->
+        <div class="header-row" style="border-bottom: none; padding-bottom: 0;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="text-align: right; width: 33%;"><span class="fw-bold">الاسم:</span> {{ $invoice->customer_name }}</td>
+                    <td style="text-align: center; width: 34%;"><span class="fw-bold">رقم الفاتورة:</span> {{ $invoice->invoice_num }}</td>
+                    <td style="text-align: left; width: 33%;"><span class="fw-bold">الموظف:</span> {{ $invoice->employee->name ?? '-' }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; width: 33%;"><span class="fw-bold">القسم:</span> {{ $invoice->department->name ?? '-' }}</td>
+                    <td style="text-align: center; width: 34%;"><span class="fw-bold">تاريخ الإصدار:</span> {{ $invoice->invoice_date }}</td>
+                    <td style="text-align: left; width: 33%;"><span class="fw-bold">طريقة الدفع:</span> {{ $invoice->payment_type }}</td>
+                </tr>
+            </table>
         </div>
 
         <!-- Items Table -->
@@ -290,27 +239,6 @@
             </table>
         </div>
 
-        <!-- Summary Section -->
-        <div class="summary-section">
-            <table class="summary-table">
-                <tr>
-                    <th>الإجمالي</th>
-                    <td>{{ number_format($invoice->items->sum('total_price'), 2) }} ريال</td>
-                </tr>
-                <tr>
-                    <th>الخصم</th>
-                    <td>{{ number_format($invoice->discount_amount, 2) }} ريال</td>
-                </tr>
-                <tr>
-                    <th>المدفوع</th>
-                    <td>{{ number_format($invoice->paid_amount, 2) }} ريال</td>
-                </tr>
-                <tr>
-                    <th>المتبقي</th>
-                    <td>{{ number_format($invoice->rest_amount, 2) }} ريال</td>
-                </tr>
-            </table>
-        </div>
 
         <!-- Notes Section -->
         @if($invoice->notes)
@@ -320,15 +248,30 @@
             </div>
         @endif
 
+
+        <!-- Summary  -->
+        <div class="header-row" style="border-bottom: none; padding-bottom: 0;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="text-align: right; width: 33%;"><b>الإجمالي: {{ number_format($invoice->items->sum('total_price'), 2) }} ريال</b></td>
+                    <td style="text-align: center; width: 34%;"><b>الخصم: {{ number_format($invoice->discount_amount, 2) }} ريال</b></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; width: 33%;"><b >المدفوع: {{ number_format($invoice->paid_amount, 2) }} ريال</b></td>
+                    <td style="text-align: center; width: 34%;"><b>المتبقي: {{ number_format($invoice->rest_amount, 2) }} ريال</b></td>
+                </tr>
+            </table>
+        </div>
+
         <!-- Footer -->
-        <!-- <div class="footer">
-            <div class="thank-you">شكرًا لتعاملكم معنا 🌟</div>
+         <div class="footer">
+            <div class="thank-you">شكرًا لتعاملكم معنا</div>
             <div class="company-info">
-                مركز الرياض للملابس والأحذية<br>
+                مركز الرياض للملابس الرجالية الجاهزة والأحذية والبدلات  <br>
                 جميع الحقوق محفوظة © {{ date('Y') }}
             </div>
         </div>
-    </div> -->
     </div>
+
 </body>
 </html>
