@@ -81,7 +81,7 @@
                             <td>{{ $product->name }}</td>
                             <td class="text-center align-middle">
                                 @if($product->product_image)
-                                    <img src="{{ Storage::url($product->product_image) }}"
+                                    <img src="{{ url($product->product_image) }}"
                                          alt="{{ $product->name }}"
                                          class="rounded-circle shadow-sm border"
                                          style="width: 60px; height: 60px; object-fit: cover; background: #f8f9fa;">

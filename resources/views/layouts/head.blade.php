@@ -17,8 +17,16 @@
     <meta name="twitter:title" content="مركز الرياض للملابس الرجالية الجاهزة والأحذية والبدلات">
     <meta name="twitter:description" content="مركز الرياض متخصص في بيع الملابس الرجالية الجاهزة، الأحذية، والبدلات. جودة عالية، أناقة، وخدمة متميزة.">
     <meta name="twitter:image" content="{{ asset('assets/images/logo.png') }}">
-{{--    <link rel="stylesheet" href="{{asset('assets/css/custom-style.css')}}">--}}
-{{--    <link rel="stylesheet" href="{{asset('assets/css/fonts.css')}}">--}}
+   {{-- Favicon & App Icons --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicons/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicons/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicons/web-app-manifest-192x192.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicons/apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ asset('favicons/site.webmanifest') }}">
+    <meta name="msapplication-TileImage" content="{{ asset('favicons/favicon-96x96.png') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
